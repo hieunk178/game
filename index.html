@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Game 3D Khám Phá Từ Vựng | TOCFL Flash Cards</title>
+  <meta name="description" content="Trò chơi 3D tương tác góc nhìn thứ 3 sinh động điều khiển nhân vật khám phá phòng học và học từ vựng trực quan.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./style.css?v=202608192128">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GLTFLoader for loading .glb 3D models -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+
+  <!-- ================= BACKGROUND ORBS ================= -->
+  <div class="bg-fx">
+    <div class="fx-orb fx-1"></div>
+    <div class="fx-orb fx-2"></div>
+    <div class="fx-orb fx-3"></div>
+  </div>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="game-header">
+    <a href="/" class="game-logo">
+      <div class="logo-badge">🎮</div>
+      <div class="logo-info">
+        <span class="logo-title">3D Vocab Quest</span>
+        <span class="logo-sub">Học từ vựng qua không gian 3D</span>
+      </div>
+    </a>
+
+    <div class="header-actions">
+      <button type="button" class="btn-icon" id="btnHeaderFullscreen" title="Toàn màn hình (F11)" aria-label="Toàn màn hình">
+        <span class="fs-icon">⛶</span>
+      </button>
+      <button type="button" class="btn-icon" id="btnSoundToggle" title="Bật/Tắt âm thanh" aria-label="Âm thanh">
+        <span id="soundIcon">🔊</span>
+      </button>
+      <button type="button" class="btn-icon" id="btnSettings" title="Cài đặt game" aria-label="Cài đặt">
+        ⚙️
+      </button>
+      <a href="/" class="btn-back">
+        <span>↩️</span>
+        <span class="btn-text">Thoát ra</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= SCREEN 1: START & LEVEL SELECTION ================= -->
+  <section id="screenStart" class="screen screen-start active">
+    <div class="start-container">
+      
+      <!-- Hero Banner -->
+      <div class="start-hero">
+        <div class="hero-tag">✨ Học Tương Tác 3D Thế Hệ Mới</div>
+        <h1 class="hero-title">Khám Phá Căn Phòng 3D & Chinh Phục Từ Vựng</h1>
+        <p class="hero-desc">
+          Nhập vai góc nhìn thứ 3 sống động, tự do điều khiển nhân vật bước đi trong không gian, tương tác với từng đồ vật để ghi nhớ chữ Hán, phát âm và nghĩa tức thì!
+        </p>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="totalDiscoveredStats">0/12</span>
+            <span class="stat-label">Đồ vật đã tìm</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" id="totalScoreStats">0</span>
+            <span class="stat-label">Điểm tích lũy</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">3D TPS</span>
+            <span class="stat-label">Góc nhìn thứ 3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Level Selection Section -->
+      <div class="level-section">
+        <div class="section-head">
+          <h2>Chọn Màn Chơi</h2>
+          <span class="section-badge">1 Màn sẵn sàng</span>
+        </div>
+
+        <div class="level-grid">
+          
+          <!-- LEVEL 1: Study Room (ACTIVE) -->
+          <div class="level-card active-card" id="cardLevel1">
+            <div class="card-cover room-cover">
+              <div class="level-badge ready">🟢 SẴN SÀNG</div>
+              <div class="cover-icon">🛋️</div>
+              <div class="card-glow"></div>
+            </div>
+            <div class="card-body">
+              <div class="level-meta">
+                <span class="level-num">MÀN 1</span>
+                <span class="level-diff">⭐ Cơ Bản (A1 - A2)</span>
+              </div>
+              <h3 class="level-title">Căn Phòng Học Tập Ấm Cúng</h3>
+              <p class="level-desc">
+                Khám phá bàn làm việc, kệ sách, laptop, đèn bàn, cây cảnh và các vật dụng thường nhật trong phòng riêng.
+              </p>
+              <div class="level-progress-bar">
+                <div class="progress-fill" id="level1ProgressFill" style="width: 0%"></div>
+              </div>
+              <div class="level-footer">
+                <span class="progress-text" id="level1ProgressText">Đã tìm: 0/12</span>
+                <button type="button" class="btn-play-level" id="btnPlayLevel1">
+                  <span>Vào Chơi Ngay</span>
+                  <span class="arrow-icon">➔</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEVEL 2: Cozy Cafe (COMING SOON) -->
+          <div class="level-card locked-card">
+            <div class="card-cover cafe-cover">
+              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
+              <div class="cover-icon">☕</div>
+            </div>
+            <div class="card-body">
+              <div class="level-meta">
+                <span class="level-num">MÀN 2</span>
+                <span class="level-diff">⭐⭐ Trung cấp (B1)</span>
+              </div>
+              <h3 class="level-title">Quán Cà Phê Thư Giãn</h3>
+              <p class="level-desc">
+                Học từ vựng về menu đồ uống, bánh ngọt, quầy thu ngân, quầy pha chế và khách hàng.
+              </p>
+              <div class="level-footer">
+                <span class="progress-text">Dự kiến phát hành</span>
+                <button type="button" class="btn-locked" disabled>Khóa</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEVEL 3: Classroom (COMING SOON) -->
+          <div class="level-card locked-card">
+            <div class="card-cover school-cover">
+              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
+              <div class="cover-icon">🏫</div>
+            </div>
+            <div class="card-body">
+              <div class="level-meta">
+                <span class="level-num">MÀN 3</span>
+                <span class="level-diff">⭐⭐ Trung cấp (B1)</span>
+              </div>
+              <h3 class="level-title">Lớp Học Hiện Đại</h3>
+              <p class="level-desc">
+                Học từ vựng về bảng đen, giáo trình, máy chiếu, bài tập và dụng cụ học tập phong phú.
+              </p>
+              <div class="level-footer">
+                <span class="progress-text">Dự kiến phát hành</span>
+                <button type="button" class="btn-locked" disabled>Khóa</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- LEVEL 4: Supermarket (COMING SOON) -->
+          <div class="level-card locked-card">
+            <div class="card-cover market-cover">
+              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
+              <div class="cover-icon">🛒</div>
+            </div>
+            <div class="card-body">
+              <div class="level-meta">
+                <span class="level-num">MÀN 4</span>
+                <span class="level-diff">⭐⭐⭐ Nâng cao (B2)</span>
+              </div>
+              <h3 class="level-title">Siêu Thị & Mua Sắm</h3>
+              <p class="level-desc">
+                Khám phá các gian hàng thực phẩm, đồ gia dụng, xe đẩy và quy trình thanh toán.
+              </p>
+              <div class="level-footer">
+                <span class="progress-text">Dự kiến phát hành</span>
+                <button type="button" class="btn-locked" disabled>Khóa</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Game Features highlight -->
+      <div class="feature-strip">
+        <div class="feat-box">
+          <span class="feat-icon">🧍‍♂️</span>
+          <div>
+            <strong>Góc nhìn thứ 3 (TPS) & Avatar 3D</strong>
+            <p>Điều khiển nhân vật 3D sinh động, chuyển động tự nhiên với phím WASD hoặc Joystick.</p>
+          </div>
+        </div>
+        <div class="feat-box">
+          <span class="feat-icon">🔄</span>
+          <div>
+            <strong>Xoay 3D 360° Đồ Vật</strong>
+            <p>Mô hình chi tiết có thể phóng to, xoay mọi góc nhìn để quan sát sâu sắc.</p>
+          </div>
+        </div>
+        <div class="feat-box">
+          <span class="feat-icon">🔊</span>
+          <div>
+            <strong>Phát âm Giọng Chuẩn</strong>
+            <p>Nghe phát âm chuẩn chữ Hán, bính âm Pinyin và làm quiz củng cố tức thì.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 2: 3D GAMEPLAY ================= -->
+  <section id="screenGame" class="screen screen-game">
+    
+    <!-- 3D Canvas Container -->
+    <div id="canvas3dContainer" class="canvas-3d-container">
+      <!-- Three.js renders here -->
+    </div>
+
+    <!-- HUD Overlay -->
+    <div class="game-hud" id="gameHud">
+      
+      <!-- Top HUD Bar -->
+      <div class="hud-top">
+        <div class="hud-room-tag">
+          <span class="room-icon">🛋️</span>
+          <span class="room-name" id="hudRoomName">Căn Phòng Học Tập</span>
+        </div>
+
+        <div class="hud-progress-pill">
+          <span class="progress-label">Khám phá:</span>
+          <strong id="hudDiscoveredCount">0 / 12</strong>
+          <div class="hud-mini-bar">
+            <div class="hud-mini-fill" id="hudMiniFill" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div class="hud-top-right">
+          <button type="button" class="btn-hud btn-cam-toggle" id="btnToggleCamera" title="Đổi góc nhìn (Phím V)">
+            <span id="cameraModeIcon">🎥</span>
+            <span class="hud-btn-txt" id="cameraModeTxt">Góc nhìn: Thứ 3</span>
+          </button>
+          <button type="button" class="btn-hud" id="btnToggleBook" title="Xem sổ tay từ vựng">
+            <span>📖</span>
+            <span class="hud-btn-txt">Sổ từ (<span id="hudDiscoveredBadge">0</span>)</span>
+          </button>
+          <button type="button" class="btn-hud" id="btnToggleFullscreen" title="Toàn màn hình (F11)">
+            <span class="fs-icon">⛶</span>
+            <span class="hud-btn-txt" id="fullscreenTxt">Toàn màn hình</span>
+          </button>
+          <button type="button" class="btn-hud" id="btnPauseGame" title="Tạm dừng / Quay về menu">
+            <span>⏸️</span>
+            <span class="hud-btn-txt">Tạm dừng</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Center Crosshair / Aim -->
+      <div class="fps-crosshair" id="fpsCrosshair">
+        <div class="crosshair-dot"></div>
+        <div class="crosshair-ring"></div>
+      </div>
+
+      <!-- Floating Hover Prompt / Interaction Tooltip -->
+      <div class="interaction-prompt" id="interactionPrompt">
+        <div class="prompt-key">E</div>
+        <div class="prompt-text">
+          <span class="prompt-action">Nhấn để khám phá</span>
+          <strong class="prompt-target" id="promptTargetName">Bàn làm việc</strong>
+        </div>
+      </div>
+
+      <!-- Bottom Controls Helper -->
+      <div class="hud-bottom">
+        <div class="hud-controls-helper desktop-only">
+          <div class="key-guide"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Di chuyển</div>
+          <div class="key-guide"><kbd>Chuột</kbd> Xoay camera</div>
+          <div class="key-guide"><kbd>Cuộn chuột</kbd> Zoom gần / xa</div>
+          <div class="key-guide"><kbd>V</kbd> Đổi góc nhìn (3rd / 1st)</div>
+          <div class="key-guide"><kbd>E</kbd> / <kbd>Click</kbd> Khám phá đồ vật</div>
+          <div class="key-guide"><kbd>Shift</kbd> Chạy nhanh</div>
+          <div class="key-guide"><kbd>ESC</kbd> Thoát chuột</div>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div class="mobile-controls-wrapper mobile-only" id="mobileControls">
+          <div class="virtual-joystick-zone" id="joystickZone">
+            <div class="joystick-base" id="joystickBase">
+              <div class="joystick-stick" id="joystickStick"></div>
+            </div>
+            <span class="joystick-label">Di chuyển</span>
+          </div>
+
+          <button type="button" class="btn-mobile-interact" id="btnMobileInteract">
+            <span>👆</span>
+            <span>Tương tác</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pointer Lock Click-to-Play Overlay -->
+      <div class="pointer-lock-prompt" id="pointerLockPrompt">
+        <div class="prompt-box">
+          <div class="prompt-icon">🎮</div>
+          <h3>Nhấp vào màn hình để bắt đầu điều khiển</h3>
+          <p>Dùng chuột để xoay camera và phím <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> để di chuyển nhân vật.</p>
+          <button type="button" class="btn-lock-start" id="btnLockStart">Bắt đầu khám phá</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= VOCABULARY & 3D INSPECTOR MODAL ================= -->
+  <div class="modal-backdrop" id="vocabModal">
+    <div class="vocab-modal-card">
+      
+      <!-- Modal Header -->
+      <div class="vocab-modal-head">
+        <div class="object-category-tag" id="modalCategory">Đồ dùng trong phòng</div>
+        <button type="button" class="btn-modal-close" id="btnCloseModal" aria-label="Đóng">&times;</button>
+      </div>
+
+      <!-- Modal Body (2 Columns: 3D Viewport + Vocab Info) -->
+      <div class="vocab-modal-body">
+        
+        <!-- Left Column: Interactive 3D Object Studio Viewer -->
+        <div class="inspector-3d-box">
+          <div class="inspector-badge">
+            <span>🔄 Xoay 3D 360°</span>
+          </div>
+          <div class="inspector-viewport" id="inspectorViewport">
+            <!-- Secondary Three.js Isolated Canvas -->
+            <canvas id="inspectorCanvas"></canvas>
+            <div class="inspector-hint">Kéo chuột để xoay • Cuộn để phóng to</div>
+          </div>
+          <div class="inspector-tools">
+            <button type="button" class="btn-tool" id="btnReset3dView" title="Đặt lại góc nhìn">
+              <span>⏮️ Đặt lại góc</span>
+            </button>
+            <button type="button" class="btn-tool" id="btnToggleAutoRotate" title="Bật/Tắt tự xoay">
+              <span id="rotateIcon">⏸️ Dừng xoay</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Rich Vocabulary Data -->
+        <div class="vocab-info-box">
+          
+          <!-- Main Hanzi & Pinyin -->
+          <div class="vocab-head-block">
+            <div class="hanzi-group">
+              <span class="vocab-hanzi" id="modalHanzi">桌子</span>
+              <span class="vocab-pinyin" id="modalPinyin">zhuō zi</span>
+            </div>
+            <button type="button" class="btn-speak" id="btnSpeakWord" title="Phát âm từ vựng">
+              <span class="speak-icon">🔊</span>
+              <span class="speak-label">Nghe đọc</span>
+            </button>
+          </div>
+
+          <!-- English & Vietnamese Meaning -->
+          <div class="vocab-meaning-block">
+            <div class="vocab-type-badge" id="modalPartOfSpeech">Danh từ (Noun)</div>
+            <div class="meaning-row">
+              <span class="meaning-vi-label">Nghĩa tiếng Việt:</span>
+              <h2 class="meaning-vi-text" id="modalMeaningVi">Bàn, Bàn làm việc</h2>
+            </div>
+            <div class="meaning-row en-row">
+              <span class="meaning-en-label">Tiếng Anh:</span>
+              <span class="meaning-en-text" id="modalEnglish">Desk / Table</span>
+            </div>
+          </div>
+
+          <!-- Example Sentence -->
+          <div class="vocab-example-block">
+            <div class="example-head">
+              <span>💬 Câu ví dụ thực tế</span>
+              <button type="button" class="btn-speak-mini" id="btnSpeakExample" title="Nghe câu ví dụ">🔊</button>
+            </div>
+            <p class="example-cn" id="modalExampleCn">這張桌子很乾淨，適合讀書。</p>
+            <p class="example-pinyin" id="modalExamplePinyin">Zhè zhāng zhuōzi hěn gānjìng, shìhé dúshū.</p>
+            <p class="example-vi" id="modalExampleVi">Cái bàn này rất sạch sẽ, thích hợp để đọc sách.</p>
+          </div>
+
+          <!-- Mini Quick Quiz Section -->
+          <div class="mini-quiz-box" id="miniQuizBox">
+            <div class="quiz-head">
+              <span>⚡ Kiểm tra nhanh để nhớ từ:</span>
+              <span class="quiz-status" id="quizStatus"></span>
+            </div>
+            <p class="quiz-question" id="quizQuestion">Từ "桌子" nghĩa là gì?</p>
+            <div class="quiz-options" id="quizOptions">
+              <!-- Dynamically populated choices -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="vocab-modal-foot">
+        <div class="discovery-status-indicator" id="modalDiscoveryIndicator">
+          <span class="disc-icon">✨</span>
+          <span class="disc-text" id="modalDiscoveryText">Đã thêm vào sổ tay từ vựng!</span>
+        </div>
+        <button type="button" class="btn-continue-explore" id="btnContinueExplore">
+          <span>Tiếp tục khám phá phòng</span>
+          <span>➔</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= DISCOVERY LOG / NOTEBOOK DRAWER ================= -->
+  <div class="drawer-backdrop" id="notebookDrawer">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <div class="drawer-title">
+          <span>📖</span>
+          <h3>Sổ Tay Từ Vựng Trong Phòng</h3>
+        </div>
+        <button type="button" class="btn-drawer-close" id="btnCloseDrawer">&times;</button>
+      </div>
+      <div class="drawer-summary">
+        <span id="drawerSummaryCount">Đã khám phá 0/12 đồ vật</span>
+        <span class="drawer-star-badge">⭐ Thu thập đủ để mở khóa màn sau</span>
+      </div>
+      <div class="drawer-body" id="drawerVocabList">
+        <!-- List of discovered items -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCREEN 3: VICTORY / LEVEL COMPLETE ================= -->
+  <div class="modal-backdrop" id="victoryModal">
+    <div class="victory-card">
+      <div class="victory-confetti-icon">🎉</div>
+      <h2 class="victory-title">Tuyệt Vời! Bạn Đã Hoàn Thành Căn Phòng!</h2>
+      <p class="victory-sub">Bạn đã tìm thấy và khám phá toàn bộ 12/12 đồ vật trong phòng.</p>
+      
+      <div class="victory-stars">
+        <span class="star-anim star-1">⭐</span>
+        <span class="star-anim star-2">⭐</span>
+        <span class="star-anim star-3">⭐</span>
+      </div>
+
+      <div class="victory-stats-grid">
+        <div class="v-stat">
+          <span class="v-val" id="victoryItemsCount">12/12</span>
+          <span class="v-lbl">Đồ vật phát hiện</span>
+        </div>
+        <div class="v-stat">
+          <span class="v-val" id="victoryScore">1200</span>
+          <span class="v-lbl">Điểm thưởng</span>
+        </div>
+        <div class="v-stat">
+          <span class="v-val" id="victoryAccuracy">100%</span>
+          <span class="v-lbl">Độ chính xác Quiz</span>
+        </div>
+      </div>
+
+      <div class="victory-actions">
+        <button type="button" class="btn-v-replay" id="btnReplayLevel">
+          <span>🔄 Chơi Lại Phòng Này</span>
+        </button>
+        <button type="button" class="btn-v-menu" id="btnBackToMenu">
+          <span>🏠 Về Danh Sách Màn</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EXIT DOOR CONFIRMATION MODAL ================= -->
+  <div class="modal-backdrop" id="doorModal">
+    <div class="door-modal-card">
+      <div class="door-modal-head">
+        <div class="door-modal-title-wrap">
+          <span class="door-badge-icon">🚪</span>
+          <div>
+            <h3 class="door-modal-title">Cửa Ra Vào • Lối Thoát Khỏi Phòng</h3>
+            <span class="door-modal-sub">門 (mén) • Room Exit Door</span>
+          </div>
+        </div>
+        <button type="button" class="btn-modal-close" id="btnCloseDoorModal">&times;</button>
+      </div>
+
+      <div class="door-modal-body">
+        <div class="door-hanzi-banner">
+          <span class="door-big-hanzi">門</span>
+          <div class="door-hanzi-info">
+            <div class="door-pinyin">mén <span class="door-pos">Danh từ • Lượng từ: 扇 (shàn) / 道 (dào)</span></div>
+            <div class="door-meaning">Cửa ra vào, lối thoát kết nối phòng học với không gian bên ngoài.</div>
+            <div class="door-example">"離開房間時請隨手關門。" <em>(Khi rời phòng hãy nhớ tiện tay đóng cửa.)</em></div>
+          </div>
+        </div>
+
+        <div class="door-stats-strip">
+          <div class="door-stat-item">
+            <span class="stat-num" id="doorFoundCount">0/13</span>
+            <span class="stat-text">Đồ vật đã khám phá</span>
+          </div>
+          <div class="door-stat-item">
+            <span class="stat-num" id="doorScoreCount">0</span>
+            <span class="stat-text">Điểm tích lũy</span>
+          </div>
+        </div>
+
+        <p class="door-confirm-prompt">Bạn có muốn mở cửa bước ra <strong>Phòng Khách</strong> 🛋️ — khám phá không gian sinh hoạt gia đình?</p>
+      </div>
+
+      <div class="door-modal-actions">
+        <button type="button" class="btn-door-exit" id="btnConfirmExitDoor">
+          <span>🛋️ Mở Cửa → Vào Phòng Khách</span>
+        </button>
+        <button type="button" class="btn-door-quiz" id="btnLearnDoorCard">
+          <span>📖 Làm Quiz Từ "門" (+100đ)</span>
+        </button>
+        <button type="button" class="btn-door-continue" id="btnCancelExitDoor">
+          <span>↩️ Ở Lại Học Tiếp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SETTINGS MODAL ================= -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="settings-card">
+      <div class="settings-head">
+        <h3>⚙️ Cài Đặt Trò Chơi</h3>
+        <button type="button" class="btn-modal-close" id="btnCloseSettings">&times;</button>
+      </div>
+      <div class="settings-body">
+        
+        <div class="setting-row">
+          <div>
+            <strong>Âm thanh & Hiệu ứng (SFX)</strong>
+            <p>Bật tiếng bước chân, âm thanh nhặt đồ và nhạc ăn mừng.</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="settingSfxToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <strong>Góc nhìn Camera</strong>
+            <p>Chọn góc nhìn thứ 3 (nhân vật 3D) hoặc góc nhìn thứ nhất (FPS).</p>
+          </div>
+          <select id="settingCameraMode" class="setting-select">
+            <option value="third_person" selected>Góc nhìn thứ 3 (TPS - Mặc định)</option>
+            <option value="first_person">Góc nhìn thứ nhất (FPS)</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <strong>Độ nhạy chuột / Cảm ứng</strong>
+            <p>Tốc độ quay góc nhìn camera.</p>
+          </div>
+          <div class="range-wrap">
+            <input type="range" id="settingMouseSensitivity" min="1" max="10" value="5">
+            <span id="sensitivityVal">5</span>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <strong>Chế độ ngôn ngữ hiển thị</strong>
+            <p>Tập trung học Tiếng Trung hoặc Song ngữ.</p>
+          </div>
+          <select id="settingLangMode" class="setting-select">
+            <option value="both" selected>Song ngữ Trung - Việt - Anh</option>
+            <option value="chinese">Tiếng Trung + Bính âm</option>
+            <option value="english">Tiếng Anh + Nghĩa Việt</option>
+          </select>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <strong>Xóa dữ liệu khám phá</strong>
+            <p>Đặt lại toàn bộ tiến độ chơi để học lại từ đầu.</p>
+          </div>
+          <button type="button" class="btn-reset-data" id="btnResetProgress">Xóa tiến độ</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Room Transition Overlay -->
+  <div id="roomTransitionOverlay" style="
+    position:fixed;inset:0;background:#0f172a;opacity:0;pointer-events:none;
+    z-index:9999;transition:opacity 0.6s ease;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:16px;
+  ">
+    <div style="font-size:3.5rem;animation:spin 1s linear infinite;">🚪</div>
+    <div style="color:#38bdf8;font-size:1.4rem;font-weight:700;letter-spacing:2px;font-family:serif;">Đang mở cửa...</div>
+  </div>
+  <style>@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}</style>
+
+  <!-- Game Logic Script -->
+  <script src="./game.js?v=202608200108"></script>
+</body>
+</html>
