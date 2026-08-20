@@ -145,8 +145,13 @@
     }
   }
 
-  // --- VOCABULARY DATABASE FOR LEVEL 1 (STUDY ROOM) ---
-  const ROOM_VOCAB_DATA = {
+  // ==========================================================================
+  // VOCABULARY DATABASE — CHIA THEO TỪNG KHU VỰC (ZONE) TRONG HÀNH TRÌNH
+  // Phòng ngủ → Phòng khách → Phòng bếp → Đường phố → Công viên
+  // ==========================================================================
+
+  // --- ZONE 1: PHÒNG NGỦ (臥室) ---
+  const BEDROOM_VOCAB = {
     desk: {
       id: 'desk',
       nameVi: 'Bàn làm việc',
@@ -432,6 +437,1015 @@
         correct: 0
       }
     }
+  };
+
+  // --- ZONE 2: PHÒNG KHÁCH (客廳) ---
+  const LIVING_VOCAB = {
+    lr_sofa: {
+      id: 'lr_sofa',
+      nameVi: 'Ghế sofa da dài',
+      chinese: '沙發',
+      pinyin: 'shā fā',
+      english: 'Sofa / Couch',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 張 (zhāng) / 套 (tào)',
+      meaning: 'Ghế sofa, ghế dài bọc da hoặc vải để cả nhà ngồi nghỉ ngơi, xem tivi.',
+      exampleCn: '我喜歡坐在沙發上看電視。',
+      examplePinyin: 'Wǒ xǐhuan zuò zài shāfā shàng kàn diànshì.',
+      exampleVi: 'Tôi thích ngồi trên ghế sofa xem tivi.',
+      category: 'Nội thất phòng khách',
+      icon: '🛋️',
+      quiz: {
+        question: 'Từ "沙發" (shāfā) là từ mượn của tiếng Anh nào?',
+        options: ['Sofa', 'Safe', 'Surface'],
+        correct: 0
+      }
+    },
+    lr_tv: {
+      id: 'lr_tv',
+      nameVi: 'Ti vi màn hình phẳng',
+      chinese: '電視',
+      pinyin: 'diàn shì',
+      english: 'Television / TV',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Ti vi, thiết bị xem phim và tin tức, cách luyện nghe tiếng Trung rất tốt.',
+      exampleCn: '客廳裡有一台很大的電視。',
+      examplePinyin: 'Kètīng lǐ yǒu yì tái hěn dà de diànshì.',
+      exampleVi: 'Trong phòng khách có một chiếc ti vi rất lớn.',
+      category: 'Thiết bị điện tử',
+      icon: '📺',
+      quiz: {
+        question: '"看電視" (kàn diànshì) nghĩa là gì?',
+        options: ['Xem ti vi', 'Mua ti vi', 'Sửa ti vi'],
+        correct: 0
+      }
+    },
+    lr_coffeeTable: {
+      id: 'lr_coffeeTable',
+      nameVi: 'Bàn trà giữa phòng',
+      chinese: '茶几',
+      pinyin: 'chá jī',
+      english: 'Coffee Table / Tea Table',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 張 (zhāng)',
+      meaning: 'Bàn trà thấp đặt giữa phòng khách để bày ấm trà, hoa và đồ trang trí.',
+      exampleCn: '茶几上放著一壺熱茶。',
+      examplePinyin: 'Chájī shàng fàng zhe yì hú rè chá.',
+      exampleVi: 'Trên bàn trà có đặt một ấm trà nóng.',
+      category: 'Nội thất phòng khách',
+      icon: '🫖',
+      quiz: {
+        question: 'Chữ "茶" trong "茶几" mang nghĩa gì?',
+        options: ['Trà', 'Ghế', 'Nhà'],
+        correct: 0
+      }
+    },
+    lr_rug: {
+      id: 'lr_rug',
+      nameVi: 'Thảm trải sàn',
+      chinese: '地毯',
+      pinyin: 'dì tǎn',
+      english: 'Carpet / Rug',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 塊 (kuài) / 張 (zhāng)',
+      meaning: 'Thảm trải sàn êm ái giúp căn phòng ấm cúng và sang trọng hơn.',
+      exampleCn: '這塊地毯又軟又暖和。',
+      examplePinyin: 'Zhè kuài dìtǎn yòu ruǎn yòu nuǎnhuo.',
+      exampleVi: 'Tấm thảm này vừa mềm vừa ấm áp.',
+      category: 'Trang trí & Không gian',
+      icon: '🧶',
+      quiz: {
+        question: 'Chữ "地" trong "地毯" nghĩa là gì?',
+        options: ['Mặt đất / Sàn nhà', 'Bầu trời', 'Bức tường'],
+        correct: 0
+      }
+    },
+    lr_armchair: {
+      id: 'lr_armchair',
+      nameVi: 'Ghế bành có tay vịn',
+      chinese: '扶手椅',
+      pinyin: 'fú shǒu yǐ',
+      english: 'Armchair',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 把 (bǎ)',
+      meaning: 'Ghế bành có tay vịn hai bên, ngồi đọc sách hoặc tiếp khách rất thoải mái.',
+      exampleCn: '爺爺坐在扶手椅上看報紙。',
+      examplePinyin: 'Yéye zuò zài fúshǒuyǐ shàng kàn bàozhǐ.',
+      exampleVi: 'Ông ngồi trên ghế bành đọc báo.',
+      category: 'Nội thất phòng khách',
+      icon: '💺',
+      quiz: {
+        question: '"扶手" trong "扶手椅" chỉ bộ phận nào của ghế?',
+        options: ['Tay vịn', 'Chân ghế', 'Lưng ghế'],
+        correct: 0
+      }
+    },
+    lr_chandelier: {
+      id: 'lr_chandelier',
+      nameVi: 'Đèn chùm pha lê',
+      chinese: '吊燈',
+      pinyin: 'diào dēng',
+      english: 'Chandelier / Pendant Lamp',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 盞 (zhǎn)',
+      meaning: 'Đèn chùm treo trên trần nhà, toả ánh sáng lộng lẫy cho phòng khách.',
+      exampleCn: '天花板上掛著一盞水晶吊燈。',
+      examplePinyin: 'Tiānhuābǎn shàng guà zhe yì zhǎn shuǐjīng diàodēng.',
+      exampleVi: 'Trên trần nhà treo một chiếc đèn chùm pha lê.',
+      category: 'Chiếu sáng & Trang trí',
+      icon: '💎',
+      quiz: {
+        question: 'Chữ "吊" (diào) trong "吊燈" mang nghĩa gì?',
+        options: ['Treo lên', 'Đặt xuống', 'Bật lên'],
+        correct: 0
+      }
+    },
+    lr_painting: {
+      id: 'lr_painting',
+      nameVi: 'Bức tranh treo tường',
+      chinese: '畫',
+      pinyin: 'huà',
+      english: 'Painting / Picture',
+      partOfSpeech: 'Danh từ & Động từ • Lượng từ: 幅 (fú)',
+      meaning: 'Bức tranh nghệ thuật treo tường; "畫" cũng là động từ "vẽ".',
+      exampleCn: '牆上掛著三幅漂亮的畫。',
+      examplePinyin: 'Qiáng shàng guà zhe sān fú piàoliang de huà.',
+      exampleVi: 'Trên tường treo ba bức tranh rất đẹp.',
+      category: 'Nghệ thuật & Trang trí',
+      icon: '🖼️',
+      quiz: {
+        question: 'Lượng từ chuẩn của "畫" (bức tranh) là:',
+        options: ['幅 (fú)', '本 (běn)', '把 (bǎ)'],
+        correct: 0
+      }
+    },
+    lr_bookcase: {
+      id: 'lr_bookcase',
+      nameVi: 'Tủ trưng bày / Kệ sách',
+      chinese: '書架',
+      pinyin: 'shū jià',
+      english: 'Bookshelf / Display Cabinet',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Giá sách, tủ trưng bày để xếp sách và đồ lưu niệm trong phòng khách.',
+      exampleCn: '書架上擺滿了書和紀念品。',
+      examplePinyin: 'Shūjià shàng bǎi mǎn le shū hé jìniànpǐn.',
+      exampleVi: 'Trên kệ sách bày đầy sách và đồ lưu niệm.',
+      category: 'Nội thất phòng khách',
+      icon: '🗄️',
+      quiz: {
+        question: '"書架" khác "書包" ở chỗ nào?',
+        options: ['書架 là giá sách, 書包 là cặp sách', 'Hai từ giống hệt nhau', '書架 là quyển sách'],
+        correct: 0
+      }
+    },
+    lr_bear: {
+      id: 'lr_bear',
+      nameVi: 'Gấu bông',
+      chinese: '玩具熊',
+      pinyin: 'wán jù xióng',
+      english: 'Teddy Bear',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 隻 (zhī)',
+      meaning: 'Gấu bông đồ chơi mềm mại, món quà đáng yêu đặt trên kệ trang trí.',
+      exampleCn: '妹妹最喜歡那隻玩具熊。',
+      examplePinyin: 'Mèimei zuì xǐhuan nà zhī wánjùxióng.',
+      exampleVi: 'Em gái thích nhất chú gấu bông kia.',
+      category: 'Đồ chơi & Trang trí',
+      icon: '🧸',
+      quiz: {
+        question: 'Từ "玩具" (wánjù) nghĩa là gì?',
+        options: ['Đồ chơi', 'Dụng cụ', 'Đồ ăn'],
+        correct: 0
+      }
+    },
+    lr_radio: {
+      id: 'lr_radio',
+      nameVi: 'Đài radio cổ điển',
+      chinese: '收音機',
+      pinyin: 'shōu yīn jī',
+      english: 'Radio',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Máy radio thu sóng phát thanh, nghe tin tức và nhạc để luyện nghe.',
+      exampleCn: '爸爸每天早上都聽收音機。',
+      examplePinyin: 'Bàba měitiān zǎoshang dōu tīng shōuyīnjī.',
+      exampleVi: 'Bố nghe radio mỗi buổi sáng.',
+      category: 'Thiết bị điện tử',
+      icon: '📻',
+      quiz: {
+        question: '"收音機" ghép từ 3 chữ có nghĩa đen là:',
+        options: ['Máy thu âm thanh', 'Máy phát hình', 'Máy ghi chép'],
+        correct: 0
+      }
+    },
+    lr_vase: {
+      id: 'lr_vase',
+      nameVi: 'Bình hoa trang trí',
+      chinese: '花瓶',
+      pinyin: 'huā píng',
+      english: 'Flower Vase',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Bình hoa dùng để cắm hoa tươi, làm đẹp không gian phòng khách.',
+      exampleCn: '桌上的花瓶裡插著新鮮的花。',
+      examplePinyin: 'Zhuō shàng de huāpíng lǐ chā zhe xīnxiān de huā.',
+      exampleVi: 'Trong bình hoa trên bàn có cắm những bông hoa tươi.',
+      category: 'Trang trí & Không gian',
+      icon: '🏺',
+      quiz: {
+        question: 'Chữ "瓶" (píng) nghĩa là gì?',
+        options: ['Cái bình / chai', 'Bông hoa', 'Cái bàn'],
+        correct: 0
+      }
+    },
+    lr_pillow: {
+      id: 'lr_pillow',
+      nameVi: 'Gối tựa lưng',
+      chinese: '抱枕',
+      pinyin: 'bào zhěn',
+      english: 'Cushion / Throw Pillow',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Gối ôm, gối tựa đặt trên sofa để ngồi tựa lưng thoải mái hơn.',
+      exampleCn: '沙發上有幾個柔軟的抱枕。',
+      examplePinyin: 'Shāfā shàng yǒu jǐ ge róuruǎn de bàozhěn.',
+      exampleVi: 'Trên ghế sofa có mấy chiếc gối tựa mềm mại.',
+      category: 'Nội thất phòng khách',
+      icon: '🛏️',
+      quiz: {
+        question: 'Chữ "抱" (bào) trong "抱枕" nghĩa là gì?',
+        options: ['Ôm', 'Ngủ', 'Ngồi'],
+        correct: 0
+      }
+    }
+  };
+
+  // --- ZONE 3: PHÒNG BẾP (廚房) ---
+  const KITCHEN_VOCAB = {
+    kt_fridge: {
+      id: 'kt_fridge',
+      nameVi: 'Tủ lạnh',
+      chinese: '冰箱',
+      pinyin: 'bīng xiāng',
+      english: 'Refrigerator / Fridge',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Tủ lạnh dùng để bảo quản thực phẩm, rau củ và đồ uống luôn tươi mát.',
+      exampleCn: '冰箱裡有牛奶和水果。',
+      examplePinyin: 'Bīngxiāng lǐ yǒu niúnǎi hé shuǐguǒ.',
+      exampleVi: 'Trong tủ lạnh có sữa và trái cây.',
+      category: 'Thiết bị nhà bếp',
+      icon: '🧊',
+      quiz: {
+        question: '"冰箱" ghép từ 2 chữ nghĩa đen là gì?',
+        options: ['Băng (đá lạnh) + Hòm (thùng)', 'Lửa + Hộp', 'Nước + Tủ'],
+        correct: 0
+      }
+    },
+    kt_stove: {
+      id: 'kt_stove',
+      nameVi: 'Bếp nấu / Bếp ga',
+      chinese: '爐子',
+      pinyin: 'lú zi',
+      english: 'Stove / Cooker',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Bếp lò, bếp ga dùng để nấu nướng các món ăn hằng ngày.',
+      exampleCn: '媽媽在爐子上煮湯。',
+      examplePinyin: 'Māma zài lúzi shàng zhǔ tāng.',
+      exampleVi: 'Mẹ đang nấu canh trên bếp.',
+      category: 'Thiết bị nhà bếp',
+      icon: '🔥',
+      quiz: {
+        question: 'Động từ "煮" (zhǔ) nghĩa là gì?',
+        options: ['Nấu / luộc', 'Rửa', 'Cắt'],
+        correct: 0
+      }
+    },
+    kt_sink: {
+      id: 'kt_sink',
+      nameVi: 'Bồn rửa chén',
+      chinese: '水槽',
+      pinyin: 'shuǐ cáo',
+      english: 'Kitchen Sink',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Bồn rửa trong bếp để rửa rau, rửa bát đĩa sau bữa ăn.',
+      exampleCn: '請把碗放進水槽裡。',
+      examplePinyin: 'Qǐng bǎ wǎn fàng jìn shuǐcáo lǐ.',
+      exampleVi: 'Hãy bỏ bát vào bồn rửa nhé.',
+      category: 'Thiết bị nhà bếp',
+      icon: '🚰',
+      quiz: {
+        question: '"洗碗" (xǐ wǎn) nghĩa là gì?',
+        options: ['Rửa bát', 'Nấu cơm', 'Lau bàn'],
+        correct: 0
+      }
+    },
+    kt_microwave: {
+      id: 'kt_microwave',
+      nameVi: 'Lò vi sóng',
+      chinese: '微波爐',
+      pinyin: 'wéi bō lú',
+      english: 'Microwave Oven',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Lò vi sóng hâm nóng thức ăn nhanh chóng chỉ trong vài phút.',
+      exampleCn: '用微波爐熱一下飯吧。',
+      examplePinyin: 'Yòng wéibōlú rè yíxià fàn ba.',
+      exampleVi: 'Dùng lò vi sóng hâm nóng cơm một chút nhé.',
+      category: 'Thiết bị nhà bếp',
+      icon: '📡',
+      quiz: {
+        question: '"微波" trong "微波爐" nghĩa là gì?',
+        options: ['Vi sóng (sóng nhỏ)', 'Nước nóng', 'Không khí'],
+        correct: 0
+      }
+    },
+    kt_cabinet: {
+      id: 'kt_cabinet',
+      nameVi: 'Tủ bếp đựng đồ',
+      chinese: '櫥櫃',
+      pinyin: 'chú guì',
+      english: 'Kitchen Cabinet / Cupboard',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Tủ bếp để cất giữ bát đĩa, gia vị và các dụng cụ nấu ăn.',
+      exampleCn: '碗盤都收在櫥櫃裡。',
+      examplePinyin: 'Wǎnpán dōu shōu zài chúguì lǐ.',
+      exampleVi: 'Bát đĩa đều được cất trong tủ bếp.',
+      category: 'Nội thất nhà bếp',
+      icon: '🗃️',
+      quiz: {
+        question: 'Chữ "櫥" (chú) liên quan tới đồ vật nào?',
+        options: ['Cái tủ', 'Cái nồi', 'Cái bếp'],
+        correct: 0
+      }
+    },
+    kt_coffeeMachine: {
+      id: 'kt_coffeeMachine',
+      nameVi: 'Máy pha cà phê',
+      chinese: '咖啡機',
+      pinyin: 'kā fēi jī',
+      english: 'Coffee Machine',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Máy pha cà phê tự động, pha một ly espresso thơm lừng buổi sáng.',
+      exampleCn: '早上我用咖啡機煮一杯咖啡。',
+      examplePinyin: 'Zǎoshang wǒ yòng kāfēijī zhǔ yì bēi kāfēi.',
+      exampleVi: 'Buổi sáng tôi dùng máy pha một ly cà phê.',
+      category: 'Thiết bị nhà bếp',
+      icon: '☕',
+      quiz: {
+        question: 'Hậu tố "機" (jī) trong tên đồ vật thường mang nghĩa gì?',
+        options: ['Máy móc', 'Đồ ăn', 'Con người'],
+        correct: 0
+      }
+    },
+    kt_toaster: {
+      id: 'kt_toaster',
+      nameVi: 'Máy nướng bánh mì',
+      chinese: '烤麵包機',
+      pinyin: 'kǎo miàn bāo jī',
+      english: 'Toaster',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Máy nướng bánh mì giòn rụm cho bữa sáng nhanh gọn.',
+      exampleCn: '我用烤麵包機烤了兩片吐司。',
+      examplePinyin: 'Wǒ yòng kǎomiànbāojī kǎo le liǎng piàn tǔsī.',
+      exampleVi: 'Tôi đã nướng hai lát bánh mì bằng máy nướng.',
+      category: 'Thiết bị nhà bếp',
+      icon: '🍞',
+      quiz: {
+        question: '"麵包" (miànbāo) nghĩa là gì?',
+        options: ['Bánh mì', 'Mì sợi', 'Bánh bao thịt'],
+        correct: 0
+      }
+    },
+    kt_blender: {
+      id: 'kt_blender',
+      nameVi: 'Máy xay sinh tố',
+      chinese: '果汁機',
+      pinyin: 'guǒ zhī jī',
+      english: 'Blender / Juicer',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 台 (tái)',
+      meaning: 'Máy xay ép trái cây thành nước ép và sinh tố mát lạnh.',
+      exampleCn: '她用果汁機打了一杯果汁。',
+      examplePinyin: 'Tā yòng guǒzhījī dǎ le yì bēi guǒzhī.',
+      exampleVi: 'Cô ấy dùng máy xay làm một ly nước ép.',
+      category: 'Thiết bị nhà bếp',
+      icon: '🥤',
+      quiz: {
+        question: '"果汁" (guǒzhī) nghĩa là gì?',
+        options: ['Nước ép trái cây', 'Trái cây khô', 'Rau củ'],
+        correct: 0
+      }
+    },
+    kt_table: {
+      id: 'kt_table',
+      nameVi: 'Bàn ăn gia đình',
+      chinese: '餐桌',
+      pinyin: 'cān zhuō',
+      english: 'Dining Table',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 張 (zhāng)',
+      meaning: 'Bàn ăn nơi cả gia đình quây quần dùng bữa và trò chuyện.',
+      exampleCn: '全家人圍著餐桌吃晚飯。',
+      examplePinyin: 'Quánjiā rén wéi zhe cānzhuō chī wǎnfàn.',
+      exampleVi: 'Cả nhà quây quần bên bàn ăn dùng bữa tối.',
+      category: 'Nội thất nhà bếp',
+      icon: '🍽️',
+      quiz: {
+        question: 'Chữ "餐" (cān) liên quan tới việc gì?',
+        options: ['Bữa ăn', 'Giấc ngủ', 'Việc học'],
+        correct: 0
+      }
+    },
+    kt_trashcan: {
+      id: 'kt_trashcan',
+      nameVi: 'Thùng rác',
+      chinese: '垃圾桶',
+      pinyin: 'lè sè tǒng',
+      english: 'Trash Can / Bin',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Thùng rác để bỏ rác, giữ căn bếp luôn sạch sẽ gọn gàng.',
+      exampleCn: '請把垃圾丟進垃圾桶。',
+      examplePinyin: 'Qǐng bǎ lèsè diū jìn lèsètǒng.',
+      exampleVi: 'Hãy vứt rác vào thùng rác nhé.',
+      category: 'Đồ dùng nhà bếp',
+      icon: '🗑️',
+      quiz: {
+        question: '"垃圾" ở Đài Loan đọc là "lèsè", ở Đại lục đọc là:',
+        options: ['lājī', 'lèlè', 'lǐshì'],
+        correct: 0
+      }
+    }
+  };
+
+  // --- ZONE 4: ĐƯỜNG PHỐ (街道) ---
+  const STREET_VOCAB = {
+    st_road: {
+      id: 'st_road',
+      nameVi: 'Con đường lớn',
+      chinese: '馬路',
+      pinyin: 'mǎ lù',
+      english: 'Road / Street',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 條 (tiáo)',
+      meaning: 'Đường cái, mặt đường lớn nơi xe cộ qua lại tấp nập.',
+      exampleCn: '過馬路要小心車子。',
+      examplePinyin: 'Guò mǎlù yào xiǎoxīn chēzi.',
+      exampleVi: 'Qua đường phải cẩn thận xe cộ.',
+      category: 'Giao thông & Thành phố',
+      icon: '🛣️',
+      quiz: {
+        question: '"過馬路" (guò mǎlù) nghĩa là gì?',
+        options: ['Qua đường', 'Xây đường', 'Quét đường'],
+        correct: 0
+      }
+    },
+    st_trafficLight: {
+      id: 'st_trafficLight',
+      nameVi: 'Đèn giao thông',
+      chinese: '紅綠燈',
+      pinyin: 'hóng lǜ dēng',
+      english: 'Traffic Light',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge) / 盞 (zhǎn)',
+      meaning: 'Đèn tín hiệu giao thông đỏ - vàng - xanh điều khiển xe và người đi bộ.',
+      exampleCn: '紅燈停，綠燈行。',
+      examplePinyin: 'Hóng dēng tíng, lǜ dēng xíng.',
+      exampleVi: 'Đèn đỏ thì dừng, đèn xanh thì đi.',
+      category: 'Giao thông & Thành phố',
+      icon: '🚦',
+      quiz: {
+        question: '"紅綠燈" ghép từ những màu nào?',
+        options: ['Đỏ + Xanh lá', 'Đỏ + Vàng', 'Xanh dương + Trắng'],
+        correct: 0
+      }
+    },
+    st_crosswalk: {
+      id: 'st_crosswalk',
+      nameVi: 'Vạch kẻ qua đường',
+      chinese: '斑馬線',
+      pinyin: 'bān mǎ xiàn',
+      english: 'Crosswalk / Zebra Crossing',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 條 (tiáo)',
+      meaning: 'Vạch sang đường kẻ sọc trắng, người đi bộ phải đi đúng vạch này.',
+      exampleCn: '行人要走斑馬線過馬路。',
+      examplePinyin: 'Xíngrén yào zǒu bānmǎxiàn guò mǎlù.',
+      exampleVi: 'Người đi bộ phải đi trên vạch kẻ để qua đường.',
+      category: 'Giao thông & Thành phố',
+      icon: '🦓',
+      quiz: {
+        question: '"斑馬" (bānmǎ) trong "斑馬線" là con vật nào?',
+        options: ['Ngựa vằn', 'Con bò', 'Con hổ'],
+        correct: 0
+      }
+    },
+    st_streetLamp: {
+      id: 'st_streetLamp',
+      nameVi: 'Cột đèn đường',
+      chinese: '路燈',
+      pinyin: 'lù dēng',
+      english: 'Street Lamp',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 盞 (zhǎn) / 支 (zhī)',
+      meaning: 'Đèn đường chiếu sáng vỉa hè và lòng đường vào ban đêm.',
+      exampleCn: '天黑了，路燈都亮了。',
+      examplePinyin: 'Tiān hēi le, lùdēng dōu liàng le.',
+      exampleVi: 'Trời tối rồi, đèn đường đều đã bật sáng.',
+      category: 'Giao thông & Thành phố',
+      icon: '🏮',
+      quiz: {
+        question: '"亮" (liàng) trong câu "路燈亮了" nghĩa là gì?',
+        options: ['Sáng lên', 'Tắt đi', 'Hỏng rồi'],
+        correct: 0
+      }
+    },
+    st_busStop: {
+      id: 'st_busStop',
+      nameVi: 'Trạm xe buýt',
+      chinese: '公車站',
+      pinyin: 'gōng chē zhàn',
+      english: 'Bus Stop',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge)',
+      meaning: 'Trạm dừng xe buýt, nơi hành khách đứng chờ và lên xe.',
+      exampleCn: '我在公車站等了十分鐘。',
+      examplePinyin: 'Wǒ zài gōngchēzhàn děng le shí fēnzhōng.',
+      exampleVi: 'Tôi đã đợi mười phút ở trạm xe buýt.',
+      category: 'Giao thông & Thành phố',
+      icon: '🚏',
+      quiz: {
+        question: 'Chữ "站" (zhàn) trong "公車站" nghĩa là gì?',
+        options: ['Trạm / bến', 'Xe cộ', 'Con người'],
+        correct: 0
+      }
+    },
+    st_tree: {
+      id: 'st_tree',
+      nameVi: 'Cây xanh ven đường',
+      chinese: '樹',
+      pinyin: 'shù',
+      english: 'Tree',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 棵 (kē)',
+      meaning: 'Cây xanh trồng dọc vỉa hè, cho bóng mát và không khí trong lành.',
+      exampleCn: '路邊種了很多棵大樹。',
+      examplePinyin: 'Lù biān zhòng le hěn duō kē dà shù.',
+      exampleVi: 'Ven đường trồng rất nhiều cây lớn.',
+      category: 'Thiên nhiên & Thành phố',
+      icon: '🌳',
+      quiz: {
+        question: 'Lượng từ chuẩn của "樹" (cây) là:',
+        options: ['棵 (kē)', '條 (tiáo)', '張 (zhāng)'],
+        correct: 0
+      }
+    },
+    st_building: {
+      id: 'st_building',
+      nameVi: 'Toà nhà cao tầng',
+      chinese: '大樓',
+      pinyin: 'dà lóu',
+      english: 'Building / High-rise',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 棟 (dòng) / 座 (zuò)',
+      meaning: 'Toà nhà cao tầng, cao ốc văn phòng hoặc chung cư trong thành phố.',
+      exampleCn: '這棟大樓有三十層。',
+      examplePinyin: 'Zhè dòng dàlóu yǒu sānshí céng.',
+      exampleVi: 'Toà nhà này có ba mươi tầng.',
+      category: 'Kiến trúc & Thành phố',
+      icon: '🏢',
+      quiz: {
+        question: '"層" (céng) trong "三十層" chỉ đơn vị gì?',
+        options: ['Tầng lầu', 'Mét', 'Phòng'],
+        correct: 0
+      }
+    },
+    st_car: {
+      id: 'st_car',
+      nameVi: 'Xe ô tô',
+      chinese: '汽車',
+      pinyin: 'qì chē',
+      english: 'Car / Automobile',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 輛 (liàng)',
+      meaning: 'Xe hơi, ô tô chạy trên đường phố, phương tiện đi lại phổ biến.',
+      exampleCn: '路上有很多輛汽車。',
+      examplePinyin: 'Lù shàng yǒu hěn duō liàng qìchē.',
+      exampleVi: 'Trên đường có rất nhiều chiếc ô tô.',
+      category: 'Giao thông & Thành phố',
+      icon: '🚗',
+      quiz: {
+        question: 'Lượng từ đi với "汽車" là:',
+        options: ['輛 (liàng)', '隻 (zhī)', '本 (běn)'],
+        correct: 0
+      }
+    },
+    st_shop: {
+      id: 'st_shop',
+      nameVi: 'Cửa hàng tiện lợi',
+      chinese: '商店',
+      pinyin: 'shāng diàn',
+      english: 'Shop / Store',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 家 (jiā)',
+      meaning: 'Cửa hàng, tiệm bán đồ ăn thức uống và đồ dùng hằng ngày.',
+      exampleCn: '轉角有一家便利商店。',
+      examplePinyin: 'Zhuǎnjiǎo yǒu yì jiā biànlì shāngdiàn.',
+      exampleVi: 'Ở góc phố có một cửa hàng tiện lợi.',
+      category: 'Mua sắm & Thành phố',
+      icon: '🏪',
+      quiz: {
+        question: 'Lượng từ dùng cho cửa hàng "商店" là:',
+        options: ['家 (jiā)', '個 (ge)', '座 (zuò)'],
+        correct: 0
+      }
+    },
+    st_bench: {
+      id: 'st_bench',
+      nameVi: 'Ghế dài công cộng',
+      chinese: '長椅',
+      pinyin: 'cháng yǐ',
+      english: 'Bench',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 張 (zhāng)',
+      meaning: 'Ghế băng dài đặt ở vỉa hè và công viên để mọi người ngồi nghỉ.',
+      exampleCn: '他坐在長椅上休息。',
+      examplePinyin: 'Tā zuò zài chángyǐ shàng xiūxi.',
+      exampleVi: 'Anh ấy ngồi nghỉ trên chiếc ghế dài.',
+      category: 'Tiện ích công cộng',
+      icon: '🪑',
+      quiz: {
+        question: '"休息" (xiūxi) nghĩa là gì?',
+        options: ['Nghỉ ngơi', 'Chạy bộ', 'Làm việc'],
+        correct: 0
+      }
+    }
+  };
+
+  // --- ZONE 5: CÔNG VIÊN (公園) ---
+  const PARK_VOCAB = {
+    pk_fountain: {
+      id: 'pk_fountain',
+      nameVi: 'Đài phun nước',
+      chinese: '噴泉',
+      pinyin: 'pēn quán',
+      english: 'Fountain',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 座 (zuò)',
+      meaning: 'Đài phun nước giữa công viên, nước bắn lên lấp lánh dưới ánh nắng.',
+      exampleCn: '公園中央有一座漂亮的噴泉。',
+      examplePinyin: 'Gōngyuán zhōngyāng yǒu yí zuò piàoliang de pēnquán.',
+      exampleVi: 'Giữa công viên có một đài phun nước rất đẹp.',
+      category: 'Cảnh quan công viên',
+      icon: '⛲',
+      quiz: {
+        question: 'Chữ "噴" (pēn) nghĩa là gì?',
+        options: ['Phun / vọt ra', 'Chảy chậm', 'Đóng băng'],
+        correct: 0
+      }
+    },
+    pk_flower: {
+      id: 'pk_flower',
+      nameVi: 'Luống hoa',
+      chinese: '花',
+      pinyin: 'huā',
+      english: 'Flower',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 朵 (duǒ) / 束 (shù)',
+      meaning: 'Hoa tươi khoe sắc trong vườn, mỗi mùa lại có một loài hoa khác nhau.',
+      exampleCn: '花園裡開滿了紅色的花。',
+      examplePinyin: 'Huāyuán lǐ kāi mǎn le hóngsè de huā.',
+      exampleVi: 'Trong vườn nở đầy những bông hoa đỏ.',
+      category: 'Thiên nhiên & Cây cỏ',
+      icon: '🌸',
+      quiz: {
+        question: 'Lượng từ cho "một bông hoa" là:',
+        options: ['一朵花 (yì duǒ huā)', '一本花', '一台花'],
+        correct: 0
+      }
+    },
+    pk_grass: {
+      id: 'pk_grass',
+      nameVi: 'Bãi cỏ xanh',
+      chinese: '草地',
+      pinyin: 'cǎo dì',
+      english: 'Lawn / Grass',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 片 (piàn)',
+      meaning: 'Thảm cỏ xanh mướt để mọi người ngồi chơi, dã ngoại cuối tuần.',
+      exampleCn: '孩子們在草地上玩遊戲。',
+      examplePinyin: 'Háizimen zài cǎodì shàng wán yóuxì.',
+      exampleVi: 'Bọn trẻ chơi trò chơi trên bãi cỏ.',
+      category: 'Cảnh quan công viên',
+      icon: '🌱',
+      quiz: {
+        question: '"玩遊戲" (wán yóuxì) nghĩa là gì?',
+        options: ['Chơi trò chơi', 'Học bài', 'Đi ngủ'],
+        correct: 0
+      }
+    },
+    pk_lake: {
+      id: 'pk_lake',
+      nameVi: 'Hồ nước trong công viên',
+      chinese: '湖',
+      pinyin: 'hú',
+      english: 'Lake / Pond',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 座 (zuò) / 個 (ge)',
+      meaning: 'Hồ nước yên ả phản chiếu bóng cây và bầu trời xanh.',
+      exampleCn: '湖水又清又涼。',
+      examplePinyin: 'Hú shuǐ yòu qīng yòu liáng.',
+      exampleVi: 'Nước hồ vừa trong vừa mát.',
+      category: 'Cảnh quan công viên',
+      icon: '🏞️',
+      quiz: {
+        question: 'Cấu trúc "又…又…" (yòu…yòu…) dùng để làm gì?',
+        options: ['Nêu hai tính chất cùng lúc', 'So sánh hơn kém', 'Đặt câu hỏi'],
+        correct: 0
+      }
+    },
+    pk_bridge: {
+      id: 'pk_bridge',
+      nameVi: 'Cây cầu nhỏ',
+      chinese: '橋',
+      pinyin: 'qiáo',
+      english: 'Bridge',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 座 (zuò)',
+      meaning: 'Chiếc cầu bắc qua hồ nước, đứng trên cầu ngắm cá bơi rất thư giãn.',
+      exampleCn: '我們一起走過那座小橋。',
+      examplePinyin: 'Wǒmen yìqǐ zǒu guò nà zuò xiǎo qiáo.',
+      exampleVi: 'Chúng tôi cùng nhau đi qua cây cầu nhỏ đó.',
+      category: 'Kiến trúc công viên',
+      icon: '🌉',
+      quiz: {
+        question: 'Lượng từ đi với "橋" (cầu) là:',
+        options: ['座 (zuò)', '條 (tiáo)', '把 (bǎ)'],
+        correct: 0
+      }
+    },
+    pk_bird: {
+      id: 'pk_bird',
+      nameVi: 'Chú chim nhỏ',
+      chinese: '鳥',
+      pinyin: 'niǎo',
+      english: 'Bird',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 隻 (zhī)',
+      meaning: 'Những chú chim đậu trên cành cây, hót vang cả góc công viên.',
+      exampleCn: '樹上有兩隻小鳥在唱歌。',
+      examplePinyin: 'Shù shàng yǒu liǎng zhī xiǎo niǎo zài chànggē.',
+      exampleVi: 'Trên cây có hai chú chim nhỏ đang hót.',
+      category: 'Động vật & Thiên nhiên',
+      icon: '🐦',
+      quiz: {
+        question: '"唱歌" (chànggē) nghĩa là gì?',
+        options: ['Hát / hót', 'Bay lượn', 'Ăn uống'],
+        correct: 0
+      }
+    },
+    pk_swing: {
+      id: 'pk_swing',
+      nameVi: 'Xích đu trẻ em',
+      chinese: '鞦韆',
+      pinyin: 'qiū qiān',
+      english: 'Swing',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 個 (ge) / 架 (jià)',
+      meaning: 'Xích đu ở khu vui chơi, trẻ em thích đu qua đu lại rất vui.',
+      exampleCn: '小朋友最愛盪鞦韆。',
+      examplePinyin: 'Xiǎopéngyǒu zuì ài dàng qiūqiān.',
+      exampleVi: 'Các bé thích nhất là chơi xích đu.',
+      category: 'Khu vui chơi',
+      icon: '🎠',
+      quiz: {
+        question: 'Động từ đi với "鞦韆" là gì?',
+        options: ['盪 (dàng - đu)', '吃 (chī - ăn)', '寫 (xiě - viết)'],
+        correct: 0
+      }
+    },
+    pk_statue: {
+      id: 'pk_statue',
+      nameVi: 'Tượng đài đá',
+      chinese: '雕像',
+      pinyin: 'diāo xiàng',
+      english: 'Statue / Sculpture',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 座 (zuò) / 尊 (zūn)',
+      meaning: 'Bức tượng điêu khắc đặt trong công viên để kỷ niệm hoặc trang trí.',
+      exampleCn: '公園裡有一座石頭雕像。',
+      examplePinyin: 'Gōngyuán lǐ yǒu yí zuò shítou diāoxiàng.',
+      exampleVi: 'Trong công viên có một bức tượng bằng đá.',
+      category: 'Nghệ thuật & Cảnh quan',
+      icon: '🗿',
+      quiz: {
+        question: '"石頭" (shítou) nghĩa là gì?',
+        options: ['Đá / hòn đá', 'Gỗ', 'Sắt thép'],
+        correct: 0
+      }
+    }
+  };
+
+  // --- CỬA & LỐI ĐI GIỮA CÁC KHU VỰC (không tính vào nhiệm vụ khám phá) ---
+  const GATE_VOCAB = {
+    door: {
+      id: 'door',
+      nameVi: 'Cửa phòng ngủ',
+      chinese: '門',
+      pinyin: 'mén',
+      english: 'Door',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 扇 (shàn) / 道 (dào)',
+      meaning: 'Cánh cửa ra vào, mở cửa ra là bước sang một không gian mới.',
+      exampleCn: '請幫我開門，我要出去。',
+      examplePinyin: 'Qǐng bāng wǒ kāi mén, wǒ yào chūqù.',
+      exampleVi: 'Làm ơn mở cửa giúp tôi, tôi muốn ra ngoài.',
+      category: 'Kiến trúc căn nhà',
+      icon: '🚪',
+      quiz: {
+        question: '"開門" (kāi mén) nghĩa là gì?',
+        options: ['Mở cửa', 'Đóng cửa', 'Khoá cửa'],
+        correct: 0
+      }
+    },
+    kitchen_door: {
+      id: 'kitchen_door',
+      nameVi: 'Lối sang phòng bếp',
+      chinese: '廚房門',
+      pinyin: 'chú fáng mén',
+      english: 'Kitchen Doorway',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 扇 (shàn)',
+      meaning: 'Lối đi thông từ phòng khách sang phòng bếp của căn nhà.',
+      exampleCn: '穿過這扇門就到廚房了。',
+      examplePinyin: 'Chuānguò zhè shàn mén jiù dào chúfáng le.',
+      exampleVi: 'Đi qua cánh cửa này là tới phòng bếp.',
+      category: 'Kiến trúc căn nhà',
+      icon: '🚪',
+      quiz: {
+        question: '"廚房" (chúfáng) là căn phòng nào?',
+        options: ['Phòng bếp', 'Phòng ngủ', 'Phòng tắm'],
+        correct: 0
+      }
+    },
+    front_door: {
+      id: 'front_door',
+      nameVi: 'Cửa chính ra thành phố',
+      chinese: '大門',
+      pinyin: 'dà mén',
+      english: 'Front Door / Main Gate',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 扇 (shàn) / 道 (dào)',
+      meaning: 'Cửa chính của căn nhà, bước qua là ra tới đường phố ngoài kia.',
+      exampleCn: '他打開大門，走到街上。',
+      examplePinyin: 'Tā dǎkāi dàmén, zǒu dào jiē shàng.',
+      exampleVi: 'Anh ấy mở cửa chính rồi bước ra ngoài phố.',
+      category: 'Kiến trúc căn nhà',
+      icon: '🏠',
+      quiz: {
+        question: '"街上" (jiē shàng) nghĩa là gì?',
+        options: ['Trên phố / ngoài đường', 'Trong nhà', 'Trên núi'],
+        correct: 0
+      }
+    },
+    park_gate: {
+      id: 'park_gate',
+      nameVi: 'Cổng công viên',
+      chinese: '公園大門',
+      pinyin: 'gōng yuán dà mén',
+      english: 'Park Gate',
+      partOfSpeech: 'Danh từ (Noun) • Lượng từ: 座 (zuò)',
+      meaning: 'Cổng vào công viên thành phố — điểm đến tiếp theo của hành trình.',
+      exampleCn: '我們在公園大門口見面吧。',
+      examplePinyin: 'Wǒmen zài gōngyuán ménkǒu jiànmiàn ba.',
+      exampleVi: 'Chúng ta gặp nhau ở cổng công viên nhé.',
+      category: 'Địa điểm thành phố',
+      icon: '🌳',
+      quiz: {
+        question: '"公園" (gōngyuán) là nơi nào?',
+        options: ['Công viên', 'Công ty', 'Bệnh viện'],
+        correct: 0
+      }
+    },
+    back_door: {
+      id: 'back_door',
+      nameVi: 'Lối quay lại',
+      chinese: '回去',
+      pinyin: 'huí qù',
+      english: 'Go Back',
+      partOfSpeech: 'Động từ (Verb)',
+      meaning: 'Quay trở lại khu vực trước đó để ôn lại từ vựng đã học.',
+      exampleCn: '我想回去看看。',
+      examplePinyin: 'Wǒ xiǎng huíqù kànkan.',
+      exampleVi: 'Tôi muốn quay lại xem thử.',
+      category: 'Di chuyển',
+      icon: '↩️',
+      quiz: {
+        question: '"回去" (huíqù) nghĩa là gì?',
+        options: ['Quay trở lại', 'Đi tiếp', 'Dừng lại'],
+        correct: 0
+      }
+    }
+  };
+
+  // --- HỢP NHẤT TOÀN BỘ TỪ VỰNG & GẮN NHÃN KHU VỰC ---
+  const ROOM_VOCAB_DATA = {};
+  const stampZone = (dict, zoneId, isGate = false) => {
+    Object.keys(dict).forEach(key => {
+      const entry = dict[key];
+      entry.zone = zoneId;
+      entry.isGate = isGate;
+      ROOM_VOCAB_DATA[key] = entry;
+    });
+  };
+  stampZone(BEDROOM_VOCAB, 'bedroom');
+  stampZone(LIVING_VOCAB, 'living');
+  stampZone(KITCHEN_VOCAB, 'kitchen');
+  stampZone(STREET_VOCAB, 'street');
+  stampZone(PARK_VOCAB, 'park');
+  stampZone(GATE_VOCAB, 'gate', true);
+
+  // ==========================================================================
+  // CẤU HÌNH HÀNH TRÌNH — CÁC KHU VỰC NỐI TIẾP NHAU
+  // ==========================================================================
+  const ZONE_ORDER = ['bedroom', 'living', 'kitchen', 'street', 'park'];
+
+  const ZONES = {
+    bedroom: {
+      id: 'bedroom',
+      name: 'Phòng Ngủ',
+      chinese: '臥室',
+      pinyin: 'wò shì',
+      icon: '🛏️',
+      items: Object.keys(BEDROOM_VOCAB),
+      next: 'living',
+      prev: null,
+      exitGate: 'door',
+      exitLabel: 'Ra Phòng Khách',
+      objective: 'Bạn vừa thức dậy. Hãy khám phá mọi đồ vật trong phòng ngủ trước khi mở cửa ra ngoài.',
+      spawn: { x: 2.6, z: -2.2, yaw: Math.PI * 0.75 },
+      returnSpawn: { x: 0, z: 3.9, yaw: 0 }
+    },
+    living: {
+      id: 'living',
+      name: 'Phòng Khách',
+      chinese: '客廳',
+      pinyin: 'kè tīng',
+      icon: '🛋️',
+      items: Object.keys(LIVING_VOCAB),
+      next: 'kitchen',
+      prev: 'bedroom',
+      exitGate: 'kitchen_door',
+      exitLabel: 'Sang Phòng Bếp',
+      objective: 'Khám phá hết đồ đạc trong phòng khách để mở lối sang phòng bếp.',
+      spawn: { x: 0, z: 3.4, yaw: Math.PI },
+      returnSpawn: { x: 3.5, z: 2.6, yaw: Math.PI / 2 }
+    },
+    kitchen: {
+      id: 'kitchen',
+      name: 'Phòng Bếp',
+      chinese: '廚房',
+      pinyin: 'chú fáng',
+      icon: '🍳',
+      items: Object.keys(KITCHEN_VOCAB),
+      next: 'street',
+      prev: 'living',
+      exitGate: 'front_door',
+      exitLabel: 'Ra Ngoài Thành Phố',
+      objective: 'Học hết đồ dùng nhà bếp rồi mới có thể mở cửa chính ra thành phố.',
+      spawn: { x: 2.5, z: 1.9, yaw: Math.PI / 2 },
+      returnSpawn: { x: -2.6, z: 1.9, yaw: 0 }
+    },
+    street: {
+      id: 'street',
+      name: 'Đường Phố',
+      chinese: '街道',
+      pinyin: 'jiē dào',
+      icon: '🏙️',
+      items: Object.keys(STREET_VOCAB),
+      next: 'park',
+      prev: 'kitchen',
+      exitGate: 'park_gate',
+      exitLabel: 'Vào Công Viên',
+      objective: 'Đi dọc con đường, khám phá mọi thứ trên phố rồi tiến tới công viên.',
+      spawn: { x: 6.2, z: 21.5, yaw: 0 },
+      returnSpawn: { x: -6.2, z: -19.8, yaw: Math.PI }
+    },
+    park: {
+      id: 'park',
+      name: 'Công Viên',
+      chinese: '公園',
+      pinyin: 'gōng yuán',
+      icon: '🌳',
+      items: Object.keys(PARK_VOCAB),
+      next: null,
+      prev: 'street',
+      exitGate: null,
+      exitLabel: null,
+      objective: 'Điểm đến cuối hành trình — khám phá trọn vẹn công viên thành phố.',
+      spawn: { x: 0, z: 12.5, yaw: 0 }
+    }
+  };
+
+  const TOTAL_VOCAB_COUNT = ZONE_ORDER.reduce((sum, z) => sum + ZONES[z].items.length, 0);
+
+
+  // ==========================================================================
+  // NHÂN VẬT NGƯỜI CHƠI: MODEL GLB TĨNH + KHUNG XƯƠNG GẮN TỰ ĐỘNG
+  // Model gốc không có skin/bone/animation, nên game tự dựng bộ xương humanoid
+  // rồi tính trọng số (skin weight) cho từng đỉnh theo khoảng cách tới đốt xương.
+  // ==========================================================================
+  const PLAYER_AVATAR_FILE = 'Man by Polygonal Mind - nbLBTJMg0b.glb';
+
+  const AVATAR_RIG_SPEC = {
+    targetHeight: 1.62,        // chiều cao nhân vật trong game (mét)
+    faceYaw: -Math.PI / 2,     // xoay model để mặt hướng về +Z (hướng "trước" của avatar)
+
+    // Vị trí khớp theo tỉ lệ chiều cao: 0 = gót chân, 1 = đỉnh đầu
+    ankleY: 0.050,
+    kneeY: 0.185,
+    hipY: 0.355,               // đáy quần / hạ bộ
+    spineY: 0.450,
+    chestY: 0.555,
+    shoulderY: 0.645,          // tâm dải cánh tay dang ngang
+    neckY: 0.715,
+
+    legX: 0.059,               // khoảng cách tâm chân so với trục giữa
+    shoulderX: 0.115,          // khớp vai
+    elbowX: 0.300,             // khuỷu tay
+    wristX: 0.440,             // cổ tay
+    handX: 0.528,              // đầu ngón tay
+    footZ: 0.086,              // mũi bàn chân chìa về phía trước
+
+    // Độ "cứng" của trọng số: càng lớn thì khớp càng ít bị kéo nhão
+    weightFalloff: 4.0,
+    weightEpsilon: 0.012
   };
 
   // --- PROCEDURAL TEXTURE GENERATORS ---
@@ -979,8 +1993,7 @@
     const tex = new THREE.CanvasTexture(canvas);
     return tex;
   }
-
-  // --- GAME STATE MANAGER ---
+  // --- GAME STATE MANAGER (TIẾN ĐỘ THEO TỪNG KHU VỰC) ---
   class GameState {
     constructor() {
       this.discovered = new Set();
@@ -991,6 +2004,11 @@
       this.soundFX = new SoundFX();
       this.sensitivity = 5;
       this.langMode = 'both';
+
+      // Hành trình: khu vực hiện tại & những khu vực đã mở khoá
+      this.currentZone = 'bedroom';
+      this.unlockedZones = new Set(['bedroom']);
+      this.hasWokenUp = false;
 
       this.loadStorage();
     }
@@ -1005,10 +2023,18 @@
           }
           this.score = parsed.score || 0;
           this.quizStats = parsed.quizStats || { total: 0, correct: 0 };
+          if (Array.isArray(parsed.unlockedZones)) {
+            parsed.unlockedZones.forEach(z => { if (ZONES[z]) this.unlockedZones.add(z); });
+          }
+          if (parsed.currentZone && ZONES[parsed.currentZone]) {
+            this.currentZone = parsed.currentZone;
+          }
         }
       } catch (e) {
         console.warn('Storage read error:', e);
       }
+      // Đồng bộ lại khoá mở dựa trên số đồ vật đã khám phá (phòng khi dữ liệu cũ)
+      this.syncUnlockedZones();
     }
 
     saveStorage() {
@@ -1016,18 +2042,70 @@
         localStorage.setItem('3d_vocab_quest_data', JSON.stringify({
           discovered: Array.from(this.discovered),
           score: this.score,
-          quizStats: this.quizStats
+          quizStats: this.quizStats,
+          currentZone: this.currentZone,
+          unlockedZones: Array.from(this.unlockedZones)
         }));
       } catch (e) {
         console.warn('Storage write error:', e);
       }
     }
 
+    // --- TIẾN ĐỘ THEO KHU VỰC ---
+    zoneFoundCount(zoneId) {
+      const zone = ZONES[zoneId];
+      if (!zone) return 0;
+      return zone.items.filter(id => this.discovered.has(id)).length;
+    }
+
+    zoneTotal(zoneId) {
+      const zone = ZONES[zoneId];
+      return zone ? zone.items.length : 0;
+    }
+
+    zoneRemaining(zoneId) {
+      return this.zoneTotal(zoneId) - this.zoneFoundCount(zoneId);
+    }
+
+    isZoneComplete(zoneId) {
+      return this.zoneRemaining(zoneId) <= 0;
+    }
+
+    missingItems(zoneId) {
+      const zone = ZONES[zoneId];
+      if (!zone) return [];
+      return zone.items.filter(id => !this.discovered.has(id)).map(id => ROOM_VOCAB_DATA[id]);
+    }
+
+    // Mở khoá khu vực kế tiếp khi khu vực trước đã hoàn thành
+    syncUnlockedZones() {
+      this.unlockedZones.add('bedroom');
+      for (let i = 0; i < ZONE_ORDER.length - 1; i++) {
+        const zoneId = ZONE_ORDER[i];
+        if (this.unlockedZones.has(zoneId) && this.isZoneComplete(zoneId)) {
+          this.unlockedZones.add(ZONE_ORDER[i + 1]);
+        }
+      }
+      if (!this.unlockedZones.has(this.currentZone)) {
+        this.currentZone = 'bedroom';
+      }
+    }
+
+    isAllComplete() {
+      return ZONE_ORDER.every(z => this.isZoneComplete(z));
+    }
+
+    totalFound() {
+      return ZONE_ORDER.reduce((sum, z) => sum + this.zoneFoundCount(z), 0);
+    }
+
     markDiscovered(id) {
       const isNew = !this.discovered.has(id);
       if (isNew) {
         this.discovered.add(id);
-        this.score += 100;
+        const entry = ROOM_VOCAB_DATA[id];
+        this.score += (entry && entry.isGate) ? 20 : 100;
+        this.syncUnlockedZones();
         this.saveStorage();
         this.soundFX.playDiscover();
       }
@@ -1038,10 +2116,12 @@
       this.discovered.clear();
       this.score = 0;
       this.quizStats = { total: 0, correct: 0 };
+      this.currentZone = 'bedroom';
+      this.unlockedZones = new Set(['bedroom']);
+      this.hasWokenUp = false;
       this.saveStorage();
     }
   }
-
   // --- 3D INSPECTOR STUDIO (MODAL SECONDARY VIEWER) ---
   class InspectorStudio {
     constructor(canvasId) {
@@ -1176,6 +2256,45 @@
       this.resize();
     }
 
+    // Thẻ 3D thay thế khi từ vựng thuộc khu vực khác (mô hình chưa được dựng)
+    showPlaceholder(item) {
+      this.showObject(() => {
+        const group = new THREE.Group();
+
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        const grad = ctx.createLinearGradient(0, 0, 512, 512);
+        grad.addColorStop(0, '#1e293b');
+        grad.addColorStop(1, '#0f172a');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 512, 512);
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 10;
+        ctx.strokeRect(22, 22, 468, 468);
+        ctx.textAlign = 'center';
+        ctx.font = '150px serif';
+        ctx.fillText(item.icon || '📦', 256, 210);
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 128px serif';
+        ctx.fillText(item.chinese || '', 256, 350);
+        ctx.fillStyle = '#7dd3fc';
+        ctx.font = '52px sans-serif';
+        ctx.fillText(item.pinyin || '', 256, 420);
+
+        const tex = new THREE.CanvasTexture(canvas);
+        const faceMat = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.45 });
+        const sideMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.55, metalness: 0.25 });
+        const card = new THREE.Mesh(
+          new THREE.BoxGeometry(2, 2, 0.22),
+          [sideMat, sideMat, sideMat, sideMat, faceMat, faceMat]
+        );
+        card.castShadow = true;
+        group.add(card);
+        return group;
+      });
+    }
+
     resetView() {
       this.objectGroup.rotation.set(0.15, 0.4, 0);
       this.currentZoom = 4.2;
@@ -1278,7 +2397,15 @@
       this.isPointerLocked = false;
       this.touchLook = { active: false, startX: 0, startY: 0, currentX: 0, currentY: 0 };
       this.joystickDir = { x: 0, y: 0 };
-      this.currentRoom = 'study';
+
+      // --- HÀNH TRÌNH: KHU VỰC HIỆN TẠI & TRẠNG THÁI CHUYỂN CẢNH ---
+      this.currentZone = this.state.currentZone || 'bedroom';
+      this.currentRoom = this.currentZone; // giữ tương thích tên cũ
+      this.isTransitioning = false;
+      this.isWakingUp = false;
+      this.wakeUpTimer = 0;
+      this.animatedProps = [];
+      this.toastTimer = null;
 
       // Inspector Studio
       this.inspector = new InspectorStudio('inspectorCanvas');
@@ -1360,6 +2487,30 @@
         lr_sideTable: 'sideTable.glb',
         lr_pillow: 'pillow.glb',
         lr_door: 'doorway.glb',
+        // Kitchen
+        kt_fridge: 'kitchenFridgeLarge.glb',
+        kt_stove: 'kitchenStove.glb',
+        kt_sink: 'kitchenSink.glb',
+        kt_microwave: 'kitchenMicrowave.glb',
+        kt_cabinet: 'kitchenCabinet.glb',
+        kt_cabinetDrawer: 'kitchenCabinetDrawer.glb',
+        kt_cabinetUpper: 'kitchenCabinetUpper.glb',
+        kt_cabinetUpperDouble: 'kitchenCabinetUpperDouble.glb',
+        kt_coffeeMachine: 'kitchenCoffeeMachine.glb',
+        kt_toaster: 'toaster.glb',
+        kt_blender: 'kitchenBlender.glb',
+        kt_table: 'table.glb',
+        kt_chair: 'chairRounded.glb',
+        kt_trashcan: 'trashcan.glb',
+        kt_hood: 'hoodModern.glb',
+        kt_bar: 'kitchenBar.glb',
+        kt_stool: 'stoolBar.glb',
+        kt_rug: 'rugDoormat.glb',
+        // Street & Park (ghế công viên dùng mesh tự dựng cho đúng tỉ lệ người thật)
+        st_trashcan: 'trashcan.glb',
+        pk_plant: 'plantSmall1.glb',
+        // Nhân vật người chơi (mesh tĩnh — khung xương được gắn tự động khi dựng cảnh)
+        player_avatar: PLAYER_AVATAR_FILE,
       };
 
       const modelIds = Object.keys(aliasMap);
@@ -1443,9 +2594,11 @@
 
       // 1. Ambient & Directional Lighting
       const ambientLight = new THREE.AmbientLight(0xffeedd, 0.85);
+      this.ambientLight = ambientLight;
       this.scene.add(ambientLight);
 
       const sunLight = new THREE.DirectionalLight(0xfff5e6, 1.4);
+      this.sunLight = sunLight;
       sunLight.position.set(4, 7, 3);
       sunLight.castShadow = true;
       sunLight.shadow.mapSize.width = 2048;
@@ -1461,23 +2614,448 @@
 
       // Warm Ceiling light
       const ceilingLight = new THREE.PointLight(0xffe8d6, 0.9, 12, 1.2);
+      this.ceilingLight = ceilingLight;
       ceilingLight.position.set(0, 3.8, 0);
       ceilingLight.castShadow = true;
       this.scene.add(ceilingLight);
 
-      // 2. Room Shell (Floor, Walls, Ceiling, Carpet) & Player Avatar
-      this.buildRoomArchitecture();
-      this.buildPlayerAvatar();
-
-      // 3. Load GLB models first, then create furniture
+      // 2. Tải toàn bộ model GLB rồi dựng khu vực người chơi đang đứng
       this.loadAllModels().then(() => {
-        this.buildInteractiveObjects();
+        this.buildZoneScene(this.currentZone);
+        this.spawnPlayerInZone(this.currentZone);
+        this.updateProgressUI();
+        this.sceneReady = true;
       });
+    }
+
+    // ======================================================================
+    // HỆ THỐNG KHU VỰC: DỰNG CẢNH, ÁNH SÁNG & ĐIỂM XUẤT PHÁT
+    // ======================================================================
+    applyZoneLighting(zoneId) {
+      const isOutdoor = (zoneId === 'street' || zoneId === 'park');
+
+      if (zoneId === 'street') {
+        this.scene.background = new THREE.Color(0x9dc4e8);
+        this.scene.fog = new THREE.FogExp2(0xb9d4ec, 0.018);
+      } else if (zoneId === 'park') {
+        this.scene.background = new THREE.Color(0xa9d8f0);
+        this.scene.fog = new THREE.FogExp2(0xc8e6f5, 0.014);
+      } else {
+        this.scene.background = new THREE.Color(0x0f172a);
+        this.scene.fog = new THREE.FogExp2(0x0f172a, 0.02);
+      }
+
+      if (this.ambientLight) {
+        this.ambientLight.color.setHex(isOutdoor ? 0xdceaf7 : 0xffeedd);
+        this.ambientLight.intensity = isOutdoor ? 1.15 : 0.85;
+      }
+      if (this.sunLight) {
+        this.sunLight.color.setHex(isOutdoor ? 0xfff8e8 : 0xfff5e6);
+        this.sunLight.intensity = isOutdoor ? 2.0 : 1.4;
+        if (isOutdoor) {
+          this.sunLight.position.set(12, 22, 10);
+          this.sunLight.shadow.camera.left = -30;
+          this.sunLight.shadow.camera.right = 30;
+          this.sunLight.shadow.camera.top = 30;
+          this.sunLight.shadow.camera.bottom = -30;
+          this.sunLight.shadow.camera.far = 80;
+        } else {
+          this.sunLight.position.set(4, 7, 3);
+          this.sunLight.shadow.camera.left = -6;
+          this.sunLight.shadow.camera.right = 6;
+          this.sunLight.shadow.camera.top = 6;
+          this.sunLight.shadow.camera.bottom = -6;
+          this.sunLight.shadow.camera.far = 25;
+        }
+        this.sunLight.shadow.camera.updateProjectionMatrix();
+      }
+      if (this.ceilingLight) {
+        this.ceilingLight.intensity = isOutdoor ? 0 : 0.9;
+      }
+    }
+
+    // Dựng toàn bộ hình khối của một khu vực (đã xoá cảnh cũ từ trước)
+    buildZoneScene(zoneId) {
+      const zone = ZONES[zoneId] || ZONES.bedroom;
+      this.currentZone = zone.id;
+      this.currentRoom = zone.id;
+      this.state.currentZone = zone.id;
+      this.state.saveStorage();
+
+      this.applyZoneLighting(zone.id);
+
+      switch (zone.id) {
+        case 'living': this.buildLivingRoom(); break;
+        case 'kitchen': this.buildKitchen(); break;
+        case 'street': this.buildStreet(); break;
+        case 'park': this.buildPark(); break;
+        default: this.buildBedroom(); break;
+      }
+
+      this.setCameraMode(this.cameraMode);
+      this.updateZoneHud();
+      this.updateProgressUI();
+    }
+
+    // Đặt người chơi về điểm xuất phát của khu vực
+    spawnPlayerInZone(zoneId, fromZoneId = null) {
+      const zone = ZONES[zoneId] || ZONES.bedroom;
+      let spawn = zone.spawn;
+      // Nếu đi ngược lại từ khu vực sau, xuất hiện ngay tại cửa vừa bước vào
+      if (fromZoneId && zone.next === fromZoneId && zone.returnSpawn) {
+        spawn = zone.returnSpawn;
+      }
+      this.player.pos.set(spawn.x, 0, spawn.z);
+      this.player.yaw = spawn.yaw;
+      this.player.pitch = 0.05;
+      this.player.velocity.set(0, 0, 0);
+    }
+
+    // Chuyển cảnh sang khu vực khác kèm hiệu ứng fade
+    goToZone(zoneId, opts = {}) {
+      if (this.isTransitioning) return;
+      const zone = ZONES[zoneId];
+      if (!zone) return;
+
+      this.isTransitioning = true;
+      const fromZone = this.currentZone;
+
+      if (document.exitPointerLock) document.exitPointerLock();
+      const doorModal = document.getElementById('doorModal');
+      if (doorModal) doorModal.classList.remove('active');
+      this.closeVocabModal(true);
+
+      const overlay = document.getElementById('roomTransitionOverlay');
+      if (overlay) {
+        const label = overlay.querySelector('.transition-label') || overlay.querySelector('div:last-child');
+        if (label) label.textContent = opts.label || `Đang tới ${zone.name}...`;
+        overlay.style.opacity = '1';
+        overlay.style.pointerEvents = 'all';
+      }
+
+      setTimeout(() => {
+        this.clearScene();
+        this.buildZoneScene(zone.id);
+        this.spawnPlayerInZone(zone.id, fromZone);
+        this.state.soundFX.playDiscover();
+
+        setTimeout(() => {
+          if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+          }
+          this.isTransitioning = false;
+          this.showObjectiveBanner(zone.id);
+          this.requestPointerLock();
+        }, 520);
+      }, 650);
+    }
+
+    // ======================================================================
+    // AUTO-RIG: GẮN KHUNG XƯƠNG CHO MODEL GLB TĨNH
+    // ======================================================================
+
+    // Chuẩn hoá hình học: xoay cho mặt hướng +Z, scale về đúng chiều cao người,
+    // đặt gót chân ở y = 0 và căn giữa theo trục X/Z.
+    prepareAvatarGeometry(rawModel) {
+      let source = null;
+      rawModel.traverse(child => {
+        if (!source && child.isMesh && child.geometry) source = child;
+      });
+      if (!source) return null;
+
+      const geo = source.geometry.clone();
+      // Model có 19 morph target (blend shape khuôn mặt). Game không dùng tới,
+      // mà để lại thì computeBoundingBox() cộng cả biên độ morph → đo sai chiều cao.
+      geo.morphAttributes = {};
+      geo.morphTargetsRelative = false;
+      geo.applyMatrix4(new THREE.Matrix4().makeRotationY(AVATAR_RIG_SPEC.faceYaw));
+      geo.computeBoundingBox();
+
+      const size = new THREE.Vector3();
+      geo.boundingBox.getSize(size);
+      const scale = AVATAR_RIG_SPEC.targetHeight / Math.max(size.y, 1e-6);
+      geo.applyMatrix4(new THREE.Matrix4().makeScale(scale, scale, scale));
+      geo.computeBoundingBox();
+
+      const box = geo.boundingBox;
+      const center = box.getCenter(new THREE.Vector3());
+      geo.applyMatrix4(new THREE.Matrix4().makeTranslation(-center.x, -box.min.y, -center.z));
+      geo.computeBoundingBox();
+      geo.computeVertexNormals();
+
+      return { geometry: geo, material: source.material };
+    }
+
+    // Danh sách đốt xương + đoạn xương dùng để tính trọng số.
+    // Toạ độ tuyệt đối trong không gian đã chuẩn hoá (mét).
+    buildAvatarBoneSpec() {
+      const S = AVATAR_RIG_SPEC;
+      const H = S.targetHeight;
+      const y = r => r * H;
+      const d = r => r * H;
+
+      const hipY = y(S.hipY), spineY = y(S.spineY), chestY = y(S.chestY);
+      const shY = y(S.shoulderY), neckY = y(S.neckY);
+      const kneeY = y(S.kneeY), ankleY = y(S.ankleY);
+      const legX = d(S.legX), shX = d(S.shoulderX), elX = d(S.elbowX);
+      const wrX = d(S.wristX), haX = d(S.handX), ftZ = d(S.footZ);
+
+      // side = +1 cho bên trái nhân vật (+X), -1 cho bên phải
+      const limb = (side, tag) => ([
+        { name: `arm${tag}`,     parent: 'chest',        pos: [side * shX, shY, 0],
+          tail: [side * elX, shY, 0], group: 'arm' },
+        { name: `foreArm${tag}`, parent: `arm${tag}`,    pos: [side * elX, shY, 0],
+          tail: [side * wrX, shY, 0], group: 'arm' },
+        { name: `hand${tag}`,    parent: `foreArm${tag}`, pos: [side * wrX, shY, 0],
+          tail: [side * haX, shY, 0], group: 'arm' },
+        { name: `leg${tag}`,     parent: 'hips',         pos: [side * legX, hipY, 0],
+          tail: [side * legX, kneeY, 0], group: 'leg' },
+        { name: `shin${tag}`,    parent: `leg${tag}`,    pos: [side * legX, kneeY, 0],
+          tail: [side * legX, ankleY, 0], group: 'leg' },
+        { name: `foot${tag}`,    parent: `shin${tag}`,   pos: [side * legX, ankleY, 0],
+          tail: [side * legX, 0.012, ftZ], group: 'leg' }
+      ]);
+
+      return [
+        { name: 'hips',  parent: null,    pos: [0, hipY, 0],   tail: [0, spineY, 0], group: 'core' },
+        { name: 'spine', parent: 'hips',  pos: [0, spineY, 0], tail: [0, chestY, 0], group: 'core' },
+        { name: 'chest', parent: 'spine', pos: [0, chestY, 0], tail: [0, neckY, 0],  group: 'core' },
+        { name: 'neck',  parent: 'chest', pos: [0, neckY, 0],  tail: [0, neckY + 0.05, 0], group: 'headTop' },
+        { name: 'head',  parent: 'neck',  pos: [0, neckY + 0.02, 0], tail: [0, H, 0], group: 'headTop' },
+        ...limb(1, 'L'),
+        ...limb(-1, 'R')
+      ];
+    }
+
+    // Trọng số vùng: chặn tay/đầu ăn vào chân và ngược lại, có dải chuyển mượt
+    avatarRegionMask(group, py) {
+      const S = AVATAR_RIG_SPEC;
+      const H = S.targetHeight;
+      const hipY = S.hipY * H;
+      const chestY = S.chestY * H;
+      const band = 0.055 * H;
+      const smooth = (edge0, edge1, x) => {
+        const t = THREE.MathUtils.clamp((x - edge0) / (edge1 - edge0), 0, 1);
+        return t * t * (3 - 2 * t);
+      };
+      switch (group) {
+        // Chân chỉ ảnh hưởng phần dưới hông
+        case 'leg':     return 1 - smooth(hipY - band, hipY + band, py);
+        // Tay chỉ ảnh hưởng phần thân trên
+        case 'arm':     return smooth(chestY - 2.2 * band, chestY, py);
+        // Cổ & đầu chỉ ảnh hưởng từ ngực trở lên
+        case 'headTop': return smooth(chestY - band, chestY + band, py);
+        default:        return 1;
+      }
+    }
+
+    // Tính skinIndex / skinWeight cho từng đỉnh dựa trên khoảng cách tới đoạn xương
+    computeAvatarSkinWeights(geometry, boneSpec) {
+      const S = AVATAR_RIG_SPEC;
+      const pos = geometry.attributes.position;
+      const count = pos.count;
+      const skinIndices = new Uint16Array(count * 4);
+      const skinWeights = new Float32Array(count * 4);
+
+      const segs = boneSpec.map(b => ({
+        head: new THREE.Vector3().fromArray(b.pos),
+        tail: new THREE.Vector3().fromArray(b.tail),
+        group: b.group
+      }));
+
+      const p = new THREE.Vector3();
+      const ab = new THREE.Vector3();
+      const ap = new THREE.Vector3();
+      const proj = new THREE.Vector3();
+      const scored = [];
+
+      for (let i = 0; i < count; i++) {
+        p.fromBufferAttribute(pos, i);
+        scored.length = 0;
+
+        for (let b = 0; b < segs.length; b++) {
+          const seg = segs[b];
+          const mask = this.avatarRegionMask(seg.group, p.y);
+          if (mask <= 0.0001) continue;
+
+          // Khoảng cách từ đỉnh tới đoạn thẳng head→tail
+          ab.subVectors(seg.tail, seg.head);
+          ap.subVectors(p, seg.head);
+          const len2 = ab.lengthSq();
+          const t = len2 > 1e-9 ? THREE.MathUtils.clamp(ap.dot(ab) / len2, 0, 1) : 0;
+          proj.copy(seg.head).addScaledVector(ab, t);
+          const dist = p.distanceTo(proj);
+
+          const w = mask / Math.pow(dist + S.weightEpsilon, S.weightFalloff);
+          scored.push({ b, w });
+        }
+
+        scored.sort((x, y) => y.w - x.w);
+        const top = scored.slice(0, 4);
+        let total = 0;
+        for (const it of top) total += it.w;
+        if (total <= 0) { skinIndices[i * 4] = 0; skinWeights[i * 4] = 1; continue; }
+
+        for (let k = 0; k < 4; k++) {
+          if (k < top.length) {
+            skinIndices[i * 4 + k] = top[k].b;
+            skinWeights[i * 4 + k] = top[k].w / total;
+          } else {
+            skinIndices[i * 4 + k] = 0;
+            skinWeights[i * 4 + k] = 0;
+          }
+        }
+      }
+
+      geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(skinIndices, 4));
+      geometry.setAttribute('skinWeight', new THREE.Float32BufferAttribute(skinWeights, 4));
+    }
+
+    // Dựng (một lần) hình học đã gắn trọng số + vật liệu bật skinning, rồi cache lại
+    getAvatarRigCache() {
+      if (this._avatarRig !== undefined) return this._avatarRig;
+
+      const raw = this.loadedModels.player_avatar;
+      if (!raw) { this._avatarRig = null; return null; }
+
+      try {
+        const prepared = this.prepareAvatarGeometry(raw);
+        if (!prepared) { this._avatarRig = null; return null; }
+
+        const boneSpec = this.buildAvatarBoneSpec();
+        this.computeAvatarSkinWeights(prepared.geometry, boneSpec);
+
+        // r128 yêu cầu material.skinning = true thì shader mới biến dạng theo xương
+        const srcMat = Array.isArray(prepared.material) ? prepared.material[0] : prepared.material;
+        const material = srcMat.clone();
+        material.skinning = true;
+        material.needsUpdate = true;
+
+        this._avatarRig = { geometry: prepared.geometry, material, boneSpec };
+        console.log(`🦴 Đã gắn khung xương tự động cho nhân vật: ${boneSpec.length} đốt xương, ${prepared.geometry.attributes.position.count} đỉnh`);
+      } catch (e) {
+        console.warn('Không dựng được khung xương cho nhân vật:', e);
+        this._avatarRig = null;
+      }
+      return this._avatarRig;
+    }
+
+    // Tạo một bản nhân vật có xương cho cảnh hiện tại
+    buildSkinnedAvatar() {
+      const rig = this.getAvatarRigCache();
+      if (!rig) return false;
+
+      // Nhóm bọc ngoài: dùng cho hiệu ứng nhún người & nghiêng thân khi đi bộ
+      const bodyGroup = new THREE.Group();
+
+      const bones = [];
+      const byName = {};
+      rig.boneSpec.forEach(spec => {
+        const bone = new THREE.Bone();
+        bone.name = spec.name;
+        byName[spec.name] = bone;
+        bones.push(bone);
+      });
+      rig.boneSpec.forEach((spec, i) => {
+        const bone = bones[i];
+        if (spec.parent) {
+          const parent = byName[spec.parent];
+          const pSpec = rig.boneSpec.find(b => b.name === spec.parent);
+          bone.position.set(
+            spec.pos[0] - pSpec.pos[0],
+            spec.pos[1] - pSpec.pos[1],
+            spec.pos[2] - pSpec.pos[2]
+          );
+          parent.add(bone);
+        } else {
+          bone.position.set(spec.pos[0], spec.pos[1], spec.pos[2]);
+        }
+      });
+
+      const mesh = new THREE.SkinnedMesh(rig.geometry, rig.material);
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
+      // Hình học & vật liệu dùng chung giữa các cảnh — không cho clearScene giải phóng
+      mesh.userData.fromGLB = true;
+      mesh.add(bones[0]);
+      mesh.updateMatrixWorld(true);
+      mesh.bind(new THREE.Skeleton(bones));
+
+      bodyGroup.add(mesh);
+      this.playerMesh.add(bodyGroup);
+
+      // Bóng đổ tiếp đất
+      const shadowMesh = new THREE.Mesh(
+        new THREE.CircleGeometry(0.34, 24),
+        new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.32 })
+      );
+      shadowMesh.rotation.x = -Math.PI / 2;
+      shadowMesh.position.y = 0.015;
+      this.playerMesh.add(shadowMesh);
+
+      // Ánh xạ sang tên đốt xương mà vòng lặp hoạt hình đang dùng
+      this.playerBones = {
+        torso: bodyGroup,
+        torsoBaseY: 0,
+        hips: byName.hips,
+        spine: byName.spine,
+        chest: byName.chest,
+        head: byName.head,
+        leftArm: byName.armL,
+        leftElbow: byName.foreArmL,
+        rightArm: byName.armR,
+        rightElbow: byName.foreArmR,
+        leftLeg: byName.legL,
+        leftKnee: byName.shinL,
+        rightLeg: byName.legR,
+        rightKnee: byName.shinR
+      };
+
+      // Tay dang ngang trong T-pose → hạ xuống dọc thân làm tư thế nghỉ
+      this.avatarIsSkinned = true;
+      this.applySkinnedRestPose();
+      return true;
+    }
+
+    // Gập khuỷu tay: khung xương GLB có cẳng tay nằm dọc thân nên gập quanh trục Y,
+    // còn nhân vật hình khối cũ gập quanh trục X.
+    setElbowBend(bone, bend, side, blend = 1) {
+      if (!bone) return;
+      if (this.avatarIsSkinned) {
+        const target = bend * side;
+        bone.rotation.y = blend >= 1 ? target : THREE.MathUtils.lerp(bone.rotation.y, target, blend);
+      } else {
+        bone.rotation.x = blend >= 1 ? bend : THREE.MathUtils.lerp(bone.rotation.x, bend, blend);
+      }
+    }
+
+    // T-pose → tư thế đứng tự nhiên (tay xuôi theo thân)
+    applySkinnedRestPose() {
+      const b = this.playerBones;
+      if (!b || !this.avatarIsSkinned) return;
+      // Xoay quanh trục Z để hạ tay từ ngang xuống dọc thân (T-pose → đứng nghỉ)
+      if (b.leftArm) { b.leftArm.rotation.z = -1.42; b.leftArm.rotation.y = 0; }
+      if (b.rightArm) { b.rightArm.rotation.z = 1.42; b.rightArm.rotation.y = 0; }
+      // Cẳng tay giữ thẳng theo cánh tay; độ gập do vòng lặp hoạt hình điều khiển
+      if (b.leftElbow) { b.leftElbow.rotation.z = 0; b.leftElbow.rotation.x = 0; }
+      if (b.rightElbow) { b.rightElbow.rotation.z = 0; b.rightElbow.rotation.x = 0; }
     }
 
     buildPlayerAvatar() {
       this.playerMesh = new THREE.Group();
       this.playerBones = {};
+      this.avatarIsSkinned = false;
+
+      // Ưu tiên nhân vật GLB đã được gắn xương tự động
+      if (this.buildSkinnedAvatar()) {
+        this.playerMesh.rotation.y = Math.PI;
+        this.playerMesh.position.set(this.player.pos.x, 0, this.player.pos.z);
+        this.scene.add(this.playerMesh);
+        return;
+      }
+
+      // Không có model → dùng nhân vật dựng bằng hình khối như trước
 
       // Materials
       const skinMat = new THREE.MeshStandardMaterial({ color: 0xfbd09b, roughness: 0.6 });
@@ -3126,11 +4704,13 @@
 
         const neonPlate = new THREE.Mesh(new THREE.PlaneGeometry(0.64, 0.16), neonMat);
         neonPlate.position.set(0, dH + 0.16, 0.072);
+        neonPlate.userData.isGateSign = true;
         group.add(neonPlate);
 
-        // Green light glow on door
+        // Đèn báo trạng thái khoá / mở của cửa
         const exitLight = new THREE.PointLight(0x22c55e, 0.6, 3.5, 1.5);
         exitLight.position.set(0, dH + 0.2, 0.25);
+        exitLight.userData.isGateLight = true;
         group.add(exitLight);
 
         return group;
@@ -3139,13 +4719,49 @@
       const door = this.objectMeshFactories.door();
       door.position.set(0, 0, 4.90);
       door.rotation.y = Math.PI;
-      this.registerInteractable(door, 'door');
+      this.registerGate(door, 'door', 'living', { requireComplete: true });
+      this.applyGateLockVisual(door, 'bedroom');
       this.scene.add(door);
+    }
+
+    // Đèn báo trên cửa: đỏ = còn khoá, xanh = đã mở khoá
+    applyGateLockVisual(gateObj, zoneId) {
+      const unlocked = this.state.isZoneComplete(zoneId);
+      gateObj.traverse(child => {
+        if (child.isMesh && child.material && child.material.emissive) {
+          if (child.userData.isGateSign) {
+            child.material.color.setHex(unlocked ? 0x22c55e : 0xef4444);
+            child.material.emissive.setHex(unlocked ? 0x16a34a : 0xb91c1c);
+          }
+        }
+        if (child.isPointLight && child.userData.isGateLight) {
+          child.color.setHex(unlocked ? 0x22c55e : 0xef4444);
+        }
+      });
+      gateObj.userData.lockVisualZone = zoneId;
+    }
+
+    // Nhân bản vật thể cho khung xem 3D — bỏ userData vì có tham chiếu vòng (rootGroup)
+    cloneForInspector(root) {
+      const saved = [];
+      root.traverse(c => { saved.push([c, c.userData]); c.userData = {}; });
+      let copy = null;
+      try {
+        copy = root.clone(true);
+      } finally {
+        saved.forEach(([c, u]) => { c.userData = u; });
+      }
+      if (copy) copy.position.set(0, 0, 0);
+      return copy || new THREE.Group();
     }
 
     registerInteractable(object3d, vocabId) {
       object3d.userData.vocabId = vocabId;
       object3d.userData.vocabData = ROOM_VOCAB_DATA[vocabId];
+      // Mô hình xem 3D: dùng bản sao của chính vật thể nếu chưa có factory riêng
+      if (!this.objectMeshFactories[vocabId]) {
+        this.objectMeshFactories[vocabId] = () => this.cloneForInspector(object3d);
+      }
       this.interactiveObjects.push(object3d);
     }
 
@@ -3155,7 +4771,7 @@
       window.addEventListener('keydown', e => {
         if (this.state.isPaused || !this.isPointerLocked) {
           if (e.code === 'KeyE' && this.targetedObject) {
-            this.openVocabModal(this.targetedObject.userData.vocabId);
+            this.interactWithTarget();
           }
           return;
         }
@@ -3187,15 +4803,7 @@
           case 'KeyE':
           case 'Space':
           case 'Enter':
-            if (this.targetedObject) {
-              if (this.targetedObject.userData.vocabId === 'door') {
-                this.handleDoorInteraction();
-              } else if (this.targetedObject.userData.vocabId === 'back_door') {
-                this.enterStudyRoom();
-              } else {
-                this.openVocabModal(this.targetedObject.userData.vocabId);
-              }
-            }
+            this.interactWithTarget();
             break;
         }
       });
@@ -3234,14 +4842,8 @@
       canvasEl.addEventListener('click', () => {
         if (!this.isPointerLocked) {
           this.requestPointerLock();
-        } else if (this.targetedObject) {
-          if (this.targetedObject.userData.vocabId === 'door') {
-            this.handleDoorInteraction();
-          } else if (this.targetedObject.userData.vocabId === 'back_door') {
-            this.enterStudyRoom();
-          } else {
-            this.openVocabModal(this.targetedObject.userData.vocabId);
-          }
+        } else {
+          this.interactWithTarget();
         }
       });
 
@@ -3360,15 +4962,7 @@
       const btnMobile = document.getElementById('btnMobileInteract');
       if (btnMobile) {
         btnMobile.addEventListener('click', () => {
-          if (this.targetedObject) {
-            if (this.targetedObject.userData.vocabId === 'door') {
-              this.handleDoorInteraction();
-            } else if (this.targetedObject.userData.vocabId === 'back_door') {
-              this.enterStudyRoom();
-            } else {
-              this.openVocabModal(this.targetedObject.userData.vocabId);
-            }
-          }
+          this.interactWithTarget();
         });
       }
 
@@ -3454,7 +5048,7 @@
           this.lockMobileLandscape();
         }
         this.switchScreen('game');
-        this.requestPointerLock();
+        this.startZoneSession();
       });
 
       // 1.1 Fullscreen Toggle Buttons (Header & Game HUD)
@@ -3578,10 +5172,12 @@
       });
 
       document.getElementById('btnResetProgress').addEventListener('click', () => {
-        if (confirm('Bạn có chắc muốn xóa toàn bộ tiến độ khám phá và học lại từ đầu?')) {
+        if (confirm('Bạn có chắc muốn xóa toàn bộ tiến độ khám phá và bắt đầu lại từ phòng ngủ?')) {
           this.state.resetProgress();
+          this.victoryShown = false;
           this.updateProgressUI();
           settingsModal.classList.remove('active');
+          this.restartJourney();
         }
       });
 
@@ -3589,8 +5185,9 @@
       document.getElementById('btnReplayLevel').addEventListener('click', () => {
         document.getElementById('victoryModal').classList.remove('active');
         this.state.resetProgress();
+        this.victoryShown = false;
         this.updateProgressUI();
-        this.requestPointerLock();
+        this.restartJourney();
       });
 
       document.getElementById('btnBackToMenu').addEventListener('click', () => {
@@ -3619,7 +5216,7 @@
       const btnConfirmExit = document.getElementById('btnConfirmExitDoor');
       if (btnConfirmExit) {
         btnConfirmExit.addEventListener('click', () => {
-          this.enterLivingRoom();
+          if (this.pendingGateZone) this.goToZone(this.pendingGateZone);
         });
       }
 
@@ -3627,91 +5224,140 @@
       if (btnLearnDoor) {
         btnLearnDoor.addEventListener('click', () => {
           doorModal.classList.remove('active');
-          this.openVocabModal('door');
+          this.openVocabModal(this.pendingGateVocab || 'door');
         });
       }
     }
 
-    handleDoorInteraction() {
-      if (document.exitPointerLock) document.exitPointerLock();
-      const isNew = this.state.markDiscovered('door');
-      this.updateProgressUI();
-      this.state.soundFX.playDiscover();
+    // ======================================================================
+    // TƯƠNG TÁC: ĐỒ VẬT & CỬA / LỐI ĐI
+    // ======================================================================
+    interactWithTarget() {
+      if (!this.targetedObject || this.isTransitioning) return;
+      const ud = this.targetedObject.userData;
+      if (ud.gateTarget) {
+        this.handleGateInteraction(this.targetedObject);
+      } else if (ud.vocabId) {
+        this.openVocabModal(ud.vocabId);
+      }
+    }
 
-      const total = Object.keys(ROOM_VOCAB_DATA).length;
-      const count = this.state.discovered.size;
-      const foundEl = document.getElementById('doorFoundCount');
-      if (foundEl) foundEl.textContent = `${count}/${total}`;
-      const scoreEl = document.getElementById('doorScoreCount');
-      if (scoreEl) scoreEl.textContent = this.state.score;
+    // Đăng ký một cánh cửa / lối đi dẫn sang khu vực khác
+    registerGate(object3d, gateVocabId, targetZoneId, opts = {}) {
+      const data = {
+        vocabId: gateVocabId,
+        vocabData: ROOM_VOCAB_DATA[gateVocabId] || null,
+        gateTarget: targetZoneId,
+        gateLocked: !!opts.requireComplete,
+        gateDirection: opts.direction || 'forward',
+        gateLabel: opts.label || (ROOM_VOCAB_DATA[gateVocabId] ? ROOM_VOCAB_DATA[gateVocabId].nameVi : 'Lối đi')
+      };
+      object3d.userData = Object.assign({}, object3d.userData, data);
+      object3d.traverse(c => {
+        if (c !== object3d) c.userData = Object.assign({}, c.userData, { rootGroup: object3d });
+      });
+      if (!this.objectMeshFactories[gateVocabId]) {
+        this.objectMeshFactories[gateVocabId] = () => this.cloneForInspector(object3d);
+      }
+      this.interactiveObjects.push(object3d);
+      return object3d;
+    }
+
+    // Cửa chỉ mở khi khu vực hiện tại đã khám phá xong toàn bộ đồ vật
+    handleGateInteraction(gateObj) {
+      const ud = gateObj.userData;
+      const targetZone = ZONES[ud.gateTarget];
+      if (!targetZone) return;
+
+      // Đi ngược lại khu vực trước: luôn cho phép
+      if (ud.gateDirection === 'back') {
+        this.goToZone(ud.gateTarget, { label: `Quay lại ${targetZone.name}...` });
+        return;
+      }
+
+      const zone = ZONES[this.currentZone];
+      const remaining = this.state.zoneRemaining(this.currentZone);
+
+      if (ud.gateLocked && remaining > 0) {
+        // Cửa còn khoá — nhắc người chơi những đồ vật chưa khám phá
+        this.state.soundFX.playWrong();
+        this.showLockedGateNotice(zone, remaining);
+        return;
+      }
+
+      // Cửa đã mở khoá → hiện bảng xác nhận bước sang khu vực mới
+      this.openGateModal(gateObj);
+    }
+
+    showLockedGateNotice(zone, remaining) {
+      const missing = this.state.missingItems(zone.id).slice(0, 4)
+        .map(it => `${it.icon} ${it.nameVi}`).join(' • ');
+      this.showToast(
+        `🔒 Cửa còn khoá! Còn <b>${remaining}</b> đồ vật trong ${zone.name} chưa khám phá.` +
+        (missing ? `<br><span class="toast-sub">Gợi ý: ${missing}${remaining > 4 ? ' …' : ''}</span>` : ''),
+        'locked'
+      );
+    }
+
+    // Thông báo nổi giữa màn hình (khoá cửa, mở khoá, hoàn thành khu vực)
+    showToast(html, variant = 'info', duration = 3600) {
+      const el = document.getElementById('gameToast');
+      if (!el) return;
+      const banner = document.getElementById('objectiveBanner');
+      if (banner) banner.classList.remove('visible');
+      el.innerHTML = html;
+      el.className = `game-toast visible toast-${variant}`;
+      if (this.toastTimer) clearTimeout(this.toastTimer);
+      this.toastTimer = setTimeout(() => {
+        el.classList.remove('visible');
+      }, duration);
+    }
+
+    // Băng nhiệm vụ hiện ra mỗi khi bước vào khu vực mới
+    showObjectiveBanner(zoneId) {
+      const zone = ZONES[zoneId];
+      if (!zone) return;
+      const found = this.state.zoneFoundCount(zoneId);
+      const total = this.state.zoneTotal(zoneId);
+      const el = document.getElementById('objectiveBanner');
+      if (!el) return;
+      const toast = document.getElementById('gameToast');
+      if (toast) toast.classList.remove('visible');
+      el.innerHTML = `
+        <div class="obj-zone">${zone.icon} ${zone.name} <span class="obj-cn">${zone.chinese} (${zone.pinyin})</span></div>
+        <div class="obj-text">${zone.objective}</div>
+        <div class="obj-progress">Đã khám phá ${found}/${total} đồ vật</div>
+      `;
+      el.classList.add('visible');
+      setTimeout(() => el.classList.remove('visible'), 5200);
+    }
+
+    // Bảng xác nhận đi qua cửa
+    openGateModal(gateObj) {
+      const ud = gateObj.userData;
+      const targetZone = ZONES[ud.gateTarget];
+      const zone = ZONES[this.currentZone];
+      if (document.exitPointerLock) document.exitPointerLock();
+
+      this.pendingGateZone = ud.gateTarget;
+      this.pendingGateVocab = ud.vocabId;
+
+      this.state.markDiscovered(ud.vocabId);
+      this.updateProgressUI();
+
+      const gateData = ROOM_VOCAB_DATA[ud.vocabId];
+      const setTxt = (id, txt) => { const e = document.getElementById(id); if (e) e.textContent = txt; };
+      const setHtml = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
+
+      setHtml('doorModalTitle', `${targetZone.icon} Tới ${targetZone.name}`);
+      setHtml('doorModalHanzi', gateData ? `${gateData.chinese} <span class="door-pin">${gateData.pinyin}</span>` : '');
+      setTxt('doorModalDesc', `Bạn đã khám phá xong ${zone.name}! Bước qua ${gateData ? gateData.nameVi.toLowerCase() : 'cánh cửa'} để tới ${targetZone.name} (${targetZone.chinese} – ${targetZone.pinyin}).`);
+      setTxt('doorFoundCount', `${this.state.zoneFoundCount(zone.id)}/${this.state.zoneTotal(zone.id)}`);
+      setTxt('doorScoreCount', this.state.score);
+      setHtml('btnConfirmExitDoorTxt', `${targetZone.icon} Đi tới ${targetZone.name}`);
 
       const doorModal = document.getElementById('doorModal');
       if (doorModal) doorModal.classList.add('active');
-    }
-
-    enterLivingRoom() {
-      const roomTitle = document.querySelector('.room-title');
-      if (roomTitle) roomTitle.innerHTML = '<span class="icon">🛋️</span> Phòng Khách';
-
-      if (document.exitPointerLock) document.exitPointerLock();
-      const doorModal = document.getElementById('doorModal');
-      if (doorModal) doorModal.classList.remove('active');
-      this.closeVocabModal();
-
-      // Fade to black
-      const overlay = document.getElementById('roomTransitionOverlay');
-      if (overlay) {
-        overlay.style.opacity = '1';
-        overlay.style.pointerEvents = 'all';
-      }
-
-      setTimeout(() => {
-        this.clearScene();
-        this.currentRoom = 'living';
-        this.buildLivingRoom();
-        this.resetPlayerToLivingRoomSpawn();
-        this.state.soundFX.playDiscover();
-
-        // Fade back in after 500ms build time
-        setTimeout(() => {
-          if (overlay) {
-            overlay.style.opacity = '0';
-            overlay.style.pointerEvents = 'none';
-          }
-        }, 500);
-      }, 650);
-    }
-
-    enterStudyRoom() {
-      const roomTitle = document.querySelector('.room-title');
-      if (roomTitle) roomTitle.innerHTML = '<span class="icon">🎒</span> Căn Phòng Học Tập';
-
-      if (document.exitPointerLock) document.exitPointerLock();
-      const overlay = document.getElementById('roomTransitionOverlay');
-      if (overlay) {
-        const label = overlay.querySelector('div:last-child');
-        if (label) label.textContent = 'Quay về phòng học...';
-        overlay.style.opacity = '1';
-        overlay.style.pointerEvents = 'all';
-      }
-
-      setTimeout(() => {
-        this.clearScene();
-        this.currentRoom = 'study';
-        this.buildStudyRoomScene();
-        this.player.pos.set(0, 0, 2.5);
-        this.player.yaw = 0;
-        this.state.soundFX.playDiscover();
-
-        setTimeout(() => {
-          if (overlay) {
-            const label = overlay.querySelector('div:last-child');
-            if (label) label.textContent = 'Đang mở cửa...';
-            overlay.style.opacity = '0';
-            overlay.style.pointerEvents = 'none';
-          }
-        }, 500);
-      }, 650);
     }
 
     clearScene() {
@@ -3731,24 +5377,1379 @@
         }
       });
       this.interactiveObjects = [];
+      this.objectMeshFactories = {};
+      this.targetedObject = null;
       this.playerMesh = null;
       this.playerBones = {};
       this.walkAnimPhase = 0;
       this.idleTime = 0;
       this.lampLight = null;
+      this.clockHandSec = null;
       this.smokeParticles = [];
+      this.animatedProps = [];
+      this.colliders = [];
+      if (this.crosshair) this.crosshair.classList.remove('active');
+      if (this.promptEl) this.promptEl.classList.remove('visible');
     }
 
-    buildStudyRoomScene() {
+    // --- ZONE 1: PHÒNG NGỦ ---
+    buildBedroom() {
       this.roomBounds = { minX: -4.5, maxX: 4.5, minZ: -4.5, maxZ: 4.5 };
+      this.colliders = [
+        { name: 'desk', minX: -1.1, maxX: 1.1, minZ: -4.3, maxZ: -2.6 },
+        { name: 'chair', minX: -0.65, maxX: 0.65, minZ: -2.75, maxZ: -1.55 },
+        { name: 'bookshelf', minX: -4.95, maxX: -3.7, minZ: -3.3, maxZ: -0.7 },
+        { name: 'plant', minX: -4.8, maxX: -3.8, minZ: 1.3, maxZ: 2.3 },
+        { name: 'bed', minX: 2.5, maxX: 4.8, minZ: -4.6, maxZ: -1.8 },
+        { name: 'guitar', minX: 3.9, maxX: 4.9, minZ: 2.3, maxZ: 3.3 },
+        { name: 'backpack', minX: -2.2, maxX: -1.4, minZ: -3.9, maxZ: -3.1 }
+      ];
       this.buildRoomArchitecture();
       this.buildPlayerAvatar();
       this.buildInteractiveObjects();
     }
 
-    resetPlayerToLivingRoomSpawn() {
-      this.player.pos.set(0, 0, 3.4);
-      this.player.yaw = Math.PI;
+    // Giữ tên cũ để tương thích
+    buildStudyRoomScene() {
+      this.buildBedroom();
+    }
+
+    // Đặt model GLB (nếu có) hoặc mesh dự phòng vào cảnh
+    placeZoneModel(id, pos, opts = {}, fallbackFn = null) {
+      const raw = this.loadedModels[id];
+      if (raw) {
+        const m = this.fitModelToBounds(raw, opts);
+        if (m) {
+          m.position.set(pos.x, pos.y || 0, pos.z);
+          this.scene.add(m);
+          return m;
+        }
+      }
+      if (fallbackFn) {
+        const fb = fallbackFn();
+        fb.position.set(pos.x, pos.y || 0, pos.z);
+        if (opts.rotationY) fb.rotation.y = opts.rotationY;
+        this.scene.add(fb);
+        return fb;
+      }
+      return null;
+    }
+
+    // --- ZONE 3: PHÒNG BẾP (廚房) ---
+    buildKitchen() {
+      const roomW = 9.0;   // theo trục X
+      const roomL = 7.6;   // theo trục Z
+      const roomH = 3.4;
+      this.roomBounds = { minX: -4.0, maxX: 4.0, minZ: -3.3, maxZ: 3.3 };
+
+      const tileMat = new THREE.MeshStandardMaterial({ color: 0xe7e5e4, roughness: 0.35, metalness: 0.05 });
+      const wallMat = new THREE.MeshStandardMaterial({ color: 0xf1f5f9, roughness: 0.9 });
+      const splashMat = new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.2, metalness: 0.15 });
+      const counterMat = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.25, metalness: 0.25 });
+      const cabinetMat = new THREE.MeshStandardMaterial({ color: 0x0f766e, roughness: 0.5 });
+      const woodMat = new THREE.MeshStandardMaterial({ map: createWoodTexture(), roughness: 0.5 });
+      const steelMat = new THREE.MeshStandardMaterial({ color: 0xd6d3d1, roughness: 0.2, metalness: 0.85 });
+
+      // 1. Sàn gạch caro
+      const floorCanvas = document.createElement('canvas');
+      floorCanvas.width = floorCanvas.height = 256;
+      const fctx = floorCanvas.getContext('2d');
+      for (let y = 0; y < 4; y++) {
+        for (let x = 0; x < 4; x++) {
+          fctx.fillStyle = ((x + y) % 2 === 0) ? '#e7e5e4' : '#d6d3d1';
+          fctx.fillRect(x * 64, y * 64, 64, 64);
+        }
+      }
+      fctx.strokeStyle = 'rgba(120,113,108,0.45)';
+      fctx.lineWidth = 2;
+      for (let i = 0; i <= 4; i++) {
+        fctx.beginPath(); fctx.moveTo(i * 64, 0); fctx.lineTo(i * 64, 256); fctx.stroke();
+        fctx.beginPath(); fctx.moveTo(0, i * 64); fctx.lineTo(256, i * 64); fctx.stroke();
+      }
+      const floorTex = new THREE.CanvasTexture(floorCanvas);
+      floorTex.wrapS = floorTex.wrapT = THREE.RepeatWrapping;
+      floorTex.repeat.set(3, 2.5);
+      const floor = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomL),
+        new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.4, metalness: 0.05 }));
+      floor.rotation.x = -Math.PI / 2;
+      floor.receiveShadow = true;
+      this.scene.add(floor);
+
+      // 2. Trần & đèn
+      const ceil = new THREE.Mesh(new THREE.PlaneGeometry(roomW, roomL), wallMat);
+      ceil.position.y = roomH;
+      ceil.rotation.x = Math.PI / 2;
+      this.scene.add(ceil);
+      [[-2.2, -1.0], [2.2, -1.0], [-2.2, 1.6], [2.2, 1.6]].forEach(([lx, lz]) => {
+        const panel = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.05, 0.5),
+          new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xfff4e0, emissiveIntensity: 0.9 }));
+        panel.position.set(lx, roomH - 0.04, lz);
+        this.scene.add(panel);
+        const l = new THREE.PointLight(0xfff2dd, 0.85, 8, 1.3);
+        l.position.set(lx, roomH - 0.25, lz);
+        this.scene.add(l);
+      });
+
+      // 3. Tường (chừa 2 ô cửa: sang phòng khách ở tường phải, ra phố ở tường trước)
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(roomW, roomH, 0.16), wallMat);
+      backWall.position.set(0, roomH / 2, -roomL / 2);
+      backWall.receiveShadow = true;
+      this.scene.add(backWall);
+
+      const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.16, roomH, roomL), wallMat);
+      leftWall.position.set(-roomW / 2, roomH / 2, 0);
+      this.scene.add(leftWall);
+
+      const gapW = 1.5, gapH = 2.6;
+      // Tường phải với ô cửa về phòng khách tại z = 2.4
+      const livDoorZ = 2.4;
+      const rSegA = roomL / 2 + livDoorZ - gapW / 2;
+      const rwA = new THREE.Mesh(new THREE.BoxGeometry(0.16, roomH, rSegA), wallMat);
+      rwA.position.set(roomW / 2, roomH / 2, -roomL / 2 + rSegA / 2);
+      this.scene.add(rwA);
+      const rSegB = roomL / 2 - livDoorZ - gapW / 2;
+      const rwB = new THREE.Mesh(new THREE.BoxGeometry(0.16, roomH, rSegB), wallMat);
+      rwB.position.set(roomW / 2, roomH / 2, roomL / 2 - rSegB / 2);
+      this.scene.add(rwB);
+      const rwTop = new THREE.Mesh(new THREE.BoxGeometry(0.16, roomH - gapH, gapW), wallMat);
+      rwTop.position.set(roomW / 2, roomH - (roomH - gapH) / 2, livDoorZ);
+      this.scene.add(rwTop);
+
+      // Tường trước với cửa chính ra phố tại x = -2.6
+      const frontDoorX = -2.6;
+      const fSegA = roomW / 2 + frontDoorX - gapW / 2;
+      const fwA = new THREE.Mesh(new THREE.BoxGeometry(fSegA, roomH, 0.16), wallMat);
+      fwA.position.set(-roomW / 2 + fSegA / 2, roomH / 2, roomL / 2);
+      this.scene.add(fwA);
+      const fSegB = roomW / 2 - frontDoorX - gapW / 2;
+      const fwB = new THREE.Mesh(new THREE.BoxGeometry(fSegB, roomH, 0.16), wallMat);
+      fwB.position.set(roomW / 2 - fSegB / 2, roomH / 2, roomL / 2);
+      this.scene.add(fwB);
+      const fwTop = new THREE.Mesh(new THREE.BoxGeometry(gapW, roomH - gapH, 0.16), wallMat);
+      fwTop.position.set(frontDoorX, roomH - (roomH - gapH) / 2, roomL / 2);
+      this.scene.add(fwTop);
+
+      // 4. Backsplash gạch men sau bàn bếp
+      const splash = new THREE.Mesh(new THREE.BoxGeometry(6.6, 0.95, 0.03), splashMat);
+      splash.position.set(-0.6, 1.42, -roomL / 2 + 0.09);
+      this.scene.add(splash);
+
+      // 5. Dãy tủ bếp dưới + mặt đá (dọc tường sau)
+      const counterZ = -roomL / 2 + 0.42;
+      // Mặt đá chia đoạn, chừa chỗ cho bồn rửa (x = -2.5) và bếp nấu (x = 0.8)
+      [[-4.00, -2.98], [-2.02, 0.34], [1.26, 2.80]].forEach(([x0, x1]) => {
+        const seg = new THREE.Mesh(createRoundedBoxGeometry(x1 - x0, 0.06, 0.72, 0.02, 3), counterMat);
+        seg.position.set((x0 + x1) / 2, 0.92, counterZ);
+        seg.castShadow = true;
+        this.scene.add(seg);
+      });
+
+      const cabinetXs = [-3.4, -1.6, -0.7, 1.6, 2.4];
+      cabinetXs.forEach((cx, i) => {
+        const modelId = (i % 2 === 0) ? 'kt_cabinet' : 'kt_cabinetDrawer';
+        this.placeZoneModel(modelId, { x: cx, y: 0, z: counterZ }, { targetHeight: 0.9, alignBottomY: true }, () => {
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(createRoundedBoxGeometry(0.86, 0.88, 0.68, 0.02, 2), cabinetMat);
+          body.position.y = 0.44; body.castShadow = true; g.add(body);
+          const handle = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.34, 10), steelMat);
+          handle.rotation.z = Math.PI / 2;
+          handle.position.set(0, 0.72, 0.36); g.add(handle);
+          return g;
+        });
+      });
+
+      // Tủ bếp có thể tương tác (櫥櫃)
+      const cabinetProp = new THREE.Group();
+      const cabBody = new THREE.Mesh(createRoundedBoxGeometry(0.9, 0.9, 0.7, 0.03, 3), cabinetMat);
+      cabBody.position.y = 0.45; cabBody.castShadow = true;
+      cabinetProp.add(cabBody);
+      for (let dy of [0.28, 0.62]) {
+        const dh = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.4, 12), steelMat);
+        dh.rotation.z = Math.PI / 2; dh.position.set(0, dy, 0.37);
+        cabinetProp.add(dh);
+      }
+      cabinetProp.position.set(-0.7, 0, counterZ);
+      this.registerInteractable(cabinetProp, 'kt_cabinet');
+      this.scene.add(cabinetProp);
+
+      // Tủ treo phía trên
+      [-3.2, -2.2, 1.6, 2.6].forEach(cx => {
+        this.placeZoneModel('kt_cabinetUpper', { x: cx, y: 1.95, z: -roomL / 2 + 0.28 },
+          { targetHeight: 0.72, alignBottomY: true }, () => {
+            const g = new THREE.Group();
+            const body = new THREE.Mesh(createRoundedBoxGeometry(0.94, 0.7, 0.36, 0.02, 2), cabinetMat);
+            body.position.y = 0.35; g.add(body);
+            return g;
+          });
+      });
+
+      // 6. BỒN RỬA (水槽)
+      const sink = this.placeZoneModel('kt_sink', { x: -2.5, y: 0.0, z: counterZ }, { targetHeight: 0.95, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const base = new THREE.Mesh(createRoundedBoxGeometry(0.9, 0.9, 0.68, 0.02, 2), cabinetMat);
+        base.position.y = 0.45; g.add(base);
+        const basin = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.16, 0.46), steelMat);
+        basin.position.y = 0.94; g.add(basin);
+        const water = new THREE.Mesh(new THREE.PlaneGeometry(0.56, 0.4), new THREE.MeshStandardMaterial({ color: 0x60a5fa, roughness: 0.05, metalness: 0.4, transparent: true, opacity: 0.7 }));
+        water.rotation.x = -Math.PI / 2; water.position.y = 0.98; g.add(water);
+        const tap = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, 0.34, 12), steelMat);
+        tap.position.set(0, 1.14, -0.24); g.add(tap);
+        const spout = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.02, 8, 20, Math.PI), steelMat);
+        spout.position.set(0, 1.30, -0.13); spout.rotation.y = Math.PI / 2; g.add(spout);
+        return g;
+      });
+      if (sink) this.registerInteractable(sink, 'kt_sink');
+
+      // 7. BẾP NẤU (爐子) + máy hút mùi
+      const stove = this.placeZoneModel('kt_stove', { x: 0.8, y: 0, z: counterZ }, { targetHeight: 0.95, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.9, 0.9, 0.68, 0.02, 2), new THREE.MeshStandardMaterial({ color: 0x27272a, roughness: 0.35, metalness: 0.5 }));
+        body.position.y = 0.45; g.add(body);
+        const top = new THREE.Mesh(new THREE.BoxGeometry(0.88, 0.04, 0.66), new THREE.MeshStandardMaterial({ color: 0x09090b, roughness: 0.1, metalness: 0.3 }));
+        top.position.y = 0.92; g.add(top);
+        [[-0.2, -0.16], [0.2, -0.16], [-0.2, 0.18], [0.2, 0.18]].forEach(([bx, bz]) => {
+          const ring = new THREE.Mesh(new THREE.TorusGeometry(0.09, 0.014, 8, 24), new THREE.MeshStandardMaterial({ color: 0x1c1917, roughness: 0.6 }));
+          ring.rotation.x = -Math.PI / 2; ring.position.set(bx, 0.95, bz); g.add(ring);
+        });
+        const flame = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.012, 8, 24), new THREE.MeshStandardMaterial({ color: 0x60a5fa, emissive: 0x2563eb, emissiveIntensity: 1.6 }));
+        flame.rotation.x = -Math.PI / 2; flame.position.set(-0.2, 0.96, -0.16); g.add(flame);
+        return g;
+      });
+      if (stove) this.registerInteractable(stove, 'kt_stove');
+
+      // Nồi trên bếp + ánh lửa
+      const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.14, 0.18, 20), steelMat);
+      pot.position.set(0.6, 1.02, counterZ - 0.16);
+      this.scene.add(pot);
+      const stoveGlow = new THREE.PointLight(0xfb923c, 0.5, 2.2, 2);
+      stoveGlow.position.set(0.6, 1.0, counterZ);
+      this.scene.add(stoveGlow);
+
+      this.placeZoneModel('kt_hood', { x: 0.8, y: 1.85, z: -roomL / 2 + 0.3 }, { targetHeight: 0.85, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const funnel = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.28, 0.4, 4), steelMat);
+        funnel.rotation.y = Math.PI / 4; funnel.position.y = 0.2; g.add(funnel);
+        const pipe = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.55, 0.26), steelMat);
+        pipe.position.y = 0.66; g.add(pipe);
+        return g;
+      });
+
+      // 8. LÒ VI SÓNG (微波爐)
+      const micro = this.placeZoneModel('kt_microwave', { x: 2.0, y: 0.95, z: counterZ - 0.05 }, { targetHeight: 0.34, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.62, 0.34, 0.42, 0.02, 2), new THREE.MeshStandardMaterial({ color: 0x3f3f46, roughness: 0.3, metalness: 0.6 }));
+        body.position.y = 0.17; g.add(body);
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(0.36, 0.22), new THREE.MeshStandardMaterial({ color: 0x111827, emissive: 0x1f2937, emissiveIntensity: 0.6, roughness: 0.1 }));
+        win.position.set(-0.08, 0.18, 0.212); g.add(win);
+        return g;
+      });
+      if (micro) this.registerInteractable(micro, 'kt_microwave');
+
+      // 9. TỦ LẠNH (冰箱)
+      const fridge = this.placeZoneModel('kt_fridge', { x: 3.4, y: 0, z: -roomL / 2 + 0.55 }, { targetHeight: 1.95, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.92, 1.95, 0.75, 0.05, 3), new THREE.MeshStandardMaterial({ color: 0xe4e4e7, roughness: 0.25, metalness: 0.7 }));
+        body.position.y = 0.98; body.castShadow = true; g.add(body);
+        const seam = new THREE.Mesh(new THREE.BoxGeometry(0.94, 0.02, 0.02), new THREE.MeshStandardMaterial({ color: 0x9ca3af }));
+        seam.position.set(0, 1.32, 0.38); g.add(seam);
+        for (let hy of [1.55, 1.05]) {
+          const h = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.3, 12), steelMat);
+          h.position.set(0.34, hy, 0.39); g.add(h);
+        }
+        return g;
+      });
+      if (fridge) this.registerInteractable(fridge, 'kt_fridge');
+
+      // 10. MÁY PHA CÀ PHÊ / MÁY NƯỚNG / MÁY XAY trên quầy trái
+      const sideCounterZ = -0.4;
+      const sideTop = new THREE.Mesh(createRoundedBoxGeometry(0.72, 0.06, 2.6, 0.02, 3), counterMat);
+      sideTop.position.set(-roomW / 2 + 0.45, 0.92, sideCounterZ);
+      this.scene.add(sideTop);
+      for (let cz of [-1.3, -0.4, 0.5]) {
+        this.placeZoneModel('kt_cabinet', { x: -roomW / 2 + 0.45, y: 0, z: cz }, { targetHeight: 0.9, alignBottomY: true, rotationY: Math.PI / 2 }, () => {
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(createRoundedBoxGeometry(0.68, 0.88, 0.86, 0.02, 2), cabinetMat);
+          body.position.y = 0.44; g.add(body);
+          return g;
+        });
+      }
+
+      const coffeeM = this.placeZoneModel('kt_coffeeMachine', { x: -roomW / 2 + 0.5, y: 0.95, z: -1.2 }, { targetHeight: 0.4, alignBottomY: true, rotationY: Math.PI / 2 }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.3, 0.42, 0.26, 0.03, 3), new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.3, metalness: 0.5 }));
+        body.position.y = 0.21; g.add(body);
+        const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.04, 0.07, 14), new THREE.MeshStandardMaterial({ color: 0xfafafa, roughness: 0.3 }));
+        cup.position.set(0.16, 0.06, 0); g.add(cup);
+        const led = new THREE.Mesh(new THREE.PlaneGeometry(0.12, 0.03), new THREE.MeshStandardMaterial({ color: 0x22d3ee, emissive: 0x06b6d4, emissiveIntensity: 1.4 }));
+        led.position.set(0.152, 0.32, 0); led.rotation.y = Math.PI / 2; g.add(led);
+        return g;
+      });
+      if (coffeeM) this.registerInteractable(coffeeM, 'kt_coffeeMachine');
+
+      const toaster = this.placeZoneModel('kt_toaster', { x: -roomW / 2 + 0.5, y: 0.95, z: -0.35 }, { targetHeight: 0.24, alignBottomY: true, rotationY: Math.PI / 2 }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.34, 0.22, 0.2, 0.04, 3), steelMat);
+        body.position.y = 0.11; g.add(body);
+        for (let bx of [-0.07, 0.07]) {
+          const slice = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, 0.02), new THREE.MeshStandardMaterial({ color: 0xd6a05a, roughness: 0.9 }));
+          slice.position.set(bx, 0.26, 0); g.add(slice);
+        }
+        return g;
+      });
+      if (toaster) this.registerInteractable(toaster, 'kt_toaster');
+
+      const blender = this.placeZoneModel('kt_blender', { x: -roomW / 2 + 0.5, y: 0.95, z: 0.5 }, { targetHeight: 0.42, alignBottomY: true, rotationY: Math.PI / 2 }, () => {
+        const g = new THREE.Group();
+        const base = new THREE.Mesh(createRoundedBoxGeometry(0.2, 0.12, 0.2, 0.03, 3), new THREE.MeshStandardMaterial({ color: 0x27272a, roughness: 0.4 }));
+        base.position.y = 0.06; g.add(base);
+        const jar = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.07, 0.26, 16), new THREE.MeshStandardMaterial({ color: 0xbae6fd, roughness: 0.05, transparent: true, opacity: 0.6 }));
+        jar.position.y = 0.25; g.add(jar);
+        const juice = new THREE.Mesh(new THREE.CylinderGeometry(0.082, 0.066, 0.14, 16), new THREE.MeshStandardMaterial({ color: 0xfb923c, roughness: 0.4 }));
+        juice.position.y = 0.2; g.add(juice);
+        return g;
+      });
+      if (blender) this.registerInteractable(blender, 'kt_blender');
+
+      // 11. BÀN ĂN (餐桌) + ghế
+      const table = this.placeZoneModel('kt_table', { x: 0.6, y: 0, z: 1.4 }, { targetHeight: 0.76, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const top = new THREE.Mesh(createRoundedBoxGeometry(1.7, 0.07, 1.0, 0.03, 3), woodMat);
+        top.position.y = 0.72; top.castShadow = true; g.add(top);
+        [[-0.75, -0.4], [0.75, -0.4], [-0.75, 0.4], [0.75, 0.4]].forEach(([lx, lz]) => {
+          const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.7, 12), woodMat);
+          leg.position.set(lx, 0.35, lz); g.add(leg);
+        });
+        return g;
+      });
+      if (table) this.registerInteractable(table, 'kt_table');
+
+      [[-0.35, 1.4, Math.PI / 2], [1.55, 1.4, -Math.PI / 2], [0.6, 0.55, 0], [0.6, 2.25, Math.PI]].forEach(([cx, cz, ry]) => {
+        this.placeZoneModel('kt_chair', { x: cx, y: 0, z: cz }, { targetHeight: 0.92, alignBottomY: true, rotationY: ry }, () => {
+          const g = new THREE.Group();
+          const seat = new THREE.Mesh(createRoundedBoxGeometry(0.42, 0.06, 0.42, 0.02, 2), woodMat);
+          seat.position.y = 0.46; g.add(seat);
+          const back = new THREE.Mesh(createRoundedBoxGeometry(0.42, 0.44, 0.05, 0.02, 2), woodMat);
+          back.position.set(0, 0.7, -0.18); g.add(back);
+          [[-0.17, -0.17], [0.17, -0.17], [-0.17, 0.17], [0.17, 0.17]].forEach(([lx, lz]) => {
+            const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.45, 10), woodMat);
+            leg.position.set(lx, 0.23, lz); g.add(leg);
+          });
+          g.rotation.y = ry;
+          return g;
+        });
+      });
+
+      // Bát đĩa trên bàn ăn
+      [[0.15, 1.15], [1.05, 1.65]].forEach(([px, pz]) => {
+        const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.11, 0.025, 24), new THREE.MeshStandardMaterial({ color: 0xfafafa, roughness: 0.25 }));
+        plate.position.set(px, 0.79, pz);
+        this.scene.add(plate);
+      });
+
+      // 12. THÙNG RÁC (垃圾桶)
+      const trash = this.placeZoneModel('kt_trashcan', { x: 3.3, y: 0, z: 1.9 }, { targetHeight: 0.62, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(new THREE.CylinderGeometry(0.19, 0.16, 0.55, 20), new THREE.MeshStandardMaterial({ color: 0x52525b, roughness: 0.4, metalness: 0.5 }));
+        body.position.y = 0.28; g.add(body);
+        const lid = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.05, 20), new THREE.MeshStandardMaterial({ color: 0x3f3f46, roughness: 0.35, metalness: 0.6 }));
+        lid.position.y = 0.58; g.add(lid);
+        return g;
+      });
+      if (trash) this.registerInteractable(trash, 'kt_trashcan');
+
+      // 13. CỬA VỀ PHÒNG KHÁCH (tường phải)
+      const backGate = new THREE.Group();
+      const bgFrameMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.45 });
+      [[-0.72], [0.72]].forEach(([px]) => {
+        const post = new THREE.Mesh(createRoundedBoxGeometry(0.1, gapH, 0.16, 0.02, 2), bgFrameMat);
+        post.position.set(px, gapH / 2, 0); backGate.add(post);
+      });
+      const bgTop = new THREE.Mesh(createRoundedBoxGeometry(1.54, 0.12, 0.16, 0.02, 2), bgFrameMat);
+      bgTop.position.set(0, gapH - 0.06, 0); backGate.add(bgTop);
+      const bgSign = new THREE.Mesh(new THREE.PlaneGeometry(0.68, 0.16),
+        new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0ea5e9, emissiveIntensity: 1.2 }));
+      bgSign.position.set(0, gapH + 0.18, 0.09); backGate.add(bgSign);
+      const bgLight = new THREE.PointLight(0x38bdf8, 0.5, 3, 1.5);
+      bgLight.position.set(0, gapH + 0.22, 0.3); backGate.add(bgLight);
+      backGate.rotation.y = -Math.PI / 2;
+      backGate.position.set(roomW / 2 - 0.12, 0, livDoorZ);
+      this.scene.add(backGate);
+      this.registerGate(backGate, 'back_door', 'living', { direction: 'back' });
+
+      // 14. CỬA CHÍNH RA THÀNH PHỐ (tường trước) — khoá tới khi học xong phòng bếp
+      const frontGate = new THREE.Group();
+      const fgFrame = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.4 });
+      const fgLeafMat = new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.5 });
+      [[-0.72], [0.72]].forEach(([px]) => {
+        const post = new THREE.Mesh(createRoundedBoxGeometry(0.11, gapH, 0.18, 0.02, 2), fgFrame);
+        post.position.set(px, gapH / 2, 0); frontGate.add(post);
+      });
+      const fgTop = new THREE.Mesh(createRoundedBoxGeometry(1.56, 0.13, 0.18, 0.02, 2), fgFrame);
+      fgTop.position.set(0, gapH - 0.065, 0); frontGate.add(fgTop);
+      const fgLeaf = new THREE.Mesh(createRoundedBoxGeometry(1.28, gapH - 0.16, 0.07, 0.02, 2), fgLeafMat);
+      fgLeaf.position.set(0, (gapH - 0.16) / 2, 0); frontGate.add(fgLeaf);
+      const fgWindow = new THREE.Mesh(new THREE.PlaneGeometry(0.72, 0.5),
+        new THREE.MeshStandardMaterial({ color: 0xbfdbfe, emissive: 0x93c5fd, emissiveIntensity: 0.55, roughness: 0.1 }));
+      fgWindow.position.set(0, 1.85, 0.04); frontGate.add(fgWindow);
+      const fgKnob = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 12), new THREE.MeshStandardMaterial({ color: 0xd97706, roughness: 0.2, metalness: 0.9 }));
+      fgKnob.position.set(0.48, 1.15, 0.06); frontGate.add(fgKnob);
+      const fgSignBox = new THREE.Mesh(createRoundedBoxGeometry(0.86, 0.24, 0.06, 0.02, 2), new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5 }));
+      fgSignBox.position.set(0, gapH + 0.2, 0.05); frontGate.add(fgSignBox);
+      const fgSign = new THREE.Mesh(new THREE.PlaneGeometry(0.78, 0.17),
+        new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xb91c1c, emissiveIntensity: 1.2 }));
+      fgSign.position.set(0, gapH + 0.2, 0.085);
+      fgSign.userData.isGateSign = true;
+      frontGate.add(fgSign);
+      const fgLight = new THREE.PointLight(0xef4444, 0.6, 3.2, 1.5);
+      fgLight.position.set(0, gapH + 0.25, 0.32);
+      fgLight.userData.isGateLight = true;
+      frontGate.add(fgLight);
+      frontGate.rotation.y = Math.PI;
+      frontGate.position.set(frontDoorX, 0, roomL / 2 - 0.12);
+      this.scene.add(frontGate);
+      this.registerGate(frontGate, 'front_door', 'street', { requireComplete: true });
+      this.applyGateLockVisual(frontGate, 'kitchen');
+
+      // Thảm chùi chân trước cửa
+      this.placeZoneModel('kt_rug', { x: frontDoorX, y: 0.008, z: roomL / 2 - 0.85 }, { targetWidth: 1.05, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const mat0 = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 0.6), new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.95 }));
+        mat0.rotation.x = -Math.PI / 2; g.add(mat0);
+        return g;
+      });
+
+      this.buildPlayerAvatar();
+
+      this.colliders = [
+        { name: 'counter_run',  minX: -4.0, maxX: 2.6,  minZ: -3.9, maxZ: -3.3 },
+        { name: 'fridge',       minX: 2.9,  maxX: 3.9,  minZ: -3.9, maxZ: -2.9 },
+        { name: 'side_counter', minX: -4.1, maxX: -3.3, minZ: -1.8, maxZ: 0.95 },
+        { name: 'dining_table', minX: -0.35, maxX: 1.55, minZ: 0.8, maxZ: 2.0 },
+        { name: 'trashcan',     minX: 3.05, maxX: 3.55, minZ: 1.65, maxZ: 2.15 }
+      ];
+    }
+
+    // ------------------------------------------------------------------
+    // TIỆN ÍCH DỰNG CẢNH NGOÀI TRỜI (đường phố & công viên)
+    // ------------------------------------------------------------------
+    makeTree(scale = 1, trunkColor = 0x6b4423, leafColor = 0x15803d) {
+      const g = new THREE.Group();
+      const trunk = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.13 * scale, 0.19 * scale, 1.7 * scale, 10),
+        new THREE.MeshStandardMaterial({ color: trunkColor, roughness: 0.95 })
+      );
+      trunk.position.y = 0.85 * scale;
+      trunk.castShadow = true;
+      g.add(trunk);
+      const leafMat = new THREE.MeshStandardMaterial({ color: leafColor, roughness: 0.85 });
+      const blobs = [
+        [0, 2.25, 0, 0.95], [-0.5, 1.95, 0.25, 0.66],
+        [0.55, 2.05, -0.2, 0.6], [0.1, 2.75, 0.15, 0.58]
+      ];
+      blobs.forEach(([bx, by, bz, br]) => {
+        const blob = new THREE.Mesh(new THREE.IcosahedronGeometry(br * scale, 1), leafMat);
+        blob.position.set(bx * scale, by * scale, bz * scale);
+        blob.castShadow = true;
+        g.add(blob);
+      });
+      return g;
+    }
+
+    makeStreetLamp() {
+      const g = new THREE.Group();
+      const metalMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.35, metalness: 0.75 });
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.22, 0.3, 14), metalMat);
+      base.position.y = 0.15; g.add(base);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 4.4, 14), metalMat);
+      pole.position.y = 2.4; pole.castShadow = true; g.add(pole);
+      const armCurve = new THREE.Mesh(new THREE.TorusGeometry(0.55, 0.06, 8, 20, Math.PI / 2), metalMat);
+      armCurve.position.set(0.0, 4.55, 0); armCurve.rotation.z = Math.PI; armCurve.rotation.y = Math.PI / 2;
+      g.add(armCurve);
+      const headArm = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.1, 0.9), metalMat);
+      headArm.position.set(0, 4.6, 0.5); g.add(headArm);
+      const shade = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.3, 0.24, 14), metalMat);
+      shade.position.set(0, 4.48, 0.92); g.add(shade);
+      const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.19, 14, 12),
+        new THREE.MeshStandardMaterial({ color: 0xfff7d6, emissive: 0xfde68a, emissiveIntensity: 1.5 }));
+      bulb.position.set(0, 4.32, 0.92); g.add(bulb);
+      const lampLight = new THREE.PointLight(0xffedb8, 0.55, 9, 1.6);
+      lampLight.position.set(0, 4.2, 0.92); g.add(lampLight);
+      return g;
+    }
+
+    makeCar(bodyColor = 0xdc2626) {
+      const g = new THREE.Group();
+      const bodyMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.28, metalness: 0.55 });
+      const glassMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.08, metalness: 0.4, transparent: true, opacity: 0.85 });
+      const tyreMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.95 });
+
+      const lower = new THREE.Mesh(createRoundedBoxGeometry(1.85, 0.62, 4.15, 0.22, 4), bodyMat);
+      lower.position.y = 0.66; lower.castShadow = true; g.add(lower);
+      const cabin = new THREE.Mesh(createRoundedBoxGeometry(1.62, 0.62, 2.1, 0.24, 4), bodyMat);
+      cabin.position.set(0, 1.20, -0.15); cabin.castShadow = true; g.add(cabin);
+      const windshield = new THREE.Mesh(new THREE.PlaneGeometry(1.42, 0.5), glassMat);
+      windshield.position.set(0, 1.22, 0.92); windshield.rotation.x = -0.28; g.add(windshield);
+      const rearGlass = new THREE.Mesh(new THREE.PlaneGeometry(1.42, 0.5), glassMat);
+      rearGlass.position.set(0, 1.22, -1.22); rearGlass.rotation.x = 0.28; rearGlass.rotation.y = Math.PI; g.add(rearGlass);
+      [-1, 1].forEach(sx => {
+        const sideGlass = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 0.44), glassMat);
+        sideGlass.position.set(sx * 0.82, 1.24, -0.15);
+        sideGlass.rotation.y = sx * Math.PI / 2; g.add(sideGlass);
+      });
+      [[-0.86, 1.35], [0.86, 1.35], [-0.86, -1.35], [0.86, -1.35]].forEach(([wx, wz]) => {
+        const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.25, 18), tyreMat);
+        wheel.rotation.z = Math.PI / 2;
+        wheel.position.set(wx, 0.36, wz); g.add(wheel);
+        const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.27, 14),
+          new THREE.MeshStandardMaterial({ color: 0xd4d4d8, roughness: 0.25, metalness: 0.85 }));
+        hub.rotation.z = Math.PI / 2; hub.position.set(wx, 0.36, wz); g.add(hub);
+      });
+      [[-0.6, 2.05], [0.6, 2.05]].forEach(([hx, hz]) => {
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.15, 12, 10),
+          new THREE.MeshStandardMaterial({ color: 0xfff8dc, emissive: 0xfde68a, emissiveIntensity: 0.9 }));
+        head.scale.z = 0.5; head.position.set(hx, 0.72, hz); g.add(head);
+      });
+      [[-0.6, -2.05], [0.6, -2.05]].forEach(([hx, hz]) => {
+        const tail = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.14, 0.06),
+          new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xdc2626, emissiveIntensity: 1.1 }));
+        tail.position.set(hx, 0.78, hz); g.add(tail);
+      });
+      return g;
+    }
+
+    makeBuilding(width, depth, floors, baseColor, accentColor) {
+      const g = new THREE.Group();
+      const floorH = 3.0;
+      const height = floors * floorH;
+      const wallMat = new THREE.MeshStandardMaterial({ color: baseColor, roughness: 0.85 });
+      const body = new THREE.Mesh(new THREE.BoxGeometry(width, height, depth), wallMat);
+      body.position.y = height / 2;
+      body.castShadow = true;
+      body.receiveShadow = true;
+      g.add(body);
+
+      // Viền mỗi tầng + cửa sổ phát sáng
+      const winMat = new THREE.MeshStandardMaterial({ color: 0x93c5fd, emissive: 0x60a5fa, emissiveIntensity: 0.35, roughness: 0.1, metalness: 0.4 });
+      const winDarkMat = new THREE.MeshStandardMaterial({ color: 0x1e3a5f, roughness: 0.2, metalness: 0.3 });
+      const cols = Math.max(2, Math.floor(width / 1.5));
+      for (let f = 0; f < floors; f++) {
+        const y = f * floorH + floorH * 0.62;
+        for (let c = 0; c < cols; c++) {
+          const x = -width / 2 + (width / cols) * (c + 0.5);
+          const lit = ((f * 7 + c * 3) % 4) !== 0;
+          [1, -1].forEach(sz => {
+            const w = new THREE.Mesh(new THREE.PlaneGeometry(width / cols * 0.55, 1.35), lit ? winMat : winDarkMat);
+            w.position.set(x, y, sz * (depth / 2 + 0.02));
+            if (sz < 0) w.rotation.y = Math.PI;
+            g.add(w);
+          });
+        }
+        const band = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.16, depth + 0.14),
+          new THREE.MeshStandardMaterial({ color: accentColor, roughness: 0.6 }));
+        band.position.y = f * floorH + 0.08;
+        g.add(band);
+      }
+      const roof = new THREE.Mesh(new THREE.BoxGeometry(width + 0.3, 0.3, depth + 0.3),
+        new THREE.MeshStandardMaterial({ color: accentColor, roughness: 0.7 }));
+      roof.position.y = height + 0.15;
+      g.add(roof);
+      return g;
+    }
+
+    // --- ZONE 4: ĐƯỜNG PHỐ THÀNH PHỐ (街道) ---
+    buildStreet() {
+      this.roomBounds = { minX: -9.5, maxX: 9.5, minZ: -20.0, maxZ: 25 };
+
+      const asphaltMat = new THREE.MeshStandardMaterial({ color: 0x3f3f46, roughness: 0.95 });
+      const walkMat = new THREE.MeshStandardMaterial({ color: 0xd6d3d1, roughness: 0.9 });
+      const curbMat = new THREE.MeshStandardMaterial({ color: 0xa8a29e, roughness: 0.85 });
+      const lineMat = new THREE.MeshStandardMaterial({ color: 0xfef08a, roughness: 0.6 });
+      const whiteMat = new THREE.MeshStandardMaterial({ color: 0xfafaf9, roughness: 0.6 });
+
+      // Nền cỏ nền xa
+      const ground = new THREE.Mesh(new THREE.PlaneGeometry(160, 160),
+        new THREE.MeshStandardMaterial({ color: 0x4d7c0f, roughness: 1 }));
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -0.06;
+      ground.receiveShadow = true;
+      this.scene.add(ground);
+
+      // 1. LÒNG ĐƯỜNG (馬路) — chạy dọc trục Z
+      const roadGroup = new THREE.Group();
+      const road = new THREE.Mesh(new THREE.PlaneGeometry(8, 66), asphaltMat);
+      road.rotation.x = -Math.PI / 2;
+      road.position.set(0, 0.01, 0);
+      road.receiveShadow = true;
+      roadGroup.add(road);
+      // Vạch tim đường đứt quãng
+      for (let z = -30; z <= 30; z += 3.4) {
+        if (Math.abs(z + 10) < 3) continue; // chừa chỗ vạch qua đường
+        const dash = new THREE.Mesh(new THREE.PlaneGeometry(0.22, 1.9), lineMat);
+        dash.rotation.x = -Math.PI / 2;
+        dash.position.set(0, 0.02, z);
+        roadGroup.add(dash);
+      }
+      roadGroup.position.set(0, 0, 0);
+      this.objectMeshFactories.st_road = () => {
+        const g = new THREE.Group();
+        const seg = new THREE.Mesh(new THREE.BoxGeometry(8, 0.12, 9), asphaltMat);
+        seg.position.y = -0.06; g.add(seg);
+        for (let z = -3.4; z <= 3.4; z += 3.4) {
+          const dash = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.02, 1.9), lineMat);
+          dash.position.set(0, 0.01, z); g.add(dash);
+        }
+        [-1, 1].forEach(side => {
+          const walk = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.2, 9), walkMat);
+          walk.position.set(side * 4.8, -0.02, 0); g.add(walk);
+          const curb = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.24, 9), curbMat);
+          curb.position.set(side * 4.05, 0.0, 0); g.add(curb);
+        });
+        return g;
+      };
+      this.registerInteractable(roadGroup, 'st_road');
+      this.scene.add(roadGroup);
+
+      // 2. VỈA HÈ HAI BÊN + bó vỉa
+      [-1, 1].forEach(side => {
+        const walk = new THREE.Mesh(new THREE.PlaneGeometry(5, 66), walkMat);
+        walk.rotation.x = -Math.PI / 2;
+        walk.position.set(side * 6.5, 0.06, 0);
+        walk.receiveShadow = true;
+        this.scene.add(walk);
+        const curb = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.14, 66), curbMat);
+        curb.position.set(side * 4.1, 0.05, 0);
+        this.scene.add(curb);
+      });
+
+      // 3. VẠCH QUA ĐƯỜNG (斑馬線) tại z = -10
+      const crossGroup = new THREE.Group();
+      for (let i = -3; i <= 3; i++) {
+        const stripe = new THREE.Mesh(new THREE.PlaneGeometry(0.55, 2.6), whiteMat);
+        stripe.rotation.x = -Math.PI / 2;
+        stripe.position.set(i * 1.1, 0.03, 0);
+        crossGroup.add(stripe);
+      }
+      crossGroup.position.set(0, 0, -10);
+      this.registerInteractable(crossGroup, 'st_crosswalk');
+      this.scene.add(crossGroup);
+
+      // 4. ĐÈN GIAO THÔNG (紅綠燈) ở góc vạch qua đường
+      const lightGroup = new THREE.Group();
+      const poleMat = new THREE.MeshStandardMaterial({ color: 0x27272a, roughness: 0.4, metalness: 0.7 });
+      const tlPole = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.12, 4.2, 12), poleMat);
+      tlPole.position.y = 2.1; tlPole.castShadow = true; lightGroup.add(tlPole);
+      const tlBox = new THREE.Mesh(createRoundedBoxGeometry(0.42, 1.15, 0.34, 0.05, 3), poleMat);
+      tlBox.position.set(0, 3.9, 0.22); lightGroup.add(tlBox);
+      const lampColors = [
+        { c: 0xef4444, e: 0xdc2626, y: 4.28 },
+        { c: 0xfacc15, e: 0xeab308, y: 3.90 },
+        { c: 0x22c55e, e: 0x16a34a, y: 3.52 }
+      ];
+      const tlLamps = [];
+      lampColors.forEach(lc => {
+        const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.13, 20),
+          new THREE.MeshStandardMaterial({ color: lc.c, emissive: lc.e, emissiveIntensity: 0.25 }));
+        bulb.position.set(0, lc.y, 0.395);
+        lightGroup.add(bulb);
+        tlLamps.push(bulb);
+      });
+      lightGroup.position.set(4.9, 0, -7.6);
+      lightGroup.rotation.y = Math.PI;
+      // Mô hình xem 3D: cột thấp hơn, hộp đèn quay ra trước và cả 3 bóng cùng sáng
+      this.objectMeshFactories.st_trafficLight = () => {
+        const g = new THREE.Group();
+        const p = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.12, 2.2, 12), poleMat);
+        p.position.y = 1.1; g.add(p);
+        const box = new THREE.Mesh(createRoundedBoxGeometry(0.46, 1.2, 0.36, 0.05, 3), poleMat);
+        box.position.set(0, 2.75, 0.1); g.add(box);
+        lampColors.forEach((lc, i) => {
+          const bulb = new THREE.Mesh(new THREE.CircleGeometry(0.14, 20),
+            new THREE.MeshStandardMaterial({ color: lc.c, emissive: lc.e, emissiveIntensity: 1.7 }));
+          bulb.position.set(0, 3.13 - i * 0.38, 0.285); g.add(bulb);
+          const visor = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.1, 16, 1, true), poleMat);
+          visor.rotation.x = Math.PI / 2;
+          visor.position.set(0, 3.13 - i * 0.38, 0.315); g.add(visor);
+        });
+        return g;
+      };
+      this.registerInteractable(lightGroup, 'st_trafficLight');
+      this.scene.add(lightGroup);
+      // Chu kỳ đèn đỏ → vàng → xanh
+      this.animatedProps.push({
+        type: 'trafficLight', lamps: tlLamps, t: 0,
+        update(delta) {
+          this.t += delta;
+          const phase = Math.floor(this.t / 3) % 3;
+          this.lamps.forEach((l, i) => {
+            l.material.emissiveIntensity = (i === phase) ? 1.8 : 0.18;
+          });
+        }
+      });
+
+      // 5. ĐÈN ĐƯỜNG (路燈)
+      const lampZs = [16, 6, -4, -14, -22];
+      lampZs.forEach((lz, i) => {
+        const lamp = this.makeStreetLamp();
+        const side = (i % 2 === 0) ? 1 : -1;
+        lamp.position.set(side * 4.55, 0.06, lz);
+        lamp.rotation.y = side > 0 ? Math.PI : 0;
+        if (i === 1) {
+          this.registerInteractable(lamp, 'st_streetLamp');
+        }
+        this.scene.add(lamp);
+      });
+
+      // 6. TRẠM XE BUÝT (公車站)
+      const busStop = new THREE.Group();
+      const bsMetal = new THREE.MeshStandardMaterial({ color: 0x0e7490, roughness: 0.35, metalness: 0.6 });
+      const bsGlass = new THREE.MeshStandardMaterial({ color: 0xbae6fd, roughness: 0.05, metalness: 0.2, transparent: true, opacity: 0.35, side: THREE.DoubleSide });
+      [[-1.6], [1.6]].forEach(([px]) => {
+        const post = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.5, 0.12), bsMetal);
+        post.position.set(px, 1.25, -0.7); busStop.add(post);
+        const post2 = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.5, 0.12), bsMetal);
+        post2.position.set(px, 1.25, 0.7); busStop.add(post2);
+      });
+      const bsRoof = new THREE.Mesh(createRoundedBoxGeometry(3.6, 0.12, 1.8, 0.05, 3), bsMetal);
+      bsRoof.position.y = 2.55; bsRoof.castShadow = true; busStop.add(bsRoof);
+      const bsBack = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 2.3), bsGlass);
+      bsBack.position.set(0, 1.3, -0.72); busStop.add(bsBack);
+      const bsBench = new THREE.Mesh(createRoundedBoxGeometry(2.6, 0.1, 0.42, 0.03, 2),
+        new THREE.MeshStandardMaterial({ color: 0x92400e, roughness: 0.8 }));
+      bsBench.position.set(0, 0.48, -0.35); busStop.add(bsBench);
+      const bsSignPost = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.6, 10), bsMetal);
+      bsSignPost.position.set(2.1, 1.3, 0.5); busStop.add(bsSignPost);
+      const bsSign = new THREE.Mesh(createRoundedBoxGeometry(0.72, 0.5, 0.05, 0.04, 3),
+        new THREE.MeshStandardMaterial({ color: 0x0369a1, emissive: 0x0284c7, emissiveIntensity: 0.5 }));
+      bsSign.position.set(2.1, 2.5, 0.5); busStop.add(bsSign);
+      busStop.position.set(7.6, 0.06, 15);
+      busStop.rotation.y = -Math.PI / 2;
+      this.registerInteractable(busStop, 'st_busStop');
+      this.scene.add(busStop);
+
+      // 7. GHẾ DÀI (長椅)
+      const bench = this.placeZoneModel('st_bench', { x: 7.7, y: 0.06, z: 5.5 },
+        { targetHeight: 0.92, alignBottomY: true, rotationY: -Math.PI / 2 }, () => {
+          const g = new THREE.Group();
+          const woodM = new THREE.MeshStandardMaterial({ color: 0x9a6a3c, roughness: 0.85 });
+          const ironM = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 });
+          for (let i = 0; i < 3; i++) {
+            const slat = new THREE.Mesh(createRoundedBoxGeometry(1.8, 0.06, 0.16, 0.02, 2), woodM);
+            slat.position.set(0, 0.45, -0.2 + i * 0.2); g.add(slat);
+          }
+          for (let i = 0; i < 3; i++) {
+            const slat = new THREE.Mesh(createRoundedBoxGeometry(1.8, 0.14, 0.05, 0.02, 2), woodM);
+            slat.position.set(0, 0.62 + i * 0.19, -0.32); g.add(slat);
+          }
+          [-0.78, 0.78].forEach(lx => {
+            const leg = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.45, 0.5), ironM);
+            leg.position.set(lx, 0.22, -0.1); g.add(leg);
+          });
+          return g;
+        });
+      if (bench) {
+        bench.rotation.y = -Math.PI / 2;
+        this.registerInteractable(bench, 'st_bench');
+      }
+
+      // 8. CÂY XANH VEN ĐƯỜNG (樹)
+      const treeZs = [16, 9, 1, -7, -15, -24];
+      treeZs.forEach((tz, i) => {
+        [-1, 1].forEach(side => {
+          const tree = this.makeTree(1 + (i % 3) * 0.12, 0x6b4423, [0x15803d, 0x166534, 0x22c55e][i % 3]);
+          tree.position.set(side * 8.6, 0.06, tz + side * 1.3);
+          if (i === 2 && side === 1) {
+            this.registerInteractable(tree, 'st_tree');
+          }
+          this.scene.add(tree);
+        });
+      });
+
+      // 9. XE Ô TÔ ĐẬU BÊN ĐƯỜNG (汽車)
+      const car = this.makeCar(0xdc2626);
+      car.position.set(-2.2, 0.01, 8);
+      this.registerInteractable(car, 'st_car');
+      this.scene.add(car);
+
+      const car2 = this.makeCar(0x2563eb);
+      car2.position.set(2.2, 0.01, -18);
+      car2.rotation.y = Math.PI;
+      this.scene.add(car2);
+
+      // 10. TÒA NHÀ CAO TẦNG (大樓) & DÃY PHỐ
+      const blocks = [
+        { x: 13, z: 12, w: 9, d: 11, f: 7, c: 0x94a3b8, a: 0x475569, tag: 'tall' },
+        { x: 13, z: -2, w: 9, d: 10, f: 5, c: 0xa8a29e, a: 0x57534e },
+        { x: 13, z: -16, w: 9, d: 10, f: 6, c: 0x9ca3af, a: 0x4b5563 },
+        { x: -13, z: 18, w: 9, d: 10, f: 4, c: 0xcbb69a, a: 0x78716c },
+        { x: -13, z: 4, w: 9, d: 10, f: 6, c: 0x93a5b8, a: 0x475569 },
+        { x: -13, z: -12, w: 9, d: 12, f: 5, c: 0xb8a99a, a: 0x6b5b4b }
+      ];
+      blocks.forEach(b => {
+        const bl = this.makeBuilding(b.w, b.d, b.f, b.c, b.a);
+        bl.position.set(b.x, 0, b.z);
+        if (b.tag === 'tall') {
+          this.registerInteractable(bl, 'st_building');
+        }
+        this.scene.add(bl);
+      });
+
+      // 11. CỬA HÀNG TIỆN LỢI (商店)
+      const shop = new THREE.Group();
+      const shopBody = new THREE.Mesh(new THREE.BoxGeometry(6.4, 3.6, 5.2),
+        new THREE.MeshStandardMaterial({ color: 0xfef3c7, roughness: 0.8 }));
+      shopBody.position.y = 1.8; shopBody.castShadow = true; shop.add(shopBody);
+      const shopGlass = new THREE.Mesh(new THREE.PlaneGeometry(5.4, 2.1),
+        new THREE.MeshStandardMaterial({ color: 0xdbeafe, emissive: 0xbfdbfe, emissiveIntensity: 0.5, roughness: 0.05, metalness: 0.3 }));
+      shopGlass.position.set(0, 1.5, 2.62); shop.add(shopGlass);
+      const awning = new THREE.Mesh(new THREE.BoxGeometry(6.8, 0.16, 1.5),
+        new THREE.MeshStandardMaterial({ color: 0x16a34a, roughness: 0.7 }));
+      awning.position.set(0, 3.0, 3.1); awning.rotation.x = 0.16; shop.add(awning);
+      const signBoard = new THREE.Mesh(createRoundedBoxGeometry(5.2, 0.9, 0.16, 0.06, 3),
+        new THREE.MeshStandardMaterial({ color: 0xdc2626, emissive: 0x991b1b, emissiveIntensity: 0.6 }));
+      signBoard.position.set(0, 3.55, 2.6); shop.add(signBoard);
+      const shopLight = new THREE.PointLight(0xfff0c4, 0.9, 9, 1.5);
+      shopLight.position.set(0, 2.6, 3.4); shop.add(shopLight);
+      shop.position.set(9.6, 0.06, -4);
+      shop.rotation.y = -Math.PI / 2;
+      this.registerInteractable(shop, 'st_shop');
+      this.scene.add(shop);
+
+      // 12. NHÀ CỦA NGƯỜI CHƠI + CỬA VỀ BẾP
+      const home = new THREE.Group();
+      const homeBody = new THREE.Mesh(new THREE.BoxGeometry(7.5, 4.2, 6.5),
+        new THREE.MeshStandardMaterial({ color: 0xfde9d0, roughness: 0.85 }));
+      homeBody.position.y = 2.1; homeBody.castShadow = true; home.add(homeBody);
+      const homeRoof = new THREE.Mesh(new THREE.ConeGeometry(6.2, 2.2, 4),
+        new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.8 }));
+      homeRoof.rotation.y = Math.PI / 4;
+      homeRoof.position.y = 5.3; home.add(homeRoof);
+      [[-2.1, 2.4], [2.1, 2.4]].forEach(([wx, wy]) => {
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.2),
+          new THREE.MeshStandardMaterial({ color: 0xfff2c8, emissive: 0xfde68a, emissiveIntensity: 0.6 }));
+        win.position.set(wx, wy, 3.27); home.add(win);
+      });
+      home.position.set(11.5, 0.06, 24);
+      this.scene.add(home);
+
+      const homeGate = new THREE.Group();
+      const hgFrame = new THREE.MeshStandardMaterial({ color: 0x44403c, roughness: 0.5 });
+      [[-0.8], [0.8]].forEach(([px]) => {
+        const post = new THREE.Mesh(createRoundedBoxGeometry(0.16, 2.7, 0.2, 0.03, 2), hgFrame);
+        post.position.set(px, 1.35, 0); homeGate.add(post);
+      });
+      const hgTop = new THREE.Mesh(createRoundedBoxGeometry(1.76, 0.18, 0.2, 0.03, 2), hgFrame);
+      hgTop.position.set(0, 2.7, 0); homeGate.add(hgTop);
+      const hgLeaf = new THREE.Mesh(createRoundedBoxGeometry(1.44, 2.6, 0.08, 0.03, 2),
+        new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.55 }));
+      hgLeaf.position.set(0, 1.3, 0); homeGate.add(hgLeaf);
+      const hgSign = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.2),
+        new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0ea5e9, emissiveIntensity: 1.2 }));
+      hgSign.position.set(0, 2.95, 0.1); homeGate.add(hgSign);
+      homeGate.position.set(8.0, 0.06, 24);
+      homeGate.rotation.y = -Math.PI / 2;
+      this.scene.add(homeGate);
+      this.registerGate(homeGate, 'back_door', 'kitchen', { direction: 'back' });
+
+      // 13. CỔNG CÔNG VIÊN (公園大門) — bên kia đường, phải qua vạch kẻ
+      const parkGate = new THREE.Group();
+      const stoneMat = new THREE.MeshStandardMaterial({ color: 0x78716c, roughness: 0.95 });
+      [[-2.2], [2.2]].forEach(([px]) => {
+        const pillar = new THREE.Mesh(createRoundedBoxGeometry(0.85, 3.9, 0.85, 0.06, 3), stoneMat);
+        pillar.position.set(px, 1.95, 0); pillar.castShadow = true; parkGate.add(pillar);
+        const cap = new THREE.Mesh(new THREE.SphereGeometry(0.36, 16, 12),
+          new THREE.MeshStandardMaterial({ color: 0x57534e, roughness: 0.8 }));
+        cap.position.set(px, 4.05, 0); parkGate.add(cap);
+      });
+      const arch = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.16, 12, 28, Math.PI), stoneMat);
+      arch.position.set(0, 3.6, 0); parkGate.add(arch);
+      const gateSignBoard = new THREE.Mesh(createRoundedBoxGeometry(2.5, 0.6, 0.14, 0.05, 3),
+        new THREE.MeshStandardMaterial({ color: 0x14532d, roughness: 0.6 }));
+      gateSignBoard.position.set(0, 4.35, 0.05); parkGate.add(gateSignBoard);
+      const gateSign = new THREE.Mesh(new THREE.PlaneGeometry(2.3, 0.44),
+        new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xb91c1c, emissiveIntensity: 1.2 }));
+      gateSign.position.set(0, 4.35, 0.14);
+      gateSign.userData.isGateSign = true;
+      parkGate.add(gateSign);
+      const gateLight = new THREE.PointLight(0xef4444, 0.7, 6, 1.5);
+      gateLight.position.set(0, 4.4, 0.6);
+      gateLight.userData.isGateLight = true;
+      parkGate.add(gateLight);
+      // Hàng rào công viên hai bên cổng
+      [-1, 1].forEach(side => {
+        for (let i = 0; i < 8; i++) {
+          const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.7, 8),
+            new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 }));
+          bar.position.set(side * (2.9 + i * 0.55), 0.85, 0);
+          parkGate.add(bar);
+        }
+        const rail = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.09, 0.09),
+          new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 }));
+        rail.position.set(side * 4.85, 1.6, 0); parkGate.add(rail);
+      });
+      this.objectMeshFactories.park_gate = () => {
+        const g = new THREE.Group();
+        [[-2.2], [2.2]].forEach(([px]) => {
+          const pillar = new THREE.Mesh(createRoundedBoxGeometry(0.85, 3.9, 0.85, 0.06, 3), stoneMat);
+          pillar.position.set(px, 1.95, 0); g.add(pillar);
+          const cap = new THREE.Mesh(new THREE.SphereGeometry(0.36, 16, 12),
+            new THREE.MeshStandardMaterial({ color: 0x57534e, roughness: 0.8 }));
+          cap.position.set(px, 4.05, 0); g.add(cap);
+        });
+        const a = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.16, 12, 28, Math.PI), stoneMat);
+        a.position.set(0, 3.6, 0); g.add(a);
+        const sb = new THREE.Mesh(createRoundedBoxGeometry(2.5, 0.6, 0.14, 0.05, 3),
+          new THREE.MeshStandardMaterial({ color: 0x14532d, roughness: 0.6 }));
+        sb.position.set(0, 4.35, 0.05); g.add(sb);
+        return g;
+      };
+      parkGate.position.set(-6.2, 0.06, -22.5);
+      this.scene.add(parkGate);
+      this.registerGate(parkGate, 'park_gate', 'park', { requireComplete: true });
+      this.applyGateLockVisual(parkGate, 'street');
+
+      // Cây cối phía sau cổng công viên
+      for (let i = 0; i < 7; i++) {
+        const t = this.makeTree(1.25, 0x5c3a1e, 0x166534);
+        t.position.set(-14 + i * 2.6, 0.06, -28.5 - (i % 2) * 2.5);
+        this.scene.add(t);
+      }
+
+      this.buildPlayerAvatar();
+
+      this.colliders = [
+        { name: 'building_r1', minX: 8.5,  maxX: 18,   minZ: 6.5,   maxZ: 17.5 },
+        { name: 'building_r2', minX: 8.5,  maxX: 18,   minZ: -7,    maxZ: 3 },
+        { name: 'building_r3', minX: 8.5,  maxX: 18,   minZ: -21,   maxZ: -11 },
+        { name: 'shop',        minX: 7.0,  maxX: 12.3, minZ: -7.2,  maxZ: -0.8 },
+        { name: 'home',        minX: 7.7,  maxX: 15.3, minZ: 20.7,  maxZ: 27.3 },
+        { name: 'building_l1', minX: -18,  maxX: -8.5, minZ: 13,    maxZ: 23 },
+        { name: 'building_l2', minX: -18,  maxX: -8.5, minZ: -1,    maxZ: 9 },
+        { name: 'building_l3', minX: -18,  maxX: -8.5, minZ: -18,   maxZ: -6 },
+        { name: 'busstop',     minX: 6.7,  maxX: 8.6,  minZ: 13.2,  maxZ: 16.8 },
+        { name: 'car1',        minX: -3.2, maxX: -1.2, minZ: 5.8,   maxZ: 10.2 },
+        { name: 'car2',        minX: 1.2,  maxX: 3.2,  minZ: -20.2, maxZ: -15.8 },
+        { name: 'traffic_light', minX: 4.6,  maxX: 5.2,  minZ: -7.9,  maxZ: -7.3 },
+        { name: 'bench_walk',   minX: 7.0,   maxX: 8.4,  minZ: 4.6,   maxZ: 6.4 }
+      ];
+      // Cột đèn đường & thân cây cũng là vật cản
+      lampZs.forEach((lz, i) => {
+        const side = (i % 2 === 0) ? 1 : -1;
+        this.colliders.push({
+          name: `lamp_${i}`,
+          minX: side * 4.55 - 0.28, maxX: side * 4.55 + 0.28,
+          minZ: lz - 0.28, maxZ: lz + 0.28
+        });
+      });
+      treeZs.forEach((tz, i) => {
+        [-1, 1].forEach(side => {
+          const tx = side * 8.6;
+          const tzz = tz + side * 1.3;
+          this.colliders.push({
+            name: `tree_${i}_${side}`,
+            minX: tx - 0.26, maxX: tx + 0.26,
+            minZ: tzz - 0.26, maxZ: tzz + 0.26
+          });
+        });
+      });
+    }
+
+    // --- ZONE 5: CÔNG VIÊN (公園) ---
+    buildPark() {
+      this.roomBounds = { minX: -15, maxX: 15, minZ: -15, maxZ: 14 };
+
+      const grassMat = new THREE.MeshStandardMaterial({ color: 0x4d9c2f, roughness: 1 });
+      const pathMat = new THREE.MeshStandardMaterial({ color: 0xd6c7a1, roughness: 0.95 });
+      const stoneMat = new THREE.MeshStandardMaterial({ color: 0xa8a29e, roughness: 0.9 });
+      const waterMat = new THREE.MeshStandardMaterial({
+        color: 0x2f8fd6, roughness: 0.06, metalness: 0.45, transparent: true, opacity: 0.85
+      });
+
+      // 1. BÃI CỎ (草地)
+      const lawnGroup = new THREE.Group();
+      const lawn = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), grassMat);
+      lawn.rotation.x = -Math.PI / 2;
+      lawn.receiveShadow = true;
+      lawnGroup.add(lawn);
+      // Vài mảng cỏ đậm nhạt cho sinh động
+      for (let i = 0; i < 22; i++) {
+        const patch = new THREE.Mesh(new THREE.CircleGeometry(1.2 + (i % 4) * 0.5, 16),
+          new THREE.MeshStandardMaterial({ color: (i % 2) ? 0x3f8526 : 0x5aad38, roughness: 1 }));
+        patch.rotation.x = -Math.PI / 2;
+        patch.position.set(
+          Math.sin(i * 2.3) * 11,
+          0.011,
+          Math.cos(i * 1.7) * 11
+        );
+        lawnGroup.add(patch);
+      }
+      this.objectMeshFactories.pk_grass = () => {
+        const g = new THREE.Group();
+        const patch = new THREE.Mesh(createRoundedBoxGeometry(3.2, 0.22, 3.2, 0.08, 3), grassMat);
+        g.add(patch);
+        for (let i = 0; i < 40; i++) {
+          const blade = new THREE.Mesh(new THREE.ConeGeometry(0.035, 0.28, 5),
+            new THREE.MeshStandardMaterial({ color: (i % 2) ? 0x3f8526 : 0x6cc248, roughness: 1 }));
+          blade.position.set((Math.sin(i * 7.3) * 1.45), 0.24, (Math.cos(i * 3.1) * 1.45));
+          blade.rotation.z = Math.sin(i) * 0.25;
+          g.add(blade);
+        }
+        return g;
+      };
+      this.registerInteractable(lawnGroup, 'pk_grass');
+      this.scene.add(lawnGroup);
+
+      // 2. LỐI ĐI LÁT ĐÁ
+      const mainPath = new THREE.Mesh(new THREE.PlaneGeometry(3.2, 30), pathMat);
+      mainPath.rotation.x = -Math.PI / 2;
+      mainPath.position.set(0, 0.02, 0);
+      this.scene.add(mainPath);
+      const crossPath = new THREE.Mesh(new THREE.PlaneGeometry(24, 3.0), pathMat);
+      crossPath.rotation.x = -Math.PI / 2;
+      crossPath.position.set(0, 0.02, 0);
+      this.scene.add(crossPath);
+      const ring = new THREE.Mesh(new THREE.RingGeometry(3.4, 5.0, 48), pathMat);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(0, 0.021, 0);
+      this.scene.add(ring);
+
+      // 3. ĐÀI PHUN NƯỚC (噴泉) ở trung tâm
+      const fountain = new THREE.Group();
+      const basin = new THREE.Mesh(new THREE.CylinderGeometry(3.1, 3.3, 0.65, 40), stoneMat);
+      basin.position.y = 0.32; basin.castShadow = true; fountain.add(basin);
+      const inner = new THREE.Mesh(new THREE.CylinderGeometry(2.85, 2.85, 0.5, 40),
+        new THREE.MeshStandardMaterial({ color: 0x8b8b86, roughness: 0.85 }));
+      inner.position.y = 0.4; fountain.add(inner);
+      const pool = new THREE.Mesh(new THREE.CircleGeometry(2.85, 40), waterMat);
+      pool.rotation.x = -Math.PI / 2; pool.position.y = 0.6; fountain.add(pool);
+      const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.62, 1.1, 20), stoneMat);
+      pedestal.position.y = 1.05; fountain.add(pedestal);
+      const bowl = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 0.5, 0.32, 28), stoneMat);
+      bowl.position.y = 1.72; fountain.add(bowl);
+      const topSpout = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.16, 0.75, 14), stoneMat);
+      topSpout.position.y = 2.25; fountain.add(topSpout);
+      // Tia nước động
+      const jets = [];
+      for (let i = 0; i < 16; i++) {
+        const jet = new THREE.Mesh(new THREE.SphereGeometry(0.11, 8, 6),
+          new THREE.MeshStandardMaterial({ color: 0xbfe8ff, roughness: 0.05, transparent: true, opacity: 0.75 }));
+        jet.userData.angle = (i / 16) * Math.PI * 2;
+        jet.userData.phase = (i / 16);
+        fountain.add(jet);
+        jets.push(jet);
+      }
+      fountain.position.set(0, 0, 0);
+      this.registerInteractable(fountain, 'pk_fountain');
+      this.scene.add(fountain);
+      this.animatedProps.push({
+        type: 'fountain', jets, t: 0,
+        update(delta) {
+          this.t += delta;
+          this.jets.forEach(j => {
+            const p = (this.t * 0.9 + j.userData.phase) % 1;
+            const r = 0.25 + p * 1.5;
+            j.position.set(
+              Math.cos(j.userData.angle) * r,
+              2.65 + p * 1.0 - p * p * 2.3,
+              Math.sin(j.userData.angle) * r
+            );
+            j.material.opacity = 0.8 * (1 - p);
+          });
+        }
+      });
+
+      // 4. HỒ NƯỚC (湖) + CẦU (橋)
+      const lakeGroup = new THREE.Group();
+      const lakeShape = new THREE.Mesh(new THREE.CircleGeometry(5.2, 44),
+        new THREE.MeshStandardMaterial({ color: 0x6b5f45, roughness: 1 }));
+      lakeShape.rotation.x = -Math.PI / 2;
+      lakeShape.position.y = 0.015;
+      lakeShape.scale.set(1.5, 1, 1);
+      lakeGroup.add(lakeShape);
+      const lakeWater = new THREE.Mesh(new THREE.CircleGeometry(5.0, 44), waterMat);
+      lakeWater.rotation.x = -Math.PI / 2;
+      lakeWater.position.y = 0.06;
+      lakeWater.scale.set(1.5, 1, 1);
+      lakeGroup.add(lakeWater);
+      // Viền đá quanh hồ
+      for (let i = 0; i < 30; i++) {
+        const a = (i / 30) * Math.PI * 2;
+        const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(0.28 + (i % 3) * 0.09, 0), stoneMat);
+        rock.position.set(Math.cos(a) * 7.7, 0.12, Math.sin(a) * 5.15);
+        rock.rotation.set(i, i * 0.7, i * 0.3);
+        lakeGroup.add(rock);
+      }
+      lakeGroup.position.set(-9.5, 0, -6);
+      this.registerInteractable(lakeGroup, 'pk_lake');
+      this.scene.add(lakeGroup);
+
+      const bridge = new THREE.Group();
+      const bridgeWood = new THREE.MeshStandardMaterial({ color: 0x9a5b2c, roughness: 0.85 });
+      for (let i = 0; i < 14; i++) {
+        const t = i / 13;
+        const plank = new THREE.Mesh(createRoundedBoxGeometry(1.9, 0.11, 0.42, 0.02, 2), bridgeWood);
+        plank.position.set(0, 0.75 + Math.sin(t * Math.PI) * 0.75, -3.4 + i * 0.52);
+        plank.rotation.x = Math.cos(t * Math.PI) * 0.28;
+        plank.castShadow = true;
+        bridge.add(plank);
+      }
+      [-0.98, 0.98].forEach(rx => {
+        for (let i = 0; i < 8; i++) {
+          const t = i / 7;
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.85, 8), bridgeWood);
+          post.position.set(rx, 1.2 + Math.sin(t * Math.PI) * 0.75, -3.2 + i * 0.92);
+          bridge.add(post);
+        }
+        const railTop = new THREE.Mesh(new THREE.TorusGeometry(3.85, 0.055, 8, 26, Math.PI), bridgeWood);
+        railTop.position.set(rx, 0.85, 0.2);
+        railTop.rotation.y = Math.PI / 2;
+        railTop.scale.set(1, 0.22, 1);
+        bridge.add(railTop);
+      });
+      bridge.position.set(-9.5, 0, -6);
+      bridge.rotation.y = Math.PI / 2;
+      this.registerInteractable(bridge, 'pk_bridge');
+      this.scene.add(bridge);
+
+      // 5. LUỐNG HOA (花)
+      const flowerBed = new THREE.Group();
+      const bedRing = new THREE.Mesh(new THREE.TorusGeometry(2.3, 0.22, 10, 34), stoneMat);
+      bedRing.rotation.x = -Math.PI / 2;
+      bedRing.position.y = 0.14;
+      flowerBed.add(bedRing);
+      const soil = new THREE.Mesh(new THREE.CircleGeometry(2.25, 32),
+        new THREE.MeshStandardMaterial({ color: 0x5b4025, roughness: 1 }));
+      soil.rotation.x = -Math.PI / 2; soil.position.y = 0.09; flowerBed.add(soil);
+      const petalColors = [0xf472b6, 0xfbbf24, 0xef4444, 0xa78bfa, 0xfb923c, 0xfda4af];
+      for (let i = 0; i < 46; i++) {
+        const a = i * 2.399;
+        const r = 0.28 + Math.sqrt(i / 46) * 1.85;
+        const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.022, 0.36, 6),
+          new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.9 }));
+        stem.position.set(Math.cos(a) * r, 0.27, Math.sin(a) * r);
+        flowerBed.add(stem);
+        const bloom = new THREE.Mesh(new THREE.SphereGeometry(0.115, 10, 8),
+          new THREE.MeshStandardMaterial({ color: petalColors[i % petalColors.length], roughness: 0.7 }));
+        bloom.position.set(Math.cos(a) * r, 0.48, Math.sin(a) * r);
+        flowerBed.add(bloom);
+      }
+      flowerBed.position.set(8.5, 0, 3.5);
+      this.registerInteractable(flowerBed, 'pk_flower');
+      this.scene.add(flowerBed);
+
+      // 6. XÍCH ĐU (鞦韆)
+      const swing = new THREE.Group();
+      const frameMat = new THREE.MeshStandardMaterial({ color: 0x0e7490, roughness: 0.4, metalness: 0.6 });
+      [-1, 1].forEach(side => {
+        [-1, 1].forEach(lean => {
+          const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.09, 2.9, 10), frameMat);
+          leg.position.set(side * 1.75, 1.35, lean * 0.75);
+          leg.rotation.x = -lean * 0.25;
+          leg.castShadow = true;
+          swing.add(leg);
+        });
+      });
+      const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.085, 0.085, 3.9, 12), frameMat);
+      beam.rotation.z = Math.PI / 2;
+      beam.position.y = 2.72;
+      swing.add(beam);
+      const seats = [];
+      [-0.85, 0.85].forEach(sx => {
+        const seatGroup = new THREE.Group();
+        [-0.22, 0.22].forEach(cx => {
+          const chain = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 1.75, 6),
+            new THREE.MeshStandardMaterial({ color: 0x9ca3af, roughness: 0.35, metalness: 0.85 }));
+          chain.position.set(cx, -0.88, 0);
+          seatGroup.add(chain);
+        });
+        const seat = new THREE.Mesh(createRoundedBoxGeometry(0.62, 0.08, 0.28, 0.03, 2),
+          new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.8 }));
+        seat.position.y = -1.78;
+        seatGroup.add(seat);
+        seatGroup.position.set(sx, 2.72, 0);
+        swing.add(seatGroup);
+        seats.push(seatGroup);
+      });
+      swing.position.set(9.5, 0, -6.5);
+      this.registerInteractable(swing, 'pk_swing');
+      this.scene.add(swing);
+      this.animatedProps.push({
+        type: 'swing', seats, t: 0,
+        update(delta) {
+          this.t += delta;
+          this.seats.forEach((s, i) => {
+            s.rotation.x = Math.sin(this.t * 1.35 + i * 1.1) * 0.35;
+          });
+        }
+      });
+
+      // Cầu trượt nhỏ cạnh xích đu
+      const slide = new THREE.Group();
+      const slideMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.5, metalness: 0.3 });
+      const slideRamp = new THREE.Mesh(createRoundedBoxGeometry(0.9, 0.1, 3.4, 0.04, 2), slideMat);
+      slideRamp.position.set(0, 1.05, 0.6);
+      slideRamp.rotation.x = 0.5;
+      slide.add(slideRamp);
+      const platform = new THREE.Mesh(createRoundedBoxGeometry(1.0, 0.12, 1.0, 0.04, 2), slideMat);
+      platform.position.set(0, 1.85, -1.2);
+      slide.add(platform);
+      [[-0.42, -1.6], [0.42, -1.6], [-0.42, -0.8], [0.42, -0.8]].forEach(([lx, lz]) => {
+        const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1.85, 8),
+          new THREE.MeshStandardMaterial({ color: 0x0369a1, roughness: 0.4, metalness: 0.6 }));
+        leg.position.set(lx, 0.92, lz);
+        slide.add(leg);
+      });
+      slide.position.set(12.2, 0, -4.5);
+      this.scene.add(slide);
+
+      // 7. TƯỢNG ĐÁ (雕像)
+      const statue = new THREE.Group();
+      const pedestalS = new THREE.Mesh(createRoundedBoxGeometry(1.5, 1.15, 1.5, 0.05, 3), stoneMat);
+      pedestalS.position.y = 0.58; pedestalS.castShadow = true; statue.add(pedestalS);
+      const plaque = new THREE.Mesh(new THREE.PlaneGeometry(0.95, 0.42),
+        new THREE.MeshStandardMaterial({ color: 0xb08d57, roughness: 0.35, metalness: 0.8 }));
+      plaque.position.set(0, 0.68, 0.755); statue.add(plaque);
+      const marbleMat = new THREE.MeshStandardMaterial({ color: 0xe7e5e4, roughness: 0.45 });
+      const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.42, 1.15, 16), marbleMat);
+      torso.position.y = 1.75; torso.castShadow = true; statue.add(torso);
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.24, 18, 14), marbleMat);
+      head.position.y = 2.52; statue.add(head);
+      const armL = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.95, 12), marbleMat);
+      armL.position.set(-0.42, 1.95, 0.05); armL.rotation.z = 0.75; statue.add(armL);
+      const armR = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 1.05, 12), marbleMat);
+      armR.position.set(0.44, 2.15, 0.05); armR.rotation.z = -1.15; statue.add(armR);
+      statue.position.set(-8.5, 0, 7.5);
+      this.registerInteractable(statue, 'pk_statue');
+      this.scene.add(statue);
+
+      // 8. CHIM (鳥) đậu trên trụ & bay quanh
+      const birdGroup = new THREE.Group();
+      const perch = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.12, 1.9, 10),
+        new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.9 }));
+      perch.position.y = 0.95; birdGroup.add(perch);
+      const feeder = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.08, 0.65),
+        new THREE.MeshStandardMaterial({ color: 0x92400e, roughness: 0.85 }));
+      feeder.position.y = 1.94; birdGroup.add(feeder);
+      const roofF = new THREE.Mesh(new THREE.ConeGeometry(0.75, 0.45, 4),
+        new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.8 }));
+      roofF.rotation.y = Math.PI / 4; roofF.position.y = 2.5; birdGroup.add(roofF);
+      const birds = [];
+      [[0x38bdf8, -0.22], [0xfbbf24, 0.24]].forEach(([bc, bx]) => {
+        const b = new THREE.Group();
+        const body = new THREE.Mesh(new THREE.SphereGeometry(0.13, 14, 10),
+          new THREE.MeshStandardMaterial({ color: bc, roughness: 0.8 }));
+        body.scale.set(1.35, 1, 1); b.add(body);
+        const bhead = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 10),
+          new THREE.MeshStandardMaterial({ color: bc, roughness: 0.8 }));
+        bhead.position.set(0.16, 0.09, 0); b.add(bhead);
+        const beak = new THREE.Mesh(new THREE.ConeGeometry(0.035, 0.11, 8),
+          new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.6 }));
+        beak.position.set(0.25, 0.07, 0); beak.rotation.z = -Math.PI / 2; b.add(beak);
+        const tail = new THREE.Mesh(new THREE.ConeGeometry(0.07, 0.2, 6),
+          new THREE.MeshStandardMaterial({ color: bc, roughness: 0.8 }));
+        tail.position.set(-0.2, 0.02, 0); tail.rotation.z = Math.PI / 2; b.add(tail);
+        b.position.set(bx, 2.1, 0);
+        birdGroup.add(b);
+        birds.push(b);
+      });
+      birdGroup.position.set(5.5, 0, 8.5);
+      this.registerInteractable(birdGroup, 'pk_bird');
+      this.scene.add(birdGroup);
+      this.animatedProps.push({
+        type: 'birds', birds, t: 0,
+        update(delta) {
+          this.t += delta;
+          this.birds.forEach((b, i) => {
+            b.position.y = 2.1 + Math.abs(Math.sin(this.t * 2.2 + i * 1.6)) * 0.09;
+            b.rotation.y = Math.sin(this.t * 0.8 + i) * 0.6;
+          });
+        }
+      });
+
+      // 9. CÂY & GHẾ TRANG TRÍ QUANH CÔNG VIÊN
+      const treeSpots = [
+        [-13, 10], [-6, 12], [4, 12], [13, 9], [14, 1],
+        [13, -12], [4, -13], [-4, -13], [-13, -12], [-14, 2]
+      ];
+      treeSpots.forEach(([tx, tz], i) => {
+        const tree = this.makeTree(1.15 + (i % 3) * 0.18, 0x5c3a1e, [0x166534, 0x15803d, 0x22c55e][i % 3]);
+        tree.position.set(tx, 0, tz);
+        this.scene.add(tree);
+      });
+
+      const benchSpots = [[-4.2, 3.6, 0], [4.2, 3.6, 0], [-4.2, -3.6, Math.PI], [4.2, -3.6, Math.PI]];
+      benchSpots.forEach(([bx, bz, ry]) => {
+        this.placeZoneModel('pk_bench', { x: bx, y: 0, z: bz }, { targetHeight: 0.92, alignBottomY: true, rotationY: ry }, () => {
+          const g = new THREE.Group();
+          const woodM = new THREE.MeshStandardMaterial({ color: 0x9a6a3c, roughness: 0.85 });
+          const seat = new THREE.Mesh(createRoundedBoxGeometry(1.7, 0.08, 0.5, 0.02, 2), woodM);
+          seat.position.y = 0.45; g.add(seat);
+          const back = new THREE.Mesh(createRoundedBoxGeometry(1.7, 0.5, 0.07, 0.02, 2), woodM);
+          back.position.set(0, 0.72, -0.22); g.add(back);
+          [-0.72, 0.72].forEach(lx => {
+            const leg = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.45, 0.46),
+              new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 }));
+            leg.position.set(lx, 0.22, -0.05); g.add(leg);
+          });
+          g.rotation.y = ry;
+          return g;
+        });
+      });
+
+      // Đèn công viên
+      [[-6.5, 5.5], [6.5, 5.5], [-6.5, -6.5], [6.5, -9.5]].forEach(([lx, lz]) => {
+        const lamp = this.makeStreetLamp();
+        lamp.scale.set(0.72, 0.72, 0.72);
+        lamp.position.set(lx, 0, lz);
+        lamp.rotation.y = Math.atan2(-lx, -lz);
+        this.scene.add(lamp);
+      });
+
+      // 10. CỔNG RA — QUAY LẠI ĐƯỜNG PHỐ
+      const outGate = new THREE.Group();
+      [[-2.2], [2.2]].forEach(([px]) => {
+        const pillar = new THREE.Mesh(createRoundedBoxGeometry(0.85, 3.9, 0.85, 0.06, 3), stoneMat);
+        pillar.position.set(px, 1.95, 0); outGate.add(pillar);
+        const cap = new THREE.Mesh(new THREE.SphereGeometry(0.36, 16, 12),
+          new THREE.MeshStandardMaterial({ color: 0x57534e, roughness: 0.8 }));
+        cap.position.set(px, 4.05, 0); outGate.add(cap);
+      });
+      const outArch = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.16, 12, 28, Math.PI), stoneMat);
+      outArch.position.set(0, 3.6, 0); outGate.add(outArch);
+      const outSign = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 0.42),
+        new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0ea5e9, emissiveIntensity: 1.1 }));
+      outSign.position.set(0, 4.3, 0.12); outGate.add(outSign);
+      outGate.position.set(0, 0, 14.2);
+      this.scene.add(outGate);
+      this.registerGate(outGate, 'back_door', 'street', { direction: 'back' });
+
+      // Hàng rào bao quanh công viên
+      const fenceMat = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 });
+      const buildFenceRun = (x0, z0, x1, z1) => {
+        const dx = x1 - x0, dz = z1 - z0;
+        const len = Math.hypot(dx, dz);
+        const n = Math.max(2, Math.round(len / 0.62));
+        for (let i = 0; i <= n; i++) {
+          const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.7, 8), fenceMat);
+          bar.position.set(x0 + dx * (i / n), 0.85, z0 + dz * (i / n));
+          this.scene.add(bar);
+        }
+      };
+      buildFenceRun(-15.5, 14.5, -2.6, 14.5);
+      buildFenceRun(2.6, 14.5, 15.5, 14.5);
+      buildFenceRun(-15.5, -15.5, 15.5, -15.5);
+      buildFenceRun(-15.5, 14.5, -15.5, -15.5);
+      buildFenceRun(15.5, 14.5, 15.5, -15.5);
+
+      this.buildPlayerAvatar();
+
+      this.colliders = [
+        { name: 'fountain',  minX: -3.4,  maxX: 3.4,   minZ: -3.4,  maxZ: 3.4 },
+        { name: 'lake',      minX: -17.5, maxX: -1.6,  minZ: -11.2, maxZ: -0.8 },
+        { name: 'flowerbed', minX: 6.2,   maxX: 10.8,  minZ: 1.2,   maxZ: 5.8 },
+        { name: 'statue',    minX: -9.4,  maxX: -7.6,  minZ: 6.6,   maxZ: 8.4 },
+        { name: 'swing',     minX: 7.6,   maxX: 11.4,  minZ: -7.6,  maxZ: -5.4 },
+        { name: 'slide',     minX: 11.4,  maxX: 13.0,  minZ: -6.4,  maxZ: -2.6 }
+      ];
     }
 
     buildLivingRoom() {
@@ -3827,9 +6828,21 @@
       leftWall.position.set(-roomW / 2, roomH / 2, 0);
       this.scene.add(leftWall);
 
-      const rightWall = new THREE.Mesh(new THREE.BoxGeometry(0.18, roomH, roomL), whitePlasterMat);
-      rightWall.position.set(roomW / 2, roomH / 2, 0);
-      this.scene.add(rightWall);
+      // Tường phải chừa một ô cửa dẫn sang phòng bếp (tại z = 2.6)
+      const kDoorZ = 2.6;
+      const kGapW = 1.5;
+      const kGapH = 2.85;
+      const rightSegA = (roomL / 2 + kDoorZ - kGapW / 2);
+      const rightWallA = new THREE.Mesh(new THREE.BoxGeometry(0.18, roomH, rightSegA), whitePlasterMat);
+      rightWallA.position.set(roomW / 2, roomH / 2, -roomL / 2 + rightSegA / 2);
+      this.scene.add(rightWallA);
+      const rightSegB = (roomL / 2 - kDoorZ - kGapW / 2);
+      const rightWallB = new THREE.Mesh(new THREE.BoxGeometry(0.18, roomH, rightSegB), whitePlasterMat);
+      rightWallB.position.set(roomW / 2, roomH / 2, roomL / 2 - rightSegB / 2);
+      this.scene.add(rightWallB);
+      const rightWallTop = new THREE.Mesh(new THREE.BoxGeometry(0.18, roomH - kGapH, kGapW), whitePlasterMat);
+      rightWallTop.position.set(roomW / 2, roomH - (roomH - kGapH) / 2, kDoorZ);
+      this.scene.add(rightWallTop);
 
       // Helper: place GLB or fallback
       const placeModel = (id, pos, opts = {}, fallbackFn = null) => {
@@ -3884,6 +6897,7 @@
       tvScreen.position.z = 0.03;
       tvGroup.add(tvScreen);
       tvGroup.position.set(0, 1.95, -roomL / 2 + 0.18);
+      this.registerInteractable(tvGroup, 'lr_tv');
       this.scene.add(tvGroup);
 
       // Long Low Walnut TV Credenza with Rounded Cylindrical Ends (Bo tròn 2 đầu)
@@ -3956,8 +6970,9 @@
         return cabGroup;
       };
 
-      buildDisplayCabinet(-1);
+      const leftCabinet = buildDisplayCabinet(-1);
       buildDisplayCabinet(1);
+      this.registerInteractable(leftCabinet, 'lr_bookcase');
 
       // --- POPULATE LEFT DISPLAY SHELVES (x = -3.4, z = -4.62) ---
       const lCabX = -3.4;
@@ -3965,10 +6980,33 @@
 
       // Shelf 1 (y = 0.72): Books & Vintage Radio
       placeModel('lr_books', { x: lCabX - 0.35, y: 0.72, z: lCabZ }, { targetHeight: 0.38, alignBottomY: true });
-      placeModel('lr_radio', { x: lCabX + 0.32, y: 0.72, z: lCabZ }, { targetHeight: 0.26, alignBottomY: true });
+      const radioProp = placeModel('lr_radio', { x: lCabX + 0.32, y: 0.72, z: lCabZ }, { targetHeight: 0.26, alignBottomY: true }, () => {
+        const g = new THREE.Group();
+        const body = new THREE.Mesh(createRoundedBoxGeometry(0.34, 0.22, 0.16, 0.03, 3), new THREE.MeshStandardMaterial({ color: 0x7c4a21, roughness: 0.5 }));
+        body.position.y = 0.11; g.add(body);
+        const grille = new THREE.Mesh(new THREE.PlaneGeometry(0.16, 0.14), new THREE.MeshStandardMaterial({ color: 0x1c1917, roughness: 0.9 }));
+        grille.position.set(-0.07, 0.11, 0.081); g.add(grille);
+        const dial = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.02, 16), goldMat);
+        dial.rotation.x = Math.PI / 2; dial.position.set(0.09, 0.11, 0.082); g.add(dial);
+        return g;
+      });
+      if (radioProp) this.registerInteractable(radioProp, 'lr_radio');
 
       // Shelf 2 (y = 1.42): Teddy Bear & Potted Plant
-      placeModel('lr_bear', { x: lCabX - 0.28, y: 1.42, z: lCabZ }, { targetHeight: 0.42, alignBottomY: true, rotationY: 0.2 });
+      const bearProp = placeModel('lr_bear', { x: lCabX - 0.28, y: 1.42, z: lCabZ }, { targetHeight: 0.42, alignBottomY: true, rotationY: 0.2 }, () => {
+        const g = new THREE.Group();
+        const furMat = new THREE.MeshStandardMaterial({ color: 0xb45309, roughness: 0.95 });
+        const body = new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 16), furMat);
+        body.position.y = 0.14; body.scale.y = 1.15; g.add(body);
+        const head = new THREE.Mesh(new THREE.SphereGeometry(0.095, 20, 16), furMat);
+        head.position.y = 0.33; g.add(head);
+        [[-0.07, 0.40], [0.07, 0.40]].forEach(([ex, ey]) => {
+          const ear = new THREE.Mesh(new THREE.SphereGeometry(0.035, 12, 10), furMat);
+          ear.position.set(ex, ey, 0); g.add(ear);
+        });
+        return g;
+      });
+      if (bearProp) this.registerInteractable(bearProp, 'lr_bear');
       placeModel('lr_plantSmall', { x: lCabX + 0.32, y: 1.42, z: lCabZ }, { targetHeight: 0.34, alignBottomY: true });
 
       // Shelf 3 (y = 2.12): Potted Plant & Gold Statue
@@ -4022,7 +7060,12 @@
       rugMesh.rotation.x = -Math.PI / 2;
       rugMesh.position.set(0, 0.006, -1.0);
       rugMesh.receiveShadow = true;
-      this.scene.add(rugMesh);
+      const rugGroup = new THREE.Group();
+      rugGroup.add(rugMesh);
+      rugMesh.position.set(0, 0.006, 0);
+      rugGroup.position.set(0, 0, -1.0);
+      this.registerInteractable(rugGroup, 'lr_rug');
+      this.scene.add(rugGroup);
 
       // Large Walnut Coffee Table with Rounded 4 Corners & Inset Glossy Black Glass
       const tableGroup = new THREE.Group();
@@ -4039,6 +7082,7 @@
       tableGoldTrim.position.y = 0.38;
       tableGroup.add(tableGoldTrim);
       tableGroup.position.set(0, 0, -1.0);
+      this.registerInteractable(tableGroup, 'lr_coffeeTable');
       this.scene.add(tableGroup);
 
       // Centerpieces on Coffee Table: White Orchid Bouquet + Gold Drink Tray
@@ -4104,6 +7148,7 @@
       // Position long sofa on left side facing right (+X)
       sofaGroup.rotation.y = Math.PI / 2;
       sofaGroup.position.set(-2.8, 0, -1.0);
+      this.registerInteractable(sofaGroup, 'lr_sofa');
       this.scene.add(sofaGroup);
 
       // Alternating Brown Leather & Cream White Accent Pillows on Sofa
@@ -4115,9 +7160,18 @@
         });
         const pGeo = createRoundedBoxGeometry(0.24, 0.40, 0.42, 0.06, 3);
         const pillowMesh = new THREE.Mesh(pGeo, pMat);
-        pillowMesh.position.set(-2.85, 0.58, pz);
         pillowMesh.rotation.z = -0.18;
-        this.scene.add(pillowMesh);
+        if (Math.abs(pz + 1.0) < 0.01) {
+          const pillowGroup = new THREE.Group();
+          pillowGroup.add(pillowMesh);
+          pillowMesh.position.set(0, 0.58, 0);
+          pillowGroup.position.set(-2.85, 0, pz);
+          this.registerInteractable(pillowGroup, 'lr_pillow');
+          this.scene.add(pillowGroup);
+        } else {
+          pillowMesh.position.set(-2.85, 0.58, pz);
+          this.scene.add(pillowMesh);
+        }
       }
 
       // --- RIGHT SIDE: TWO LUXURY LEATHER ARMCHAIRS + SIDE TABLE ---
@@ -4184,6 +7238,7 @@
       const arm1 = buildLuxuryArmchair();
       arm1.rotation.y = -Math.PI / 2;
       arm1.position.set(2.65, 0, -2.1);
+      this.registerInteractable(arm1, 'lr_armchair');
       this.scene.add(arm1);
 
       // Armchair 2 (Bottom right) facing left (-X)
@@ -4208,10 +7263,27 @@
       this.scene.add(sideTableGroup);
 
       // Flower vase on side table
-      placeModel('lr_plant',
+      const vaseProp = placeModel('lr_plant',
         { x: 2.9, y: 0.65, z: -1.0 },
-        { targetHeight: 0.45, alignBottomY: true }
+        { targetHeight: 0.45, alignBottomY: true },
+        () => {
+          const g = new THREE.Group();
+          const vase = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.11, 0.26, 20), new THREE.MeshStandardMaterial({ color: 0xf5f5f4, roughness: 0.25 }));
+          vase.position.y = 0.13; g.add(vase);
+          for (let i = 0; i < 5; i++) {
+            const a = (i / 5) * Math.PI * 2;
+            const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.22, 8), new THREE.MeshStandardMaterial({ color: 0x15803d }));
+            stem.position.set(Math.cos(a) * 0.03, 0.35, Math.sin(a) * 0.03);
+            stem.rotation.z = Math.cos(a) * 0.2; stem.rotation.x = Math.sin(a) * 0.2;
+            g.add(stem);
+            const bloom = new THREE.Mesh(new THREE.SphereGeometry(0.045, 12, 10), new THREE.MeshStandardMaterial({ color: [0xf472b6, 0xfbbf24, 0xf87171, 0xa78bfa, 0xfda4af][i], roughness: 0.7 }));
+            bloom.position.set(Math.cos(a) * 0.06, 0.47, Math.sin(a) * 0.06);
+            g.add(bloom);
+          }
+          return g;
+        }
       );
+      if (vaseProp) this.registerInteractable(vaseProp, 'lr_vase');
 
       // =========================================================================
       // 6. CEILING: GRAND 3-TIER CRYSTAL CHANDELIER
@@ -4255,6 +7327,7 @@
       chandeGroup.add(chandeLight);
 
       chandeGroup.position.set(0, roomH - 0.45, -1.0);
+      this.registerInteractable(chandeGroup, 'lr_chandelier');
       this.scene.add(chandeGroup);
 
       // Downlights across ceiling
@@ -4329,6 +7402,7 @@
         artGroup.add(artLight);
 
         artGroup.position.set(galleryWallX, 0, p.z);
+        if (p.theme === 1) this.registerInteractable(artGroup, 'lr_painting');
         this.scene.add(artGroup);
       });
 
@@ -4411,11 +7485,48 @@
       backLight.position.set(0, 3.0, 0.3); backDoorGroup.add(backLight);
       backDoorGroup.position.set(0, 0, roomL / 2 - 0.05);
       this.scene.add(backDoorGroup);
+      this.registerGate(backDoorGroup, 'back_door', 'bedroom', { direction: 'back' });
 
-      // Register back door as interactable
-      backDoorGroup.userData = { vocabId: 'back_door', interactable: true };
-      backDoorGroup.traverse(c => { c.userData = { vocabId: 'back_door', interactable: true }; });
-      this.interactiveObjects.push(backDoorGroup);
+      // =========================================================================
+      // 10. TƯỜNG PHẢI: LỐI ĐI SANG PHÒNG BẾP (khoá tới khi khám phá xong)
+      // =========================================================================
+      const kitchenDoorGroup = new THREE.Group();
+      const kdRaw = this.loadedModels['lr_door'];
+      if (kdRaw) {
+        const kdMesh = this.fitModelToBounds(kdRaw, { targetHeight: kGapH, alignBottomY: true });
+        if (kdMesh) kitchenDoorGroup.add(kdMesh);
+      } else {
+        [[-0.72, 0], [0.72, 0]].forEach(([px]) => {
+          const post = new THREE.Mesh(createRoundedBoxGeometry(0.1, kGapH, 0.14, 0.02, 2), darkWoodMat);
+          post.position.set(px, kGapH / 2, 0); kitchenDoorGroup.add(post);
+        });
+        const kdTop = new THREE.Mesh(createRoundedBoxGeometry(1.54, 0.12, 0.14, 0.02, 2), darkWoodMat);
+        kdTop.position.set(0, kGapH - 0.06, 0); kitchenDoorGroup.add(kdTop);
+      }
+      // Biển hiệu phòng bếp 廚房
+      const kdSignBox = new THREE.Mesh(createRoundedBoxGeometry(0.82, 0.24, 0.06, 0.02, 2),
+        new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5 }));
+      kdSignBox.position.set(0, kGapH + 0.2, 0.05);
+      kitchenDoorGroup.add(kdSignBox);
+      const kdSign = new THREE.Mesh(new THREE.PlaneGeometry(0.74, 0.17),
+        new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xb91c1c, emissiveIntensity: 1.2 }));
+      kdSign.position.set(0, kGapH + 0.2, 0.085);
+      kdSign.userData.isGateSign = true;
+      kitchenDoorGroup.add(kdSign);
+      const kdLight = new THREE.PointLight(0xef4444, 0.6, 3.2, 1.5);
+      kdLight.position.set(0, kGapH + 0.25, 0.3);
+      kdLight.userData.isGateLight = true;
+      kitchenDoorGroup.add(kdLight);
+      // Ánh sáng ấm hắt ra từ bếp
+      const kitchenGlow = new THREE.PointLight(0xffd9a0, 0.9, 5, 1.6);
+      kitchenGlow.position.set(0.5, 1.6, 0);
+      kitchenDoorGroup.add(kitchenGlow);
+
+      kitchenDoorGroup.rotation.y = -Math.PI / 2;
+      kitchenDoorGroup.position.set(roomW / 2 - 0.12, 0, kDoorZ);
+      this.scene.add(kitchenDoorGroup);
+      this.registerGate(kitchenDoorGroup, 'kitchen_door', 'kitchen', { requireComplete: true });
+      this.applyGateLockVisual(kitchenDoorGroup, 'living');
 
       // Player avatar
       this.buildPlayerAvatar();
@@ -4431,8 +7542,6 @@
         { name: 'cabinet_left',   minX: -4.2, maxX: -2.5, minZ: -4.9, maxZ: -4.1 },
         { name: 'cabinet_right',  minX: 2.5,  maxX: 4.2,  minZ: -4.9, maxZ: -4.1 },
       ];
-
-      this.currentRoom = 'living';
     }
 
     exitRoomToMenu() {
@@ -4480,6 +7589,31 @@
       }
     }
 
+    // Chơi lại từ đầu: quay về phòng ngủ và phát lại cảnh thức dậy
+    restartJourney() {
+      this.state.hasWokenUp = false;
+      if (this.currentZone === 'bedroom') {
+        this.clearScene();
+        this.buildZoneScene('bedroom');
+        this.spawnPlayerInZone('bedroom');
+        this.startZoneSession();
+      } else {
+        this.goToZone('bedroom', { label: 'Quay về phòng ngủ...' });
+      }
+    }
+
+    // Bắt đầu phiên chơi trong khu vực hiện tại
+    startZoneSession() {
+      // Lần đầu vào phòng ngủ trong phiên này → phát cảnh thức dậy
+      if (this.currentZone === 'bedroom' && !this.state.hasWokenUp && !this.state.isZoneComplete('bedroom')) {
+        this.startWakeUpSequence();
+        this.requestPointerLock();
+        return;
+      }
+      this.requestPointerLock();
+      this.showObjectiveBanner(this.currentZone);
+    }
+
     speakText(text, lang = 'zh-TW') {
       if (!('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
@@ -4510,7 +7644,20 @@
       document.getElementById('modalExampleVi').textContent = data.exampleVi;
 
       const discText = document.getElementById('modalDiscoveryText');
-      discText.textContent = isNew ? '✨ Mới phát hiện! +100 Điểm vào sổ tay' : '✓ Đã từng khám phá đồ vật này';
+      const zoneOfItem = ZONES[data.zone];
+      if (isNew) {
+        discText.textContent = data.isGate
+          ? '🚪 Đã ghi lối đi này vào sổ tay (+20 điểm)'
+          : '✨ Mới phát hiện! +100 Điểm vào sổ tay';
+      } else {
+        discText.textContent = '✓ Đã từng khám phá đồ vật này';
+      }
+      const zoneTag = document.getElementById('modalZoneTag');
+      if (zoneTag && zoneOfItem) {
+        zoneTag.textContent = `${zoneOfItem.icon} ${zoneOfItem.name} • ${this.state.zoneFoundCount(zoneOfItem.id)}/${this.state.zoneTotal(zoneOfItem.id)}`;
+      } else if (zoneTag) {
+        zoneTag.textContent = '🚪 Lối đi';
+      }
 
       // Setup Mini Quiz
       this.renderMiniQuiz(data.quiz);
@@ -4523,6 +7670,9 @@
       setTimeout(() => {
         if (this.objectMeshFactories[vocabId]) {
           this.inspector.showObject(this.objectMeshFactories[vocabId]);
+        } else {
+          // Từ vựng thuộc khu vực khác — hiện thẻ chữ Hán 3D thay cho mô hình
+          this.inspector.showPlaceholder(data);
         }
       }, 50);
 
@@ -4531,19 +7681,54 @@
         this.speakText(data.chinese, 'zh-TW');
       }, 350);
 
-      // Check Victory Condition (12/12)
-      if (this.state.discovered.size >= Object.keys(ROOM_VOCAB_DATA).length && isNew) {
+      // Vừa hoàn thành khu vực hiện tại → mở khoá cửa & báo cho người chơi
+      if (isNew && !data.isGate && data.zone === this.currentZone && this.state.isZoneComplete(this.currentZone)) {
+        this.onZoneCompleted(this.currentZone);
+      }
+
+      // Hoàn thành toàn bộ hành trình
+      if (isNew && this.state.isAllComplete()) {
         setTimeout(() => {
           this.showVictoryScreen();
-        }, 1200);
+        }, 1400);
       }
     }
 
-    closeVocabModal() {
+    // Khi khám phá xong một khu vực: mở khoá cửa, đổi đèn báo, thông báo
+    onZoneCompleted(zoneId) {
+      const zone = ZONES[zoneId];
+      if (!zone) return;
+      this.state.syncUnlockedZones();
+      this.state.saveStorage();
+
+      // Đổi đèn báo trên mọi cánh cửa của khu vực này sang xanh
+      this.interactiveObjects.forEach(obj => {
+        if (obj.userData && obj.userData.lockVisualZone === zoneId) {
+          this.applyGateLockVisual(obj, zoneId);
+        }
+      });
+
+      const nextZone = zone.next ? ZONES[zone.next] : null;
+      setTimeout(() => {
+        this.state.soundFX.playVictory();
+        if (nextZone) {
+          this.showToast(
+            `🎉 Hoàn thành <b>${zone.name}</b> (${zone.chinese})! Cửa đã mở khoá.<br>` +
+            `<span class="toast-sub">Hãy tới ${nextZone.icon} ${nextZone.name} (${nextZone.chinese} – ${nextZone.pinyin})</span>`,
+            'unlock', 5200
+          );
+        } else {
+          this.showToast(`🏆 Bạn đã khám phá trọn vẹn <b>${zone.name}</b>!`, 'unlock', 5000);
+        }
+      }, 700);
+      this.updateZoneHud();
+    }
+
+    closeVocabModal(silent = false) {
       const modal = document.getElementById('vocabModal');
       modal.classList.remove('active');
       this.state.activeItem = null;
-      this.requestPointerLock();
+      if (!silent) this.requestPointerLock();
     }
 
     renderMiniQuiz(quiz) {
@@ -4587,67 +7772,217 @@
       });
     }
 
+    // Sổ tay từ vựng — nhóm theo từng khu vực trong hành trình
     renderNotebookDrawer() {
       const container = document.getElementById('drawerVocabList');
       const count = document.getElementById('drawerSummaryCount');
-      const total = Object.keys(ROOM_VOCAB_DATA).length;
-      count.textContent = `Đã khám phá ${this.state.discovered.size}/${total} đồ vật`;
+      const found = this.state.totalFound();
+      count.textContent = `Đã khám phá ${found}/${TOTAL_VOCAB_COUNT} từ vựng trên toàn hành trình`;
 
       container.innerHTML = '';
-      Object.values(ROOM_VOCAB_DATA).forEach(item => {
-        const isFound = this.state.discovered.has(item.id);
-        const card = document.createElement('div');
-        card.className = 'drawer-vocab-item';
-        card.innerHTML = `
-          <div class="drawer-item-left">
-            <span class="drawer-item-icon">${isFound ? item.icon : '❓'}</span>
-            <div>
-              <div class="drawer-item-hanzi">${isFound ? item.chinese : '????'}</div>
-              <div class="drawer-item-pinyin">${isFound ? item.pinyin : 'chưa mở'}</div>
-            </div>
-          </div>
-          <div class="drawer-item-right">
-            <div class="drawer-item-meaning">${isFound ? item.nameVi : 'Chưa khám phá'}</div>
-            <div class="drawer-item-en">${isFound ? item.english : '???'}</div>
-          </div>
+      ZONE_ORDER.forEach(zoneId => {
+        const zone = ZONES[zoneId];
+        const unlocked = this.state.unlockedZones.has(zoneId);
+        const zFound = this.state.zoneFoundCount(zoneId);
+        const zTotal = this.state.zoneTotal(zoneId);
+
+        const header = document.createElement('div');
+        header.className = 'drawer-zone-header' + (unlocked ? '' : ' zone-locked');
+        header.innerHTML = `
+          <span class="dz-icon">${unlocked ? zone.icon : '🔒'}</span>
+          <span class="dz-name">${zone.name} <em>${zone.chinese} · ${zone.pinyin}</em></span>
+          <span class="dz-count">${zFound}/${zTotal}</span>
         `;
-        if (isFound) {
-          card.addEventListener('click', () => {
-            document.getElementById('notebookDrawer').classList.remove('active');
-            this.openVocabModal(item.id);
-          });
+        container.appendChild(header);
+
+        if (!unlocked) {
+          const hint = document.createElement('div');
+          hint.className = 'drawer-zone-hint';
+          hint.textContent = 'Hoàn thành khu vực trước để mở khoá.';
+          container.appendChild(hint);
+          return;
         }
-        container.appendChild(card);
+
+        zone.items.forEach(itemId => {
+          const item = ROOM_VOCAB_DATA[itemId];
+          if (!item) return;
+          const isFound = this.state.discovered.has(item.id);
+          const card = document.createElement('div');
+          card.className = 'drawer-vocab-item' + (isFound ? '' : ' not-found');
+          card.innerHTML = `
+            <div class="drawer-item-left">
+              <span class="drawer-item-icon">${isFound ? item.icon : '❓'}</span>
+              <div>
+                <div class="drawer-item-hanzi">${isFound ? item.chinese : '????'}</div>
+                <div class="drawer-item-pinyin">${isFound ? item.pinyin : 'chưa mở'}</div>
+              </div>
+            </div>
+            <div class="drawer-item-right">
+              <div class="drawer-item-meaning">${isFound ? item.nameVi : 'Chưa khám phá'}</div>
+              <div class="drawer-item-en">${isFound ? item.english : '???'}</div>
+            </div>
+          `;
+          if (isFound) {
+            card.addEventListener('click', () => {
+              document.getElementById('notebookDrawer').classList.remove('active');
+              this.openVocabModal(item.id);
+            });
+          }
+          container.appendChild(card);
+        });
       });
     }
 
+    // Cập nhật tên khu vực + nhiệm vụ trên HUD
+    updateZoneHud() {
+      const zone = ZONES[this.currentZone];
+      if (!zone) return;
+      const found = this.state.zoneFoundCount(zone.id);
+      const total = this.state.zoneTotal(zone.id);
+      const remaining = total - found;
+
+      const nameEl = document.getElementById('hudRoomName');
+      if (nameEl) nameEl.innerHTML = `${zone.name} <span class="hud-zone-cn">${zone.chinese}</span>`;
+      const iconEl = document.getElementById('hudRoomIcon');
+      if (iconEl) iconEl.textContent = zone.icon;
+
+      const stepEl = document.getElementById('hudZoneStep');
+      if (stepEl) stepEl.textContent = `Chặng ${ZONE_ORDER.indexOf(zone.id) + 1}/${ZONE_ORDER.length}`;
+
+      const taskEl = document.getElementById('hudZoneTask');
+      if (taskEl) {
+        if (remaining > 0) {
+          taskEl.innerHTML = `🎯 Còn <b>${remaining}</b> đồ vật cần khám phá`;
+          taskEl.className = 'hud-zone-task';
+        } else if (zone.next) {
+          taskEl.innerHTML = `✅ Đã xong! Tới ${ZONES[zone.next].icon} ${ZONES[zone.next].name}`;
+          taskEl.className = 'hud-zone-task done';
+        } else {
+          taskEl.innerHTML = `🏆 Hoàn thành toàn bộ hành trình!`;
+          taskEl.className = 'hud-zone-task done';
+        }
+      }
+
+      // Chuỗi chặng đường ở đầu màn hình
+      const trackEl = document.getElementById('hudZoneTrack');
+      if (trackEl) {
+        trackEl.innerHTML = ZONE_ORDER.map(zid => {
+          const z = ZONES[zid];
+          const done = this.state.isZoneComplete(zid);
+          const active = zid === this.currentZone;
+          const locked = !this.state.unlockedZones.has(zid);
+          const cls = ['zt-node', active ? 'active' : '', done ? 'done' : '', locked ? 'locked' : ''].filter(Boolean).join(' ');
+          return `<span class="${cls}" title="${z.name} (${z.chinese})">${locked ? '🔒' : z.icon}</span>`;
+        }).join('<span class="zt-line"></span>');
+      }
+    }
+
     updateProgressUI() {
-      const count = this.state.discovered.size;
-      const total = Object.keys(ROOM_VOCAB_DATA).length;
-      const pct = Math.round((count / total) * 100);
+      const zone = ZONES[this.currentZone] || ZONES.bedroom;
+      const zFound = this.state.zoneFoundCount(zone.id);
+      const zTotal = this.state.zoneTotal(zone.id);
+      const zPct = zTotal ? Math.round((zFound / zTotal) * 100) : 0;
 
-      // Start Screen Stats
-      document.getElementById('totalDiscoveredStats').textContent = `${count}/${total}`;
-      document.getElementById('totalScoreStats').textContent = this.state.score;
-      document.getElementById('level1ProgressFill').style.width = `${pct}%`;
-      document.getElementById('level1ProgressText').textContent = `Đã tìm: ${count}/${total} (${pct}%)`;
+      const totalFound = this.state.totalFound();
+      const totalPct = Math.round((totalFound / TOTAL_VOCAB_COUNT) * 100);
 
-      // Gameplay HUD
-      document.getElementById('hudDiscoveredCount').textContent = `${count} / ${total}`;
-      document.getElementById('hudMiniFill').style.width = `${pct}%`;
-      document.getElementById('hudDiscoveredBadge').textContent = count;
+      const set = (id, val, prop = 'textContent') => {
+        const el = document.getElementById(id);
+        if (el) el[prop] = val;
+      };
+
+      // Start Screen Stats — tiến độ toàn hành trình
+      set('totalDiscoveredStats', `${totalFound}/${TOTAL_VOCAB_COUNT}`);
+      set('totalScoreStats', this.state.score);
+      const fill = document.getElementById('level1ProgressFill');
+      if (fill) fill.style.width = `${totalPct}%`;
+      set('level1ProgressText', `Đã tìm: ${totalFound}/${TOTAL_VOCAB_COUNT} (${totalPct}%)`);
+      set('startZoneName', `${zone.icon} ${zone.name}`);
+
+      // Gameplay HUD — tiến độ khu vực đang đứng
+      set('hudDiscoveredCount', `${zFound} / ${zTotal}`);
+      const miniFill = document.getElementById('hudMiniFill');
+      if (miniFill) miniFill.style.width = `${zPct}%`;
+      set('hudDiscoveredBadge', totalFound);
+
+      this.updateZoneHud();
     }
 
     showVictoryScreen() {
+      if (this.victoryShown) return;
+      this.victoryShown = true;
       if (document.exitPointerLock) document.exitPointerLock();
       const modal = document.getElementById('victoryModal');
-      document.getElementById('victoryScore').textContent = this.state.score;
+      const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+      set('victoryItemsCount', `${this.state.totalFound()}/${TOTAL_VOCAB_COUNT}`);
+      set('victoryScore', this.state.score);
       const totalQ = this.state.quizStats.total || 1;
       const acc = Math.round((this.state.quizStats.correct / totalQ) * 100);
-      document.getElementById('victoryAccuracy').textContent = `${acc}%`;
+      set('victoryAccuracy', `${acc}%`);
 
       modal.classList.add('active');
       this.state.soundFX.playVictory();
+    }
+
+    // ======================================================================
+    // CẢNH MỞ ĐẦU: THỨC DẬY TRÊN GIƯỜNG
+    // ======================================================================
+    startWakeUpSequence() {
+      this.isWakingUp = true;
+      this.wakeUpTimer = 0;
+      this.state.hasWokenUp = true;
+
+      // Nằm trên giường: camera thấp, hơi nghiêng, ban đầu nhìn lên trần
+      this.player.pos.set(3.6, 0, -3.0);
+      this.player.yaw = Math.PI * 0.78;
+      this.player.pitch = 0.80;
+      this.wakeCameraY = 0.98;
+
+      // Ẩn tâm ngắm & khung tương tác trong lúc đang mở mắt
+      this.targetedObject = null;
+      if (this.crosshair) this.crosshair.classList.remove('active');
+      if (this.promptEl) this.promptEl.classList.remove('visible');
+
+      const lids = document.getElementById('wakeUpEyelids');
+      if (lids) lids.classList.add('active');
+      const overlay = document.getElementById('roomTransitionOverlay');
+      if (overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+      }
+
+      const script = [
+        { at: 0.2, blink: 'closed' },
+        { at: 1.0, blink: 'half' },
+        { at: 1.8, blink: 'closed' },
+        { at: 2.6, blink: 'open' }
+      ];
+      script.forEach(step => {
+        setTimeout(() => {
+          if (lids) lids.className = `wakeup-eyelids active lid-${step.blink}`;
+        }, step.at * 1000);
+      });
+
+      setTimeout(() => {
+        this.showToast(
+          '🌅 <b>早安！</b> (zǎo ān – Chào buổi sáng!)<br>' +
+          '<span class="toast-sub">Bạn vừa thức dậy trong phòng ngủ của mình.</span>',
+          'wake', 4200
+        );
+      }, 2000);
+
+      // Ngồi dậy & đứng lên khỏi giường
+      setTimeout(() => {
+        if (lids) lids.classList.remove('active');
+        this.isWakingUp = false;
+        this.wakeCameraY = null;
+        const spawn = ZONES.bedroom.spawn;
+        this.player.pos.set(spawn.x, 0, spawn.z);
+        this.player.yaw = spawn.yaw;
+        this.player.pitch = 0.05;
+        this.showObjectiveBanner('bedroom');
+        this.state.saveStorage();
+      }, 4200);
     }
 
     // --- COLLISION RESOLUTION (SOLID FURNITURE & BOUNDARIES) ---
@@ -4689,6 +8024,22 @@
 
     // --- GAME LOOP & PHYSICS UPDATE ---
     updatePlayer(delta) {
+      // Trong cảnh thức dậy: khoá di chuyển, camera nằm thấp trên giường
+      if (this.isWakingUp) {
+        this.wakeUpTimer += delta;
+        const sway = Math.sin(this.wakeUpTimer * 0.9) * 0.03;
+        this.camera.position.set(this.player.pos.x, this.wakeCameraY || 0.62, this.player.pos.z);
+        this.camera.rotation.order = 'YXZ';
+        this.camera.rotation.y = this.player.yaw + sway;
+        // Ngóc đầu dậy dần: hạ tầm nhìn từ trần nhà xuống ngang phòng
+        const t = Math.min(1, this.wakeUpTimer / 4.0);
+        this.camera.rotation.x = this.player.pitch * (1 - t * 0.92);
+        this.camera.rotation.z = 0.3 * (1 - t);
+        if (this.playerMesh) this.playerMesh.visible = false;
+        return;
+      }
+      this.camera.rotation.z = 0;
+
       const isInputActive = this.isPointerLocked || this.joystickDir.x !== 0 || this.joystickDir.y !== 0;
 
       // Forward & Right vectors from Yaw
@@ -4737,23 +8088,20 @@
         if (this.playerBones.rightKnee) this.playerBones.rightKnee.rotation.x = Math.max(0, legSwing * 0.95);
 
         // Arms & Elbows (Tay & Khớp khuỷu tay gập tự nhiên)
+        const elbowBend = -0.28 - Math.abs(armSwing) * 0.35;
         if (this.playerBones.leftArm) {
           this.playerBones.leftArm.rotation.x = -armSwing;
-          if (this.playerBones.leftElbow) {
-            this.playerBones.leftElbow.rotation.x = -0.28 - Math.abs(armSwing) * 0.35;
-          }
+          this.setElbowBend(this.playerBones.leftElbow, elbowBend, 1);
         }
         if (this.playerBones.rightArm) {
           this.playerBones.rightArm.rotation.x = armSwing;
-          if (this.playerBones.rightElbow) {
-            this.playerBones.rightElbow.rotation.x = -0.28 - Math.abs(armSwing) * 0.35;
-          }
+          this.setElbowBend(this.playerBones.rightElbow, elbowBend, -1);
         }
 
         if (this.playerBones.torso) {
           this.playerBones.torso.rotation.z = Math.sin(this.walkAnimPhase) * 0.04;
           const bounce = Math.abs(Math.sin(this.walkAnimPhase * 2)) * 0.035;
-          this.playerBones.torso.position.y = 0.85 + bounce;
+          this.playerBones.torso.position.y = (this.playerBones.torsoBaseY ?? 0.85) + bounce;
         }
       } else {
         // Idle breathing and resetting limbs
@@ -4766,26 +8114,23 @@
 
         if (this.playerBones.leftArm) {
           this.playerBones.leftArm.rotation.x = THREE.MathUtils.lerp(this.playerBones.leftArm.rotation.x, 0.08, blendFactor);
-          if (this.playerBones.leftElbow) {
-            this.playerBones.leftElbow.rotation.x = THREE.MathUtils.lerp(this.playerBones.leftElbow.rotation.x, -0.20, blendFactor);
-          }
+          this.setElbowBend(this.playerBones.leftElbow, -0.20, 1, blendFactor);
         }
         if (this.playerBones.rightArm) {
           this.playerBones.rightArm.rotation.x = THREE.MathUtils.lerp(this.playerBones.rightArm.rotation.x, 0.08, blendFactor);
-          if (this.playerBones.rightElbow) {
-            this.playerBones.rightElbow.rotation.x = THREE.MathUtils.lerp(this.playerBones.rightElbow.rotation.x, -0.20, blendFactor);
-          }
+          this.setElbowBend(this.playerBones.rightElbow, -0.20, -1, blendFactor);
         }
 
         if (this.playerBones.torso) {
           this.playerBones.torso.rotation.z = THREE.MathUtils.lerp(this.playerBones.torso.rotation.z, 0, blendFactor);
           const breathe = Math.sin(this.idleTime * 2.2) * 0.01;
-          this.playerBones.torso.position.y = 0.85 + breathe;
+          this.playerBones.torso.position.y = (this.playerBones.torsoBaseY ?? 0.85) + breathe;
         }
       }
 
       // --- RIGHT ARM DYNAMIC AIMING AT CROSSHAIR (UP/DOWN PITCH SYNC) ---
-      if (this.playerBones.rightArm) {
+      // Chỉ áp dụng cho nhân vật hình khối cũ; nhân vật GLB vung tay tự nhiên khi đi
+      if (!this.avatarIsSkinned && this.playerBones.rightArm) {
         const targetArmPitch = -Math.PI / 2 + this.player.pitch * 0.95;
         this.playerBones.rightArm.rotation.x = THREE.MathUtils.lerp(this.playerBones.rightArm.rotation.x, targetArmPitch, Math.min(1, delta * 20));
         this.playerBones.rightArm.rotation.y = -0.15; // Slightly inwards towards crosshair line
@@ -4819,10 +8164,13 @@
         let camZ = this.player.pos.z + right.z * shoulderOffset - forward.z * (dist * cosPitch);
         let camY = this.player.pos.y + headHeight - sinPitch * dist;
 
-        // Room boundary protection to prevent camera clipping outside walls or ceiling
-        camX = THREE.MathUtils.clamp(camX, -4.55, 4.55);
-        camZ = THREE.MathUtils.clamp(camZ, -4.55, 4.55);
-        camY = THREE.MathUtils.clamp(camY, 0.35, 3.9);
+        // Giới hạn camera theo đúng biên của khu vực đang chơi (tránh xuyên tường)
+        const cb = this.roomBounds || { minX: -4.5, maxX: 4.5, minZ: -4.5, maxZ: 4.5 };
+        const isOutdoorZone = (this.currentZone === 'street' || this.currentZone === 'park');
+        const margin = isOutdoorZone ? 2.5 : 0.05; // ngoài trời camera được lùi ra xa hơn
+        camX = THREE.MathUtils.clamp(camX, cb.minX - margin, cb.maxX + margin);
+        camZ = THREE.MathUtils.clamp(camZ, cb.minZ - margin, cb.maxZ + margin);
+        camY = THREE.MathUtils.clamp(camY, 0.35, isOutdoorZone ? 6.5 : 3.9);
 
         // Aim straight ahead through the crosshair (aim point forward in the room)
         const lookDist = 10.0;
@@ -4845,9 +8193,14 @@
     }
 
     updateRaycaster() {
+      if (this.isWakingUp || this.isTransitioning) return;
+
+      const isOutdoor = (this.currentZone === 'street' || this.currentZone === 'park');
+      const reach = isOutdoor ? 8.5 : 4.6;
+
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(new THREE.Vector2(0, 0), this.camera);
-      raycaster.far = 6.0;
+      raycaster.far = reach + (this.cameraMode === 'third_person' ? this.cameraDistance + 1.2 : 1.5);
 
       // Flatten interactive child meshes for intersection test
       const targetMeshes = [];
@@ -4866,8 +8219,10 @@
       if (intersects.length > 0) {
         const root = intersects[0].object.userData.rootGroup;
         if (root && root.userData.vocabData) {
-          const distToPlayer = this.player.pos.distanceTo(root.position);
-          if (distToPlayer < 4.5) {
+          // Đo từ người chơi tới điểm chạm thực tế → vật thể lớn (đường, toà nhà) vẫn bắt được
+          const hit = intersects[0].point;
+          const distToPlayer = Math.hypot(hit.x - this.player.pos.x, hit.z - this.player.pos.z);
+          if (distToPlayer < reach) {
             foundTarget = root;
           }
         }
@@ -4875,7 +8230,7 @@
 
       // Proximity assist for Third-Person Mode
       if (!foundTarget && this.cameraMode === 'third_person') {
-        let closestDist = 2.5;
+        let closestDist = isOutdoor ? 4.0 : 2.5;
         this.interactiveObjects.forEach(group => {
           const d = this.player.pos.distanceTo(group.position);
           if (d < closestDist) {
@@ -4894,12 +8249,25 @@
           this.targetedObject = foundTarget;
           this.crosshair.classList.add('active');
           this.promptEl.classList.add('visible');
-          if (foundTarget.userData.vocabId === 'door') {
-            this.promptTargetName.textContent = `門 (mén - Cửa phòng) • [E / Click] Vào Phòng Khách 🛋️`;
-          } else if (foundTarget.userData.vocabId === 'back_door') {
-            this.promptTargetName.textContent = `🚪 Cửa Phòng Học • [E / Click] Quay Về Phòng Học`;
+          const ud = foundTarget.userData;
+          if (ud.gateTarget) {
+            const tz = ZONES[ud.gateTarget];
+            const gd = ud.vocabData;
+            const locked = ud.gateLocked && this.state.zoneRemaining(this.currentZone) > 0;
+            if (ud.gateDirection === 'back') {
+              this.promptTargetName.innerHTML =
+                `↩️ ${gd ? gd.chinese : ''} • [E / Click] Quay lại ${tz ? tz.name : ''}`;
+            } else if (locked) {
+              this.promptTargetName.innerHTML =
+                `🔒 ${gd ? gd.chinese + ' (' + gd.pinyin + ')' : ''} • Còn <b>${this.state.zoneRemaining(this.currentZone)}</b> đồ vật chưa khám phá`;
+            } else {
+              this.promptTargetName.innerHTML =
+                `${gd ? gd.chinese + ' (' + gd.pinyin + ')' : ''} • [E / Click] ${tz ? tz.icon + ' Tới ' + tz.name : 'Đi tiếp'}`;
+            }
           } else {
-            this.promptTargetName.textContent = `${foundTarget.userData.vocabData.chinese} (${foundTarget.userData.vocabData.nameVi})`;
+            const found = this.state.discovered.has(ud.vocabId);
+            this.promptTargetName.innerHTML =
+              `${found ? '✅ ' : '✨ '}${ud.vocabData.chinese} (${ud.vocabData.nameVi})`;
           }
           this.state.soundFX.playHover();
         }
@@ -4914,6 +8282,13 @@
     }
 
     updateAnimations(delta) {
+      // 0. Props động của từng khu vực (đèn giao thông, đài phun nước, xích đu, chim…)
+      if (this.animatedProps && this.animatedProps.length) {
+        this.animatedProps.forEach(p => {
+          if (typeof p.update === 'function') p.update(delta);
+        });
+      }
+
       // 1. Wall clock ticking hand
       if (this.clockHandSec) {
         this.clockHandSec.rotation.z -= delta * 1.5;
@@ -4946,6 +8321,11 @@
   // --- INITIALIZE ON DOM READY ---
   window.addEventListener('DOMContentLoaded', () => {
     window.vocabGame = new VocabRoomGame();
+    // Dữ liệu hành trình để tiện tra cứu / gỡ lỗi từ console
+    window.VOCAB_DATA = ROOM_VOCAB_DATA;
+    window.ZONES = ZONES;
+    window.ZONE_ORDER = ZONE_ORDER;
+    window.TOTAL_VOCAB_COUNT = TOTAL_VOCAB_COUNT;
   });
 
 })();

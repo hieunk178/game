@@ -60,9 +60,9 @@
       <!-- Hero Banner -->
       <div class="start-hero">
         <div class="hero-tag">✨ Học Tương Tác 3D Thế Hệ Mới</div>
-        <h1 class="hero-title">Khám Phá Căn Phòng 3D & Chinh Phục Từ Vựng</h1>
+        <h1 class="hero-title">Hành Trình Khám Phá Thành Phố &amp; Chinh Phục Từ Vựng</h1>
         <p class="hero-desc">
-          Nhập vai góc nhìn thứ 3 sống động, tự do điều khiển nhân vật bước đi trong không gian, tương tác với từng đồ vật để ghi nhớ chữ Hán, phát âm và nghĩa tức thì!
+          Thức dậy trong phòng ngủ, khám phá từng đồ vật để mở khoá cánh cửa, đi qua phòng khách, phòng bếp rồi bước ra đường phố và công viên — mỗi món đồ bạn chạm vào là một từ tiếng Trung mới!
         </p>
         
         <div class="hero-stats">
@@ -77,116 +77,77 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-num">3D TPS</span>
-            <span class="stat-label">Góc nhìn thứ 3</span>
+            <span class="stat-num" id="startZoneName">🛏️ Phòng Ngủ</span>
+            <span class="stat-label">Đang ở chặng</span>
           </div>
         </div>
       </div>
 
-      <!-- Level Selection Section -->
+      <!-- Journey Map Section -->
       <div class="level-section">
         <div class="section-head">
-          <h2>Chọn Màn Chơi</h2>
-          <span class="section-badge">1 Màn sẵn sàng</span>
+          <h2>Lộ Trình Khám Phá</h2>
+          <span class="section-badge">5 chặng liên tiếp</span>
         </div>
 
-        <div class="level-grid">
-          
-          <!-- LEVEL 1: Study Room (ACTIVE) -->
-          <div class="level-card active-card" id="cardLevel1">
-            <div class="card-cover room-cover">
-              <div class="level-badge ready">🟢 SẴN SÀNG</div>
-              <div class="cover-icon">🛋️</div>
-              <div class="card-glow"></div>
-            </div>
-            <div class="card-body">
-              <div class="level-meta">
-                <span class="level-num">MÀN 1</span>
-                <span class="level-diff">⭐ Cơ Bản (A1 - A2)</span>
-              </div>
-              <h3 class="level-title">Căn Phòng Học Tập Ấm Cúng</h3>
-              <p class="level-desc">
-                Khám phá bàn làm việc, kệ sách, laptop, đèn bàn, cây cảnh và các vật dụng thường nhật trong phòng riêng.
-              </p>
-              <div class="level-progress-bar">
-                <div class="progress-fill" id="level1ProgressFill" style="width: 0%"></div>
-              </div>
-              <div class="level-footer">
-                <span class="progress-text" id="level1ProgressText">Đã tìm: 0/12</span>
-                <button type="button" class="btn-play-level" id="btnPlayLevel1">
-                  <span>Vào Chơi Ngay</span>
-                  <span class="arrow-icon">➔</span>
-                </button>
-              </div>
+        <div class="journey-map">
+          <div class="journey-step">
+            <div class="js-icon">🛏️</div>
+            <div class="js-body">
+              <div class="js-order">CHẶNG 1</div>
+              <h3 class="js-title">Phòng Ngủ <em>臥室 wòshì</em></h3>
+              <p class="js-desc">Thức dậy trên giường. Khám phá hết 15 đồ vật trong phòng thì cửa mới mở.</p>
             </div>
           </div>
-
-          <!-- LEVEL 2: Cozy Cafe (COMING SOON) -->
-          <div class="level-card locked-card">
-            <div class="card-cover cafe-cover">
-              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
-              <div class="cover-icon">☕</div>
-            </div>
-            <div class="card-body">
-              <div class="level-meta">
-                <span class="level-num">MÀN 2</span>
-                <span class="level-diff">⭐⭐ Trung cấp (B1)</span>
-              </div>
-              <h3 class="level-title">Quán Cà Phê Thư Giãn</h3>
-              <p class="level-desc">
-                Học từ vựng về menu đồ uống, bánh ngọt, quầy thu ngân, quầy pha chế và khách hàng.
-              </p>
-              <div class="level-footer">
-                <span class="progress-text">Dự kiến phát hành</span>
-                <button type="button" class="btn-locked" disabled>Khóa</button>
-              </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step">
+            <div class="js-icon">🛋️</div>
+            <div class="js-body">
+              <div class="js-order">CHẶNG 2</div>
+              <h3 class="js-title">Phòng Khách <em>客廳 kètīng</em></h3>
+              <p class="js-desc">Sofa, ti vi, bàn trà, đèn chùm… học xong mới sang được phòng bếp.</p>
             </div>
           </div>
-
-          <!-- LEVEL 3: Classroom (COMING SOON) -->
-          <div class="level-card locked-card">
-            <div class="card-cover school-cover">
-              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
-              <div class="cover-icon">🏫</div>
-            </div>
-            <div class="card-body">
-              <div class="level-meta">
-                <span class="level-num">MÀN 3</span>
-                <span class="level-diff">⭐⭐ Trung cấp (B1)</span>
-              </div>
-              <h3 class="level-title">Lớp Học Hiện Đại</h3>
-              <p class="level-desc">
-                Học từ vựng về bảng đen, giáo trình, máy chiếu, bài tập và dụng cụ học tập phong phú.
-              </p>
-              <div class="level-footer">
-                <span class="progress-text">Dự kiến phát hành</span>
-                <button type="button" class="btn-locked" disabled>Khóa</button>
-              </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step">
+            <div class="js-icon">🍳</div>
+            <div class="js-body">
+              <div class="js-order">CHẶNG 3</div>
+              <h3 class="js-title">Phòng Bếp <em>廚房 chúfáng</em></h3>
+              <p class="js-desc">Tủ lạnh, bếp nấu, bồn rửa, lò vi sóng… rồi mở cửa chính ra phố.</p>
             </div>
           </div>
-
-          <!-- LEVEL 4: Supermarket (COMING SOON) -->
-          <div class="level-card locked-card">
-            <div class="card-cover market-cover">
-              <div class="level-badge locked">🔒 SẮP RA MẮT</div>
-              <div class="cover-icon">🛒</div>
-            </div>
-            <div class="card-body">
-              <div class="level-meta">
-                <span class="level-num">MÀN 4</span>
-                <span class="level-diff">⭐⭐⭐ Nâng cao (B2)</span>
-              </div>
-              <h3 class="level-title">Siêu Thị & Mua Sắm</h3>
-              <p class="level-desc">
-                Khám phá các gian hàng thực phẩm, đồ gia dụng, xe đẩy và quy trình thanh toán.
-              </p>
-              <div class="level-footer">
-                <span class="progress-text">Dự kiến phát hành</span>
-                <button type="button" class="btn-locked" disabled>Khóa</button>
-              </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step">
+            <div class="js-icon">🏙️</div>
+            <div class="js-body">
+              <div class="js-order">CHẶNG 4</div>
+              <h3 class="js-title">Đường Phố <em>街道 jiēdào</em></h3>
+              <p class="js-desc">Đi dọc con đường: đèn giao thông, trạm xe buýt, cửa hàng, toà nhà cao tầng.</p>
             </div>
           </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step">
+            <div class="js-icon">🌳</div>
+            <div class="js-body">
+              <div class="js-order">CHẶNG 5</div>
+              <h3 class="js-title">Công Viên <em>公園 gōngyuán</em></h3>
+              <p class="js-desc">Điểm đến cuối: đài phun nước, hồ, cầu, xích đu và tượng đá.</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="journey-cta">
+          <div class="level-progress-bar">
+            <div class="progress-fill" id="level1ProgressFill" style="width: 0%"></div>
+          </div>
+          <div class="level-footer">
+            <span class="progress-text" id="level1ProgressText">Đã tìm: 0/55</span>
+            <button type="button" class="btn-play-level" id="btnPlayLevel1">
+              <span>Bắt Đầu Hành Trình</span>
+              <span class="arrow-icon">➔</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -232,16 +193,21 @@
       <!-- Top HUD Bar -->
       <div class="hud-top">
         <div class="hud-room-tag">
-          <span class="room-icon">🛋️</span>
-          <span class="room-name" id="hudRoomName">Căn Phòng Học Tập</span>
+          <span class="room-icon" id="hudRoomIcon">🛏️</span>
+          <div class="room-tag-body">
+            <span class="room-name" id="hudRoomName">Phòng Ngủ <span class="hud-zone-cn">臥室</span></span>
+            <span class="room-step" id="hudZoneStep">Chặng 1/5</span>
+          </div>
         </div>
 
         <div class="hud-progress-pill">
-          <span class="progress-label">Khám phá:</span>
-          <strong id="hudDiscoveredCount">0 / 12</strong>
+          <span class="progress-label">Khám phá khu này:</span>
+          <strong id="hudDiscoveredCount">0 / 15</strong>
           <div class="hud-mini-bar">
             <div class="hud-mini-fill" id="hudMiniFill" style="width: 0%"></div>
           </div>
+          <div class="hud-zone-task" id="hudZoneTask">🎯 Còn 15 đồ vật cần khám phá</div>
+          <div class="hud-zone-track" id="hudZoneTrack"></div>
         </div>
 
         <div class="hud-top-right">
@@ -263,6 +229,12 @@
           </button>
         </div>
       </div>
+
+      <!-- Objective banner shown when entering a zone -->
+      <div class="objective-banner" id="objectiveBanner"></div>
+
+      <!-- Floating toast: locked door, zone completed, wake-up greeting -->
+      <div class="game-toast" id="gameToast"></div>
 
       <!-- Center Crosshair / Aim -->
       <div class="fps-crosshair" id="fpsCrosshair">
@@ -317,6 +289,12 @@
         </div>
       </div>
 
+      <!-- Wake-up eyelids (cảnh mở mắt khi thức dậy) -->
+      <div class="wakeup-eyelids" id="wakeUpEyelids">
+        <div class="lid lid-top"></div>
+        <div class="lid lid-bottom"></div>
+      </div>
+
     </div>
   </section>
 
@@ -327,6 +305,7 @@
       <!-- Modal Header -->
       <div class="vocab-modal-head">
         <div class="object-category-tag" id="modalCategory">Đồ dùng trong phòng</div>
+        <div class="object-zone-tag" id="modalZoneTag">🛏️ Phòng Ngủ • 0/15</div>
         <button type="button" class="btn-modal-close" id="btnCloseModal" aria-label="Đóng">&times;</button>
       </div>
 
@@ -428,13 +407,13 @@
       <div class="drawer-head">
         <div class="drawer-title">
           <span>📖</span>
-          <h3>Sổ Tay Từ Vựng Trong Phòng</h3>
+          <h3>Sổ Tay Từ Vựng Hành Trình</h3>
         </div>
         <button type="button" class="btn-drawer-close" id="btnCloseDrawer">&times;</button>
       </div>
       <div class="drawer-summary">
-        <span id="drawerSummaryCount">Đã khám phá 0/12 đồ vật</span>
-        <span class="drawer-star-badge">⭐ Thu thập đủ để mở khóa màn sau</span>
+        <span id="drawerSummaryCount">Đã khám phá 0/55 từ vựng trên toàn hành trình</span>
+        <span class="drawer-star-badge">⭐ Khám phá hết một khu vực để mở khoá cửa sang chặng sau</span>
       </div>
       <div class="drawer-body" id="drawerVocabList">
         <!-- List of discovered items -->
@@ -446,8 +425,8 @@
   <div class="modal-backdrop" id="victoryModal">
     <div class="victory-card">
       <div class="victory-confetti-icon">🎉</div>
-      <h2 class="victory-title">Tuyệt Vời! Bạn Đã Hoàn Thành Căn Phòng!</h2>
-      <p class="victory-sub">Bạn đã tìm thấy và khám phá toàn bộ 12/12 đồ vật trong phòng.</p>
+      <h2 class="victory-title">Tuyệt Vời! Bạn Đã Đi Hết Hành Trình!</h2>
+      <p class="victory-sub">Từ phòng ngủ, qua phòng khách, phòng bếp, ra đường phố và tới công viên — bạn đã khám phá trọn vẹn 55 từ vựng.</p>
       
       <div class="victory-stars">
         <span class="star-anim star-1">⭐</span>
@@ -457,7 +436,7 @@
 
       <div class="victory-stats-grid">
         <div class="v-stat">
-          <span class="v-val" id="victoryItemsCount">12/12</span>
+          <span class="v-val" id="victoryItemsCount">55/55</span>
           <span class="v-lbl">Đồ vật phát hiện</span>
         </div>
         <div class="v-stat">
@@ -481,15 +460,15 @@
     </div>
   </div>
 
-  <!-- ================= EXIT DOOR CONFIRMATION MODAL ================= -->
+  <!-- ================= GATE / DOOR CONFIRMATION MODAL ================= -->
   <div class="modal-backdrop" id="doorModal">
     <div class="door-modal-card">
       <div class="door-modal-head">
         <div class="door-modal-title-wrap">
           <span class="door-badge-icon">🚪</span>
           <div>
-            <h3 class="door-modal-title">Cửa Ra Vào • Lối Thoát Khỏi Phòng</h3>
-            <span class="door-modal-sub">門 (mén) • Room Exit Door</span>
+            <h3 class="door-modal-title" id="doorModalTitle">🛋️ Tới Phòng Khách</h3>
+            <span class="door-modal-sub">Cửa đã mở khoá — sẵn sàng sang chặng mới</span>
           </div>
         </div>
         <button type="button" class="btn-modal-close" id="btnCloseDoorModal">&times;</button>
@@ -497,34 +476,30 @@
 
       <div class="door-modal-body">
         <div class="door-hanzi-banner">
-          <span class="door-big-hanzi">門</span>
+          <span class="door-big-hanzi" id="doorModalHanzi">門 <span class="door-pin">mén</span></span>
           <div class="door-hanzi-info">
-            <div class="door-pinyin">mén <span class="door-pos">Danh từ • Lượng từ: 扇 (shàn) / 道 (dào)</span></div>
-            <div class="door-meaning">Cửa ra vào, lối thoát kết nối phòng học với không gian bên ngoài.</div>
-            <div class="door-example">"離開房間時請隨手關門。" <em>(Khi rời phòng hãy nhớ tiện tay đóng cửa.)</em></div>
+            <div class="door-meaning" id="doorModalDesc">Bạn đã khám phá xong khu vực này! Bước qua cánh cửa để tiếp tục hành trình.</div>
           </div>
         </div>
 
         <div class="door-stats-strip">
           <div class="door-stat-item">
-            <span class="stat-num" id="doorFoundCount">0/13</span>
-            <span class="stat-text">Đồ vật đã khám phá</span>
+            <span class="stat-num" id="doorFoundCount">0/15</span>
+            <span class="stat-text">Đồ vật khu vực này</span>
           </div>
           <div class="door-stat-item">
             <span class="stat-num" id="doorScoreCount">0</span>
             <span class="stat-text">Điểm tích lũy</span>
           </div>
         </div>
-
-        <p class="door-confirm-prompt">Bạn có muốn mở cửa bước ra <strong>Phòng Khách</strong> 🛋️ — khám phá không gian sinh hoạt gia đình?</p>
       </div>
 
       <div class="door-modal-actions">
         <button type="button" class="btn-door-exit" id="btnConfirmExitDoor">
-          <span>🛋️ Mở Cửa → Vào Phòng Khách</span>
+          <span id="btnConfirmExitDoorTxt">🛋️ Đi tới Phòng Khách</span>
         </button>
         <button type="button" class="btn-door-quiz" id="btnLearnDoorCard">
-          <span>📖 Làm Quiz Từ "門" (+100đ)</span>
+          <span>📖 Học từ vựng về cánh cửa này</span>
         </button>
         <button type="button" class="btn-door-continue" id="btnCancelExitDoor">
           <span>↩️ Ở Lại Học Tiếp</span>
@@ -606,11 +581,11 @@
     flex-direction:column;gap:16px;
   ">
     <div style="font-size:3.5rem;animation:spin 1s linear infinite;">🚪</div>
-    <div style="color:#38bdf8;font-size:1.4rem;font-weight:700;letter-spacing:2px;font-family:serif;">Đang mở cửa...</div>
+    <div class="transition-label" style="color:#38bdf8;font-size:1.4rem;font-weight:700;letter-spacing:2px;font-family:serif;">Đang mở cửa...</div>
   </div>
   <style>@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}</style>
 
   <!-- Game Logic Script -->
-  <script src="./game.js?v=202608200108"></script>
+  <script src="./game.js?v=202608201200"></script>
 </body>
 </html>

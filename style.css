@@ -2236,3 +2236,489 @@ input:checked + .slider:before {
 .btn-door-continue:hover {
   color: #fff;
 }
+
+/* ==========================================================================
+   HÀNH TRÌNH KHÁM PHÁ THÀNH PHỐ — GIAO DIỆN BỔ SUNG
+   ========================================================================== */
+
+/* --- Bản đồ lộ trình ở màn hình bắt đầu --- */
+.journey-map {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.journey-step {
+  flex: 1 1 190px;
+  min-width: 180px;
+  display: flex;
+  gap: 12px;
+  padding: 16px 14px;
+  border-radius: 18px;
+  background: linear-gradient(150deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.92));
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.journey-step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+.journey-step .js-icon {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.journey-step .js-order {
+  font-size: 0.68rem;
+  letter-spacing: 1.6px;
+  font-weight: 800;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.journey-step .js-title {
+  font-size: 1.02rem;
+  margin: 0 0 6px;
+  color: #f1f5f9;
+  line-height: 1.3;
+}
+
+.journey-step .js-title em {
+  display: block;
+  font-size: 0.78rem;
+  font-style: normal;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.journey-step .js-desc {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.journey-arrow {
+  display: flex;
+  align-items: center;
+  color: #38bdf8;
+  font-size: 1.4rem;
+  font-weight: 800;
+  opacity: 0.6;
+}
+
+.journey-cta {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+@media (max-width: 900px) {
+  .journey-arrow { display: none; }
+  .journey-map { flex-direction: column; }
+}
+
+/* --- HUD: tên khu vực, nhiệm vụ & chuỗi chặng --- */
+.hud-room-tag .room-tag-body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.hud-room-tag .room-step {
+  font-size: 0.68rem;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.hud-zone-cn {
+  font-size: 0.85em;
+  color: #7dd3fc;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.hud-zone-task {
+  margin-top: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #fcd34d;
+  letter-spacing: 0.2px;
+}
+
+.hud-zone-task.done {
+  color: #4ade80;
+}
+
+.hud-zone-track {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.hud-zone-track .zt-node {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  background: rgba(148, 163, 184, 0.16);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  filter: grayscale(0.7);
+  opacity: 0.75;
+  transition: all 0.25s ease;
+}
+
+.hud-zone-track .zt-node.done {
+  background: rgba(34, 197, 94, 0.24);
+  border-color: rgba(74, 222, 128, 0.7);
+  filter: none;
+  opacity: 1;
+}
+
+.hud-zone-track .zt-node.active {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+  filter: none;
+  opacity: 1;
+  transform: scale(1.14);
+}
+
+.hud-zone-track .zt-node.locked {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+
+.hud-zone-track .zt-line {
+  width: 12px;
+  height: 2px;
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 2px;
+}
+
+/* --- Băng nhiệm vụ khi vào khu vực mới --- */
+.objective-banner {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -14px);
+  min-width: 320px;
+  max-width: min(560px, 88vw);
+  padding: 18px 26px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.9));
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.65);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 60;
+}
+
+.objective-banner.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.objective-banner .obj-zone {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin-bottom: 8px;
+}
+
+.objective-banner .obj-cn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7dd3fc;
+  margin-left: 6px;
+}
+
+.objective-banner .obj-text {
+  font-size: 0.94rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.objective-banner .obj-progress {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+/* --- Thông báo nổi (toast) --- */
+.game-toast {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -16px);
+  max-width: min(620px, 90vw);
+  padding: 15px 24px;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #f8fafc;
+  background: linear-gradient(150deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.94));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 70;
+}
+
+.game-toast.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.game-toast .toast-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.game-toast.toast-locked {
+  border-color: rgba(248, 113, 113, 0.6);
+  box-shadow: 0 18px 50px rgba(127, 29, 29, 0.5);
+}
+
+.game-toast.toast-unlock {
+  border-color: rgba(74, 222, 128, 0.65);
+  box-shadow: 0 18px 50px rgba(20, 83, 45, 0.5);
+}
+
+.game-toast.toast-wake {
+  border-color: rgba(251, 191, 36, 0.6);
+  box-shadow: 0 18px 50px rgba(120, 53, 15, 0.5);
+}
+
+/* --- Hiệu ứng mở mắt khi thức dậy --- */
+.wakeup-eyelids {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.wakeup-eyelids.active {
+  opacity: 1;
+}
+
+.wakeup-eyelids .lid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #05070d;
+  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wakeup-eyelids .lid-top {
+  top: 0;
+  transform: translateY(-100%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.wakeup-eyelids .lid-bottom {
+  bottom: 0;
+  transform: translateY(100%);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.wakeup-eyelids.lid-closed .lid-top { transform: translateY(0); }
+.wakeup-eyelids.lid-closed .lid-bottom { transform: translateY(0); }
+.wakeup-eyelids.lid-half .lid-top { transform: translateY(-58%); }
+.wakeup-eyelids.lid-half .lid-bottom { transform: translateY(58%); }
+.wakeup-eyelids.lid-open .lid-top { transform: translateY(-100%); }
+.wakeup-eyelids.lid-open .lid-bottom { transform: translateY(100%); }
+
+/* --- Sổ tay: nhóm theo khu vực --- */
+.drawer-zone-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: linear-gradient(120deg, rgba(56, 189, 248, 0.16), rgba(15, 23, 42, 0.5));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.drawer-zone-header.zone-locked {
+  background: rgba(51, 65, 85, 0.4);
+  border-color: rgba(100, 116, 139, 0.3);
+  opacity: 0.7;
+}
+
+.drawer-zone-header .dz-icon { font-size: 1.2rem; }
+
+.drawer-zone-header .dz-name {
+  flex: 1;
+  font-weight: 800;
+  color: #f1f5f9;
+  font-size: 0.96rem;
+}
+
+.drawer-zone-header .dz-name em {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-left: 6px;
+}
+
+.drawer-zone-header .dz-count {
+  font-weight: 800;
+  font-size: 0.86rem;
+  color: #38bdf8;
+}
+
+.drawer-zone-hint {
+  padding: 8px 14px 12px;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.drawer-vocab-item.not-found {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* --- Nhãn khu vực trong thẻ từ vựng --- */
+.object-zone-tag {
+  margin-left: 10px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  white-space: nowrap;
+}
+
+/* --- Cửa: pinyin nhỏ cạnh chữ Hán --- */
+.door-big-hanzi .door-pin {
+  font-size: 0.36em;
+  font-weight: 600;
+  color: #7dd3fc;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* --- Bố cục lại thanh HUD trên cùng cho hành trình 5 chặng --- */
+.hud-room-tag {
+  border-radius: 18px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.hud-progress-pill {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px 20px 12px;
+  border-radius: 18px;
+  align-self: flex-start;
+  min-width: 250px;
+}
+
+.hud-progress-pill .progress-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.hud-progress-pill > strong {
+  font-size: 1.02rem;
+}
+
+.hud-progress-pill .hud-mini-bar {
+  width: 100%;
+  margin-top: 2px;
+}
+
+.hud-top {
+  align-items: flex-start;
+}
+
+@media (max-width: 760px) {
+  .hud-progress-pill { min-width: 0; padding: 8px 14px 10px; }
+  .hud-zone-track .zt-node { width: 20px; height: 20px; font-size: 0.72rem; }
+  .hud-zone-track .zt-line { width: 7px; }
+  .objective-banner { top: 26%; padding: 14px 18px; }
+  .objective-banner .obj-zone { font-size: 1.05rem; }
+  .game-toast { font-size: 0.88rem; padding: 12px 16px; }
+}
+
+/* Băng nhiệm vụ & thông báo nổi dùng chung một vị trí (không bao giờ hiện cùng lúc) */
+.objective-banner { top: 27%; }
+.game-toast { top: 27%; }
+
+@media (max-width: 760px) {
+  .objective-banner, .game-toast { top: 31%; }
+}
+
+/* --- Màn hình thấp (điện thoại xoay ngang): thu gọn HUD & thông báo --- */
+@media (max-height: 540px) {
+  .hud-room-tag {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 14px;
+  }
+  .hud-room-tag .room-step { font-size: 0.6rem; letter-spacing: 0.8px; }
+  .hud-progress-pill {
+    padding: 6px 14px 8px;
+    border-radius: 14px;
+    min-width: 0;
+  }
+  .hud-progress-pill .progress-label { font-size: 0.66rem; }
+  .hud-progress-pill > strong { font-size: 0.86rem; }
+  .hud-progress-pill .hud-mini-bar { height: 4px; }
+  /* Nhiệm vụ & chuỗi chặng đã hiển thị ở băng thông báo — ẩn bớt cho gọn */
+  .hud-zone-task { display: none; }
+  .hud-zone-track { display: none; }
+
+  .objective-banner,
+  .game-toast {
+    top: 44%;
+    padding: 10px 16px;
+    font-size: 0.84rem;
+    border-radius: 14px;
+    max-width: min(520px, 82vw);
+  }
+  .objective-banner .obj-zone { font-size: 0.98rem; margin-bottom: 4px; }
+  .objective-banner .obj-text { font-size: 0.78rem; line-height: 1.45; }
+  .objective-banner .obj-progress { margin-top: 6px; font-size: 0.72rem; padding: 3px 10px; }
+  .game-toast .toast-sub { font-size: 0.74rem; margin-top: 4px; }
+}
