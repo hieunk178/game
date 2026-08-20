@@ -1939,6 +1939,11 @@ input:checked + .slider:before {
   display: none;
 }
 
+/* Hiện/ẩn theo LOẠI thiết bị, không theo bề rộng — điện thoại xoay ngang vẫn
+   rộng hơn 768px nên trước đây joystick và nút tương tác bị ẩn mất. */
+html.is-touch .desktop-only { display: none !important; }
+html.is-touch .mobile-only { display: flex; }
+
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
@@ -1965,71 +1970,106 @@ input:checked + .slider:before {
     font-size: 2.2rem;
   }
 
-  .mobile-controls-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    pointer-events: auto;
-  }
+}
 
-  .virtual-joystick-zone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
+/* ---- ĐIỀU KHIỂN CẢM ỨNG (áp dụng cho mọi thiết bị có màn cảm ứng) ---- */
+html.is-touch .mobile-controls-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: auto;
+  position: relative;
+  z-index: 45;
+}
 
-  .joystick-base {
-    width: 110px;
-    height: 110px;
-    background: rgba(15, 23, 42, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    position: relative;
-    backdrop-filter: blur(8px);
-    touch-action: none;
-  }
+html.is-touch .virtual-joystick-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+}
 
-  .joystick-stick {
-    width: 44px;
-    height: 44px;
-    background: var(--grad-primary);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.5);
-    pointer-events: none;
-  }
+html.is-touch .joystick-base {
+  width: 118px;
+  height: 118px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  position: relative;
+  backdrop-filter: blur(8px);
+  touch-action: none;
+  pointer-events: auto;
+}
 
-  .joystick-label {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
+html.is-touch .joystick-stick {
+  width: 46px;
+  height: 46px;
+  background: var(--grad-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.5);
+  pointer-events: none;
+}
 
-  .btn-mobile-interact {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--grad-primary);
-    border: 3px solid rgba(255, 255, 255, 0.4);
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
-    cursor: pointer;
-    touch-action: manipulation;
-  }
+html.is-touch .joystick-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
 
-  .btn-mobile-interact span:first-child {
-    font-size: 1.6rem;
-  }
+html.is-touch .btn-mobile-interact {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.6);
+  cursor: pointer;
+  touch-action: manipulation;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.is-touch .btn-mobile-interact:active {
+  transform: scale(0.92);
+  filter: brightness(1.2);
+}
+
+html.is-touch .btn-mobile-interact span:first-child {
+  font-size: 1.7rem;
+}
+
+/* Nút HUD to hơn & dễ chạm hơn trên cảm ứng */
+html.is-touch .btn-hud {
+  padding: 10px 12px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.is-touch .btn-hud:active { transform: scale(0.94); }
+
+/* Chặn cuộn / zoom bằng cử chỉ khi đang chơi */
+html.is-touch .canvas-3d-container,
+html.is-touch .screen-game {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Thiết bị cảm ứng không có Pointer Lock → không bao giờ hiện lớp phủ này */
+html.is-touch .pointer-lock-prompt {
+  display: none !important;
 }
 
 /* ================= DOOR MODAL STYLES ================= */
@@ -2721,4 +2761,333 @@ input:checked + .slider:before {
   .objective-banner .obj-text { font-size: 0.78rem; line-height: 1.45; }
   .objective-banner .obj-progress { margin-top: 6px; font-size: 0.72rem; padding: 3px 10px; }
   .game-toast .toast-sub { font-size: 0.74rem; margin-top: 4px; }
+}
+
+/* ==========================================================================
+   NHẮC XOAY NGANG MÁY — chỉ hiện trên thiết bị cảm ứng khi đang cầm dọc
+   ========================================================================== */
+.rotate-device-overlay {
+  display: none;
+}
+
+html.is-touch .rotate-device-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  background: linear-gradient(160deg, #0b111e 0%, #131c2f 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+
+/* Chỉ chặn khi màn hình đang dọc */
+@media (orientation: landscape) {
+  html.is-touch .rotate-device-overlay { display: none !important; }
+}
+
+@media (orientation: portrait) {
+  html.is-touch .rotate-device-overlay { display: flex; }
+}
+
+.rotate-box {
+  max-width: 380px;
+}
+
+.rotate-icon {
+  font-size: 4.5rem;
+  display: inline-block;
+  animation: rotateHint 2s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotateHint {
+  0%, 40% { transform: rotate(0deg); }
+  60%, 100% { transform: rotate(-90deg); }
+}
+
+.rotate-box h3 {
+  margin: 18px 0 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.rotate-box p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin-bottom: 22px;
+}
+
+.btn-rotate-fs {
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  background: rgba(56, 189, 248, 0.16);
+  color: #7dd3fc;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-rotate-fs:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   MÀN HÌNH CHỜ KHỞI ĐỘNG
+   ========================================================================== */
+.boot-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #0b111e 0%, #131c2f 100%);
+  transition: opacity 0.4s ease;
+}
+
+.boot-loader.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-box {
+  text-align: center;
+  max-width: 320px;
+  padding: 0 24px;
+}
+
+.boot-icon {
+  font-size: 3.2rem;
+  margin-bottom: 14px;
+  animation: bootPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes bootPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+.boot-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.boot-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.22);
+  overflow: hidden;
+}
+
+.boot-bar span {
+  display: block;
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  animation: bootSlide 1.1s ease-in-out infinite;
+}
+
+@keyframes bootSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+/* ==========================================================================
+   ĐIỆN THOẠI XOAY NGANG — chiều cao rất thấp nên phải thu gọn mạnh
+   ========================================================================== */
+@media (max-height: 540px) {
+  /* Thanh tiêu đề chiếm tới 1/5 màn hình khi cầm ngang → thu nhỏ lại */
+  .game-header {
+    height: 42px;
+    padding: 0 12px;
+  }
+
+  .game-header .logo-sub { display: none; }
+  .game-header .logo-title { font-size: 0.9rem; }
+  .game-header .logo-badge { width: 28px; height: 28px; font-size: 1rem; }
+  .game-header .btn-icon { width: 32px; height: 32px; font-size: 0.9rem; }
+  .game-header .btn-back { padding: 6px 10px; font-size: 0.78rem; }
+  .game-header .btn-back .btn-text { display: none; }
+
+  .game-hud { padding: 50px 12px 8px; }
+
+  .hud-room-tag { font-size: 0.72rem; padding: 5px 10px; }
+  .hud-room-tag .room-icon { font-size: 0.95rem; }
+  .btn-hud { padding: 7px 9px; font-size: 0.72rem; min-height: 38px; }
+  .btn-hud .hud-btn-txt { font-size: 0.72rem; }
+  .hud-top-right { gap: 6px; }
+
+  /* Joystick & nút tương tác gọn lại, nhãn ẩn đi cho khỏi bị cắt */
+  html.is-touch .joystick-base { width: 92px; height: 92px; }
+  html.is-touch .joystick-stick { width: 38px; height: 38px; }
+  html.is-touch .joystick-label { display: none; }
+  html.is-touch .btn-mobile-interact { width: 70px; height: 70px; font-size: 0.66rem; }
+  html.is-touch .btn-mobile-interact span:first-child { font-size: 1.35rem; }
+
+  .interaction-prompt { padding: 8px 14px; }
+  .interaction-prompt .prompt-target { font-size: 0.85rem; }
+  .interaction-prompt .prompt-action { font-size: 0.68rem; }
+}
+
+/* Thẻ từ vựng & bảng cửa phải cuộn được trên màn hình thấp */
+@media (max-height: 540px) {
+  .vocab-modal-card,
+  .door-modal-card,
+  .settings-card,
+  .victory-card {
+    max-height: 92vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inspector-viewport { height: 150px; }
+  .vocab-hanzi { font-size: 1.9rem; }
+}
+
+/* Không chặn cuộn ở cấp trang — chỉ màn hình chơi mới khoá cuộn.
+   (Trước đây đặt overflow:hidden lên body làm trang chủ không cuộn được
+   khi xoay ngang điện thoại.) */
+html.is-touch body {
+  overscroll-behavior: none;
+}
+
+/* Trang chủ trên thiết bị cảm ứng: khoá đúng bằng khung nhìn rồi tự cuộn bên
+   trong. Cách này không phụ thuộc vào chiều cao của <html>/<body> nên hoạt động
+   cả khi thanh địa chỉ của trình duyệt di động ẩn/hiện. */
+html.is-touch .screen-start.active {
+  position: fixed;
+  inset: 0;
+  height: auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   TRANG CHỦ TRÊN ĐIỆN THOẠI — rút gọn còn những gì cần để bắt đầu chơi
+   ========================================================================== */
+html.is-phone .bg-fx { display: none; }               /* bớt hiệu ứng nền cho nhẹ */
+html.is-phone .feature-strip { display: none; }        /* 3 ô giới thiệu tính năng */
+html.is-phone .hero-tag { display: none; }
+html.is-phone .journey-step .js-desc { display: none; }
+html.is-phone .journey-arrow { display: none; }
+
+html.is-phone .screen-start {
+  padding: 56px 14px 24px;
+}
+
+/* Căn giữa theo chiều dọc bằng margin:auto — khi nội dung dài hơn màn hình thì
+   margin tự co về 0 nên vẫn cuộn được bình thường (khác với align-items:center
+   sẽ cắt mất phần trên). */
+html.is-phone .screen-start.active {
+  display: flex;
+  flex-direction: column;
+}
+
+html.is-phone .start-container {
+  width: 100%;
+  margin: auto 0;
+}
+
+html.is-phone .start-hero {
+  margin-bottom: 20px;
+}
+
+html.is-phone .hero-title {
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+html.is-phone .hero-desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  /* Rút còn 2 dòng, đủ hiểu luật chơi mà không đẩy nút bắt đầu xuống dưới */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+html.is-phone .hero-stats {
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+
+html.is-phone .hero-stats .stat-num { font-size: 1.05rem; }
+html.is-phone .hero-stats .stat-label { font-size: 0.62rem; }
+
+html.is-phone .section-head h2 { font-size: 1.05rem; }
+html.is-phone .section-badge { font-size: 0.68rem; padding: 4px 10px; }
+
+/* Lộ trình: 5 thẻ dàn hàng thành dải gọn, chỉ còn số chặng + tên */
+html.is-phone .journey-map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+html.is-phone .journey-step {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+  padding: 10px 4px;
+  gap: 4px;
+  border-radius: 12px;
+}
+
+html.is-phone .journey-step .js-icon { font-size: 1.5rem; }
+html.is-phone .journey-step .js-order { font-size: 0.55rem; letter-spacing: 0.6px; margin-bottom: 2px; }
+html.is-phone .journey-step .js-title { font-size: 0.72rem; margin: 0; line-height: 1.2; }
+html.is-phone .journey-step .js-title em { font-size: 0.58rem; margin-top: 1px; }
+
+html.is-phone .journey-cta {
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+html.is-phone .journey-cta .level-footer {
+  gap: 10px;
+}
+
+html.is-phone .journey-cta .progress-text { font-size: 0.74rem; }
+
+html.is-phone .btn-play-level {
+  padding: 12px 18px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+/* Điện thoại cầm ngang: chỉ cao ~390px nên bỏ hẳn phần mô tả và tiêu đề mục,
+   để toàn bộ trang chủ gọn trong một màn, không phải cuộn. */
+@media (max-height: 460px) {
+  html.is-phone .screen-start { padding: 46px 12px 12px; }
+  html.is-phone .hero-title { font-size: 1.12rem; margin-bottom: 6px; }
+  html.is-phone .hero-desc { display: none; }
+  html.is-phone .section-head { display: none; }
+  html.is-phone .start-hero { margin-bottom: 10px; }
+  html.is-phone .hero-stats { padding: 7px 12px; margin-top: 8px; }
+  html.is-phone .hero-stats .stat-num { font-size: 0.95rem; }
+  html.is-phone .journey-map { gap: 5px; margin-bottom: 10px; }
+  html.is-phone .journey-step { padding: 6px 3px; gap: 2px; }
+  html.is-phone .journey-step .js-icon { font-size: 1.2rem; }
+  html.is-phone .journey-step .js-order { font-size: 0.5rem; }
+  html.is-phone .journey-step .js-title { font-size: 0.68rem; }
+  html.is-phone .journey-cta { padding: 9px 12px; }
+  html.is-phone .btn-play-level { padding: 10px 16px; font-size: 0.82rem; }
 }

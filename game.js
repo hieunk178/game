@@ -8,6 +8,40 @@
 (function () {
   'use strict';
 
+
+  // ==========================================================================
+  // HỒ SƠ THIẾT BỊ — quyết định mức đồ hoạ & cách điều khiển
+  // ==========================================================================
+  const DEVICE = (() => {
+    const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
+    const uaMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry|Mobile/i.test(navigator.userAgent);
+    const shortSide = Math.min(screen.width, screen.height);
+    const isMobile = uaMobile || (hasTouch && shortSide <= 900);
+    // Điện thoại thật sự (không tính máy tính bảng) — dùng để rút gọn trang chủ
+    const isPhone = isMobile && shortSide <= 520;
+    const dpr = window.devicePixelRatio || 1;
+
+    return {
+      hasTouch: hasTouch || uaMobile,
+      isMobile,
+      isPhone,
+      // Điện thoại: giảm độ phân giải render, tắt khử răng cưa, bóng đổ nhẹ hơn
+      pixelRatio: isMobile ? Math.min(dpr, 1.5) : Math.min(dpr, 2),
+      antialias: !isMobile,
+      shadowMapSize: isMobile ? 1024 : 2048,
+      softShadows: !isMobile,
+      // GPU di động rất chậm khi shader phải lặp qua nhiều nguồn sáng
+      maxPointLights: isMobile ? 6 : 64,
+      ambientBoost: isMobile ? 1.28 : 1,
+      // Bớt chi tiết trang trí ở cảnh ngoài trời
+      detailLevel: isMobile ? 0.55 : 1
+    };
+  })();
+
+  if (DEVICE.hasTouch) document.documentElement.classList.add('is-touch');
+  if (DEVICE.isMobile) document.documentElement.classList.add('is-mobile');
+  if (DEVICE.isPhone) document.documentElement.classList.add('is-phone');
+
   // --- AUDIO SYNTHESIZER (Web Audio API) ---
   class SoundFX {
     constructor() {
@@ -1416,12 +1450,90 @@
   const TOTAL_VOCAB_COUNT = ZONE_ORDER.reduce((sum, z) => sum + ZONES[z].items.length, 0);
 
 
+
+  // ==========================================================================
+  // DANH SÁCH MODEL GLB — CHIA THEO KHU VỰC ĐỂ TẢI DẦN (lazy load)
+  // Trước đây game tải cả 54 file trước khi dựng cảnh đầu tiên → mở rất lâu
+  // trên mạng di động. Giờ chỉ tải model của khu vực đang vào.
+  // ==========================================================================
+  // Tên file model nhân vật người chơi
+  const PLAYER_AVATAR_FILE = 'player-man.glb';
+
+  const MODEL_FILES = {
+        // Study Room
+        desk: 'desk.glb',
+        chair: 'chairDesk.glb',
+        lamp: 'lampSquareTable.glb',
+        bookshelf: 'bookcaseClosedWide.glb',
+        plant: 'pottedPlant.glb',
+        bed: 'bedSingle.glb',
+        laptop: 'laptop.glb',
+        // Living Room
+        lr_sofa: 'loungeSofaLong.glb',
+        lr_armchair: 'loungeChair.glb',
+        lr_coffeeTable: 'tableCoffeeGlass.glb',
+        lr_tvCabinet: 'cabinetTelevision.glb',
+        lr_tv: 'televisionModern.glb',
+        lr_floorLamp: 'lampSquareFloor.glb',
+        lr_bookcase: 'bookcaseOpen.glb',
+        lr_plant: 'pottedPlant.glb',
+        lr_plantSmall: 'plantSmall1.glb',
+        lr_plantSmall2: 'plantSmall2.glb',
+        lr_plantSmall3: 'plantSmall3.glb',
+        lr_books: 'books.glb',
+        lr_bear: 'bear.glb',
+        lr_radio: 'radio.glb',
+        lr_speakerSmall: 'speakerSmall.glb',
+        lr_tvVintage: 'televisionVintage.glb',
+        lr_lampTable: 'lampRoundTable.glb',
+        lr_speaker: 'speaker.glb',
+        lr_coatRack: 'coatRackStanding.glb',
+        lr_ceilingFan: 'ceilingFan.glb',
+        lr_rug: 'rugRectangle.glb',
+        lr_sideTable: 'sideTable.glb',
+        lr_pillow: 'pillow.glb',
+        lr_door: 'doorway.glb',
+        // Kitchen
+        kt_fridge: 'kitchenFridgeLarge.glb',
+        kt_stove: 'kitchenStove.glb',
+        kt_sink: 'kitchenSink.glb',
+        kt_microwave: 'kitchenMicrowave.glb',
+        kt_cabinet: 'kitchenCabinet.glb',
+        kt_cabinetDrawer: 'kitchenCabinetDrawer.glb',
+        kt_cabinetUpper: 'kitchenCabinetUpper.glb',
+        kt_cabinetUpperDouble: 'kitchenCabinetUpperDouble.glb',
+        kt_coffeeMachine: 'kitchenCoffeeMachine.glb',
+        kt_toaster: 'toaster.glb',
+        kt_blender: 'kitchenBlender.glb',
+        kt_table: 'table.glb',
+        kt_chair: 'chairRounded.glb',
+        kt_trashcan: 'trashcan.glb',
+        kt_hood: 'hoodModern.glb',
+        kt_bar: 'kitchenBar.glb',
+        kt_stool: 'stoolBar.glb',
+        kt_rug: 'rugDoormat.glb',
+        // Street & Park (ghế công viên dùng mesh tự dựng cho đúng tỉ lệ người thật)
+        st_trashcan: 'trashcan.glb',
+        pk_plant: 'plantSmall1.glb',
+        // Nhân vật người chơi (mesh tĩnh — khung xương được gắn tự động khi dựng cảnh)
+        player_avatar: PLAYER_AVATAR_FILE,
+  };
+
+  const BEDROOM_MODEL_IDS = ['desk', 'chair', 'lamp', 'bookshelf', 'plant', 'bed', 'laptop'];
+
+  const ZONE_MODEL_IDS = {
+    bedroom: BEDROOM_MODEL_IDS,
+    living:  Object.keys(MODEL_FILES).filter(k => k.startsWith('lr_')),
+    kitchen: Object.keys(MODEL_FILES).filter(k => k.startsWith('kt_')),
+    street:  Object.keys(MODEL_FILES).filter(k => k.startsWith('st_')),
+    park:    Object.keys(MODEL_FILES).filter(k => k.startsWith('pk_'))
+  };
+
   // ==========================================================================
   // NHÂN VẬT NGƯỜI CHƠI: MODEL GLB TĨNH + KHUNG XƯƠNG GẮN TỰ ĐỘNG
   // Model gốc không có skin/bone/animation, nên game tự dựng bộ xương humanoid
   // rồi tính trọng số (skin weight) cho từng đỉnh theo khoảng cách tới đốt xương.
   // ==========================================================================
-  const PLAYER_AVATAR_FILE = 'Man by Polygonal Mind - nbLBTJMg0b.glb';
 
   const AVATAR_RIG_SPEC = {
     targetHeight: 1.62,        // chiều cao nhân vật trong game (mét)
@@ -2345,11 +2457,14 @@
       // Three.js Main Setup
       this.scene = new THREE.Scene();
       this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 100);
-      this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      this.renderer = new THREE.WebGLRenderer({
+        antialias: DEVICE.antialias,
+        powerPreference: 'high-performance'
+      });
+      this.renderer.setPixelRatio(DEVICE.pixelRatio);
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      this.renderer.shadowMap.type = DEVICE.softShadows ? THREE.PCFSoftShadowMap : THREE.PCFShadowMap;
       this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
       this.renderer.toneMappingExposure = 1.1;
       this.container.appendChild(this.renderer.domElement);
@@ -2395,7 +2510,7 @@
 
       this.keys = { forward: false, backward: false, left: false, right: false, sprint: false };
       this.isPointerLocked = false;
-      this.touchLook = { active: false, startX: 0, startY: 0, currentX: 0, currentY: 0 };
+      this.touchLook = { id: null, moved: false, startTime: 0, startX: 0, startY: 0 };
       this.joystickDir = { x: 0, y: 0 };
 
       // --- HÀNH TRÌNH: KHU VỰC HIỆN TẠI & TRẠNG THÁI CHUYỂN CẢNH ---
@@ -2452,75 +2567,40 @@
       });
     }
 
-    async loadAllModels() {
-      const aliasMap = {
-        // Study Room
-        desk: 'desk.glb',
-        chair: 'chairDesk.glb',
-        lamp: 'lampSquareTable.glb',
-        bookshelf: 'bookcaseClosedWide.glb',
-        plant: 'pottedPlant.glb',
-        bed: 'bedSingle.glb',
-        laptop: 'laptop.glb',
-        // Living Room
-        lr_sofa: 'loungeSofaLong.glb',
-        lr_armchair: 'loungeChair.glb',
-        lr_coffeeTable: 'tableCoffeeGlass.glb',
-        lr_tvCabinet: 'cabinetTelevision.glb',
-        lr_tv: 'televisionModern.glb',
-        lr_floorLamp: 'lampSquareFloor.glb',
-        lr_bookcase: 'bookcaseOpen.glb',
-        lr_plant: 'pottedPlant.glb',
-        lr_plantSmall: 'plantSmall1.glb',
-        lr_plantSmall2: 'plantSmall2.glb',
-        lr_plantSmall3: 'plantSmall3.glb',
-        lr_books: 'books.glb',
-        lr_bear: 'bear.glb',
-        lr_radio: 'radio.glb',
-        lr_speakerSmall: 'speakerSmall.glb',
-        lr_tvVintage: 'televisionVintage.glb',
-        lr_lampTable: 'lampRoundTable.glb',
-        lr_speaker: 'speaker.glb',
-        lr_coatRack: 'coatRackStanding.glb',
-        lr_ceilingFan: 'ceilingFan.glb',
-        lr_rug: 'rugRectangle.glb',
-        lr_sideTable: 'sideTable.glb',
-        lr_pillow: 'pillow.glb',
-        lr_door: 'doorway.glb',
-        // Kitchen
-        kt_fridge: 'kitchenFridgeLarge.glb',
-        kt_stove: 'kitchenStove.glb',
-        kt_sink: 'kitchenSink.glb',
-        kt_microwave: 'kitchenMicrowave.glb',
-        kt_cabinet: 'kitchenCabinet.glb',
-        kt_cabinetDrawer: 'kitchenCabinetDrawer.glb',
-        kt_cabinetUpper: 'kitchenCabinetUpper.glb',
-        kt_cabinetUpperDouble: 'kitchenCabinetUpperDouble.glb',
-        kt_coffeeMachine: 'kitchenCoffeeMachine.glb',
-        kt_toaster: 'toaster.glb',
-        kt_blender: 'kitchenBlender.glb',
-        kt_table: 'table.glb',
-        kt_chair: 'chairRounded.glb',
-        kt_trashcan: 'trashcan.glb',
-        kt_hood: 'hoodModern.glb',
-        kt_bar: 'kitchenBar.glb',
-        kt_stool: 'stoolBar.glb',
-        kt_rug: 'rugDoormat.glb',
-        // Street & Park (ghế công viên dùng mesh tự dựng cho đúng tỉ lệ người thật)
-        st_trashcan: 'trashcan.glb',
-        pk_plant: 'plantSmall1.glb',
-        // Nhân vật người chơi (mesh tĩnh — khung xương được gắn tự động khi dựng cảnh)
-        player_avatar: PLAYER_AVATAR_FILE,
-      };
+    // Model cần cho một khu vực (nhân vật luôn nằm trong danh sách)
+    modelsForZone(zoneId) {
+      return ['player_avatar'].concat(ZONE_MODEL_IDS[zoneId] || []);
+    }
 
-      const modelIds = Object.keys(aliasMap);
-      const results = await Promise.all(modelIds.map(id => this.loadGLBModel(id, aliasMap[id])));
-      const loaded = modelIds.filter((id, i) => results[i] !== null);
-      if (loaded.length > 0) {
-        console.log(`🎮 Loaded ${loaded.length} GLB models: ${loaded.join(', ')}`);
-      } else {
-        console.log('🔧 No GLB models found in /game/models/ — using procedural meshes');
-      }
+    // Tải (một lần duy nhất) đúng những model được yêu cầu
+    ensureModels(ids) {
+      if (!this._modelJobs) this._modelJobs = {};
+      const jobs = ids.map(id => {
+        if (!MODEL_FILES[id]) return Promise.resolve(null);
+        if (!this._modelJobs[id]) {
+          this._modelJobs[id] = this.loadGLBModel(id, MODEL_FILES[id]);
+        }
+        return this._modelJobs[id];
+      });
+      return Promise.all(jobs);
+    }
+
+    // Tải nốt model của các khu vực còn lại ở chế độ nền, sau khi đã vào được game
+    prefetchRemainingModels() {
+      if (this._prefetchStarted) return;
+      this._prefetchStarted = true;
+      const start = () => {
+        this.ensureModels(Object.keys(MODEL_FILES)).then(() => {
+          console.log(`🎮 Đã tải sẵn ${Object.keys(this.loadedModels).length}/${Object.keys(MODEL_FILES).length} model GLB`);
+        });
+      };
+      if (window.requestIdleCallback) window.requestIdleCallback(start, { timeout: 4000 });
+      else setTimeout(start, 1500);
+    }
+
+    // Giữ tên cũ cho tương thích: tải toàn bộ model
+    async loadAllModels() {
+      await this.ensureModels(Object.keys(MODEL_FILES));
     }
 
     // Normalizes GLB models to target real-world human-scale dimensions and ground-level pivot
@@ -2601,8 +2681,8 @@
       this.sunLight = sunLight;
       sunLight.position.set(4, 7, 3);
       sunLight.castShadow = true;
-      sunLight.shadow.mapSize.width = 2048;
-      sunLight.shadow.mapSize.height = 2048;
+      sunLight.shadow.mapSize.width = DEVICE.shadowMapSize;
+      sunLight.shadow.mapSize.height = DEVICE.shadowMapSize;
       sunLight.shadow.camera.near = 0.5;
       sunLight.shadow.camera.far = 25;
       sunLight.shadow.camera.left = -6;
@@ -2616,16 +2696,27 @@
       const ceilingLight = new THREE.PointLight(0xffe8d6, 0.9, 12, 1.2);
       this.ceilingLight = ceilingLight;
       ceilingLight.position.set(0, 3.8, 0);
-      ceilingLight.castShadow = true;
+      ceilingLight.castShadow = !DEVICE.isMobile;
       this.scene.add(ceilingLight);
 
-      // 2. Tải toàn bộ model GLB rồi dựng khu vực người chơi đang đứng
-      this.loadAllModels().then(() => {
+      // 2. Chỉ tải model của khu vực đang đứng → vào game nhanh hơn nhiều.
+      //    Model của các khu sau được tải nền trong lúc người chơi khám phá.
+      this.ensureModels(this.modelsForZone(this.currentZone)).then(() => {
         this.buildZoneScene(this.currentZone);
         this.spawnPlayerInZone(this.currentZone);
         this.updateProgressUI();
         this.sceneReady = true;
+        this.hideBootLoader();
+        this.prefetchRemainingModels();
       });
+    }
+
+    hideBootLoader() {
+      const el = document.getElementById('bootLoader');
+      if (el) {
+        el.classList.add('done');
+        setTimeout(() => { el.style.display = 'none'; }, 450);
+      }
     }
 
     // ======================================================================
@@ -2647,7 +2738,7 @@
 
       if (this.ambientLight) {
         this.ambientLight.color.setHex(isOutdoor ? 0xdceaf7 : 0xffeedd);
-        this.ambientLight.intensity = isOutdoor ? 1.15 : 0.85;
+        this.ambientLight.intensity = (isOutdoor ? 1.15 : 0.85) * DEVICE.ambientBoost;
       }
       if (this.sunLight) {
         this.sunLight.color.setHex(isOutdoor ? 0xfff8e8 : 0xfff5e6);
@@ -2692,9 +2783,42 @@
         default: this.buildBedroom(); break;
       }
 
+      this.optimizeSceneForDevice();
       this.setCameraMode(this.cameraMode);
       this.updateZoneHud();
       this.updateProgressUI();
+    }
+
+    // ------------------------------------------------------------------
+    // TỐI ƯU CHO MÁY YẾU / ĐIỆN THOẠI
+    // GPU di động phải lặp qua TỪNG nguồn sáng cho TỪNG điểm ảnh, nên 20–30 đèn
+    // điểm là nguyên nhân giật lag nặng nhất. Giữ lại vài đèn mạnh nhất và bù
+    // bằng ánh sáng môi trường.
+    // ------------------------------------------------------------------
+    optimizeSceneForDevice() {
+      if (!DEVICE.isMobile) return;
+
+      const pointLights = [];
+      this.scene.traverse(obj => {
+        if (obj.isPointLight) pointLights.push(obj);
+      });
+
+      if (pointLights.length > DEVICE.maxPointLights) {
+        // Đèn "quan trọng" = sáng mạnh và toả xa
+        pointLights.sort((a, b) =>
+          (b.intensity * (b.distance || 10)) - (a.intensity * (a.distance || 10))
+        );
+        pointLights.slice(DEVICE.maxPointLights).forEach(light => {
+          if (light.parent) light.parent.remove(light);
+        });
+      }
+
+      // Chỉ mặt trời đổ bóng; bóng từ đèn điểm rất đắt trên di động
+      this.scene.traverse(obj => {
+        if (obj.isPointLight || obj.isSpotLight) obj.castShadow = false;
+      });
+
+      if (this.renderer) this.renderer.shadowMap.needsUpdate = true;
     }
 
     // Đặt người chơi về điểm xuất phát của khu vực
@@ -2733,7 +2857,11 @@
         overlay.style.pointerEvents = 'all';
       }
 
-      setTimeout(() => {
+      // Chờ model của khu vực đích tải xong (thường đã có sẵn nhờ tải nền)
+      const ready = this.ensureModels(this.modelsForZone(zone.id));
+      const faded = new Promise(res => setTimeout(res, 650));
+
+      Promise.all([ready, faded]).then(() => {
         this.clearScene();
         this.buildZoneScene(zone.id);
         this.spawnPlayerInZone(zone.id, fromZone);
@@ -2747,8 +2875,8 @@
           this.isTransitioning = false;
           this.showObjectiveBanner(zone.id);
           this.requestPointerLock();
-        }, 520);
-      }, 650);
+        }, 420);
+      });
     }
 
     // ======================================================================
@@ -3827,19 +3955,23 @@
           cover.receiveShadow = true;
           bGroup.add(cover);
 
-          // White/Cream Pages Edge (set slightly inward)
-          const pages = new THREE.Mesh(new THREE.BoxGeometry(bW - 0.008, bH - 0.016, bD - 0.016), pagesMat);
-          pages.position.set(0, bH / 2, -0.006);
-          bGroup.add(pages);
+          // Chi tiết gáy sách chỉ dựng trên máy khoẻ — mỗi quyển 4 mesh là quá nhiều
+          // với hàng trăm quyển trên kệ.
+          if (!DEVICE.isMobile) {
+            // White/Cream Pages Edge (set slightly inward)
+            const pages = new THREE.Mesh(new THREE.BoxGeometry(bW - 0.008, bH - 0.016, bD - 0.016), pagesMat);
+            pages.position.set(0, bH / 2, -0.006);
+            bGroup.add(pages);
 
-          // Golden embossed spine band (facing front +Z)
-          const spineBand = new THREE.Mesh(new THREE.BoxGeometry(bW + 0.002, 0.024, 0.008), goldMat);
-          spineBand.position.set(0, bH * 0.72, bD / 2 + 0.001);
-          bGroup.add(spineBand);
+            // Golden embossed spine band (facing front +Z)
+            const spineBand = new THREE.Mesh(new THREE.BoxGeometry(bW + 0.002, 0.024, 0.008), goldMat);
+            spineBand.position.set(0, bH * 0.72, bD / 2 + 0.001);
+            bGroup.add(spineBand);
 
-          const spineBand2 = new THREE.Mesh(new THREE.BoxGeometry(bW + 0.002, 0.024, 0.008), goldMat);
-          spineBand2.position.set(0, bH * 0.28, bD / 2 + 0.001);
-          bGroup.add(spineBand2);
+            const spineBand2 = new THREE.Mesh(new THREE.BoxGeometry(bW + 0.002, 0.024, 0.008), goldMat);
+            spineBand2.position.set(0, bH * 0.28, bD / 2 + 0.001);
+            bGroup.add(spineBand2);
+          }
 
           if (tiltZ !== 0) {
             bGroup.rotation.z = tiltZ;
@@ -4859,7 +4991,7 @@
         this.isPointerLocked = document.pointerLockElement === canvasEl;
         if (this.isPointerLocked) {
           this.lockOverlay.classList.add('hidden');
-        } else {
+        } else if (!DEVICE.hasTouch) {
           if (!this.state.activeItem && !document.getElementById('doorModal').classList.contains('active')) {
             this.lockOverlay.classList.remove('hidden');
           }
@@ -4927,54 +5059,103 @@
         window.addEventListener('touchcancel', endJoy);
       }
 
-      // Mobile Touch Drag Screen to Look
+      // ---- KÉO MÀN HÌNH ĐỂ XOAY CAMERA ----
+      // Theo dõi riêng từng ngón tay theo identifier, nhờ vậy có thể vừa giữ
+      // joystick (một ngón) vừa kéo xoay hướng nhìn (ngón khác) cùng lúc.
       canvasEl.addEventListener('touchstart', e => {
-        if (e.touches.length === 1 && joyTouchId !== e.touches[0].identifier) {
-          this.touchLook.active = true;
-          this.touchLook.startX = e.touches[0].clientX;
-          this.touchLook.startY = e.touches[0].clientY;
+        if (this.touchLook.id !== null && this.touchLook.id !== undefined) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          const t = e.changedTouches[i];
+          if (t.identifier === joyTouchId) continue;
+          this.state.soundFX.init();
+          this.touchLook.id = t.identifier;
+          this.touchLook.moved = false;
+          this.touchLook.startTime = Date.now();
+          this.touchLook.startX = t.clientX;
+          this.touchLook.startY = t.clientY;
+          break;
         }
       }, { passive: true });
 
       canvasEl.addEventListener('touchmove', e => {
-        if (!this.touchLook.active) return;
-        for (let i = 0; i < e.touches.length; i++) {
-          if (e.touches[i].identifier !== joyTouchId) {
-            const dx = e.touches[i].clientX - this.touchLook.startX;
-            const dy = e.touches[i].clientY - this.touchLook.startY;
-            this.touchLook.startX = e.touches[i].clientX;
-            this.touchLook.startY = e.touches[i].clientY;
+        if (this.touchLook.id === null || this.touchLook.id === undefined) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          const t = e.changedTouches[i];
+          if (t.identifier !== this.touchLook.id) continue;
 
-            const sens = (this.state.sensitivity / 5) * 0.004;
-            this.player.yaw -= dx * sens;
-            this.player.pitch -= dy * sens;
-            this.player.pitch = THREE.MathUtils.clamp(this.player.pitch, -Math.PI / 3.0, Math.PI / 2.8);
-            break;
-          }
+          const dx = t.clientX - this.touchLook.startX;
+          const dy = t.clientY - this.touchLook.startY;
+          this.touchLook.startX = t.clientX;
+          this.touchLook.startY = t.clientY;
+
+          if (Math.abs(dx) > 2 || Math.abs(dy) > 2) this.touchLook.moved = true;
+          const sens = (this.state.sensitivity / 5) * 0.004;
+          this.player.yaw -= dx * sens;
+          this.player.pitch -= dy * sens;
+          this.player.pitch = THREE.MathUtils.clamp(this.player.pitch, -Math.PI / 3.0, Math.PI / 2.8);
+          break;
         }
       }, { passive: true });
 
-      canvasEl.addEventListener('touchend', () => {
-        this.touchLook.active = false;
-      });
+      const endLook = e => {
+        if (this.touchLook.id === null || this.touchLook.id === undefined) return;
+        for (let i = 0; i < e.changedTouches.length; i++) {
+          if (e.changedTouches[i].identifier !== this.touchLook.id) continue;
+          // Chạm nhanh mà không kéo = tương tác với đồ vật đang ngắm
+          if (!this.touchLook.moved && Date.now() - this.touchLook.startTime < 300) {
+            this.interactWithTarget();
+          }
+          this.touchLook.id = null;
+          this.touchLook.moved = false;
+          break;
+        }
+      };
+      canvasEl.addEventListener('touchend', endLook);
+      canvasEl.addEventListener('touchcancel', endLook);
 
       // Mobile Interact Button
       const btnMobile = document.getElementById('btnMobileInteract');
       if (btnMobile) {
-        btnMobile.addEventListener('click', () => {
+        const fireInteract = e => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.state.soundFX.init();
           this.interactWithTarget();
-        });
+        };
+        btnMobile.addEventListener('touchstart', fireInteract, { passive: false });
+        btnMobile.addEventListener('click', e => { if (!DEVICE.hasTouch) fireInteract(e); });
       }
 
-      // Resize
+      // Resize & xoay màn hình (iOS phát sinh sự kiện chậm nên gọi lại sau một nhịp)
       window.addEventListener('resize', () => this.onWindowResize());
+      window.addEventListener('orientationchange', () => {
+        this.onWindowResize();
+        setTimeout(() => this.onWindowResize(), 350);
+      });
+      if (window.screen && screen.orientation) {
+        screen.orientation.addEventListener('change', () => {
+          setTimeout(() => this.onWindowResize(), 200);
+        });
+      }
     }
 
     requestPointerLock() {
       this.state.soundFX.init();
+
+      // Thiết bị cảm ứng không có Pointer Lock. Nếu vẫn hiện lớp phủ "nhấp để điều
+      // khiển" thì nó phủ kín màn hình và nuốt mọi thao tác chạm → nút bấm chết.
+      if (DEVICE.hasTouch) {
+        this.isPointerLocked = false;
+        if (this.lockOverlay) this.lockOverlay.classList.add('hidden');
+        return;
+      }
+
       this.container.requestPointerLock = this.container.requestPointerLock || this.container.mozRequestPointerLock;
       if (this.container.requestPointerLock) {
         this.container.requestPointerLock();
+      } else {
+        // Trình duyệt không hỗ trợ → vẫn cho chơi bằng chuột/phím
+        if (this.lockOverlay) this.lockOverlay.classList.add('hidden');
       }
     }
 
@@ -5020,8 +5201,7 @@
     }
 
     lockMobileLandscape() {
-      const isMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent) || ('ontouchstart' in window);
-      if (isMobile) {
+      if (DEVICE.hasTouch) {
         if (screen.orientation && screen.orientation.lock) {
           screen.orientation.lock('landscape').catch(() => {});
         } else if (screen.lockOrientation) {
@@ -5038,8 +5218,7 @@
     setupUI() {
       // 1. Play Button on Start Screen (Auto Fullscreen & Landscape on Mobile)
       document.getElementById('btnPlayLevel1').addEventListener('click', () => {
-        const isMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent) || ('ontouchstart' in window);
-        if (isMobile) {
+        if (DEVICE.hasTouch) {
           const docEl = document.documentElement;
           if (!document.fullscreenElement) {
             if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
@@ -5050,6 +5229,19 @@
         this.switchScreen('game');
         this.startZoneSession();
       });
+
+      // 1.0.1 Nút bật toàn màn hình trong lớp nhắc xoay ngang máy
+      const btnRotateFs = document.getElementById('btnRotateFullscreen');
+      if (btnRotateFs) {
+        btnRotateFs.addEventListener('click', () => {
+          const docEl = document.documentElement;
+          if (!document.fullscreenElement) {
+            if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
+            else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+          }
+          this.lockMobileLandscape();
+        });
+      }
 
       // 1.1 Fullscreen Toggle Buttons (Header & Game HUD)
       const btnHeaderFs = document.getElementById('btnHeaderFullscreen');
@@ -5842,10 +6034,12 @@
       trunk.castShadow = true;
       g.add(trunk);
       const leafMat = new THREE.MeshStandardMaterial({ color: leafColor, roughness: 0.85 });
-      const blobs = [
-        [0, 2.25, 0, 0.95], [-0.5, 1.95, 0.25, 0.66],
-        [0.55, 2.05, -0.2, 0.6], [0.1, 2.75, 0.15, 0.58]
-      ];
+      const blobs = DEVICE.isMobile
+        ? [[0, 2.3, 0, 1.05], [0.15, 2.85, 0.1, 0.6]]
+        : [
+            [0, 2.25, 0, 0.95], [-0.5, 1.95, 0.25, 0.66],
+            [0.55, 2.05, -0.2, 0.6], [0.1, 2.75, 0.15, 0.58]
+          ];
       blobs.forEach(([bx, by, bz, br]) => {
         const blob = new THREE.Mesh(new THREE.IcosahedronGeometry(br * scale, 1), leafMat);
         blob.position.set(bx * scale, by * scale, bz * scale);
@@ -5928,26 +6122,50 @@
       body.receiveShadow = true;
       g.add(body);
 
-      // Viền mỗi tầng + cửa sổ phát sáng
-      const winMat = new THREE.MeshStandardMaterial({ color: 0x93c5fd, emissive: 0x60a5fa, emissiveIntensity: 0.35, roughness: 0.1, metalness: 0.4 });
-      const winDarkMat = new THREE.MeshStandardMaterial({ color: 0x1e3a5f, roughness: 0.2, metalness: 0.3 });
       const cols = Math.max(2, Math.floor(width / 1.5));
-      for (let f = 0; f < floors; f++) {
-        const y = f * floorH + floorH * 0.62;
-        for (let c = 0; c < cols; c++) {
-          const x = -width / 2 + (width / cols) * (c + 0.5);
-          const lit = ((f * 7 + c * 3) % 4) !== 0;
-          [1, -1].forEach(sz => {
-            const w = new THREE.Mesh(new THREE.PlaneGeometry(width / cols * 0.55, 1.35), lit ? winMat : winDarkMat);
-            w.position.set(x, y, sz * (depth / 2 + 0.02));
-            if (sz < 0) w.rotation.y = Math.PI;
-            g.add(w);
-          });
+
+      if (DEVICE.isMobile) {
+        // Mỗi toà nhà từng tốn ~80 mesh cửa sổ. Vẽ cửa sổ vào texture thay vì
+        // dựng từng tấm phẳng → 6 toà nhà giảm từ ~440 xuống còn 6 lần vẽ.
+        const cv = document.createElement('canvas');
+        cv.width = 64; cv.height = 128;
+        const cx = cv.getContext('2d');
+        cx.fillStyle = '#' + baseColor.toString(16).padStart(6, '0');
+        cx.fillRect(0, 0, 64, 128);
+        for (let f = 0; f < 8; f++) {
+          for (let c = 0; c < 4; c++) {
+            const lit = ((f * 7 + c * 3) % 4) !== 0;
+            cx.fillStyle = lit ? '#9fc6f2' : '#22405f';
+            cx.fillRect(6 + c * 14, 6 + f * 16, 9, 9);
+          }
+          cx.fillStyle = '#' + accentColor.toString(16).padStart(6, '0');
+          cx.fillRect(0, f * 16, 64, 2);
         }
-        const band = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.16, depth + 0.14),
-          new THREE.MeshStandardMaterial({ color: accentColor, roughness: 0.6 }));
-        band.position.y = f * floorH + 0.08;
-        g.add(band);
+        const tex = new THREE.CanvasTexture(cv);
+        tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+        tex.repeat.set(Math.max(1, Math.round(width / 4)), Math.max(1, Math.round(floors / 8 * 1)) || 1);
+        body.material = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.85 });
+      } else {
+        // Viền mỗi tầng + cửa sổ phát sáng
+        const winMat = new THREE.MeshStandardMaterial({ color: 0x93c5fd, emissive: 0x60a5fa, emissiveIntensity: 0.35, roughness: 0.1, metalness: 0.4 });
+        const winDarkMat = new THREE.MeshStandardMaterial({ color: 0x1e3a5f, roughness: 0.2, metalness: 0.3 });
+        for (let f = 0; f < floors; f++) {
+          const y = f * floorH + floorH * 0.62;
+          for (let c = 0; c < cols; c++) {
+            const x = -width / 2 + (width / cols) * (c + 0.5);
+            const lit = ((f * 7 + c * 3) % 4) !== 0;
+            [1, -1].forEach(sz => {
+              const w = new THREE.Mesh(new THREE.PlaneGeometry(width / cols * 0.55, 1.35), lit ? winMat : winDarkMat);
+              w.position.set(x, y, sz * (depth / 2 + 0.02));
+              if (sz < 0) w.rotation.y = Math.PI;
+              g.add(w);
+            });
+          }
+          const band = new THREE.Mesh(new THREE.BoxGeometry(width + 0.14, 0.16, depth + 0.14),
+            new THREE.MeshStandardMaterial({ color: accentColor, roughness: 0.6 }));
+          band.position.y = f * floorH + 0.08;
+          g.add(band);
+        }
       }
       const roof = new THREE.Mesh(new THREE.BoxGeometry(width + 0.3, 0.3, depth + 0.3),
         new THREE.MeshStandardMaterial({ color: accentColor, roughness: 0.7 }));
@@ -6276,10 +6494,11 @@
       parkGate.add(gateLight);
       // Hàng rào công viên hai bên cổng
       [-1, 1].forEach(side => {
-        for (let i = 0; i < 8; i++) {
+        const barCount = DEVICE.isMobile ? 4 : 8;
+        for (let i = 0; i < barCount; i++) {
           const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.7, 8),
             new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.4, metalness: 0.7 }));
-          bar.position.set(side * (2.9 + i * 0.55), 0.85, 0);
+          bar.position.set(side * (2.9 + i * (8 / barCount) * 0.55), 0.85, 0);
           parkGate.add(bar);
         }
         const rail = new THREE.Mesh(new THREE.BoxGeometry(4.4, 0.09, 0.09),
@@ -6371,7 +6590,7 @@
       lawn.receiveShadow = true;
       lawnGroup.add(lawn);
       // Vài mảng cỏ đậm nhạt cho sinh động
-      for (let i = 0; i < 22; i++) {
+      for (let i = 0; i < (DEVICE.isMobile ? 9 : 22); i++) {
         const patch = new THREE.Mesh(new THREE.CircleGeometry(1.2 + (i % 4) * 0.5, 16),
           new THREE.MeshStandardMaterial({ color: (i % 2) ? 0x3f8526 : 0x5aad38, roughness: 1 }));
         patch.rotation.x = -Math.PI / 2;
@@ -6471,8 +6690,9 @@
       lakeWater.scale.set(1.5, 1, 1);
       lakeGroup.add(lakeWater);
       // Viền đá quanh hồ
-      for (let i = 0; i < 30; i++) {
-        const a = (i / 30) * Math.PI * 2;
+      const rockCount = DEVICE.isMobile ? 14 : 30;
+      for (let i = 0; i < rockCount; i++) {
+        const a = (i / rockCount) * Math.PI * 2;
         const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(0.28 + (i % 3) * 0.09, 0), stoneMat);
         rock.position.set(Math.cos(a) * 7.7, 0.12, Math.sin(a) * 5.15);
         rock.rotation.set(i, i * 0.7, i * 0.3);
@@ -6520,9 +6740,10 @@
         new THREE.MeshStandardMaterial({ color: 0x5b4025, roughness: 1 }));
       soil.rotation.x = -Math.PI / 2; soil.position.y = 0.09; flowerBed.add(soil);
       const petalColors = [0xf472b6, 0xfbbf24, 0xef4444, 0xa78bfa, 0xfb923c, 0xfda4af];
-      for (let i = 0; i < 46; i++) {
+      const flowerCount = DEVICE.isMobile ? 18 : 46;
+      for (let i = 0; i < flowerCount; i++) {
         const a = i * 2.399;
-        const r = 0.28 + Math.sqrt(i / 46) * 1.85;
+        const r = 0.28 + Math.sqrt(i / flowerCount) * 1.85;
         const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.022, 0.36, 6),
           new THREE.MeshStandardMaterial({ color: 0x15803d, roughness: 0.9 }));
         stem.position.set(Math.cos(a) * r, 0.27, Math.sin(a) * r);
@@ -6727,7 +6948,7 @@
       const buildFenceRun = (x0, z0, x1, z1) => {
         const dx = x1 - x0, dz = z1 - z0;
         const len = Math.hypot(dx, dz);
-        const n = Math.max(2, Math.round(len / 0.62));
+        const n = Math.max(2, Math.round(len / (DEVICE.isMobile ? 1.5 : 0.62)));
         for (let i = 0; i <= n; i++) {
           const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.7, 8), fenceMat);
           bar.position.set(x0 + dx * (i / n), 0.85, z0 + dz * (i / n));

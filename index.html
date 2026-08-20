@@ -6,16 +6,20 @@
   <title>Game 3D Khám Phá Từ Vựng | TOCFL Flash Cards</title>
   <meta name="description" content="Trò chơi 3D tương tác góc nhìn thứ 3 sinh động điều khiển nhân vật khám phá phòng học và học từ vựng trực quan.">
   
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Chỉ tải các độ đậm thực sự dùng tới; bỏ Noto Sans TC (đã có Noto Serif TC làm font chữ Hán) -->
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Sora:wght@600;700;800&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Sora:wght@600;700;800&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet"></noscript>
   
-  <link rel="stylesheet" href="./style.css?v=202608192128">
+  <link rel="stylesheet" href="./style.css?v=202608201900">
   
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Three.js CDN — defer để trình duyệt vẽ được giao diện trước, thứ tự vẫn giữ -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- GLTFLoader for loading .glb 3D models -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
 
@@ -574,6 +578,25 @@
     </div>
   </div>
 
+  <!-- ================= MÀN HÌNH CHỜ KHỞI ĐỘNG ================= -->
+  <div class="boot-loader" id="bootLoader">
+    <div class="boot-box">
+      <div class="boot-icon">🎮</div>
+      <div class="boot-title">Đang chuẩn bị phòng ngủ…</div>
+      <div class="boot-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ================= NHẮC XOAY NGANG MÁY (chỉ trên điện thoại) ================= -->
+  <div class="rotate-device-overlay" id="rotateDeviceOverlay">
+    <div class="rotate-box">
+      <div class="rotate-icon">📱</div>
+      <h3>Hãy xoay ngang điện thoại</h3>
+      <p>Trò chơi 3D này cần màn hình nằm ngang để hiển thị đầy đủ khung cảnh và các nút điều khiển.</p>
+      <button type="button" class="btn-rotate-fs" id="btnRotateFullscreen">⛶ Bật toàn màn hình</button>
+    </div>
+  </div>
+
   <!-- Room Transition Overlay -->
   <div id="roomTransitionOverlay" style="
     position:fixed;inset:0;background:#0f172a;opacity:0;pointer-events:none;
@@ -586,6 +609,6 @@
   <style>@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}</style>
 
   <!-- Game Logic Script -->
-  <script src="./game.js?v=202608201200"></script>
+  <script defer src="./game.js?v=202608201900"></script>
 </body>
 </html>
