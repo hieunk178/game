@@ -13,18 +13,37 @@
   // HỒ SƠ THIẾT BỊ — quyết định mức đồ hoạ & cách điều khiển
   // ==========================================================================
   const DEVICE = (() => {
+    const ua = navigator.userAgent;
     const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
-    const uaMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry|Mobile/i.test(navigator.userAgent);
+    const uaMobile = /Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(ua);
+    // Kiểm tra UA có chứa "Mobile" (nhưng loại trừ desktop browsers)
+    const uaHasMobile = /Mobile/i.test(ua) && !/Windows NT|Macintosh|CrOS|Linux x86/i.test(ua);
+    // Nhận diện desktop platform qua UA
+    const isDesktopPlatform = /Windows NT|Macintosh|CrOS|Linux x86_64/i.test(ua);
+
     const shortSide = Math.min(screen.width, screen.height);
-    const isMobile = uaMobile || (hasTouch && shortSide <= 900);
+    // Chỉ coi là mobile khi:
+    // 1. UA rõ ràng là thiết bị di động, HOẶC
+    // 2. UA có "Mobile" và không phải desktop, HOẶC
+    // 3. Có touch + màn hình nhỏ thật sự (<=768) + KHÔNG PHẢI desktop platform
+    const isMobile = uaMobile || uaHasMobile ||
+                     (hasTouch && shortSide <= 768 && !isDesktopPlatform);
+
     // Điện thoại thật sự (không tính máy tính bảng) — dùng để rút gọn trang chủ
     const isPhone = isMobile && shortSide <= 520;
     const dpr = window.devicePixelRatio || 1;
 
+    // useTouchUI: quyết định GIAO DIỆN (joystick, nút cảm ứng, ẩn pointer lock)
+    // = true CHỈ trên thiết bị di động thật sự, KHÔNG phải desktop có cảm ứng
+    // hasTouch: cho biết thiết bị CÓ KHẢ NĂNG cảm ứng (dùng để đăng ký sự kiện touch)
+    const useTouchUI = isMobile;
+
     return {
       hasTouch: hasTouch || uaMobile,
+      useTouchUI,
       isMobile,
       isPhone,
+      isDesktopPlatform,
       // Điện thoại: giảm độ phân giải render, tắt khử răng cưa, bóng đổ nhẹ hơn
       pixelRatio: isMobile ? Math.min(dpr, 1.5) : Math.min(dpr, 2),
       antialias: !isMobile,
@@ -39,6 +58,7 @@
   })();
 
   if (DEVICE.hasTouch) document.documentElement.classList.add('is-touch');
+  if (DEVICE.useTouchUI) document.documentElement.classList.add('is-touch-ui');
   if (DEVICE.isMobile) document.documentElement.classList.add('is-mobile');
   if (DEVICE.isPhone) document.documentElement.classList.add('is-phone');
 
@@ -1456,8 +1476,21 @@
   // Trước đây game tải cả 54 file trước khi dựng cảnh đầu tiên → mở rất lâu
   // trên mạng di động. Giờ chỉ tải model của khu vực đang vào.
   // ==========================================================================
-  // Tên file model nhân vật người chơi
-  const PLAYER_AVATAR_FILE = 'player-man.glb';
+  // Tên file model nhân vật người chơi — thay đổi theo lựa chọn của người dùng
+  const AVATAR_FILES = { man: 'player-man.glb', woman: 'player-woman.glb' };
+  function getSelectedAvatarFile() {
+    try {
+      const saved = localStorage.getItem('3d_vocab_quest_data');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.selectedAvatar && AVATAR_FILES[parsed.selectedAvatar]) {
+          return AVATAR_FILES[parsed.selectedAvatar];
+        }
+      }
+    } catch (e) { /* ignore */ }
+    return AVATAR_FILES.man; // Mặc định là nam
+  }
+  let PLAYER_AVATAR_FILE = getSelectedAvatarFile();
 
   const MODEL_FILES = {
         // Study Room
@@ -1535,29 +1568,49 @@
   // rồi tính trọng số (skin weight) cho từng đỉnh theo khoảng cách tới đốt xương.
   // ==========================================================================
 
-  const AVATAR_RIG_SPEC = {
-    targetHeight: 1.62,        // chiều cao nhân vật trong game (mét)
-    faceYaw: -Math.PI / 2,     // xoay model để mặt hướng về +Z (hướng "trước" của avatar)
-
-    // Vị trí khớp theo tỉ lệ chiều cao: 0 = gót chân, 1 = đỉnh đầu
-    ankleY: 0.050,
-    kneeY: 0.185,
-    hipY: 0.355,               // đáy quần / hạ bộ
-    spineY: 0.450,
-    chestY: 0.555,
-    shoulderY: 0.645,          // tâm dải cánh tay dang ngang
-    neckY: 0.715,
-
-    legX: 0.059,               // khoảng cách tâm chân so với trục giữa
-    shoulderX: 0.115,          // khớp vai
-    elbowX: 0.300,             // khuỷu tay
-    wristX: 0.440,             // cổ tay
-    handX: 0.528,              // đầu ngón tay
-    footZ: 0.086,              // mũi bàn chân chìa về phía trước
-
-    // Độ "cứng" của trọng số: càng lớn thì khớp càng ít bị kéo nhão
-    weightFalloff: 4.0,
-    weightEpsilon: 0.012
+  const AVATAR_RIG_SPECS = {
+    man: {
+      targetHeight: 1.62,        // chiều cao nhân vật trong game (mét)
+      faceYaw: -Math.PI / 2,     // xoay model để mặt hướng về +Z (hướng "trước" của avatar)
+      ankleY: 0.050,
+      kneeY: 0.185,
+      hipY: 0.300,               // đáy quần / hạ bộ
+      spineY: 0.450,
+      chestY: 0.555,
+      shoulderY: 0.660,          // tâm dải cánh tay dang ngang
+      neckY: 0.720,
+      legX: 0.059,               // khoảng cách tâm chân so với trục giữa
+      shoulderX: 0.115,          // khớp vai
+      elbowX: 0.300,             // khuỷu tay
+      wristX: 0.440,             // cổ tay
+      handX: 0.528,              // đầu ngón tay
+      armZ: 0.032,
+      footZ: 0.086,              // mũi bàn chân chìa về phía trước
+      restArmRotZ: 1.40,
+      weightFalloff: 4.0,
+      weightEpsilon: 0.012
+    },
+    woman: {
+      targetHeight: 1.62,
+      faceYaw: -Math.PI / 2,
+      ankleY: 0.055,
+      kneeY: 0.200,
+      hipY: 0.364,
+      spineY: 0.480,
+      chestY: 0.600,
+      shoulderY: 0.728,          // vai và cánh tay của model nữ nằm cao hơn (Y = 1.18m)
+      neckY: 0.765,
+      legX: 0.055,
+      shoulderX: 0.120,
+      elbowX: 0.285,
+      wristX: 0.415,
+      handX: 0.496,
+      armZ: -0.053,              // cánh tay model nữ lùi nhẹ về -Z
+      footZ: 0.00,
+      restArmRotZ: 1.36,
+      weightFalloff: 4.5,
+      weightEpsilon: 0.012
+    }
   };
 
   // --- PROCEDURAL TEXTURE GENERATORS ---
@@ -2121,6 +2174,7 @@
       this.currentZone = 'bedroom';
       this.unlockedZones = new Set(['bedroom']);
       this.hasWokenUp = false;
+      this.selectedAvatar = null; // 'man' | 'woman' | null
 
       this.loadStorage();
     }
@@ -2135,6 +2189,7 @@
           }
           this.score = parsed.score || 0;
           this.quizStats = parsed.quizStats || { total: 0, correct: 0 };
+          if (parsed.selectedAvatar) this.selectedAvatar = parsed.selectedAvatar;
           if (Array.isArray(parsed.unlockedZones)) {
             parsed.unlockedZones.forEach(z => { if (ZONES[z]) this.unlockedZones.add(z); });
           }
@@ -2156,7 +2211,8 @@
           score: this.score,
           quizStats: this.quizStats,
           currentZone: this.currentZone,
-          unlockedZones: Array.from(this.unlockedZones)
+          unlockedZones: Array.from(this.unlockedZones),
+          selectedAvatar: this.selectedAvatar
         }));
       } catch (e) {
         console.warn('Storage write error:', e);
@@ -2669,15 +2725,15 @@
     }
 
     initScene() {
-      this.scene.background = new THREE.Color(0x0f172a);
-      this.scene.fog = new THREE.FogExp2(0x0f172a, 0.02);
+      this.scene.background = new THREE.Color(0xdbeafe);
+      this.scene.fog = new THREE.FogExp2(0xdbeafe, 0.015);
 
       // 1. Ambient & Directional Lighting
-      const ambientLight = new THREE.AmbientLight(0xffeedd, 0.85);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
       this.ambientLight = ambientLight;
       this.scene.add(ambientLight);
 
-      const sunLight = new THREE.DirectionalLight(0xfff5e6, 1.4);
+      const sunLight = new THREE.DirectionalLight(0xfff8ee, 1.45);
       this.sunLight = sunLight;
       sunLight.position.set(4, 7, 3);
       sunLight.castShadow = true;
@@ -2693,7 +2749,7 @@
       this.scene.add(sunLight);
 
       // Warm Ceiling light
-      const ceilingLight = new THREE.PointLight(0xffe8d6, 0.9, 12, 1.2);
+      const ceilingLight = new THREE.PointLight(0xffecd2, 0.95, 12, 1.2);
       this.ceilingLight = ceilingLight;
       ceilingLight.position.set(0, 3.8, 0);
       ceilingLight.castShadow = !DEVICE.isMobile;
@@ -2732,17 +2788,17 @@
         this.scene.background = new THREE.Color(0xa9d8f0);
         this.scene.fog = new THREE.FogExp2(0xc8e6f5, 0.014);
       } else {
-        this.scene.background = new THREE.Color(0x0f172a);
-        this.scene.fog = new THREE.FogExp2(0x0f172a, 0.02);
+        this.scene.background = new THREE.Color(0xdbeafe);
+        this.scene.fog = new THREE.FogExp2(0xdbeafe, 0.015);
       }
 
       if (this.ambientLight) {
-        this.ambientLight.color.setHex(isOutdoor ? 0xdceaf7 : 0xffeedd);
-        this.ambientLight.intensity = (isOutdoor ? 1.15 : 0.85) * DEVICE.ambientBoost;
+        this.ambientLight.color.setHex(isOutdoor ? 0xdceaf7 : 0xffffff);
+        this.ambientLight.intensity = (isOutdoor ? 1.2 : 0.95) * DEVICE.ambientBoost;
       }
       if (this.sunLight) {
-        this.sunLight.color.setHex(isOutdoor ? 0xfff8e8 : 0xfff5e6);
-        this.sunLight.intensity = isOutdoor ? 2.0 : 1.4;
+        this.sunLight.color.setHex(isOutdoor ? 0xfff8e8 : 0xfff8ee);
+        this.sunLight.intensity = isOutdoor ? 2.0 : 1.45;
         if (isOutdoor) {
           this.sunLight.position.set(12, 22, 10);
           this.sunLight.shadow.camera.left = -30;
@@ -2885,24 +2941,24 @@
 
     // Chuẩn hoá hình học: xoay cho mặt hướng +Z, scale về đúng chiều cao người,
     // đặt gót chân ở y = 0 và căn giữa theo trục X/Z.
-    prepareAvatarGeometry(rawModel) {
+    prepareAvatarGeometry(rawModel, avatarKey = 'man') {
       let source = null;
       rawModel.traverse(child => {
         if (!source && child.isMesh && child.geometry) source = child;
       });
       if (!source) return null;
 
+      const S = AVATAR_RIG_SPECS[avatarKey] || AVATAR_RIG_SPECS.man;
       const geo = source.geometry.clone();
-      // Model có 19 morph target (blend shape khuôn mặt). Game không dùng tới,
-      // mà để lại thì computeBoundingBox() cộng cả biên độ morph → đo sai chiều cao.
+      // Model có morph targets khuôn mặt. Reset để không làm sai bounding box
       geo.morphAttributes = {};
       geo.morphTargetsRelative = false;
-      geo.applyMatrix4(new THREE.Matrix4().makeRotationY(AVATAR_RIG_SPEC.faceYaw));
+      geo.applyMatrix4(new THREE.Matrix4().makeRotationY(S.faceYaw));
       geo.computeBoundingBox();
 
       const size = new THREE.Vector3();
       geo.boundingBox.getSize(size);
-      const scale = AVATAR_RIG_SPEC.targetHeight / Math.max(size.y, 1e-6);
+      const scale = S.targetHeight / Math.max(size.y, 1e-6);
       geo.applyMatrix4(new THREE.Matrix4().makeScale(scale, scale, scale));
       geo.computeBoundingBox();
 
@@ -2917,8 +2973,8 @@
 
     // Danh sách đốt xương + đoạn xương dùng để tính trọng số.
     // Toạ độ tuyệt đối trong không gian đã chuẩn hoá (mét).
-    buildAvatarBoneSpec() {
-      const S = AVATAR_RIG_SPEC;
+    buildAvatarBoneSpec(avatarKey = 'man') {
+      const S = AVATAR_RIG_SPECS[avatarKey] || AVATAR_RIG_SPECS.man;
       const H = S.targetHeight;
       const y = r => r * H;
       const d = r => r * H;
@@ -2928,15 +2984,16 @@
       const kneeY = y(S.kneeY), ankleY = y(S.ankleY);
       const legX = d(S.legX), shX = d(S.shoulderX), elX = d(S.elbowX);
       const wrX = d(S.wristX), haX = d(S.handX), ftZ = d(S.footZ);
+      const armZ = S.armZ || 0;
 
       // side = +1 cho bên trái nhân vật (+X), -1 cho bên phải
       const limb = (side, tag) => ([
-        { name: `arm${tag}`,     parent: 'chest',        pos: [side * shX, shY, 0],
-          tail: [side * elX, shY, 0], group: 'arm' },
-        { name: `foreArm${tag}`, parent: `arm${tag}`,    pos: [side * elX, shY, 0],
-          tail: [side * wrX, shY, 0], group: 'arm' },
-        { name: `hand${tag}`,    parent: `foreArm${tag}`, pos: [side * wrX, shY, 0],
-          tail: [side * haX, shY, 0], group: 'arm' },
+        { name: `arm${tag}`,     parent: 'chest',        pos: [side * shX, shY, armZ],
+          tail: [side * elX, shY, armZ], group: 'arm' },
+        { name: `foreArm${tag}`, parent: `arm${tag}`,    pos: [side * elX, shY, armZ],
+          tail: [side * wrX, shY, armZ], group: 'arm' },
+        { name: `hand${tag}`,    parent: `foreArm${tag}`, pos: [side * wrX, shY, armZ],
+          tail: [side * haX, shY, armZ], group: 'arm' },
         { name: `leg${tag}`,     parent: 'hips',         pos: [side * legX, hipY, 0],
           tail: [side * legX, kneeY, 0], group: 'leg' },
         { name: `shin${tag}`,    parent: `leg${tag}`,    pos: [side * legX, kneeY, 0],
@@ -2957,8 +3014,8 @@
     }
 
     // Trọng số vùng: chặn tay/đầu ăn vào chân và ngược lại, có dải chuyển mượt
-    avatarRegionMask(group, py) {
-      const S = AVATAR_RIG_SPEC;
+    avatarRegionMask(group, py, avatarKey = 'man') {
+      const S = AVATAR_RIG_SPECS[avatarKey] || AVATAR_RIG_SPECS.man;
       const H = S.targetHeight;
       const hipY = S.hipY * H;
       const chestY = S.chestY * H;
@@ -2979,8 +3036,8 @@
     }
 
     // Tính skinIndex / skinWeight cho từng đỉnh dựa trên khoảng cách tới đoạn xương
-    computeAvatarSkinWeights(geometry, boneSpec) {
-      const S = AVATAR_RIG_SPEC;
+    computeAvatarSkinWeights(geometry, boneSpec, avatarKey = 'man') {
+      const S = AVATAR_RIG_SPECS[avatarKey] || AVATAR_RIG_SPECS.man;
       const pos = geometry.attributes.position;
       const count = pos.count;
       const skinIndices = new Uint16Array(count * 4);
@@ -3004,7 +3061,7 @@
 
         for (let b = 0; b < segs.length; b++) {
           const seg = segs[b];
-          const mask = this.avatarRegionMask(seg.group, p.y);
+          const mask = this.avatarRegionMask(seg.group, p.y, avatarKey);
           if (mask <= 0.0001) continue;
 
           // Khoảng cách từ đỉnh tới đoạn thẳng head→tail
@@ -3042,17 +3099,19 @@
 
     // Dựng (một lần) hình học đã gắn trọng số + vật liệu bật skinning, rồi cache lại
     getAvatarRigCache() {
-      if (this._avatarRig !== undefined) return this._avatarRig;
+      const avatarKey = this.state.selectedAvatar || 'man';
+      if (!this._avatarRigCacheMap) this._avatarRigCacheMap = {};
+      if (this._avatarRigCacheMap[avatarKey]) return this._avatarRigCacheMap[avatarKey];
 
       const raw = this.loadedModels.player_avatar;
-      if (!raw) { this._avatarRig = null; return null; }
+      if (!raw) return null;
 
       try {
-        const prepared = this.prepareAvatarGeometry(raw);
-        if (!prepared) { this._avatarRig = null; return null; }
+        const prepared = this.prepareAvatarGeometry(raw, avatarKey);
+        if (!prepared) return null;
 
-        const boneSpec = this.buildAvatarBoneSpec();
-        this.computeAvatarSkinWeights(prepared.geometry, boneSpec);
+        const boneSpec = this.buildAvatarBoneSpec(avatarKey);
+        this.computeAvatarSkinWeights(prepared.geometry, boneSpec, avatarKey);
 
         // r128 yêu cầu material.skinning = true thì shader mới biến dạng theo xương
         const srcMat = Array.isArray(prepared.material) ? prepared.material[0] : prepared.material;
@@ -3060,13 +3119,14 @@
         material.skinning = true;
         material.needsUpdate = true;
 
-        this._avatarRig = { geometry: prepared.geometry, material, boneSpec };
-        console.log(`🦴 Đã gắn khung xương tự động cho nhân vật: ${boneSpec.length} đốt xương, ${prepared.geometry.attributes.position.count} đỉnh`);
+        const rig = { geometry: prepared.geometry, material, boneSpec };
+        this._avatarRigCacheMap[avatarKey] = rig;
+        console.log(`🦴 Đã gắn khung xương tự động cho nhân vật (${avatarKey}): ${boneSpec.length} đốt xương, ${prepared.geometry.attributes.position.count} đỉnh`);
+        return rig;
       } catch (e) {
         console.warn('Không dựng được khung xương cho nhân vật:', e);
-        this._avatarRig = null;
+        return null;
       }
-      return this._avatarRig;
     }
 
     // Tạo một bản nhân vật có xương cho cảnh hiện tại
@@ -3162,12 +3222,15 @@
     applySkinnedRestPose() {
       const b = this.playerBones;
       if (!b || !this.avatarIsSkinned) return;
+      const avatarKey = this.state.selectedAvatar || 'man';
+      const S = AVATAR_RIG_SPECS[avatarKey] || AVATAR_RIG_SPECS.man;
+      const rotZ = S.restArmRotZ || 1.38;
       // Xoay quanh trục Z để hạ tay từ ngang xuống dọc thân (T-pose → đứng nghỉ)
-      if (b.leftArm) { b.leftArm.rotation.z = -1.42; b.leftArm.rotation.y = 0; }
-      if (b.rightArm) { b.rightArm.rotation.z = 1.42; b.rightArm.rotation.y = 0; }
+      if (b.leftArm) { b.leftArm.rotation.z = -rotZ; b.leftArm.rotation.y = 0; b.leftArm.rotation.x = 0; }
+      if (b.rightArm) { b.rightArm.rotation.z = rotZ; b.rightArm.rotation.y = 0; b.rightArm.rotation.x = 0; }
       // Cẳng tay giữ thẳng theo cánh tay; độ gập do vòng lặp hoạt hình điều khiển
-      if (b.leftElbow) { b.leftElbow.rotation.z = 0; b.leftElbow.rotation.x = 0; }
-      if (b.rightElbow) { b.rightElbow.rotation.z = 0; b.rightElbow.rotation.x = 0; }
+      if (b.leftElbow) { b.leftElbow.rotation.z = 0; b.leftElbow.rotation.x = 0; b.leftElbow.rotation.y = 0; }
+      if (b.rightElbow) { b.rightElbow.rotation.z = 0; b.rightElbow.rotation.x = 0; b.rightElbow.rotation.y = 0; }
     }
 
     buildPlayerAvatar() {
@@ -4991,7 +5054,7 @@
         this.isPointerLocked = document.pointerLockElement === canvasEl;
         if (this.isPointerLocked) {
           this.lockOverlay.classList.add('hidden');
-        } else if (!DEVICE.hasTouch) {
+        } else if (!DEVICE.useTouchUI) {
           if (!this.state.activeItem && !document.getElementById('doorModal').classList.contains('active')) {
             this.lockOverlay.classList.remove('hidden');
           }
@@ -5123,7 +5186,7 @@
           this.interactWithTarget();
         };
         btnMobile.addEventListener('touchstart', fireInteract, { passive: false });
-        btnMobile.addEventListener('click', e => { if (!DEVICE.hasTouch) fireInteract(e); });
+        btnMobile.addEventListener('click', e => { if (!DEVICE.useTouchUI) fireInteract(e); });
       }
 
       // Resize & xoay màn hình (iOS phát sinh sự kiện chậm nên gọi lại sau một nhịp)
@@ -5144,7 +5207,7 @@
 
       // Thiết bị cảm ứng không có Pointer Lock. Nếu vẫn hiện lớp phủ "nhấp để điều
       // khiển" thì nó phủ kín màn hình và nuốt mọi thao tác chạm → nút bấm chết.
-      if (DEVICE.hasTouch) {
+      if (DEVICE.useTouchUI) {
         this.isPointerLocked = false;
         if (this.lockOverlay) this.lockOverlay.classList.add('hidden');
         return;
@@ -5201,7 +5264,7 @@
     }
 
     lockMobileLandscape() {
-      if (DEVICE.hasTouch) {
+      if (DEVICE.useTouchUI) {
         if (screen.orientation && screen.orientation.lock) {
           screen.orientation.lock('landscape').catch(() => {});
         } else if (screen.lockOrientation) {
@@ -5216,9 +5279,10 @@
 
     // --- UI & SCREEN SWITCHING ---
     setupUI() {
-      // 1. Play Button on Start Screen (Auto Fullscreen & Landscape on Mobile)
+      // 1. Play Button on Start Screen
+      // Nếu chưa chọn nhân vật → hiện màn chọn; nếu đã chọn → vào game luôn
       document.getElementById('btnPlayLevel1').addEventListener('click', () => {
-        if (DEVICE.hasTouch) {
+        if (DEVICE.useTouchUI) {
           const docEl = document.documentElement;
           if (!document.fullscreenElement) {
             if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
@@ -5226,9 +5290,26 @@
           }
           this.lockMobileLandscape();
         }
-        this.switchScreen('game');
-        this.startZoneSession();
+        if (this.state.selectedAvatar) {
+          // Đã chọn nhân vật rồi → vào game
+          this.switchScreen('game');
+          this.startZoneSession();
+        } else {
+          // Chưa chọn → hiện màn hình chọn nhân vật
+          this.switchScreen('charSelect');
+        }
       });
+
+      // 1.5 Character Selection Screen
+      this.setupCharacterSelect();
+
+      // 1.6 Nút đổi nhân vật nhanh trên Start Screen
+      const btnChangeAvatarStart = document.getElementById('btnChangeAvatarStart');
+      if (btnChangeAvatarStart) {
+        btnChangeAvatarStart.addEventListener('click', () => {
+          this.switchScreen('charSelect');
+        });
+      }
 
       // 1.0.1 Nút bật toàn màn hình trong lớp nhắc xoay ngang máy
       const btnRotateFs = document.getElementById('btnRotateFullscreen');
@@ -7799,11 +7880,110 @@
       }
     }
 
+    // --- CHARACTER SELECTION ---
+    updateCharSelectUI() {
+      const cards = document.querySelectorAll('.char-card');
+      const btnConfirm = document.getElementById('btnCharConfirm');
+      cards.forEach(c => c.classList.remove('selected'));
+      
+      const current = this._pendingAvatar || this.state.selectedAvatar;
+      if (current) {
+        const preselected = document.querySelector(`.char-card[data-avatar="${current}"]`);
+        if (preselected) {
+          preselected.classList.add('selected');
+          this._pendingAvatar = current;
+          if (btnConfirm) {
+            btnConfirm.classList.remove('disabled');
+            btnConfirm.disabled = false;
+          }
+        }
+      } else {
+        this._pendingAvatar = null;
+        if (btnConfirm) {
+          btnConfirm.classList.add('disabled');
+          btnConfirm.disabled = true;
+        }
+      }
+    }
+
+    setupCharacterSelect() {
+      const cards = document.querySelectorAll('.char-card');
+      const btnConfirm = document.getElementById('btnCharConfirm');
+      const btnBack = document.getElementById('btnCharBack');
+      this._pendingAvatar = this.state.selectedAvatar || null;
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          this._pendingAvatar = card.dataset.avatar;
+          if (btnConfirm) {
+            btnConfirm.classList.remove('disabled');
+            btnConfirm.disabled = false;
+          }
+        });
+      });
+
+      // Nút xác nhận → lưu lựa chọn, ẩn màn chọn và vào game ngay lập tức
+      if (btnConfirm) {
+        btnConfirm.addEventListener('click', () => {
+          if (!this._pendingAvatar) return;
+          this.changeAvatar(this._pendingAvatar);
+          this.switchScreen('game');
+          this.startZoneSession();
+        });
+      }
+
+      // Nút quay lại → trở về trang chủ
+      if (btnBack) {
+        btnBack.addEventListener('click', () => {
+          this.switchScreen('start');
+        });
+      }
+    }
+
+    // Đổi nhân vật: cập nhật state, lưu storage, reload model nếu cần
+    changeAvatar(avatarKey) {
+      if (!AVATAR_FILES[avatarKey]) return;
+      this.state.selectedAvatar = avatarKey;
+      this.state.saveStorage();
+      this.updateProgressUI();
+
+      const newFile = AVATAR_FILES[avatarKey];
+      if (newFile !== PLAYER_AVATAR_FILE) {
+        PLAYER_AVATAR_FILE = newFile;
+        MODEL_FILES.player_avatar = newFile;
+
+        // Xoá cache rig cũ để build lại với model mới
+        this._avatarRig = undefined;
+        this._avatarRigCacheMap = {};
+        delete this._modelJobs['player_avatar'];
+        delete this.loadedModels['player_avatar'];
+
+        // Tải model mới và rebuild nhân vật nếu scene đã sẵn sàng
+        if (this.sceneReady) {
+          this.ensureModels(['player_avatar']).then(() => {
+            this._avatarRig = undefined;
+            this._avatarRigCacheMap = {};
+            if (this.playerMesh) {
+              this.scene.remove(this.playerMesh);
+              this.playerMesh = null;
+            }
+            this.buildPlayerAvatar();
+          });
+        }
+      }
+    }
+
     switchScreen(screenName) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      window.scrollTo(0, 0);
       if (screenName === 'start') {
         document.getElementById('screenStart').classList.add('active');
         this.updateProgressUI();
+      } else if (screenName === 'charSelect') {
+        document.getElementById('screenCharSelect').classList.add('active');
+        this.updateCharSelectUI();
       } else if (screenName === 'game') {
         document.getElementById('screenGame').classList.add('active');
         this.onWindowResize();
@@ -8119,6 +8299,10 @@
       if (fill) fill.style.width = `${totalPct}%`;
       set('level1ProgressText', `Đã tìm: ${totalFound}/${TOTAL_VOCAB_COUNT} (${totalPct}%)`);
       set('startZoneName', `${zone.icon} ${zone.name}`);
+
+      // Hiển thị nhân vật đã chọn
+      const avatarName = this.state.selectedAvatar === 'woman' ? '👩 Nữ Sinh' : (this.state.selectedAvatar === 'man' ? '🧑 Nam Sinh' : 'Chưa chọn');
+      set('startAvatarName', avatarName);
 
       // Gameplay HUD — tiến độ khu vực đang đứng
       set('hudDiscoveredCount', `${zFound} / ${zTotal}`);

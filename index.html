@@ -10,11 +10,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Chỉ tải các độ đậm thực sự dùng tới; bỏ Noto Sans TC (đã có Noto Serif TC làm font chữ Hán) -->
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Sora:wght@600;700;800&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Sora:wght@600;700;800&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="./style.css?v=202608201900">
+  <link rel="stylesheet" href="./style.css?v=202608202000">
   
   <!-- Three.js CDN — defer để trình duyệt vẽ được giao diện trước, thứ tự vẫn giữ -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -84,6 +82,11 @@
             <span class="stat-num" id="startZoneName">🛏️ Phòng Ngủ</span>
             <span class="stat-label">Đang ở chặng</span>
           </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item stat-item-avatar" id="btnChangeAvatarStart" title="Nhấp để đổi nhân vật" style="cursor: pointer;">
+            <span class="stat-num" id="startAvatarName">🧑 Nam Sinh</span>
+            <span class="stat-label">Nhân vật 🔄</span>
+          </div>
         </div>
       </div>
 
@@ -100,53 +103,54 @@
             <div class="js-body">
               <div class="js-order">CHẶNG 1</div>
               <h3 class="js-title">Phòng Ngủ <em>臥室 wòshì</em></h3>
-              <p class="js-desc">Thức dậy trên giường. Khám phá hết 15 đồ vật trong phòng thì cửa mới mở.</p>
+              <p class="js-desc">Thức dậy trên giường. Khám phá 15 đồ vật để mở khoá cửa phòng.</p>
             </div>
           </div>
-          <div class="journey-arrow">→</div>
           <div class="journey-step">
             <div class="js-icon">🛋️</div>
             <div class="js-body">
               <div class="js-order">CHẶNG 2</div>
               <h3 class="js-title">Phòng Khách <em>客廳 kètīng</em></h3>
-              <p class="js-desc">Sofa, ti vi, bàn trà, đèn chùm… học xong mới sang được phòng bếp.</p>
+              <p class="js-desc">Sofa, ti vi, bàn trà, đèn chùm… học xong mới qua phòng bếp.</p>
             </div>
           </div>
-          <div class="journey-arrow">→</div>
           <div class="journey-step">
             <div class="js-icon">🍳</div>
             <div class="js-body">
               <div class="js-order">CHẶNG 3</div>
               <h3 class="js-title">Phòng Bếp <em>廚房 chúfáng</em></h3>
-              <p class="js-desc">Tủ lạnh, bếp nấu, bồn rửa, lò vi sóng… rồi mở cửa chính ra phố.</p>
+              <p class="js-desc">Tủ lạnh, bếp nấu, lò vi sóng… rồi mở cửa chính ra phố lớn.</p>
             </div>
           </div>
-          <div class="journey-arrow">→</div>
           <div class="journey-step">
             <div class="js-icon">🏙️</div>
             <div class="js-body">
               <div class="js-order">CHẶNG 4</div>
               <h3 class="js-title">Đường Phố <em>街道 jiēdào</em></h3>
-              <p class="js-desc">Đi dọc con đường: đèn giao thông, trạm xe buýt, cửa hàng, toà nhà cao tầng.</p>
+              <p class="js-desc">Khám phá đèn giao thông, trạm xe buýt, cửa hàng, cao ốc.</p>
             </div>
           </div>
-          <div class="journey-arrow">→</div>
           <div class="journey-step">
             <div class="js-icon">🌳</div>
             <div class="js-body">
               <div class="js-order">CHẶNG 5</div>
               <h3 class="js-title">Công Viên <em>公園 gōngyuán</em></h3>
-              <p class="js-desc">Điểm đến cuối: đài phun nước, hồ, cầu, xích đu và tượng đá.</p>
+              <p class="js-desc">Đài phun nước, hồ nước, xích đu và tượng đài chiến thắng.</p>
             </div>
           </div>
         </div>
 
         <div class="journey-cta">
-          <div class="level-progress-bar">
-            <div class="progress-fill" id="level1ProgressFill" style="width: 0%"></div>
+          <div class="cta-left">
+            <div class="cta-badge">🎯 Tiến Độ Hiện Tại</div>
+            <div class="progress-info-row">
+              <span class="progress-text" id="level1ProgressText">Đã khám phá: 0/55 đồ vật</span>
+            </div>
+            <div class="level-progress-bar">
+              <div class="progress-fill" id="level1ProgressFill" style="width: 0%"></div>
+            </div>
           </div>
-          <div class="level-footer">
-            <span class="progress-text" id="level1ProgressText">Đã tìm: 0/55</span>
+          <div class="cta-right">
             <button type="button" class="btn-play-level" id="btnPlayLevel1">
               <span>Bắt Đầu Hành Trình</span>
               <span class="arrow-icon">➔</span>
@@ -180,6 +184,52 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ================= SCREEN 1.5: CHARACTER SELECT ================= -->
+  <section id="screenCharSelect" class="screen screen-char-select">
+    <div class="char-select-container">
+      <div class="char-select-header">
+        <div class="char-select-tag">🎭 Chọn Nhân Vật</div>
+        <h2 class="char-select-title">Bạn muốn khám phá với ai?</h2>
+        <p class="char-select-desc">Chọn nhân vật đồng hành cùng bạn trên hành trình chinh phục từ vựng</p>
+      </div>
+
+      <div class="char-cards-wrapper">
+        <!-- Male Character Card -->
+        <div class="char-card" data-avatar="man" id="charCardMan">
+          <div class="char-card-glow"></div>
+          <div class="char-card-avatar">🧑</div>
+          <div class="char-card-info">
+            <h3 class="char-card-name">Nam Sinh</h3>
+            <p class="char-card-desc">Chàng trai năng động, sẵn sàng khám phá mọi ngóc ngách của thành phố</p>
+          </div>
+          <div class="char-card-check">✓</div>
+        </div>
+
+        <!-- Female Character Card -->
+        <div class="char-card" data-avatar="woman" id="charCardWoman">
+          <div class="char-card-glow"></div>
+          <div class="char-card-avatar">👩</div>
+          <div class="char-card-info">
+            <h3 class="char-card-name">Nữ Sinh</h3>
+            <p class="char-card-desc">Cô gái thông minh, luôn tò mò và yêu thích học hỏi điều mới</p>
+          </div>
+          <div class="char-card-check">✓</div>
+        </div>
+      </div>
+
+      <div class="char-select-footer">
+        <button type="button" class="btn-char-back" id="btnCharBack">
+          <span>←</span>
+          <span>Quay lại</span>
+        </button>
+        <button type="button" class="btn-char-confirm disabled" id="btnCharConfirm" disabled>
+          <span>Xác Nhận & Bắt Đầu</span>
+          <span class="arrow-icon">➔</span>
+        </button>
+      </div>
     </div>
   </section>
 
