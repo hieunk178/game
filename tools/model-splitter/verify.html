@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#fff}</style>
+<script src="./three.min.js"></script><script src="./GLTFLoader.js"></script></head><body>
+<script>
+const W = 640, H = 480;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H); renderer.outputEncoding = THREE.sRGBEncoding;
+document.body.appendChild(renderer.domElement);
+const cam = new THREE.PerspectiveCamera(50, W / H, 0.01, 500);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xffffff);
+scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+const d = new THREE.DirectionalLight(0xffffff, 0.9); d.position.set(4, 8, 6); scene.add(d);
+const d2 = new THREE.DirectionalLight(0xffffff, 0.4); d2.position.set(-5, 3, -4); scene.add(d2);
+const loader = new THREE.GLTFLoader();
+const load = url => new Promise((res, rej) => loader.load(url, res, undefined, rej));
+
+window.loadOriginal = async function (url) {
+  const gltf = await load(url);
+  scene.add(gltf.scene);
+  return 'original';
+};
+window.loadParts = async function (dirUrl, parts) {
+  for (const p of parts) {
+    const gltf = await load(dirUrl + '/' + p.file);
+    gltf.scene.position.set(p.position[0], p.position[1], p.position[2]);
+    scene.add(gltf.scene);
+  }
+  return 'parts:' + parts.length;
+};
+// deterministic camera so both variants can be compared pixel by pixel
+window.shoot = function (view) {
+  const views = {
+    a: { pos: [6, 4.5, 2], look: [-1, 2, -6] },
+    b: { pos: [-1.2, 3.2, 1.5], look: [-2.4, 1.6, -6.5] },
+    c: { pos: [1.5, 6.5, -14], look: [-1, 1.8, -6] }
+  };
+  const v = views[view] || views.a;
+  cam.position.set(...v.pos); cam.lookAt(...v.look); cam.updateProjectionMatrix();
+  renderer.render(scene, cam);
+  return renderer.domElement.toDataURL('image/png');
+};
+window.READY = true;
+</script></body></html>

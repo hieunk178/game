@@ -1,0 +1,3 @@
+# puppeteer can chay script postinstall de tai Chromium cho test_runtime_audit.mjs
+allowBuilds:
+  puppeteer: true

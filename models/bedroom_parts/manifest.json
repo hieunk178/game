@@ -1,0 +1,1873 @@
+{
+ "source": "bedroom__modern_cozy_bedroom_interior.glb",
+ "note": "Each part GLB is centred on its bounding-box centre. Load it and set object.position = part.position to rebuild the original room.",
+ "credit": {
+  "author": "Model Wala (https://sketchfab.com/modelwala)",
+  "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+  "source": "https://sketchfab.com/3d-models/bedroom-modern-cozy-bedroom-interior-5e6c3576f1614db78c749769c49bd217",
+  "title": "Bedroom | Modern Cozy Bedroom Interior"
+ },
+ "parts": [
+  {
+   "name": "bed",
+   "file": "bed.glb",
+   "position": [
+    -1.2703,
+    1.1923,
+    -8.2206
+   ],
+   "size": [
+    3.5401,
+    1.5894,
+    2.7091
+   ],
+   "bbox": {
+    "min": [
+     -3.0404,
+     0.3976,
+     -9.5752
+    ],
+    "max": [
+     0.4997,
+     1.987,
+     -6.8661
+    ]
+   },
+   "triangles": 10741,
+   "bytes": 796604,
+   "sourceNodes": [
+    "Plane.001_Material_0.001"
+   ]
+  },
+  {
+   "name": "desk",
+   "file": "desk.glb",
+   "position": [
+    -2.6435,
+    0.9316,
+    -5.1518
+   ],
+   "size": [
+    0.9334,
+    1.0599,
+    2.2717
+   ],
+   "bbox": {
+    "min": [
+     -3.1102,
+     0.4016,
+     -6.2876
+    ],
+    "max": [
+     -2.1768,
+     1.4615,
+     -4.0159
+    ]
+   },
+   "triangles": 1396,
+   "bytes": 227036,
+   "sourceNodes": [
+    "Cube.010",
+    "Cube.011",
+    "Cube.013"
+   ]
+  },
+  {
+   "name": "desk-pen-holder",
+   "file": "desk-pen-holder.glb",
+   "position": [
+    -2.8659,
+    1.6194,
+    -4.663
+   ],
+   "size": [
+    0.1701,
+    0.3158,
+    0.1687
+   ],
+   "bbox": {
+    "min": [
+     -2.951,
+     1.4615,
+     -4.7474
+    ],
+    "max": [
+     -2.7809,
+     1.7773,
+     -4.5787
+    ]
+   },
+   "triangles": 318454,
+   "bytes": 17334400,
+   "sourceNodes": [
+    "Cylinder.001",
+    "Cylinder.002",
+    "Cylinder.003",
+    "Cylinder.004",
+    "Cylinder.005",
+    "Cylinder.006",
+    "Cylinder.007",
+    "Cylinder.008",
+    "Cylinder.009",
+    "Cylinder.010",
+    "Cylinder.011",
+    "Cylinder.012",
+    "Cylinder.013",
+    "Cylinder.014",
+    "Cylinder.015",
+    "Cylinder.016",
+    "Cylinder.017",
+    "Cylinder.018",
+    "Cylinder.019",
+    "Cylinder.020",
+    "Cylinder.021",
+    "Cylinder.022",
+    "Cylinder.023",
+    "Cylinder.024",
+    "Cylinder.025",
+    "Cylinder.026",
+    "Cylinder.027",
+    "Cylinder.028",
+    "Cylinder.029",
+    "Cylinder.030",
+    "Cylinder.031",
+    "Cylinder.032"
+   ]
+  },
+  {
+   "name": "keyboard",
+   "file": "keyboard.glb",
+   "position": [
+    -2.337,
+    1.487,
+    -5.2818
+   ],
+   "size": [
+    0.2256,
+    0.0432,
+    0.6945
+   ],
+   "bbox": {
+    "min": [
+     -2.4499,
+     1.4654,
+     -5.6291
+    ],
+    "max": [
+     -2.2242,
+     1.5085,
+     -4.9345
+    ]
+   },
+   "triangles": 17196,
+   "bytes": 1524828,
+   "sourceNodes": [
+    "keyboard.003"
+   ]
+  },
+  {
+   "name": "mouse",
+   "file": "mouse.glb",
+   "position": [
+    -2.3367,
+    1.4842,
+    -5.76
+   ],
+   "size": [
+    0.1242,
+    0.0376,
+    0.0719
+   ],
+   "bbox": {
+    "min": [
+     -2.3988,
+     1.4654,
+     -5.7959
+    ],
+    "max": [
+     -2.2746,
+     1.503,
+     -5.724
+    ]
+   },
+   "triangles": 4896,
+   "bytes": 311316,
+   "sourceNodes": [
+    "mouse.002"
+   ]
+  },
+  {
+   "name": "mouse-pad",
+   "file": "mouse-pad.glb",
+   "position": [
+    -2.3547,
+    1.4648,
+    -5.3241
+   ],
+   "size": [
+    0.3138,
+    0.0066,
+    0.9953
+   ],
+   "bbox": {
+    "min": [
+     -2.5115,
+     1.4615,
+     -5.8217
+    ],
+    "max": [
+     -2.1978,
+     1.4681,
+     -4.8264
+    ]
+   },
+   "triangles": 506,
+   "bytes": 101984,
+   "sourceNodes": [
+    "Model"
+   ]
+  },
+  {
+   "name": "monitor",
+   "file": "monitor.glb",
+   "position": [
+    -2.8268,
+    1.8484,
+    -5.311
+   ],
+   "size": [
+    0.2059,
+    0.7737,
+    1.0551
+   ],
+   "bbox": {
+    "min": [
+     -2.9297,
+     1.4615,
+     -5.8386
+    ],
+    "max": [
+     -2.7238,
+     2.2352,
+     -4.7834
+    ]
+   },
+   "triangles": 172,
+   "bytes": 146288,
+   "sourceNodes": [
+    "Cube.022",
+    "Cube.024"
+   ]
+  },
+  {
+   "name": "alarm-clock",
+   "file": "alarm-clock.glb",
+   "position": [
+    -2.3027,
+    1.1791,
+    -6.6185
+   ],
+   "size": [
+    0.1232,
+    0.2553,
+    0.3708
+   ],
+   "bbox": {
+    "min": [
+     -2.3643,
+     1.0514,
+     -6.8039
+    ],
+    "max": [
+     -2.2411,
+     1.3067,
+     -6.4331
+    ]
+   },
+   "triangles": 429963,
+   "bytes": 26800012,
+   "sourceNodes": [
+    "Sphere",
+    "Plane.001",
+    "Cylinder.033",
+    "Cube.023",
+    "Cube.025",
+    "Text",
+    "Text.001",
+    "Text.002",
+    "Text.003",
+    "Text.004"
+   ]
+  },
+  {
+   "name": "office-chair",
+   "file": "office-chair.glb",
+   "position": [
+    -1.7132,
+    1.147,
+    -4.9522
+   ],
+   "size": [
+    1.2279,
+    1.4745,
+    1.2337
+   ],
+   "bbox": {
+    "min": [
+     -2.3272,
+     0.4097,
+     -5.5691
+    ],
+    "max": [
+     -1.0992,
+     1.8842,
+     -4.3354
+    ]
+   },
+   "triangles": 36017,
+   "bytes": 1226260,
+   "sourceNodes": [
+    "Box01_Lether_0"
+   ]
+  },
+  {
+   "name": "wardrobe",
+   "file": "wardrobe.glb",
+   "position": [
+    -2.8767,
+    2.9263,
+    -5.1515
+   ],
+   "size": [
+    0.55,
+    1.3055,
+    2.2702
+   ],
+   "bbox": {
+    "min": [
+     -3.1517,
+     2.2736,
+     -6.2866
+    ],
+    "max": [
+     -2.6018,
+     3.5791,
+     -4.0164
+    ]
+   },
+   "triangles": 7600,
+   "bytes": 751336,
+   "sourceNodes": [
+    "Cube.016",
+    "Cube.017",
+    "Cube.018",
+    "Cube.019",
+    "Cube.020",
+    "Cube.021",
+    "Sketchfab Model.008"
+   ]
+  },
+  {
+   "name": "wall-shelf",
+   "file": "wall-shelf.glb",
+   "position": [
+    -3.0316,
+    2.7141,
+    -9.3476
+   ],
+   "size": [
+    0.1824,
+    1.7783,
+    1.7426
+   ],
+   "bbox": {
+    "min": [
+     -3.1228,
+     1.8249,
+     -10.2189
+    ],
+    "max": [
+     -2.9404,
+     3.6033,
+     -8.4763
+    ]
+   },
+   "triangles": 56,
+   "bytes": 146036,
+   "sourceNodes": [
+    "Cube.007",
+    "Cube.008",
+    "Cube.009"
+   ]
+  },
+  {
+   "name": "nightstand-cube-1",
+   "file": "nightstand-cube-1.glb",
+   "position": [
+    -2.5153,
+    0.7331,
+    -6.6178
+   ],
+   "size": [
+    0.6397,
+    0.6397,
+    0.6397
+   ],
+   "bbox": {
+    "min": [
+     -2.8351,
+     0.4133,
+     -6.9376
+    ],
+    "max": [
+     -2.1955,
+     1.053,
+     -6.2979
+    ]
+   },
+   "triangles": 48,
+   "bytes": 141252,
+   "sourceNodes": [
+    "Cube.012"
+   ]
+  },
+  {
+   "name": "nightstand-cube-2",
+   "file": "nightstand-cube-2.glb",
+   "position": [
+    -2.5619,
+    0.7331,
+    -9.876
+   ],
+   "size": [
+    0.6397,
+    0.6397,
+    0.6397
+   ],
+   "bbox": {
+    "min": [
+     -2.8818,
+     0.4133,
+     -10.1959
+    ],
+    "max": [
+     -2.2421,
+     1.053,
+     -9.5562
+    ]
+   },
+   "triangles": 48,
+   "bytes": 141252,
+   "sourceNodes": [
+    "Cube.015"
+   ]
+  },
+  {
+   "name": "table-lamp",
+   "file": "table-lamp.glb",
+   "position": [
+    -2.5026,
+    1.4602,
+    -9.7824
+   ],
+   "size": [
+    0.4815,
+    0.8691,
+    0.5087
+   ],
+   "bbox": {
+    "min": [
+     -2.7433,
+     1.0256,
+     -10.0368
+    ],
+    "max": [
+     -2.2618,
+     1.8947,
+     -9.5281
+    ]
+   },
+   "triangles": 8548,
+   "bytes": 893296,
+   "sourceNodes": [
+    "Object_4"
+   ]
+  },
+  {
+   "name": "light-switch-panel",
+   "file": "light-switch-panel.glb",
+   "position": [
+    -3.1037,
+    1.953,
+    -6.6166
+   ],
+   "size": [
+    0.0518,
+    0.1992,
+    0.4444
+   ],
+   "bbox": {
+    "min": [
+     -3.1296,
+     1.8534,
+     -6.8388
+    ],
+    "max": [
+     -3.0778,
+     2.0526,
+     -6.3945
+    ]
+   },
+   "triangles": 10804,
+   "bytes": 732148,
+   "sourceNodes": [
+    "Object_4.001"
+   ]
+  },
+  {
+   "name": "ceiling-fan",
+   "file": "ceiling-fan.glb",
+   "position": [
+    -0.5374,
+    3.9781,
+    -7.9874
+   ],
+   "size": [
+    2.8375,
+    0.8195,
+    2.9435
+   ],
+   "bbox": {
+    "min": [
+     -1.9561,
+     3.5683,
+     -9.4592
+    ],
+    "max": [
+     0.8814,
+     4.3878,
+     -6.5157
+    ]
+   },
+   "triangles": 974,
+   "bytes": 49456,
+   "sourceNodes": [
+    "Ceiling Fan_ssivet_0"
+   ]
+  },
+  {
+   "name": "ceiling-light-cove",
+   "file": "ceiling-light-cove.glb",
+   "position": [
+    -0.2363,
+    4.3101,
+    -6.2051
+   ],
+   "size": [
+    3.9625,
+    0.1819,
+    6.283
+   ],
+   "bbox": {
+    "min": [
+     -2.2175,
+     4.2191,
+     -9.3467
+    ],
+    "max": [
+     1.745,
+     4.401,
+     -3.0636
+    ]
+   },
+   "triangles": 8,
+   "bytes": 92712,
+   "sourceNodes": [
+    "For light"
+   ]
+  },
+  {
+   "name": "led-strip-left",
+   "file": "led-strip-left.glb",
+   "position": [
+    -2.5136,
+    4.1982,
+    -6.1735
+   ],
+   "size": [
+    0.2,
+    0.034,
+    6.6
+   ],
+   "bbox": {
+    "min": [
+     -2.6136,
+     4.1812,
+     -9.4735
+    ],
+    "max": [
+     -2.4136,
+     4.2152,
+     -2.8735
+    ]
+   },
+   "triangles": 390,
+   "bytes": 64772,
+   "sourceNodes": [
+    "Sketchfab Model.004"
+   ]
+  },
+  {
+   "name": "led-strip-right",
+   "file": "led-strip-right.glb",
+   "position": [
+    2.197,
+    4.1982,
+    -6.1735
+   ],
+   "size": [
+    0.2,
+    0.034,
+    6.6
+   ],
+   "bbox": {
+    "min": [
+     2.097,
+     4.1812,
+     -9.4735
+    ],
+    "max": [
+     2.297,
+     4.2152,
+     -2.8735
+    ]
+   },
+   "triangles": 390,
+   "bytes": 64776,
+   "sourceNodes": [
+    "Sketchfab Model.005"
+   ]
+  },
+  {
+   "name": "led-strip-front",
+   "file": "led-strip-front.glb",
+   "position": [
+    0.597,
+    4.1982,
+    -2.9735
+   ],
+   "size": [
+    3.4,
+    0.034,
+    0.2
+   ],
+   "bbox": {
+    "min": [
+     -1.103,
+     4.1813,
+     -3.0735
+    ],
+    "max": [
+     2.297,
+     4.2152,
+     -2.8735
+    ]
+   },
+   "triangles": 234,
+   "bytes": 46104,
+   "sourceNodes": [
+    "Sketchfab Model.006"
+   ]
+  },
+  {
+   "name": "led-strip-back",
+   "file": "led-strip-back.glb",
+   "position": [
+    0.597,
+    4.1982,
+    -9.3576
+   ],
+   "size": [
+    3.4,
+    0.034,
+    0.2
+   ],
+   "bbox": {
+    "min": [
+     -1.103,
+     4.1812,
+     -9.4576
+    ],
+    "max": [
+     2.297,
+     4.2152,
+     -9.2576
+    ]
+   },
+   "triangles": 234,
+   "bytes": 46104,
+   "sourceNodes": [
+    "Sketchfab Model.007"
+   ]
+  },
+  {
+   "name": "window",
+   "file": "window.glb",
+   "position": [
+    -0.178,
+    2.0891,
+    -10.1204
+   ],
+   "size": [
+    3.7231,
+    3.4995,
+    0.417
+   ],
+   "bbox": {
+    "min": [
+     -2.0396,
+     0.3393,
+     -10.3289
+    ],
+    "max": [
+     1.6835,
+     3.8388,
+     -9.9119
+    ]
+   },
+   "triangles": 224,
+   "bytes": 358912,
+   "sourceNodes": [
+    "Window_PVC_0",
+    "Window_Plastic_0",
+    "Window_Glass_0",
+    "Window_Marble_0"
+   ]
+  },
+  {
+   "name": "curtain-tied",
+   "file": "curtain-tied.glb",
+   "position": [
+    -1.0615,
+    2.285,
+    -9.8996
+   ],
+   "size": [
+    2.8598,
+    4.1754,
+    0.8
+   ],
+   "bbox": {
+    "min": [
+     -2.4914,
+     0.1973,
+     -10.2996
+    ],
+    "max": [
+     0.3684,
+     4.3727,
+     -9.4995
+    ]
+   },
+   "triangles": 1824,
+   "bytes": 59704,
+   "sourceNodes": [
+    "������urtain tied_Curtain_0"
+   ]
+  },
+  {
+   "name": "curtain",
+   "file": "curtain.glb",
+   "position": [
+    1.9306,
+    2.3705,
+    -9.8954
+   ],
+   "size": [
+    2.4785,
+    4.062,
+    0.2171
+   ],
+   "bbox": {
+    "min": [
+     0.6913,
+     0.3395,
+     -10.0039
+    ],
+    "max": [
+     3.1698,
+     4.4015,
+     -9.7869
+    ]
+   },
+   "triangles": 174,
+   "bytes": 7704,
+   "sourceNodes": [
+    "������urtain_Curtain_0"
+   ]
+  },
+  {
+   "name": "curtain-rail",
+   "file": "curtain-rail.glb",
+   "position": [
+    -0.2263,
+    4.1628,
+    -10.0979
+   ],
+   "size": [
+    5.9273,
+    0.6984,
+    0.1493
+   ],
+   "bbox": {
+    "min": [
+     -3.1899,
+     3.8136,
+     -10.1726
+    ],
+    "max": [
+     2.7373,
+     4.5119,
+     -10.0233
+    ]
+   },
+   "triangles": 10,
+   "bytes": 2764,
+   "sourceNodes": [
+    "Cube.003"
+   ]
+  },
+  {
+   "name": "painting-portrait",
+   "file": "painting-portrait.glb",
+   "position": [
+    -3.0041,
+    3.4807,
+    -7.7515
+   ],
+   "size": [
+    0.0302,
+    0.7004,
+    0.5629
+   ],
+   "bbox": {
+    "min": [
+     -3.0192,
+     3.1305,
+     -8.033
+    ],
+    "max": [
+     -2.989,
+     3.8309,
+     -7.4701
+    ]
+   },
+   "triangles": 1028,
+   "bytes": 326732,
+   "sourceNodes": [
+    "Painting"
+   ]
+  },
+  {
+   "name": "painting-dark",
+   "file": "painting-dark.glb",
+   "position": [
+    -3.0041,
+    2.6448,
+    -7.7578
+   ],
+   "size": [
+    0.0302,
+    0.7004,
+    0.5805
+   ],
+   "bbox": {
+    "min": [
+     -3.0192,
+     2.2946,
+     -8.0481
+    ],
+    "max": [
+     -2.989,
+     2.995,
+     -7.4676
+    ]
+   },
+   "triangles": 1028,
+   "bytes": 213628,
+   "sourceNodes": [
+    "Painting.001"
+   ]
+  },
+  {
+   "name": "plant-monstera-pot",
+   "file": "plant-monstera-pot.glb",
+   "position": [
+    -2.6445,
+    1.5111,
+    -6.7161
+   ],
+   "size": [
+    0.7748,
+    0.919,
+    0.5785
+   ],
+   "bbox": {
+    "min": [
+     -3.032,
+     1.0517,
+     -7.0053
+    ],
+    "max": [
+     -2.2571,
+     1.9706,
+     -6.4268
+    ]
+   },
+   "triangles": 34670,
+   "bytes": 1636644,
+   "sourceNodes": [
+    "Vase",
+    "Plastic pot",
+    "Soil",
+    "Leaf1.002",
+    "Leaf1.003",
+    "Leaf2.002",
+    "Leaf3",
+    "Leaf4",
+    "Leaf5",
+    "Leaf6.002",
+    "Stem2",
+    "stem1",
+    "stem1.001",
+    "stem3",
+    "stem4",
+    "stem5",
+    "stem6"
+   ]
+  },
+  {
+   "name": "plant-pothos-hanging",
+   "file": "plant-pothos-hanging.glb",
+   "position": [
+    -2.7212,
+    3.367,
+    -5.5021
+   ],
+   "size": [
+    0.2468,
+    0.3525,
+    0.2609
+   ],
+   "bbox": {
+    "min": [
+     -2.8446,
+     3.1908,
+     -5.6326
+    ],
+    "max": [
+     -2.5979,
+     3.5432,
+     -5.3717
+    ]
+   },
+   "triangles": 25332,
+   "bytes": 2609496,
+   "sourceNodes": [
+    "epipremnum pinnatum"
+   ]
+  },
+  {
+   "name": "plant-ficus-desk",
+   "file": "plant-ficus-desk.glb",
+   "position": [
+    -2.8704,
+    1.6372,
+    -4.4741
+   ],
+   "size": [
+    0.2948,
+    0.3396,
+    0.2908
+   ],
+   "bbox": {
+    "min": [
+     -3.0178,
+     1.4674,
+     -4.6195
+    ],
+    "max": [
+     -2.723,
+     1.807,
+     -4.3287
+    ]
+   },
+   "triangles": 13313,
+   "bytes": 1288936,
+   "sourceNodes": [
+    "Collection indoor plant 251 ficus lyrata monstera palm _4642d3a"
+   ]
+  },
+  {
+   "name": "plant-bush-small",
+   "file": "plant-bush-small.glb",
+   "position": [
+    -2.6727,
+    1.6599,
+    -4.2019
+   ],
+   "size": [
+    0.3871,
+    0.3626,
+    0.4108
+   ],
+   "bbox": {
+    "min": [
+     -2.8663,
+     1.4786,
+     -4.4073
+    ],
+    "max": [
+     -2.4792,
+     1.8412,
+     -3.9965
+    ]
+   },
+   "triangles": 1955,
+   "bytes": 787380,
+   "sourceNodes": [
+    "Outdoor Garden set bush and Tree - Garden Set 54_25.001"
+   ]
+  },
+  {
+   "name": "books-stack-1",
+   "file": "books-stack-1.glb",
+   "position": [
+    -2.8496,
+    2.5148,
+    -4.3032
+   ],
+   "size": [
+    0.2779,
+    0.4185,
+    0.4433
+   ],
+   "bbox": {
+    "min": [
+     -2.9886,
+     2.3055,
+     -4.5249
+    ],
+    "max": [
+     -2.7107,
+     2.7241,
+     -4.0816
+    ]
+   },
+   "triangles": 264,
+   "bytes": 507384,
+   "sourceNodes": [
+    "book13"
+   ]
+  },
+  {
+   "name": "books-stack-2",
+   "file": "books-stack-2.glb",
+   "position": [
+    -3.0132,
+    3.2823,
+    -8.7309
+   ],
+   "size": [
+    0.1453,
+    0.4185,
+    0.4431
+   ],
+   "bbox": {
+    "min": [
+     -3.0859,
+     3.0731,
+     -8.9524
+    ],
+    "max": [
+     -2.9406,
+     3.4916,
+     -8.5093
+    ]
+   },
+   "triangles": 244,
+   "bytes": 506612,
+   "sourceNodes": [
+    "book13.001"
+   ]
+  },
+  {
+   "name": "books-stack-3",
+   "file": "books-stack-3.glb",
+   "position": [
+    -3.0503,
+    3.2664,
+    -9.6845
+   ],
+   "size": [
+    0.2109,
+    0.4332,
+    1.0107
+   ],
+   "bbox": {
+    "min": [
+     -3.1558,
+     3.0498,
+     -10.1899
+    ],
+    "max": [
+     -2.9449,
+     3.483,
+     -9.1792
+    ]
+   },
+   "triangles": 374,
+   "bytes": 487384,
+   "sourceNodes": [
+    "book13.002"
+   ]
+  },
+  {
+   "name": "book-open",
+   "file": "book-open.glb",
+   "position": [
+    -2.8539,
+    2.4711,
+    -6.0971
+   ],
+   "size": [
+    0.2505,
+    0.4455,
+    0.2997
+   ],
+   "bbox": {
+    "min": [
+     -2.9792,
+     2.2484,
+     -6.2469
+    ],
+    "max": [
+     -2.7287,
+     2.6938,
+     -5.9472
+    ]
+   },
+   "triangles": 186,
+   "bytes": 325260,
+   "sourceNodes": [
+    "Bodies Book."
+   ]
+  },
+  {
+   "name": "book-thin",
+   "file": "book-thin.glb",
+   "position": [
+    -3.0503,
+    3.2539,
+    -10.0242
+   ],
+   "size": [
+    0.191,
+    0.379,
+    0.0143
+   ],
+   "bbox": {
+    "min": [
+     -3.1458,
+     3.0644,
+     -10.0313
+    ],
+    "max": [
+     -2.9548,
+     3.4434,
+     -10.0171
+    ]
+   },
+   "triangles": 236,
+   "bytes": 40772,
+   "sourceNodes": [
+    "book04.002"
+   ]
+  },
+  {
+   "name": "toy-car",
+   "file": "toy-car.glb",
+   "position": [
+    -3.0204,
+    2.5298,
+    -9.8167
+   ],
+   "size": [
+    0.1728,
+    0.2477,
+    0.707
+   ],
+   "bbox": {
+    "min": [
+     -3.1068,
+     2.406,
+     -10.1702
+    ],
+    "max": [
+     -2.934,
+     2.6537,
+     -9.4632
+    ]
+   },
+   "triangles": 133538,
+   "bytes": 4771500,
+   "sourceNodes": [
+    "cotxe base"
+   ]
+  },
+  {
+   "name": "toy-octopus",
+   "file": "toy-octopus.glb",
+   "position": [
+    -3.0399,
+    2.5316,
+    -9.2166
+   ],
+   "size": [
+    0.623,
+    0.2243,
+    0.6242
+   ],
+   "bbox": {
+    "min": [
+     -3.3514,
+     2.4194,
+     -9.5288
+    ],
+    "max": [
+     -2.7284,
+     2.6438,
+     -8.9045
+    ]
+   },
+   "triangles": 1642,
+   "bytes": 252132,
+   "sourceNodes": [
+    "Terrified Alien Octopus Toy.001"
+   ]
+  },
+  {
+   "name": "toy-penguin",
+   "file": "toy-penguin.glb",
+   "position": [
+    -3.0276,
+    2.1158,
+    -10.0614
+   ],
+   "size": [
+    0.416,
+    0.5146,
+    0.4313
+   ],
+   "bbox": {
+    "min": [
+     -3.2356,
+     1.8585,
+     -10.2771
+    ],
+    "max": [
+     -2.8195,
+     2.3731,
+     -9.8458
+    ]
+   },
+   "triangles": 1552,
+   "bytes": 213952,
+   "sourceNodes": [
+    "Penguin Toy -3DPrint"
+   ]
+  },
+  {
+   "name": "toy-rocket",
+   "file": "toy-rocket.glb",
+   "position": [
+    -2.9849,
+    2.1071,
+    -8.6916
+   ],
+   "size": [
+    0.2608,
+    0.5002,
+    0.2608
+   ],
+   "bbox": {
+    "min": [
+     -3.1153,
+     1.857,
+     -8.822
+    ],
+    "max": [
+     -2.8545,
+     2.3572,
+     -8.5613
+    ]
+   },
+   "triangles": 1157,
+   "bytes": 180336,
+   "sourceNodes": [
+    "Toy Rocket"
+   ]
+  },
+  {
+   "name": "cup-blue",
+   "file": "cup-blue.glb",
+   "position": [
+    -2.8147,
+    2.448,
+    -4.9953
+   ],
+   "size": [
+    0.6387,
+    0.2775,
+    0.662
+   ],
+   "bbox": {
+    "min": [
+     -3.1341,
+     2.3093,
+     -5.3263
+    ],
+    "max": [
+     -2.4954,
+     2.5868,
+     -4.6643
+    ]
+   },
+   "triangles": 14512,
+   "bytes": 444708,
+   "sourceNodes": [
+    "Sphere.001"
+   ]
+  },
+  {
+   "name": "cup-red",
+   "file": "cup-red.glb",
+   "position": [
+    -2.7227,
+    2.3609,
+    -5.8972
+   ],
+   "size": [
+    0.2378,
+    0.1005,
+    0.2209
+   ],
+   "bbox": {
+    "min": [
+     -2.8416,
+     2.3106,
+     -6.0077
+    ],
+    "max": [
+     -2.6039,
+     2.4111,
+     -5.7868
+    ]
+   },
+   "triangles": 14512,
+   "bytes": 444720,
+   "sourceNodes": [
+    "Sphere.002"
+   ]
+  },
+  {
+   "name": "wall-hoop-decor",
+   "file": "wall-hoop-decor.glb",
+   "position": [
+    -1.7956,
+    2.2307,
+    -9.9053
+   ],
+   "size": [
+    0.875,
+    0.1245,
+    0.4744
+   ],
+   "bbox": {
+    "min": [
+     -2.2331,
+     2.1684,
+     -10.1424
+    ],
+    "max": [
+     -1.3581,
+     2.293,
+     -9.6681
+    ]
+   },
+   "triangles": 16384,
+   "bytes": 685504,
+   "sourceNodes": [
+    "Cylinder"
+   ]
+  },
+  {
+   "name": "knob-small",
+   "file": "knob-small.glb",
+   "position": [
+    -2.222,
+    0.9138,
+    -6.6388
+   ],
+   "size": [
+    0.0455,
+    0.0561,
+    0.0591
+   ],
+   "bbox": {
+    "min": [
+     -2.2447,
+     0.8857,
+     -6.6684
+    ],
+    "max": [
+     -2.1992,
+     0.9419,
+     -6.6092
+    ]
+   },
+   "triangles": 318,
+   "bytes": 21688,
+   "sourceNodes": [
+    "Cube.014"
+   ]
+  },
+  {
+   "name": "floor",
+   "file": "floor.glb",
+   "position": [
+    0.5239,
+    0.4097,
+    -5.3152
+   ],
+   "size": [
+    7.5256,
+    0,
+    9.7876
+   ],
+   "bbox": {
+    "min": [
+     -3.2389,
+     0.4097,
+     -10.209
+    ],
+    "max": [
+     4.2867,
+     0.4097,
+     -0.4214
+    ]
+   },
+   "triangles": 2,
+   "bytes": 119488,
+   "sourceNodes": [
+    "Cube.004"
+   ]
+  },
+  {
+   "name": "rug",
+   "file": "rug.glb",
+   "position": [
+    0.3394,
+    0.4032,
+    -7.0114
+   ],
+   "size": [
+    4.655,
+    0.0202,
+    4.9245
+   ],
+   "bbox": {
+    "min": [
+     -1.988,
+     0.3931,
+     -9.4736
+    ],
+    "max": [
+     2.6669,
+     0.4133,
+     -4.5491
+    ]
+   },
+   "triangles": 12,
+   "bytes": 204160,
+   "sourceNodes": [
+    "Plane"
+   ]
+  },
+  {
+   "name": "wall-side",
+   "file": "wall-side.glb",
+   "position": [
+    -3.1898,
+    2.0044,
+    -5.5152
+   ],
+   "size": [
+    0,
+    5.9254,
+    9.2144
+   ],
+   "bbox": {
+    "min": [
+     -3.1898,
+     -0.9583,
+     -10.1225
+    ],
+    "max": [
+     -3.1898,
+     4.9671,
+     -0.908
+    ]
+   },
+   "triangles": 2,
+   "bytes": 22428,
+   "sourceNodes": [
+    "Plane.002"
+   ]
+  },
+  {
+   "name": "wall-partition",
+   "file": "wall-partition.glb",
+   "position": [
+    -2.5201,
+    2.2745,
+    -6.2426
+   ],
+   "size": [
+    1.2,
+    4.0251,
+    7.9328
+   ],
+   "bbox": {
+    "min": [
+     -3.1202,
+     0.2619,
+     -10.209
+    ],
+    "max": [
+     -1.9201,
+     4.287,
+     -2.2762
+    ]
+   },
+   "triangles": 36,
+   "bytes": 27184,
+   "sourceNodes": [
+    "Cube.005"
+   ]
+  },
+  {
+   "name": "baseboard",
+   "file": "baseboard.glb",
+   "position": [
+    -3.1132,
+    0.5729,
+    -4.6121
+   ],
+   "size": [
+    0.014,
+    0.3264,
+    4.672
+   ],
+   "bbox": {
+    "min": [
+     -3.1202,
+     0.4097,
+     -6.9481
+    ],
+    "max": [
+     -3.1062,
+     0.7361,
+     -2.2762
+    ]
+   },
+   "triangles": 12,
+   "bytes": 83524,
+   "sourceNodes": [
+    "Cube.006"
+   ]
+  },
+  {
+   "name": "ceiling",
+   "file": "ceiling.glb",
+   "position": [
+    -0.3136,
+    4.5058,
+    -5.5152
+   ],
+   "size": [
+    5.9254,
+    0,
+    9.2144
+   ],
+   "bbox": {
+    "min": [
+     -3.2763,
+     4.5058,
+     -10.1225
+    ],
+    "max": [
+     2.6491,
+     4.5058,
+     -0.908
+    ]
+   },
+   "triangles": 2,
+   "bytes": 22428,
+   "sourceNodes": [
+    "Plane.003"
+   ]
+  },
+  {
+   "name": "ceiling-panel",
+   "file": "ceiling-panel.glb",
+   "position": [
+    -0.2263,
+    4.3253,
+    -6.239
+   ],
+   "size": [
+    5.5859,
+    0.2201,
+    7.941
+   ],
+   "bbox": {
+    "min": [
+     -3.0192,
+     4.2153,
+     -10.2095
+    ],
+    "max": [
+     2.5667,
+     4.4353,
+     -2.2685
+    ]
+   },
+   "triangles": 80,
+   "bytes": 31652,
+   "sourceNodes": [
+    "Cube.002"
+   ]
+  }
+ ],
+ "emptyNodes": [
+  {
+   "name": "Point",
+   "position": [
+    -2.2278,
+    4.3172,
+    -6.1628
+   ]
+  },
+  {
+   "name": "Point.001",
+   "position": [
+    1.7493,
+    4.3172,
+    -6.1628
+   ]
+  },
+  {
+   "name": "Point.002",
+   "position": [
+    -0.1698,
+    4.3172,
+    -9.4459
+   ]
+  },
+  {
+   "name": "Point.003",
+   "position": [
+    -0.1698,
+    4.3172,
+    -3.0382
+   ]
+  },
+  {
+   "name": "Point.004",
+   "position": [
+    -2.5108,
+    4.1731,
+    -2.9643
+   ]
+  },
+  {
+   "name": "Point.005",
+   "position": [
+    -2.5108,
+    4.1731,
+    -4.5678
+   ]
+  },
+  {
+   "name": "Point.006",
+   "position": [
+    -2.5108,
+    4.1731,
+    -6.1718
+   ]
+  },
+  {
+   "name": "Point.007",
+   "position": [
+    -2.5108,
+    4.1731,
+    -7.7719
+   ]
+  },
+  {
+   "name": "Point.008",
+   "position": [
+    -2.5095,
+    4.17,
+    -9.3662
+   ]
+  },
+  {
+   "name": "Point.009",
+   "position": [
+    -2.5118,
+    2.1154,
+    -9.7902
+   ]
+  },
+  {
+   "name": "Point.010",
+   "position": [
+    -2.8743,
+    2.642,
+    -9.0068
+   ]
+  },
+  {
+   "name": "Point.011",
+   "position": [
+    -2.6046,
+    1.7559,
+    -6.556
+   ]
+  },
+  {
+   "name": "Point.012",
+   "position": [
+    -2.271,
+    1.9537,
+    -6.8152
+   ]
+  },
+  {
+   "name": "Point.013",
+   "position": [
+    -2.5273,
+    1.4789,
+    -6.6189
+   ]
+  },
+  {
+   "name": "Point.014",
+   "position": [
+    -2.3906,
+    1.7729,
+    -4.0913
+   ]
+  },
+  {
+   "name": "Point.015",
+   "position": [
+    -2.7396,
+    1.7347,
+    -4.4817
+   ]
+  },
+  {
+   "name": "Point.016",
+   "position": [
+    -2.9617,
+    2.5452,
+    -5.515
+   ]
+  },
+  {
+   "name": "Point.017",
+   "position": [
+    -2.9952,
+    3.0278,
+    -5.515
+   ]
+  },
+  {
+   "name": "Point.018",
+   "position": [
+    -2.5647,
+    2.9539,
+    -5.509
+   ]
+  },
+  {
+   "name": "Point.019",
+   "position": [
+    -2.6277,
+    2.5452,
+    -5.515
+   ]
+  },
+  {
+   "name": "Point.020",
+   "position": [
+    -1.009,
+    4.17,
+    -9.3662
+   ]
+  },
+  {
+   "name": "Point.021",
+   "position": [
+    0.5792,
+    4.17,
+    -9.3662
+   ]
+  },
+  {
+   "name": "Point.022",
+   "position": [
+    2.1997,
+    4.17,
+    -9.3662
+   ]
+  },
+  {
+   "name": "Sun light",
+   "position": [
+    -0.4478,
+    2.222,
+    -6.2057
+   ]
+  },
+  {
+   "name": "Sun light.001",
+   "position": [
+    -0.4478,
+    2.222,
+    -6.2057
+   ]
+  },
+  {
+   "name": "Sun light.002",
+   "position": [
+    -0.4478,
+    2.222,
+    -6.2057
+   ]
+  }
+ ]
+}

@@ -49,7 +49,7 @@
         ⚙️
       </button>
       <a href="/" class="btn-back">
-        <span>↩️</span>
+        <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></span>
         <span class="btn-text">Thoát ra</span>
       </a>
     </div>
@@ -61,7 +61,10 @@
       
       <!-- Hero Banner -->
       <div class="start-hero">
-        <div class="hero-tag">✨ Học Tương Tác 3D Thế Hệ Mới</div>
+        <div class="hero-tag">
+          <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5.6L20 10l-5.6 2.4L12 18l-2.4-5.6L4 10l5.6-2.4L12 2z"/><path d="M19 16l1.2 2.8L23 20l-2.8 1.2L19 24l-1.2-2.8L15 20l2.8-1.2L19 16z"/></svg>
+          Học Tương Tác 3D Thế Hệ Mới
+        </div>
         <h1 class="hero-title">Hành Trình Khám Phá Thành Phố &amp; Chinh Phục Từ Vựng</h1>
         <p class="hero-desc">
           Thức dậy trong phòng ngủ, khám phá từng đồ vật để mở khoá cánh cửa, đi qua phòng khách, phòng bếp rồi bước ra đường phố và công viên — mỗi món đồ bạn chạm vào là một từ tiếng Trung mới!
@@ -69,7 +72,7 @@
         
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-num" id="totalDiscoveredStats">0/12</span>
+            <span class="stat-num" id="totalDiscoveredStats">0/55</span>
             <span class="stat-label">Đồ vật đã tìm</span>
           </div>
           <div class="stat-divider"></div>
@@ -79,13 +82,13 @@
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-num" id="startZoneName">🛏️ Phòng Ngủ</span>
+            <span class="stat-num" id="startZoneName">Phòng Ngủ</span>
             <span class="stat-label">Đang ở chặng</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item stat-item-avatar" id="btnChangeAvatarStart" title="Nhấp để đổi nhân vật" style="cursor: pointer;">
-            <span class="stat-num" id="startAvatarName">🧑 Nam Sinh</span>
-            <span class="stat-label">Nhân vật 🔄</span>
+            <span class="stat-num" id="startAvatarName">Nam Sinh</span>
+            <span class="stat-label">Đổi nhân vật</span>
           </div>
         </div>
       </div>
@@ -99,7 +102,7 @@
 
         <div class="journey-map">
           <div class="journey-step">
-            <div class="js-icon">🛏️</div>
+            <div class="js-icon"><svg class="game-svg-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/><circle cx="9" cy="11" r="2"/></svg></div>
             <div class="js-body">
               <div class="js-order">CHẶNG 1</div>
               <h3 class="js-title">Phòng Ngủ <em>臥室 wòshì</em></h3>
@@ -107,7 +110,7 @@
             </div>
           </div>
           <div class="journey-step">
-            <div class="js-icon">🛋️</div>
+            <div class="js-icon"><svg class="game-svg-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M8 14h8"/></svg></div>
             <div class="js-body">
               <div class="js-order">CHẶNG 2</div>
               <h3 class="js-title">Phòng Khách <em>客廳 kètīng</em></h3>
@@ -115,7 +118,7 @@
             </div>
           </div>
           <div class="journey-step">
-            <div class="js-icon">🍳</div>
+            <div class="js-icon"><svg class="game-svg-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2"/><rect x="4" y="6" width="16" height="16" rx="2"/><circle cx="9" cy="11" r="1.5"/><circle cx="15" cy="11" r="1.5"/><path d="M7 17h10"/></svg></div>
             <div class="js-body">
               <div class="js-order">CHẶNG 3</div>
               <h3 class="js-title">Phòng Bếp <em>廚房 chúfáng</em></h3>
@@ -123,7 +126,7 @@
             </div>
           </div>
           <div class="journey-step">
-            <div class="js-icon">🏙️</div>
+            <div class="js-icon"><svg class="game-svg-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="8" width="7" height="13" rx="1"/><path d="M6 7h1"/><path d="M6 11h1"/><path d="M6 15h1"/><path d="M17 12h1"/><path d="M17 16h1"/></svg></div>
             <div class="js-body">
               <div class="js-order">CHẶNG 4</div>
               <h3 class="js-title">Đường Phố <em>街道 jiēdào</em></h3>
@@ -131,7 +134,7 @@
             </div>
           </div>
           <div class="journey-step">
-            <div class="js-icon">🌳</div>
+            <div class="js-icon"><svg class="game-svg-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5c0 1.5.7 2.9 1.8 3.8A6 6 0 0 0 6 16c0 3.3 2.7 6 6 6s6-2.7 6-6a6 6 0 0 0-2.8-5.2A5 5 0 0 0 17 7a5 5 0 0 0-5-5z"/><path d="M12 14v8"/></svg></div>
             <div class="js-body">
               <div class="js-order">CHẶNG 5</div>
               <h3 class="js-title">Công Viên <em>公園 gōngyuán</em></h3>
@@ -142,7 +145,10 @@
 
         <div class="journey-cta">
           <div class="cta-left">
-            <div class="cta-badge">🎯 Tiến Độ Hiện Tại</div>
+            <div class="cta-badge">
+              <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              Tiến Độ Hiện Tại
+            </div>
             <div class="progress-info-row">
               <span class="progress-text" id="level1ProgressText">Đã khám phá: 0/55 đồ vật</span>
             </div>
@@ -153,7 +159,7 @@
           <div class="cta-right">
             <button type="button" class="btn-play-level" id="btnPlayLevel1">
               <span>Bắt Đầu Hành Trình</span>
-              <span class="arrow-icon">➔</span>
+              <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
             </button>
           </div>
         </div>
@@ -162,21 +168,21 @@
       <!-- Game Features highlight -->
       <div class="feature-strip">
         <div class="feat-box">
-          <span class="feat-icon">🧍‍♂️</span>
+          <span class="feat-icon"><svg class="game-svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></span>
           <div>
             <strong>Góc nhìn thứ 3 (TPS) & Avatar 3D</strong>
             <p>Điều khiển nhân vật 3D sinh động, chuyển động tự nhiên với phím WASD hoặc Joystick.</p>
           </div>
         </div>
         <div class="feat-box">
-          <span class="feat-icon">🔄</span>
+          <span class="feat-icon"><svg class="game-svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span>
           <div>
             <strong>Xoay 3D 360° Đồ Vật</strong>
             <p>Mô hình chi tiết có thể phóng to, xoay mọi góc nhìn để quan sát sâu sắc.</p>
           </div>
         </div>
         <div class="feat-box">
-          <span class="feat-icon">🔊</span>
+          <span class="feat-icon"><svg class="game-svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
           <div>
             <strong>Phát âm Giọng Chuẩn</strong>
             <p>Nghe phát âm chuẩn chữ Hán, bính âm Pinyin và làm quiz củng cố tức thì.</p>
@@ -191,7 +197,10 @@
   <section id="screenCharSelect" class="screen screen-char-select">
     <div class="char-select-container">
       <div class="char-select-header">
-        <div class="char-select-tag">🎭 Chọn Nhân Vật</div>
+        <div class="char-select-tag">
+          <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg>
+          Chọn Nhân Vật
+        </div>
         <h2 class="char-select-title">Bạn muốn khám phá với ai?</h2>
         <p class="char-select-desc">Chọn nhân vật đồng hành cùng bạn trên hành trình chinh phục từ vựng</p>
       </div>
@@ -200,34 +209,42 @@
         <!-- Male Character Card -->
         <div class="char-card" data-avatar="man" id="charCardMan">
           <div class="char-card-glow"></div>
-          <div class="char-card-avatar">🧑</div>
+          <div class="char-card-avatar">
+            <svg class="game-svg-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/><path d="M15 7a3 3 0 0 0-6 0"/></svg>
+          </div>
           <div class="char-card-info">
             <h3 class="char-card-name">Nam Sinh</h3>
             <p class="char-card-desc">Chàng trai năng động, sẵn sàng khám phá mọi ngóc ngách của thành phố</p>
           </div>
-          <div class="char-card-check">✓</div>
+          <div class="char-card-check">
+            <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
         </div>
 
         <!-- Female Character Card -->
         <div class="char-card" data-avatar="woman" id="charCardWoman">
           <div class="char-card-glow"></div>
-          <div class="char-card-avatar">👩</div>
+          <div class="char-card-avatar">
+            <svg class="game-svg-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/><path d="M8 8a4 4 0 0 0 8 0"/></svg>
+          </div>
           <div class="char-card-info">
             <h3 class="char-card-name">Nữ Sinh</h3>
             <p class="char-card-desc">Cô gái thông minh, luôn tò mò và yêu thích học hỏi điều mới</p>
           </div>
-          <div class="char-card-check">✓</div>
+          <div class="char-card-check">
+            <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
         </div>
       </div>
 
       <div class="char-select-footer">
         <button type="button" class="btn-char-back" id="btnCharBack">
-          <span>←</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
           <span>Quay lại</span>
         </button>
         <button type="button" class="btn-char-confirm disabled" id="btnCharConfirm" disabled>
           <span>Xác Nhận & Bắt Đầu</span>
-          <span class="arrow-icon">➔</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </button>
       </div>
     </div>
@@ -247,7 +264,9 @@
       <!-- Top HUD Bar -->
       <div class="hud-top">
         <div class="hud-room-tag">
-          <span class="room-icon" id="hudRoomIcon">🛏️</span>
+          <span class="room-icon" id="hudRoomIcon">
+            <svg class="game-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/><circle cx="9" cy="11" r="2"/></svg>
+          </span>
           <div class="room-tag-body">
             <span class="room-name" id="hudRoomName">Phòng Ngủ <span class="hud-zone-cn">臥室</span></span>
             <span class="room-step" id="hudZoneStep">Chặng 1/5</span>
@@ -260,25 +279,30 @@
           <div class="hud-mini-bar">
             <div class="hud-mini-fill" id="hudMiniFill" style="width: 0%"></div>
           </div>
-          <div class="hud-zone-task" id="hudZoneTask">🎯 Còn 15 đồ vật cần khám phá</div>
+          <div class="hud-zone-task" id="hudZoneTask">
+            <svg class="game-svg-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Còn 15 đồ vật cần khám phá
+          </div>
           <div class="hud-zone-track" id="hudZoneTrack"></div>
         </div>
 
         <div class="hud-top-right">
           <button type="button" class="btn-hud btn-cam-toggle" id="btnToggleCamera" title="Đổi góc nhìn (Phím V)">
-            <span id="cameraModeIcon">🎥</span>
+            <span id="cameraModeIcon" class="icon-wrap">
+              <svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </span>
             <span class="hud-btn-txt" id="cameraModeTxt">Góc nhìn: Thứ 3</span>
           </button>
           <button type="button" class="btn-hud" id="btnToggleBook" title="Xem sổ tay từ vựng">
-            <span>📖</span>
+            <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
             <span class="hud-btn-txt">Sổ từ (<span id="hudDiscoveredBadge">0</span>)</span>
           </button>
           <button type="button" class="btn-hud" id="btnToggleFullscreen" title="Toàn màn hình (F11)">
-            <span class="fs-icon">⛶</span>
+            <span class="fs-icon icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></span>
             <span class="hud-btn-txt" id="fullscreenTxt">Toàn màn hình</span>
           </button>
           <button type="button" class="btn-hud" id="btnPauseGame" title="Tạm dừng / Quay về menu">
-            <span>⏸️</span>
+            <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></span>
             <span class="hud-btn-txt">Tạm dừng</span>
           </button>
         </div>
@@ -327,7 +351,7 @@
           </div>
 
           <button type="button" class="btn-mobile-interact" id="btnMobileInteract">
-            <span>👆</span>
+            <span class="icon-wrap"><svg class="game-svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg></span>
             <span>Tương tác</span>
           </button>
         </div>
@@ -336,7 +360,9 @@
       <!-- Pointer Lock Click-to-Play Overlay -->
       <div class="pointer-lock-prompt" id="pointerLockPrompt">
         <div class="prompt-box">
-          <div class="prompt-icon">🎮</div>
+          <div class="prompt-icon">
+            <svg class="game-svg-icon" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+          </div>
           <h3>Nhấp vào màn hình để bắt đầu điều khiển</h3>
           <p>Dùng chuột để xoay camera và phím <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> để di chuyển nhân vật.</p>
           <button type="button" class="btn-lock-start" id="btnLockStart">Bắt đầu khám phá</button>
@@ -359,7 +385,7 @@
       <!-- Modal Header -->
       <div class="vocab-modal-head">
         <div class="object-category-tag" id="modalCategory">Đồ dùng trong phòng</div>
-        <div class="object-zone-tag" id="modalZoneTag">🛏️ Phòng Ngủ • 0/15</div>
+        <div class="object-zone-tag" id="modalZoneTag">Phòng Ngủ • 0/15</div>
         <button type="button" class="btn-modal-close" id="btnCloseModal" aria-label="Đóng">&times;</button>
       </div>
 
@@ -369,7 +395,8 @@
         <!-- Left Column: Interactive 3D Object Studio Viewer -->
         <div class="inspector-3d-box">
           <div class="inspector-badge">
-            <span>🔄 Xoay 3D 360°</span>
+            <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <span>Xoay 3D 360°</span>
           </div>
           <div class="inspector-viewport" id="inspectorViewport">
             <!-- Secondary Three.js Isolated Canvas -->
@@ -378,10 +405,14 @@
           </div>
           <div class="inspector-tools">
             <button type="button" class="btn-tool" id="btnReset3dView" title="Đặt lại góc nhìn">
-              <span>⏮️ Đặt lại góc</span>
+              <span class="icon-wrap"><svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></span>
+              <span>Đặt lại góc</span>
             </button>
             <button type="button" class="btn-tool" id="btnToggleAutoRotate" title="Bật/Tắt tự xoay">
-              <span id="rotateIcon">⏸️ Dừng xoay</span>
+              <span id="rotateIcon" class="icon-wrap">
+                <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </span>
+              <span id="rotateTxt">Dừng xoay</span>
             </button>
           </div>
         </div>
@@ -396,7 +427,9 @@
               <span class="vocab-pinyin" id="modalPinyin">zhuō zi</span>
             </div>
             <button type="button" class="btn-speak" id="btnSpeakWord" title="Phát âm từ vựng">
-              <span class="speak-icon">🔊</span>
+              <span class="speak-icon">
+                <svg class="game-svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </span>
               <span class="speak-label">Nghe đọc</span>
             </button>
           </div>
@@ -417,8 +450,13 @@
           <!-- Example Sentence -->
           <div class="vocab-example-block">
             <div class="example-head">
-              <span>💬 Câu ví dụ thực tế</span>
-              <button type="button" class="btn-speak-mini" id="btnSpeakExample" title="Nghe câu ví dụ">🔊</button>
+              <span>
+                <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Câu ví dụ thực tế
+              </span>
+              <button type="button" class="btn-speak-mini" id="btnSpeakExample" title="Nghe câu ví dụ">
+                <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </button>
             </div>
             <p class="example-cn" id="modalExampleCn">這張桌子很乾淨，適合讀書。</p>
             <p class="example-pinyin" id="modalExamplePinyin">Zhè zhāng zhuōzi hěn gānjìng, shìhé dúshū.</p>
@@ -428,7 +466,10 @@
           <!-- Mini Quick Quiz Section -->
           <div class="mini-quiz-box" id="miniQuizBox">
             <div class="quiz-head">
-              <span>⚡ Kiểm tra nhanh để nhớ từ:</span>
+              <span>
+                <svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Kiểm tra nhanh để nhớ từ:
+              </span>
               <span class="quiz-status" id="quizStatus"></span>
             </div>
             <p class="quiz-question" id="quizQuestion">Từ "桌子" nghĩa là gì?</p>
@@ -443,12 +484,14 @@
       <!-- Modal Footer -->
       <div class="vocab-modal-foot">
         <div class="discovery-status-indicator" id="modalDiscoveryIndicator">
-          <span class="disc-icon">✨</span>
+          <span class="disc-icon">
+            <svg class="game-svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 5.6L20 10l-5.6 2.4L12 18l-2.4-5.6L4 10l5.6-2.4L12 2z"/></svg>
+          </span>
           <span class="disc-text" id="modalDiscoveryText">Đã thêm vào sổ tay từ vựng!</span>
         </div>
         <button type="button" class="btn-continue-explore" id="btnContinueExplore">
           <span>Tiếp tục khám phá phòng</span>
-          <span>➔</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </button>
       </div>
 
@@ -460,14 +503,21 @@
     <div class="drawer-panel">
       <div class="drawer-head">
         <div class="drawer-title">
-          <span>📖</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
           <h3>Sổ Tay Từ Vựng Hành Trình</h3>
         </div>
         <button type="button" class="btn-drawer-close" id="btnCloseDrawer">&times;</button>
       </div>
       <div class="drawer-summary">
         <span id="drawerSummaryCount">Đã khám phá 0/55 từ vựng trên toàn hành trình</span>
-        <span class="drawer-star-badge">⭐ Khám phá hết một khu vực để mở khoá cửa sang chặng sau</span>
+        <button type="button" class="btn-review-flashcards" id="btnStartReviewFlashcards">
+          <span class="icon-wrap"><svg class="game-svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+          <span>Ôn Tập Từ Vựng (Quiz)</span>
+        </button>
+        <span class="drawer-star-badge">
+          <svg class="game-svg-icon" width="15" height="15" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Khám phá hết một khu vực để mở khoá cửa sang chặng sau
+        </span>
       </div>
       <div class="drawer-body" id="drawerVocabList">
         <!-- List of discovered items -->
@@ -478,14 +528,16 @@
   <!-- ================= SCREEN 3: VICTORY / LEVEL COMPLETE ================= -->
   <div class="modal-backdrop" id="victoryModal">
     <div class="victory-card">
-      <div class="victory-confetti-icon">🎉</div>
+      <div class="victory-confetti-icon">
+        <svg class="game-svg-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.48 13.91L18 22l-6-3.5L6 22l2.52-8.09"/></svg>
+      </div>
       <h2 class="victory-title">Tuyệt Vời! Bạn Đã Đi Hết Hành Trình!</h2>
       <p class="victory-sub">Từ phòng ngủ, qua phòng khách, phòng bếp, ra đường phố và tới công viên — bạn đã khám phá trọn vẹn 55 từ vựng.</p>
       
       <div class="victory-stars">
-        <span class="star-anim star-1">⭐</span>
-        <span class="star-anim star-2">⭐</span>
-        <span class="star-anim star-3">⭐</span>
+        <span class="star-anim star-1"><svg class="game-svg-icon" width="36" height="36" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="star-anim star-2"><svg class="game-svg-icon" width="36" height="36" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="star-anim star-3"><svg class="game-svg-icon" width="36" height="36" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
       </div>
 
       <div class="victory-stats-grid">
@@ -505,10 +557,12 @@
 
       <div class="victory-actions">
         <button type="button" class="btn-v-replay" id="btnReplayLevel">
-          <span>🔄 Chơi Lại Phòng Này</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span>
+          <span>Chơi Lại Phòng Này</span>
         </button>
         <button type="button" class="btn-v-menu" id="btnBackToMenu">
-          <span>🏠 Về Danh Sách Màn</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span>Về Danh Sách Màn</span>
         </button>
       </div>
     </div>
@@ -519,9 +573,11 @@
     <div class="door-modal-card">
       <div class="door-modal-head">
         <div class="door-modal-title-wrap">
-          <span class="door-badge-icon">🚪</span>
+          <span class="door-badge-icon">
+            <svg class="game-svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21h16"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><circle cx="14" cy="12" r="1.5" fill="currentColor"/></svg>
+          </span>
           <div>
-            <h3 class="door-modal-title" id="doorModalTitle">🛋️ Tới Phòng Khách</h3>
+            <h3 class="door-modal-title" id="doorModalTitle">Tới Phòng Khách</h3>
             <span class="door-modal-sub">Cửa đã mở khoá — sẵn sàng sang chặng mới</span>
           </div>
         </div>
@@ -550,13 +606,15 @@
 
       <div class="door-modal-actions">
         <button type="button" class="btn-door-exit" id="btnConfirmExitDoor">
-          <span id="btnConfirmExitDoorTxt">🛋️ Đi tới Phòng Khách</span>
+          <span id="btnConfirmExitDoorTxt">Đi tới Phòng Khách</span>
         </button>
         <button type="button" class="btn-door-quiz" id="btnLearnDoorCard">
-          <span>📖 Học từ vựng về cánh cửa này</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <span>Học từ vựng về cánh cửa này</span>
         </button>
         <button type="button" class="btn-door-continue" id="btnCancelExitDoor">
-          <span>↩️ Ở Lại Học Tiếp</span>
+          <span class="icon-wrap"><svg class="game-svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></span>
+          <span>Ở Lại Học Tiếp</span>
         </button>
       </div>
     </div>
@@ -566,7 +624,10 @@
   <div class="modal-backdrop" id="settingsModal">
     <div class="settings-card">
       <div class="settings-head">
-        <h3>⚙️ Cài Đặt Trò Chơi</h3>
+        <h3>
+          <svg class="game-svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Cài Đặt Trò Chơi
+        </h3>
         <button type="button" class="btn-modal-close" id="btnCloseSettings">&times;</button>
       </div>
       <div class="settings-body">
@@ -628,22 +689,104 @@
     </div>
   </div>
 
+  <!-- ================= TUTORIAL / HƯỚNG DẪN MỚI CHƠI ================= -->
+  <div class="modal-backdrop" id="tutorialModal">
+    <div class="tutorial-card">
+      <div class="tutorial-head">
+        <div class="tutorial-tag">🎮 Hướng Dẫn Khám Phá</div>
+        <h3 class="tutorial-title">Chào mừng bạn đến với 3D Vocab Quest!</h3>
+        <button type="button" class="btn-modal-close" id="btnCloseTutorial">&times;</button>
+      </div>
+      <div class="tutorial-body">
+        <div class="tutorial-grid">
+          <div class="tut-step">
+            <div class="tut-icon">🕹️</div>
+            <div class="tut-info">
+              <strong>Di Chuyển Nhân Vật</strong>
+              <p>Dùng phím <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (trên máy tính) hoặc <strong>Cần xoay Joystick</strong> (trên di động) để di chuyển.</p>
+            </div>
+          </div>
+          <div class="tut-step">
+            <div class="tut-icon">👁️</div>
+            <div class="tut-info">
+              <strong>Xoay Camera & Quan Sát</strong>
+              <p>Di chuột hoặc vuốt màn hình cảm ứng để xoay góc nhìn 360°. Nhấn phím <kbd>V</kbd> để đổi giữa góc nhìn thứ 3 và thứ 1.</p>
+            </div>
+          </div>
+          <div class="tut-step">
+            <div class="tut-icon">✨</div>
+            <div class="tut-info">
+              <strong>Khám Phá Đồ Vật 3D</strong>
+              <p>Khi tiến lại gần đồ vật, đồ vật sẽ phát sáng! Nhấn phím <kbd>E</kbd> hoặc chạm vào đồ vật để mở bảng phát âm & chi tiết từ vựng.</p>
+            </div>
+          </div>
+          <div class="tut-step">
+            <div class="tut-icon">🚪</div>
+            <div class="tut-info">
+              <strong>Mở Cửa Sang Chặng Sau</strong>
+              <p>Tìm và học hết các đồ vật trong phòng để giải khóa cánh cửa dẫn sang khu vực tiếp theo (Phòng Khách, Phòng Bếp, Đường Phố, Công Viên).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tutorial-foot">
+        <button type="button" class="btn-tutorial-start" id="btnStartGameTutorial">
+          <span>Tôi Đã Hiểu — Bắt Đầu Ngay!</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= REVIEW / FLASHCARD QUIZ MODAL ================= -->
+  <div class="modal-backdrop" id="reviewQuizModal">
+    <div class="review-quiz-card">
+      <div class="review-quiz-head">
+        <div class="rq-title">
+          <span>⚡ Ôn Tập Từ Vựng Đã Khám Phá</span>
+          <span class="rq-badge" id="rqScoreBadge">Câu 1/5</span>
+        </div>
+        <button type="button" class="btn-modal-close" id="btnCloseReviewQuiz">&times;</button>
+      </div>
+      <div class="review-quiz-body" id="reviewQuizBody">
+        <div class="rq-question-box">
+          <div class="rq-hanzi" id="rqHanzi">桌子</div>
+          <div class="rq-pinyin" id="rqPinyin">zhuōzi</div>
+          <div class="rq-prompt">Chọn nghĩa tiếng Việt đúng nhất của từ này:</div>
+        </div>
+        <div class="rq-options-grid" id="rqOptionsGrid">
+          <!-- Dynamically populated options -->
+        </div>
+        <div class="rq-feedback" id="rqFeedback"></div>
+      </div>
+      <div class="review-quiz-foot">
+        <button type="button" class="btn-rq-next" id="btnRqNext" style="display:none;">
+          <span>Câu Tiếp Theo &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- ================= MÀN HÌNH CHỜ KHỞI ĐỘNG ================= -->
   <div class="boot-loader" id="bootLoader">
     <div class="boot-box">
-      <div class="boot-icon">🎮</div>
-      <div class="boot-title">Đang chuẩn bị phòng ngủ…</div>
-      <div class="boot-bar"><span></span></div>
+      <div class="boot-icon">
+        <svg class="game-svg-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+      </div>
+      <div class="boot-title" id="bootTitle">Đang chuẩn bị phòng ngủ…</div>
+      <div class="boot-bar"><span id="bootProgressFill" style="width: 0%"></span></div>
+      <div class="boot-percent" id="bootPercentText" style="font-size: 0.85rem; color: #94a3b8; margin-top: 8px; font-weight: 600;">0%</div>
     </div>
   </div>
 
   <!-- ================= NHẮC XOAY NGANG MÁY (chỉ trên điện thoại) ================= -->
   <div class="rotate-device-overlay" id="rotateDeviceOverlay">
     <div class="rotate-box">
-      <div class="rotate-icon">📱</div>
+      <div class="rotate-icon">
+        <svg class="game-svg-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/><path d="M1 9l3-3 3 3"/><path d="M4 6v4a8 8 0 0 0 8 8"/></svg>
+      </div>
       <h3>Hãy xoay ngang điện thoại</h3>
       <p>Trò chơi 3D này cần màn hình nằm ngang để hiển thị đầy đủ khung cảnh và các nút điều khiển.</p>
-      <button type="button" class="btn-rotate-fs" id="btnRotateFullscreen">⛶ Bật toàn màn hình</button>
+      <button type="button" class="btn-rotate-fs" id="btnRotateFullscreen">Bật toàn màn hình</button>
     </div>
   </div>
 
@@ -653,12 +796,14 @@
     z-index:9999;transition:opacity 0.6s ease;display:flex;align-items:center;justify-content:center;
     flex-direction:column;gap:16px;
   ">
-    <div style="font-size:3.5rem;animation:spin 1s linear infinite;">🚪</div>
+    <div style="font-size:2.5rem;animation:spin 1s linear infinite;color:#38bdf8;">
+      <svg class="game-svg-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21h16"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><circle cx="14" cy="12" r="1.5" fill="currentColor"/></svg>
+    </div>
     <div class="transition-label" style="color:#38bdf8;font-size:1.4rem;font-weight:700;letter-spacing:2px;font-family:serif;">Đang mở cửa...</div>
   </div>
   <style>@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}</style>
 
-  <!-- Game Logic Script -->
-  <script defer src="./game.js?v=202608201900"></script>
+  <!-- Game Logic Script (Modular ES6 Architecture) -->
+  <script type="module" src="./js/main.js?v=20260821"></script>
 </body>
 </html>

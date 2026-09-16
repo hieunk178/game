@@ -1,5 +1,18 @@
 {
+  "type": "module",
   "dependencies": {
     "puppeteer": "^25.8.0"
+  },
+  "scripts": {
+    "serve": "python serve.py 8080",
+    "test": "node test_modules.mjs && node test_deep_simulation.mjs && node test_phase2_simulation.mjs && node test_svg_icons.mjs && node test_route_simulation.mjs",
+    "test:runtime": "node test_runtime_audit.mjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^4.4.2",
+    "@gltf-transform/extensions": "^4.4.2",
+    "@gltf-transform/functions": "^4.4.2",
+    "meshoptimizer": "^1.2.0",
+    "sharp": "^0.35.3"
   }
 }
